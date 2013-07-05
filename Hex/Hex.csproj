@@ -74,6 +74,7 @@
     <Compile Include="AttributeBuilders\CheckBoxAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\DropDownListAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\HiddenAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HyperLinkAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\InputAttributeBuilder.cs" />
