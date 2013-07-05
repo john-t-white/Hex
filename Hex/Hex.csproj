@@ -81,6 +81,7 @@
     <Compile Include="AttributeBuilders\InputAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\LabelAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\ListBoxAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\PasswordAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\RadioButtonAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\RouteLinkAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilder.cs" />

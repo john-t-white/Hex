@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Hex.AttributeBuilders
 {
-	public class HiddenAttributeBuilder
-		: InputAttributeBuilder<HiddenAttributeBuilder>
+	public class PasswordAttributeBuilder
+		: TextInputAttributeBuilder<PasswordAttributeBuilder>
 	{
 	}
 }
