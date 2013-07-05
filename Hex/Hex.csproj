@@ -77,7 +77,7 @@
     <Compile Include="AttributeValueCollection.cs" />
     <Compile Include="Extensions\BooleanExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="HtmlAttributes.cs" />
+    <Compile Include="Html\HtmlAttributes.cs" />
     <Compile Include="Html\Enumerations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

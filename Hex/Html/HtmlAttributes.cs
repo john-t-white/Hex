@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hex
+namespace Hex.Html
 {
 	public static class HtmlAttributes
 	{

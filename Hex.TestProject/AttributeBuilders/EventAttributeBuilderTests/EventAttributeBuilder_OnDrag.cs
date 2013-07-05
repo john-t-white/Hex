@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.AttributeBuilders;
+using Hex.Html;
 
 namespace Hex.TestProject.AttributeBuilders.EventAttributeBuilderTests
 {
