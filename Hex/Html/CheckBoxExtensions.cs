@@ -13,19 +13,19 @@ namespace Hex.Html
 {
 	public static class CheckBoxExtensions
 	{
-		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, Action<CheckBoxAttributeBuilder> checkBoxAttributeExpression )
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, Action<CheckBoxAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.CheckBox( name, checkBoxAttributeExpression.GetAttributes() );
+			return htmlHelper.CheckBox( name, attributeExpression.GetAttributes() );
 		}
 
-		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, bool isChecked, Action<CheckBoxAttributeBuilder> checkBoxAttributeExpression )
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, bool isChecked, Action<CheckBoxAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.CheckBox( name, isChecked, checkBoxAttributeExpression.GetAttributes() );
+			return htmlHelper.CheckBox( name, isChecked, attributeExpression.GetAttributes() );
 		}
 
-		public static MvcHtmlString CheckBoxFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, bool>> expression, Action<CheckBoxAttributeBuilder> checkBoxAttributeExpression )
+		public static MvcHtmlString CheckBoxFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, bool>> expression, Action<CheckBoxAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.CheckBoxFor( expression, checkBoxAttributeExpression.GetAttributes() );
+			return htmlHelper.CheckBoxFor( expression, attributeExpression.GetAttributes() );
 		}
 	}
 }
