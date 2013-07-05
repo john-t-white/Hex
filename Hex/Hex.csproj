@@ -73,6 +73,9 @@
     <Compile Include="AttributeBuilders\EventAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\LabelAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\ValidationAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\ValidationMessageAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\ValidationSummaryAttributeBuilder.cs" />
     <Compile Include="AttributeCollection.cs" />
     <Compile Include="AttributeNameValueCollection.cs" />
     <Compile Include="AttributeValueCollection.cs" />
