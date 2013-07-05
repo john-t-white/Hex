@@ -25,12 +25,12 @@ namespace Hex.Html
 
 		public static MvcHtmlString ListBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<ListBoxAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.ListBoxFor<TModel, TProperty>( expression, null, attributeExpression.GetAttributes() );
+			return htmlHelper.ListBoxFor( expression, null, attributeExpression.GetAttributes() );
 		}
 
 		public static MvcHtmlString ListBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, Action<ListBoxAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.ListBoxFor<TModel, TProperty>( expression, selectList, attributeExpression.GetAttributes() );
+			return htmlHelper.ListBoxFor( expression, selectList, attributeExpression.GetAttributes() );
 		}
 	}
 }

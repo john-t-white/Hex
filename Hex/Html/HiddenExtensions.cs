@@ -25,7 +25,7 @@ namespace Hex.Html
 
 		public static MvcHtmlString HiddenFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HiddenAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.HiddenFor<TModel, TProperty>( expression, attributeExpression.GetAttributes() );
+			return htmlHelper.HiddenFor( expression, attributeExpression.GetAttributes() );
 		}
 	}
 }
