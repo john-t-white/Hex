@@ -34,6 +34,30 @@ namespace Hex.Html
 		Move
 	}
 
+	public enum RelType
+	{
+		Alternate,
+		Author,
+		Bookmark,
+		Help,
+		License,
+		Next,
+		NoFollow,
+		NoReferrer,
+		PreFetch,
+		Prev,
+		Search,
+		Tag
+	}
+
+	public enum TargetType
+	{
+		Blank,
+		Self,
+		Parent,
+		Top
+	}
+
 	public enum TranslateType
 	{
 		Yes,
