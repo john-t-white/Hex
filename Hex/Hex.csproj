@@ -105,6 +105,7 @@
     <Compile Include="Html\Enumerations.cs" />
     <Compile Include="Html\LabelExtensions.cs" />
     <Compile Include="Html\ListBoxExtensions.cs" />
+    <Compile Include="Html\PasswordExtensions.cs" />
     <Compile Include="Html\RadioButtonExtensions.cs" />
     <Compile Include="Html\RouteLinkExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
