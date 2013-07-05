@@ -1,4 +1,4 @@
 Hex
 ===
 
-Extensions to HtmlHelper for HTML5 and strongly typed html attributes.
+Extensions to HtmlHelper to provide a fluent strongly-type way of specified attributes.
