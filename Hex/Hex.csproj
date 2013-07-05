@@ -71,11 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeBuilders\ActionLinkAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\CheckBoxAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HyperLinkAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\InputAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\LabelAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\RadioButtonAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\RouteLinkAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\ValidationAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\ValidationMessageAttributeBuilder.cs" />
