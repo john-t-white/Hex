@@ -99,6 +99,7 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Html\ActionLinkExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions.cs" />
+    <Compile Include="Html\TextBoxExtensions.cs" />
     <Compile Include="Html\DropDownListExtensions.cs" />
     <Compile Include="Html\HiddenExtensions.cs" />
     <Compile Include="Html\HtmlAttributes.cs" />
