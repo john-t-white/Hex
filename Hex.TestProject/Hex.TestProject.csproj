@@ -148,6 +148,8 @@
     <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilderFake.cs" />
     <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_AddForm.cs" />
     <Compile Include="AttributeBuilders\LabelAttributeBuilderTests\LabelAttributeBuilder_AddForms.cs" />
+    <Compile Include="AttributeBuilders\SelectAttributeBuilderTests\SelectAttributeBuilderFake.cs" />
+    <Compile Include="AttributeBuilders\SelectAttributeBuilderTests\SelectAttributeBuilder_Size.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
