@@ -98,6 +98,7 @@
     <Compile Include="Extensions\BooleanExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Html\ActionLinkExtensions.cs" />
+    <Compile Include="Html\CheckBoxExtensions.cs" />
     <Compile Include="Html\HtmlAttributes.cs" />
     <Compile Include="Html\Enumerations.cs" />
     <Compile Include="Html\RouteLinkExtensions.cs" />
