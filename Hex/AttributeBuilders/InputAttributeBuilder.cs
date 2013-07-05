@@ -10,7 +10,7 @@ namespace Hex.AttributeBuilders
 {
 	public abstract class InputAttributeBuilder<TSelf>
 		: HtmlAttributeBuilder<TSelf>
-		where TSelf : InputAttributeBuilder<TSelf>
+		where TSelf : InputAttributeBuilder<TSelf>, new()
 	{
 		public TSelf AddForm( params string[] formIds )
 		{

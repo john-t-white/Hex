@@ -9,7 +9,7 @@ namespace Hex.AttributeBuilders
 {
 	public abstract class SelectAttributeBuilder<TSelf>
 		: InputAttributeBuilder<TSelf>
-		where TSelf : SelectAttributeBuilder<TSelf>
+		where TSelf : SelectAttributeBuilder<TSelf>, new()
 	{
 		public TSelf Size( int size )
 		{

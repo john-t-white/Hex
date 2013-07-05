@@ -10,7 +10,7 @@ namespace Hex.AttributeBuilders
 {
 	public abstract class HyperLinkAttributeBuilder<TSelf>
 		: HtmlAttributeBuilder<TSelf>
-		where TSelf : HyperLinkAttributeBuilder<TSelf>
+		where TSelf : HyperLinkAttributeBuilder<TSelf>, new()
 	{
 		public TSelf HrefLang( string languageCode )
 		{

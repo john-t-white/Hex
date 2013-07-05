@@ -94,8 +94,10 @@
     <Compile Include="AttributeCollection.cs" />
     <Compile Include="AttributeNameValueCollection.cs" />
     <Compile Include="AttributeValueCollection.cs" />
+    <Compile Include="Extensions\ActionExtensions.cs" />
     <Compile Include="Extensions\BooleanExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Html\ActionLinkExtensions.cs" />
     <Compile Include="Html\HtmlAttributes.cs" />
     <Compile Include="Html\Enumerations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

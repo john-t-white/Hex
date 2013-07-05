@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace Hex.AttributeBuilders
 {
 	public abstract class HtmlAttributeBuilder<TSelf>
-		where TSelf : HtmlAttributeBuilder<TSelf>
+		where TSelf : HtmlAttributeBuilder<TSelf>, new()
 	{
 		private const string DATA_ATTRIBUTE_PATTERN = "data-{0}";
 

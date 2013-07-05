@@ -8,7 +8,7 @@ namespace Hex.AttributeBuilders
 {
 	public abstract class ValidationAttributeBuilder<TSelf>
 		: HtmlAttributeBuilder<TSelf>
-		where TSelf : ValidationAttributeBuilder<TSelf>
+		where TSelf : ValidationAttributeBuilder<TSelf>, new()
 	{
 	}
 }

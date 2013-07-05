@@ -10,7 +10,7 @@ namespace Hex.AttributeBuilders
 {
 	public abstract class TextInputAttributeBuilder<TSelf>
 		: InputAttributeBuilder<TSelf>
-		where TSelf : TextInputAttributeBuilder<TSelf>
+		where TSelf : TextInputAttributeBuilder<TSelf>, new()
 	{
 		public TSelf Max( int max )
 		{
