@@ -100,6 +100,7 @@
     <Compile Include="Html\ActionLinkExtensions.cs" />
     <Compile Include="Html\HtmlAttributes.cs" />
     <Compile Include="Html\Enumerations.cs" />
+    <Compile Include="Html\RouteLinkExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
