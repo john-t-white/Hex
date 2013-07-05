@@ -132,6 +132,7 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_AddStyle.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Attribute.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_If.cs" />
+    <Compile Include="AttributeBuilders\LabelAttributeBuilderTests\LabelAttributeBuilder_AddForms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
