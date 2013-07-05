@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Hex.Html
 {
+	public enum AutoCompleteType
+	{
+		On,
+		Off
+	}
+
 	public enum ContentEditableType
 	{
 		True,

@@ -138,6 +138,15 @@
     <Compile Include="AttributeBuilders\HyperLinkAttributeBuilderTests\HyperLinkAttributeBuilder_Media.cs" />
     <Compile Include="AttributeBuilders\HyperLinkAttributeBuilderTests\HyperLinkAttributeBuilder_HrefLang.cs" />
     <Compile Include="AttributeBuilders\HyperLinkAttributeBuilderTests\HyperLinkAttributeBuilderFake.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_List.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_Required.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_ReadOnly.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_FormNoValidate.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_Disabled.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_AutoFocus.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_AutoComplete.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilderFake.cs" />
+    <Compile Include="AttributeBuilders\InputAttributeBuilderTests\InputAttributeBuilder_AddForm.cs" />
     <Compile Include="AttributeBuilders\LabelAttributeBuilderTests\LabelAttributeBuilder_AddForms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
