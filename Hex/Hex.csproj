@@ -84,6 +84,7 @@
     <Compile Include="AttributeBuilders\RadioButtonAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\RouteLinkAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\ValidationAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\ValidationMessageAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\ValidationSummaryAttributeBuilder.cs" />

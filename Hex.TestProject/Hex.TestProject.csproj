@@ -156,6 +156,14 @@
     <Compile Include="AttributeBuilders\LabelAttributeBuilderTests\LabelAttributeBuilder_AddForms.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilderTests\SelectAttributeBuilderFake.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilderTests\SelectAttributeBuilder_Size.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_Step.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_Size.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_PlaceHolder.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_Pattern.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_Min.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_MaxLength.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilderFake.cs" />
+    <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_Max.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
