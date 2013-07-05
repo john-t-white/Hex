@@ -40,6 +40,13 @@ namespace Hex.Html
 		Move
 	}
 
+	public enum EncodingType
+	{
+		UrlEncoding,
+		Multipart,
+		Plain
+	}
+
 	public enum RelType
 	{
 		Alternate,

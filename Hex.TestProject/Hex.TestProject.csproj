@@ -111,6 +111,12 @@
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnChange.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnBlur.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_Event.cs" />
+    <Compile Include="AttributeBuilders\FormAttributeBuilderTests\FormAttributeBuilder_EncType.cs" />
+    <Compile Include="AttributeBuilders\FormAttributeBuilderTests\FormAttributeBuilder_NoValidate.cs" />
+    <Compile Include="AttributeBuilders\FormAttributeBuilderTests\FormAttributeBuilder_Name.cs" />
+    <Compile Include="AttributeBuilders\FormAttributeBuilderTests\FormAttributeBuilder_AutoComplete.cs" />
+    <Compile Include="AttributeBuilders\FormAttributeBuilderTests\FormAttributeBuilder_AddAcceptCharSets.cs" />
+    <Compile Include="AttributeBuilders\FormAttributeBuilderTests\FormAttributeBuilder_Target.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Events.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Translate.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Title.cs" />

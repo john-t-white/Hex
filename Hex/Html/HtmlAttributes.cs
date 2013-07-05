@@ -8,8 +8,7 @@ namespace Hex.Html
 {
 	public static class HtmlAttributes
 	{
-		public readonly static string AcceptCharset;
-
+		public readonly static string AcceptCharset = "accept-charset";
 		public readonly static string AccessKey = "accesskey";
 		public readonly static string AutoComplete = "autocomplete";
 		public readonly static string AutoFocus = "autofocus";
