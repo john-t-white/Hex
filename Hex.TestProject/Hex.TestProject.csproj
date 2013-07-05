@@ -156,6 +156,9 @@
     <Compile Include="AttributeBuilders\LabelAttributeBuilderTests\LabelAttributeBuilder_AddForms.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilderTests\SelectAttributeBuilderFake.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilderTests\SelectAttributeBuilder_Size.cs" />
+    <Compile Include="AttributeBuilders\TextAreaAttributeBuilderTests\TextAreaAttributeBuilder_Wrap.cs" />
+    <Compile Include="AttributeBuilders\TextAreaAttributeBuilderTests\TextAreaAttributeBuilder_Rows.cs" />
+    <Compile Include="AttributeBuilders\TextAreaAttributeBuilderTests\TextAreaAttributeBuilder_Cols.cs" />
     <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_Step.cs" />
     <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_Size.cs" />
     <Compile Include="AttributeBuilders\TextInputAttributeBuilderTests\TextInputAttributeBuilder_PlaceHolder.cs" />

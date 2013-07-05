@@ -76,4 +76,10 @@ namespace Hex.Html
 		Yes,
 		No
 	}
+
+	public enum WrapType
+	{
+		Hard,
+		Soft
+	}
 }
