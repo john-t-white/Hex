@@ -185,15 +185,15 @@ namespace Hex.AttributeBuilders
 			return ( TSelf )this;
 		}
 
-		//public TSelf Events(Action<EventAttributeBuilder> eventAttributeExpression)
-		//{
-		//	if (eventAttributeExpression != null)
-		//	{
-		//		eventAttributeExpression(new EventAttributeBuilder(this.Attributes));
-		//	}
-		//	TSelf tSelf = (TSelf)this;
-		//	return tSelf;
-		//}
+		public TSelf Events( Action<EventAttributeBuilder> eventAttributeExpression )
+		{
+			if( eventAttributeExpression != null )
+			{
+				eventAttributeExpression( new EventAttributeBuilder( this.Attributes ) );
+			}
+
+			return ( TSelf )this;
+		}
 
 		public TSelf Hidden()
 		{

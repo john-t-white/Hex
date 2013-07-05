@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttributeBuilders\EventAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder.cs" />
     <Compile Include="AttributeCollection.cs" />
     <Compile Include="AttributeNameValueCollection.cs" />

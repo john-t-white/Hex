@@ -81,6 +81,37 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnSubmit.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnSelect.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnScroll.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnMouseWheel.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnMouseUp.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnMouseOver.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnMouseOut.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnMouseMove.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnMouseDown.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnKeyUp.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnKeyPress.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnKeyDown.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnInvalid.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnInput.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnFormInput.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnFormChange.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnFocus.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnDrop.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnDragStart.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnDragOver.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnDragLeave.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnDragEnter.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnDragEnd.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnDrag.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnDblClick.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnContextMenu.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnClick.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnChange.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnBlur.cs" />
+    <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_Event.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Events.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Translate.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Title.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_TabIndex.cs" />
