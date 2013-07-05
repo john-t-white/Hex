@@ -108,6 +108,7 @@
     <Compile Include="Html\PasswordExtensions.cs" />
     <Compile Include="Html\RadioButtonExtensions.cs" />
     <Compile Include="Html\RouteLinkExtensions.cs" />
+    <Compile Include="Html\TextAreaExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
