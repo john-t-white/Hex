@@ -85,6 +85,7 @@
     <Compile Include="AttributeBuilders\RadioButtonAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\RouteLinkAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\StyleAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\TextAreaAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\TextBoxAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\TextInputAttributeBuilder.cs" />

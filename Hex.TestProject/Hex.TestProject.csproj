@@ -135,7 +135,7 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilderFake.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_AccessKey.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_AddClass.cs" />
-    <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_AddStyle.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Styles.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Attribute.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_If.cs" />
     <Compile Include="AttributeBuilders\HyperLinkAttributeBuilderTests\HyperLinkAttributeBuilder_Type.cs" />
@@ -156,6 +156,7 @@
     <Compile Include="AttributeBuilders\LabelAttributeBuilderTests\LabelAttributeBuilder_AddForms.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilderTests\SelectAttributeBuilderFake.cs" />
     <Compile Include="AttributeBuilders\SelectAttributeBuilderTests\SelectAttributeBuilder_Size.cs" />
+    <Compile Include="AttributeBuilders\StyleAttributeBuilderTests\StyleAttributeBuilder_Style.cs" />
     <Compile Include="AttributeBuilders\TextAreaAttributeBuilderTests\TextAreaAttributeBuilder_Wrap.cs" />
     <Compile Include="AttributeBuilders\TextAreaAttributeBuilderTests\TextAreaAttributeBuilder_Rows.cs" />
     <Compile Include="AttributeBuilders\TextAreaAttributeBuilderTests\TextAreaAttributeBuilder_Cols.cs" />

@@ -62,57 +62,6 @@ namespace Hex.AttributeBuilders
 			return ( TSelf )this;
 		}
 
-		public TSelf AddStyle( string name, object value )
-		{
-			if( !string.IsNullOrWhiteSpace( name ) )
-			{
-				AttributeNameValueCollection attributeNameValues = this.Attributes.GetAttributeValue<AttributeNameValueCollection>( HtmlAttributes.Style );
-				if( attributeNameValues == null )
-				{
-					attributeNameValues = new AttributeNameValueCollection();
-					this.Attributes[ HtmlAttributes.Style ] = attributeNameValues;
-				}
-
-				attributeNameValues[ name ] = value;
-			}
-
-			return ( TSelf )this;
-		}
-
-		public TSelf AddStyle( object styles )
-		{
-			if( styles != null )
-			{
-				this.AddStyle( HtmlHelper.AnonymousObjectToHtmlAttributes( styles ) );
-			}
-
-			return ( TSelf )this;
-		}
-
-		public TSelf AddStyle( IDictionary<string, object> styles )
-		{
-			if( styles != null )
-			{
-				var validStyleValues = styles.Where( x => !string.IsNullOrWhiteSpace( x.Key ) );
-				if( validStyleValues.Count() > 0 )
-				{
-					AttributeNameValueCollection attributeNameValues = this.Attributes.GetAttributeValue<AttributeNameValueCollection>( HtmlAttributes.Style );
-					if( attributeNameValues == null )
-					{
-						attributeNameValues = new AttributeNameValueCollection();
-						this.Attributes[ HtmlAttributes.Style ] = attributeNameValues;
-					}
-
-					foreach( var currentStyle in validStyleValues )
-					{
-						attributeNameValues[ currentStyle.Key ] = currentStyle.Value;
-					}
-				}
-			}
-
-			return ( TSelf )this; ;
-		}
-
 		public TSelf Attribute( string name, object value )
 		{
 			if( !string.IsNullOrWhiteSpace( name ) )
@@ -256,6 +205,23 @@ namespace Hex.AttributeBuilders
 		public TSelf SpellCheck( bool spellCheck )
 		{
 			this.Attributes[ HtmlAttributes.SpellCheck ] = spellCheck.ToLowerString();
+
+			return ( TSelf )this;
+		}
+
+		public TSelf Styles( Action<StyleAttributeBuilder> styleAttributeExpression )
+		{
+			if( styleAttributeExpression != null )
+			{
+				AttributeNameValueCollection attributeNameValues = this.Attributes.GetAttributeValue<AttributeNameValueCollection>( HtmlAttributes.Style );
+				if( attributeNameValues == null )
+				{
+					attributeNameValues = new AttributeNameValueCollection();
+					this.Attributes[ HtmlAttributes.Style ] = attributeNameValues;
+				}
+
+				styleAttributeExpression( new StyleAttributeBuilder( attributeNameValues ) );
+			}
 
 			return ( TSelf )this;
 		}
