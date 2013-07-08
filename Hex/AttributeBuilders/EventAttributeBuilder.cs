@@ -28,203 +28,203 @@ namespace Hex.AttributeBuilders
 
 		public EventAttributeBuilder OnBlur( string script )
 		{
-			this._attributes[ HtmlAttributes.OnBlur ] = script;
+			this._attributes[ HtmlAttributes.Events.OnBlur ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnChange( string script )
 		{
-			this._attributes[ HtmlAttributes.OnChange ] = script;
+			this._attributes[ HtmlAttributes.Events.OnChange ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnClick( string script )
 		{
-			this._attributes[ HtmlAttributes.OnClick ] = script;
+			this._attributes[ HtmlAttributes.Events.OnClick ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnContextMenu( string script )
 		{
-			this._attributes[ HtmlAttributes.OnContextMenu ] = script;
+			this._attributes[ HtmlAttributes.Events.OnContextMenu ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnDblClick( string script )
 		{
-			this._attributes[ HtmlAttributes.OnDblClick ] = script;
+			this._attributes[ HtmlAttributes.Events.OnDblClick ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnDrag( string script )
 		{
-			this._attributes[ HtmlAttributes.OnDrag ] = script;
+			this._attributes[ HtmlAttributes.Events.OnDrag ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnDragEnd( string script )
 		{
-			this._attributes[ HtmlAttributes.OnDragEnd ] = script;
+			this._attributes[ HtmlAttributes.Events.OnDragEnd ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnDragEnter( string script )
 		{
-			this._attributes[ HtmlAttributes.OnDragEnter ] = script;
+			this._attributes[ HtmlAttributes.Events.OnDragEnter ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnDragLeave( string script )
 		{
-			this._attributes[ HtmlAttributes.OnDragLeave ] = script;
+			this._attributes[ HtmlAttributes.Events.OnDragLeave ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnDragOver( string script )
 		{
-			this._attributes[ HtmlAttributes.OnDragOver ] = script;
+			this._attributes[ HtmlAttributes.Events.OnDragOver ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnDragStart( string script )
 		{
-			this._attributes[ HtmlAttributes.OnDragStart ] = script;
+			this._attributes[ HtmlAttributes.Events.OnDragStart ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnDrop( string script )
 		{
-			this._attributes[ HtmlAttributes.OnDrop ] = script;
+			this._attributes[ HtmlAttributes.Events.OnDrop ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnFocus( string script )
 		{
-			this._attributes[ HtmlAttributes.OnFocus ] = script;
+			this._attributes[ HtmlAttributes.Events.OnFocus ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnFormChange( string script )
 		{
-			this._attributes[ HtmlAttributes.OnFormChange ] = script;
+			this._attributes[ HtmlAttributes.Events.OnFormChange ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnFormInput( string script )
 		{
-			this._attributes[ HtmlAttributes.OnFormInput ] = script;
+			this._attributes[ HtmlAttributes.Events.OnFormInput ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnInput( string script )
 		{
-			this._attributes[ HtmlAttributes.OnInput ] = script;
+			this._attributes[ HtmlAttributes.Events.OnInput ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnInvalid( string script )
 		{
-			this._attributes[ HtmlAttributes.OnInvalid ] = script;
+			this._attributes[ HtmlAttributes.Events.OnInvalid ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnKeyDown( string script )
 		{
-			this._attributes[ HtmlAttributes.OnKeyDown ] = script;
+			this._attributes[ HtmlAttributes.Events.OnKeyDown ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnKeyPress( string script )
 		{
-			this._attributes[ HtmlAttributes.OnKeyPress ] = script;
+			this._attributes[ HtmlAttributes.Events.OnKeyPress ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnKeyUp( string script )
 		{
-			this._attributes[ HtmlAttributes.OnKeyUp ] = script;
+			this._attributes[ HtmlAttributes.Events.OnKeyUp ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnMouseDown( string script )
 		{
-			this._attributes[ HtmlAttributes.OnMouseDown ] = script;
+			this._attributes[ HtmlAttributes.Events.OnMouseDown ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnMouseMove( string script )
 		{
-			this._attributes[ HtmlAttributes.OnMouseMove ] = script;
+			this._attributes[ HtmlAttributes.Events.OnMouseMove ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnMouseOut( string script )
 		{
-			this._attributes[ HtmlAttributes.OnMouseOut ] = script;
+			this._attributes[ HtmlAttributes.Events.OnMouseOut ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnMouseOver( string script )
 		{
-			this._attributes[ HtmlAttributes.OnMouseOver ] = script;
+			this._attributes[ HtmlAttributes.Events.OnMouseOver ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnMouseUp( string script )
 		{
-			this._attributes[ HtmlAttributes.OnMouseUp ] = script;
+			this._attributes[ HtmlAttributes.Events.OnMouseUp ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnMouseWheel( string script )
 		{
-			this._attributes[ HtmlAttributes.OnMouseWheel ] = script;
+			this._attributes[ HtmlAttributes.Events.OnMouseWheel ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnScroll( string script )
 		{
-			this._attributes[ HtmlAttributes.OnScroll ] = script;
+			this._attributes[ HtmlAttributes.Events.OnScroll ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnSelect( string script )
 		{
-			this._attributes[ HtmlAttributes.OnSelect ] = script;
+			this._attributes[ HtmlAttributes.Events.OnSelect ] = script;
 
 			return this;
 		}
 
 		public EventAttributeBuilder OnSubmit( string script )
 		{
-			this._attributes[ HtmlAttributes.OnSubmit ] = script;
+			this._attributes[ HtmlAttributes.Events.OnSubmit ] = script;
 
 			return this;
 		}

@@ -19,7 +19,7 @@ namespace Hex.TestProject.AttributeBuilders.EventAttributeBuilderTests
 			var result = builder.OnDragOver( script );
 
 			Assert.AreSame( builder, result );
-			Assert.AreEqual( script, attributes[ HtmlAttributes.OnDragOver ] );
+			Assert.AreEqual( script, attributes[ HtmlAttributes.Events.OnDragOver ] );
 		}
 	}
 }
