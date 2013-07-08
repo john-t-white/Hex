@@ -23,7 +23,7 @@ namespace Hex.Html
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>The textarea element.</returns>
-		public static MvcHtmlString TextArea( this HtmlHelper htmlHelper, string name, Action<TextAreaAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextArea( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextArea( name, attributeExpression.GetAttributes() );
 		}
@@ -36,7 +36,7 @@ namespace Hex.Html
 		/// <param name="value">The text content.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>The textarea element.</returns>
-		public static MvcHtmlString TextArea( this HtmlHelper htmlHelper, string name, string value, Action<TextAreaAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextArea( this HtmlHelper htmlHelper, string name, string value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextArea( name, value, attributeExpression.GetAttributes() );
 		}
@@ -51,7 +51,7 @@ namespace Hex.Html
 		/// <param name="columns">The number of columns.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>The textarea element.</returns>
-		public static MvcHtmlString TextArea( this HtmlHelper htmlHelper, string name, string value, int rows, int columns, Action<TextAreaAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextArea( this HtmlHelper htmlHelper, string name, string value, int rows, int columns, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextArea( name, value, rows, columns, attributeExpression.GetAttributes() );
 		}
@@ -66,7 +66,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML textarea element for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString TextAreaFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<TextAreaAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextAreaFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextAreaFor( expression, attributeExpression.GetAttributes() );
 		}
@@ -83,7 +83,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML textarea element for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString TextAreaFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, int rows, int columns, Action<TextAreaAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextAreaFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, int rows, int columns, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextAreaFor( expression, rows, columns, attributeExpression.GetAttributes() );
 		}

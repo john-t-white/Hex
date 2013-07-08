@@ -29,7 +29,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "radio".</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is null or empty.</exception>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
-		public static MvcHtmlString RadioButton( this HtmlHelper htmlHelper, string name, object value, Action<RadioButtonAttributeBuilder> attributeExpression )
+		public static MvcHtmlString RadioButton( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.RadioButton( name, value, attributeExpression.GetAttributes() );
 		}
@@ -48,7 +48,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "radio".</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is null or empty.</exception>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
-		public static MvcHtmlString RadioButton( this HtmlHelper htmlHelper, string name, object value, bool isChecked, Action<RadioButtonAttributeBuilder> attributeExpression )
+		public static MvcHtmlString RadioButton( this HtmlHelper htmlHelper, string name, object value, bool isChecked, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.RadioButton( name, value, isChecked, attributeExpression.GetAttributes() );
 		}
@@ -67,7 +67,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML input element whose type attribute is set to "radio" for each property in the object that is represented by the specified expression, using the specified HTML attributes.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
-		public static MvcHtmlString RadioButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object value, Action<RadioButtonAttributeBuilder> attributeExpression )
+		public static MvcHtmlString RadioButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.RadioButtonFor( expression, value, attributeExpression.GetAttributes() );
 		}

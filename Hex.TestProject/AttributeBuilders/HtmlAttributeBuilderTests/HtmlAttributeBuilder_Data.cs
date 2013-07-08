@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -12,7 +13,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = "Name";
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Data( name, value );
 
 			string expectedAttributeName = string.Format( "data-{0}", name );
@@ -27,7 +28,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = null;
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Data( name, value );
 
 			Assert.AreSame( builder, result );
@@ -40,7 +41,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = string.Empty;
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Data( name, value );
 
 			string expectedAttributeName = string.Format( "data-{0}", name );
@@ -55,7 +56,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = " ";
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Data( name, value );
 
 			string expectedAttributeName = string.Format( "data-{0}", name );

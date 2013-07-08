@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -13,7 +14,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string attributeName = "Name";
 			string attributeValue = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.If( condition, x => x.Attribute( attributeName, attributeValue ) );
 
 			Assert.AreSame( builder, result );
@@ -25,7 +26,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		{
 			bool condition = true;
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.If( condition, null );
 
 			Assert.AreSame( builder, result );
@@ -39,7 +40,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string attributeName = "Name";
 			string attributeValue = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.If( condition, null, x => x.Attribute( attributeName, attributeValue ) );
 
 			Assert.AreSame( builder, result );
@@ -53,7 +54,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string attributeName = "Name";
 			string attributeValue = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.If( condition, null, x => x.Attribute( attributeName, attributeValue ) );
 
 			Assert.AreSame( builder, result );
@@ -65,7 +66,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		{
 			bool condition = false;
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.If( condition, null, null );
 
 			Assert.AreSame( builder, result );
@@ -79,7 +80,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string attributeName = "Name";
 			string attributeValue = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.If( condition, x => x.Attribute( attributeName, attributeValue ), null );
 
 			Assert.AreSame( builder, result );

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -12,7 +13,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = "Name";
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddMultiValueAttribute( name, value );
 
 			Assert.AreSame( builder, result );
@@ -32,7 +33,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 				"Value2"
 			};
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddMultiValueAttribute( name, values );
 
 			Assert.AreSame( builder, result );
@@ -53,7 +54,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 				"Value2"
 			};
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddMultiValueAttribute( name, values[ 0 ] ).AddMultiValueAttribute( name, values[ 1 ] );
 
 			Assert.AreSame( builder, result );
@@ -70,7 +71,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = null;
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddMultiValueAttribute( name, value );
 
 			Assert.AreSame( builder, result );
@@ -83,7 +84,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = string.Empty;
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddMultiValueAttribute( name, value );
 
 			Assert.AreSame( builder, result );
@@ -96,7 +97,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = " ";
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddMultiValueAttribute( name, value );
 
 			Assert.AreSame( builder, result );

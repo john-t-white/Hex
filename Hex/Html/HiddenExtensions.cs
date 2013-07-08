@@ -23,7 +23,7 @@ namespace Hex.Html
 		/// <param name="name">The name of the form field and the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> key that is used to look up the value.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "hidden".</returns>
-		public static MvcHtmlString Hidden( this HtmlHelper htmlHelper, string name, Action<HiddenAttributeBuilder> attributeExpression )
+		public static MvcHtmlString Hidden( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.Hidden( name, attributeExpression.GetAttributes() );
 		}
@@ -40,7 +40,7 @@ namespace Hex.Html
 		/// </param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "hidden".</returns>
-		public static MvcHtmlString Hidden( this HtmlHelper htmlHelper, string name, object value, Action<HiddenAttributeBuilder> attributeExpression )
+		public static MvcHtmlString Hidden( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.Hidden( name, value, attributeExpression.GetAttributes() );
 		}
@@ -54,7 +54,7 @@ namespace Hex.Html
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "hidden" for each property in the object that is represented by the expression.</returns>
-		public static MvcHtmlString HiddenFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HiddenAttributeBuilder> attributeExpression )
+		public static MvcHtmlString HiddenFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.HiddenFor( expression, attributeExpression.GetAttributes() );
 		}

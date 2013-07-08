@@ -23,7 +23,7 @@ namespace Hex.Html
 		/// <param name="name">The name of the form field.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
-		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, Action<CheckBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBox( name, attributeExpression.GetAttributes() );
 		}
@@ -36,7 +36,7 @@ namespace Hex.Html
 		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
-		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, bool isChecked, Action<CheckBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, bool isChecked, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBox( name, isChecked, attributeExpression.GetAttributes() );
 		}
@@ -50,7 +50,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString CheckBoxFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, bool>> expression, Action<CheckBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString CheckBoxFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, bool>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBoxFor( expression, attributeExpression.GetAttributes() );
 		}

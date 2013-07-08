@@ -24,7 +24,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element with an option subelement for each item in the list.</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ListBox( this HtmlHelper htmlHelper, string name, Action<ListBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ListBox( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ListBox( name, null, attributeExpression.GetAttributes() );
 		}
@@ -38,7 +38,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element with an option subelement for each item in the list.</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ListBox( this HtmlHelper htmlHelper, string name, IEnumerable<SelectListItem> selectList, Action<ListBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ListBox( this HtmlHelper htmlHelper, string name, IEnumerable<SelectListItem> selectList, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ListBox( name, selectList, attributeExpression.GetAttributes() );
 		}
@@ -53,7 +53,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString ListBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<ListBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ListBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ListBoxFor( expression, null, attributeExpression.GetAttributes() );
 		}
@@ -69,7 +69,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString ListBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, Action<ListBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ListBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ListBoxFor( expression, selectList, attributeExpression.GetAttributes() );
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Html;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -12,7 +13,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		{
 			string elementId = "ElementId";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.ContextMenu( elementId );
 
 			Assert.AreSame( builder, result );

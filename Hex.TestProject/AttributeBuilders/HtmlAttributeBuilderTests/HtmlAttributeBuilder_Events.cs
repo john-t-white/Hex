@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -12,7 +13,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = "Name";
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Events( x => x.Event( name, value ) );
 
 			Assert.AreSame( builder, result );
@@ -22,7 +23,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		[TestMethod]
 		public void WithNullEventAttributeExpressionReturnsCorrectly()
 		{
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Events( null );
 
 			Assert.AreSame( builder, result );

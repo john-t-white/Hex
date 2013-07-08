@@ -23,7 +23,7 @@ namespace Hex.Html
 		/// <param name="expression">An expression that identifies the property to display.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML label element and the property name of the property that is represented by the expression.</returns>
-		public static MvcHtmlString Label( this HtmlHelper htmlHelper, string expression, Action<LabelAttributeBuilder> attributeExpression )
+		public static MvcHtmlString Label( this HtmlHelper htmlHelper, string expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.Label( expression, attributeExpression.GetAttributes() );
 		}
@@ -36,7 +36,7 @@ namespace Hex.Html
 		/// <param name="labelText">The label text.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML label element and the property name of the property that is represented by the expression.</returns>
-		public static MvcHtmlString Label( this HtmlHelper htmlHelper, string expression, string labelText, Action<LabelAttributeBuilder> attributeExpression )
+		public static MvcHtmlString Label( this HtmlHelper htmlHelper, string expression, string labelText, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.Label( expression, labelText, attributeExpression.GetAttributes() );
 		}
@@ -50,7 +50,7 @@ namespace Hex.Html
 		/// <param name="expression">An expression that identifies the property to display.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML label element and the property name of the property that is represented by the expression.</returns>
-		public static MvcHtmlString LabelFor<TModel, TValue>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, Action<LabelAttributeBuilder> attributeExpression )
+		public static MvcHtmlString LabelFor<TModel, TValue>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.LabelFor( expression, attributeExpression.GetAttributes() );
 		}
@@ -65,7 +65,7 @@ namespace Hex.Html
 		/// <param name="labelText">The label text.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML label element and the property name of the property that is represented by the expression.</returns>
-		public static MvcHtmlString LabelFor<TModel, TValue>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, string labelText, Action<LabelAttributeBuilder> attributeExpression )
+		public static MvcHtmlString LabelFor<TModel, TValue>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, string labelText, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.LabelFor( expression, labelText, attributeExpression.GetAttributes() );
 		}

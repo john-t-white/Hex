@@ -25,7 +25,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, null, attributeExpression.GetAttributes() );
 		}
@@ -43,7 +43,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, new RouteValueDictionary( routeValues ), attributeExpression.GetAttributes() );
 		}
@@ -58,7 +58,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, routeValues, attributeExpression.GetAttributes() );
 		}
@@ -73,7 +73,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, controllerName, null, attributeExpression.GetAttributes() );
 		}
@@ -92,7 +92,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, controllerName, new RouteValueDictionary( routeValues ), attributeExpression.GetAttributes() );
 		}
@@ -108,7 +108,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, RouteValueDictionary routeValues, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, RouteValueDictionary routeValues, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, controllerName, routeValues, attributeExpression.GetAttributes() );
 		}
@@ -126,7 +126,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, controllerName, protocol, hostName, fragment, null, attributeExpression.GetAttributes() );
 		}
@@ -148,7 +148,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary( routeValues ), attributeExpression.GetAttributes() );
 		}
@@ -167,7 +167,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An anchor element (a element).</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="linkText" /> parameter is null or empty.</exception>
-		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, Action<ActionLinkAttributeBuilder> attributeExpression )
+		public static MvcHtmlString ActionLink( this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.ActionLink( linkText, actionName, controllerName, protocol, hostName, fragment, routeValues, attributeExpression.GetAttributes() );
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Html;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -10,7 +11,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		[TestMethod]
 		public void AddsAttributeCorrectly()
 		{
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Draggable();
 
 			Assert.AreSame( builder, result );
@@ -22,7 +23,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		{
 			DraggableType value = DraggableType.False;
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Draggable( value );
 
 			Assert.AreSame( builder, result );

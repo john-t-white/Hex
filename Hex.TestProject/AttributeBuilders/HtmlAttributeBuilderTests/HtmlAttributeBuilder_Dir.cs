@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Html;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -12,7 +13,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		{
 			DirType value = DirType.Ltr;
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Dir( value );
 
 			Assert.AreSame( builder, result );

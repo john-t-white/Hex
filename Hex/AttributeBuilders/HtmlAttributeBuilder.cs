@@ -10,26 +10,25 @@ using System.Web.Mvc;
 
 namespace Hex.AttributeBuilders
 {
-	public abstract class HtmlAttributeBuilder<TSelf>
-		where TSelf : HtmlAttributeBuilder<TSelf>, new()
+	public class HtmlAttributeBuilder
 	{
 		private const string DATA_ATTRIBUTE_PATTERN = "data-{0}";
 
-		protected HtmlAttributeBuilder()
+		public HtmlAttributeBuilder()
 		{
 			this.Attributes = new AttributeCollection();
 		}
 
 		public AttributeCollection Attributes { get; private set; }
 
-		public TSelf AccessKey( string accessKey )
+		public HtmlAttributeBuilder AccessKey( string accessKey )
 		{
 			this.Attributes[ HtmlAttributes.AccessKey ] = accessKey;
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf AddClass( params string[] classes )
+		public HtmlAttributeBuilder AddClass( params string[] classes )
 		{
 			AttributeValueCollection attributeValues = this.Attributes.GetAttributeValue<AttributeValueCollection>( HtmlAttributes.Class );
 			if( attributeValues == null )
@@ -40,13 +39,11 @@ namespace Hex.AttributeBuilders
 
 			attributeValues.AddRange( classes );
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf AddMultiValueAttribute( string name, params object[] values )
+		public HtmlAttributeBuilder AddMultiValueAttribute( string name, params object[] values )
 		{
-			TSelf self = ( TSelf )this;
-
 			if( !string.IsNullOrWhiteSpace( name ) )
 			{
 				AttributeValueCollection attributeValues = this.Attributes.GetAttributeValue<AttributeValueCollection>( name );
@@ -59,39 +56,39 @@ namespace Hex.AttributeBuilders
 				attributeValues.AddRange( values );
 			}
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Attribute( string name, object value )
+		public HtmlAttributeBuilder Attribute( string name, object value )
 		{
 			if( !string.IsNullOrWhiteSpace( name ) )
 			{
 				this.Attributes[ name ] = value;
 			}
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf ContentEditable()
+		public HtmlAttributeBuilder ContentEditable()
 		{
 			return this.ContentEditable( ContentEditableType.True );
 		}
 
-		public TSelf ContentEditable( ContentEditableType contentEditableType )
+		public HtmlAttributeBuilder ContentEditable( ContentEditableType contentEditableType )
 		{
 			this.Attributes[ HtmlAttributes.ContentEditable ] = contentEditableType.ToLowerString();
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf ContextMenu( string elementId )
+		public HtmlAttributeBuilder ContextMenu( string elementId )
 		{
 			this.Attributes[ HtmlAttributes.ContextMenu ] = elementId;
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Data( string name, object value )
+		public HtmlAttributeBuilder Data( string name, object value )
 		{
 			if( !string.IsNullOrWhiteSpace( name ) )
 			{
@@ -99,117 +96,115 @@ namespace Hex.AttributeBuilders
 				this.Attributes[ attributeName ] = value;
 			}
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Dir( DirType dir )
+		public HtmlAttributeBuilder Dir( DirType dir )
 		{
 			this.Attributes[ HtmlAttributes.Dir ] = dir.ToLowerString();
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Draggable()
+		public HtmlAttributeBuilder Draggable()
 		{
 			return this.Draggable( DraggableType.True );
 		}
 
-		public TSelf Draggable( DraggableType draggableType )
+		public HtmlAttributeBuilder Draggable( DraggableType draggableType )
 		{
 			this.Attributes[ HtmlAttributes.Draggable ] = draggableType.ToLowerString();
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf DropZone()
+		public HtmlAttributeBuilder DropZone()
 		{
 			return this.DropZone( DropZoneType.Move );
 		}
 
 
-		public TSelf DropZone( DropZoneType dropZoneType )
+		public HtmlAttributeBuilder DropZone( DropZoneType dropZoneType )
 		{
 			this.Attributes[ HtmlAttributes.DropZone ] = dropZoneType.ToLowerString();
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Events( Action<EventAttributeBuilder> eventAttributeExpression )
+		public HtmlAttributeBuilder Events( Action<EventAttributeBuilder> eventAttributeExpression )
 		{
 			if( eventAttributeExpression != null )
 			{
 				eventAttributeExpression( new EventAttributeBuilder( this.Attributes ) );
 			}
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Hidden()
+		public HtmlAttributeBuilder Hidden()
 		{
 			return this.Hidden( true );
 		}
 
-		public TSelf Hidden( bool hidden )
+		public HtmlAttributeBuilder Hidden( bool hidden )
 		{
 			this.Attributes.AddOrRemoveMinimizedAttribute( HtmlAttributes.Hidden, hidden );
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Id( string id )
+		public HtmlAttributeBuilder Id( string id )
 		{
 			this.Attributes[ HtmlAttributes.Id ] = id;
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf If( bool condition, Action<TSelf> trueAttributeExpression )
+		public HtmlAttributeBuilder If( bool condition, Action<HtmlAttributeBuilder> trueAttributeExpression )
 		{
 			return this.If( condition, trueAttributeExpression, null );
 		}
 
-		public TSelf If( bool condition, Action<TSelf> trueAttributeExpression, Action<TSelf> falseAttributeExpression )
+		public HtmlAttributeBuilder If( bool condition, Action<HtmlAttributeBuilder> trueAttributeExpression, Action<HtmlAttributeBuilder> falseAttributeExpression )
 		{
-			TSelf self = ( TSelf )this;
-
 			if( condition )
 			{
 				if( trueAttributeExpression != null )
 				{
-					trueAttributeExpression( self );
+					trueAttributeExpression( this );
 				}
 			}
 			else
 			{
 				if( falseAttributeExpression != null )
 				{
-					falseAttributeExpression( self );
+					falseAttributeExpression( this );
 				}
 			}
 
-			return self;
+			return this;
 		}
 
-		public TSelf Lang( string languageCode )
+		public HtmlAttributeBuilder Lang( string languageCode )
 		{
 			this.Attributes[ HtmlAttributes.Lang ] = languageCode;
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf SpellCheck()
+		public HtmlAttributeBuilder SpellCheck()
 		{
 			return this.SpellCheck( true );
 		}
 
-		public TSelf SpellCheck( bool spellCheck )
+		public HtmlAttributeBuilder SpellCheck( bool spellCheck )
 		{
 			this.Attributes[ HtmlAttributes.SpellCheck ] = spellCheck.ToLowerString();
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Styles( Action<StyleAttributeBuilder> styleAttributeExpression )
+		public HtmlAttributeBuilder Styles( Action<StyleAttributeBuilder> styleAttributeExpression )
 		{
 			if( styleAttributeExpression != null )
 			{
@@ -223,34 +218,33 @@ namespace Hex.AttributeBuilders
 				styleAttributeExpression( new StyleAttributeBuilder( attributeNameValues ) );
 			}
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf TabIndex( int title )
+		public HtmlAttributeBuilder TabIndex( int title )
 		{
 			this.Attributes[ HtmlAttributes.TabIndex ] = title;
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Title( string value )
+		public HtmlAttributeBuilder Title( string value )
 		{
 			this.Attributes[ HtmlAttributes.Title ] = value;
 
-			return ( TSelf )this;
+			return this;
 		}
 
-		public TSelf Translate()
+		public HtmlAttributeBuilder Translate()
 		{
-			TSelf tSelf = this.Translate( TranslateType.Yes );
-			return tSelf;
+			return this.Translate( TranslateType.Yes );
 		}
 
-		public TSelf Translate( TranslateType value )
+		public HtmlAttributeBuilder Translate( TranslateType value )
 		{
 			this.Attributes[ HtmlAttributes.Translate ] = value.ToLowerString();
-			TSelf tSelf = ( TSelf )this;
-			return tSelf;
+
+			return this;
 		}
 	}
 }

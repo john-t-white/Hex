@@ -23,7 +23,7 @@ namespace Hex.Html
 		/// <param name="name">The name of the form field and the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> key that is used to look up the value.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "text".</returns>
-		public static MvcHtmlString TextBox( this HtmlHelper htmlHelper, string name, Action<TextBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextBox( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextBox( name, attributeExpression.GetAttributes() );
 		}
@@ -40,7 +40,7 @@ namespace Hex.Html
 		/// </param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "text".</returns>
-		public static MvcHtmlString TextBox( this HtmlHelper htmlHelper, string name, string value, Action<TextBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextBox( this HtmlHelper htmlHelper, string name, string value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextBox( name, value, attributeExpression.GetAttributes() );
 		}
@@ -58,7 +58,7 @@ namespace Hex.Html
 		/// <param name="format">A string that is used to format the input.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "text".</returns>
-		public static MvcHtmlString TextBox( this HtmlHelper htmlHelper, string name, string value, string format, Action<TextBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextBox( this HtmlHelper htmlHelper, string name, string value, string format, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextBox( name, value, format, attributeExpression.GetAttributes() );
 		}
@@ -73,7 +73,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML input element whose type attribute is set to "text" for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is null or empty.</exception>
-		public static MvcHtmlString TextBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<TextBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextBoxFor( expression, attributeExpression.GetAttributes() );
 		}
@@ -89,7 +89,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML input element whose type attribute is set to "text" for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is null or empty.</exception>
-		public static MvcHtmlString TextBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string format, Action<TextBoxAttributeBuilder> attributeExpression )
+		public static MvcHtmlString TextBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string format, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.TextBoxFor( expression, format, attributeExpression.GetAttributes() );
 		}

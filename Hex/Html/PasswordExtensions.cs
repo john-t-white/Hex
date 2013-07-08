@@ -23,7 +23,7 @@ namespace Hex.Html
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "password".</returns>
-		public static MvcHtmlString Password( this HtmlHelper htmlHelper, string name, Action<PasswordAttributeBuilder> attributeExpression )
+		public static MvcHtmlString Password( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.Password( name, null, attributeExpression.GetAttributes() );
 		}
@@ -40,7 +40,7 @@ namespace Hex.Html
 		/// </param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "password".</returns>
-		public static MvcHtmlString Password( this HtmlHelper htmlHelper, string name, object value, Action<PasswordAttributeBuilder> attributeExpression )
+		public static MvcHtmlString Password( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.Password( name, value, attributeExpression.GetAttributes() );
 		}
@@ -55,7 +55,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML input element whose type attribute is set to "password" for each property in the object that is represented by the specified expression, using the specified HTML attributes.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString PasswordFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<PasswordAttributeBuilder> attributeExpression )
+		public static MvcHtmlString PasswordFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.PasswordFor( expression, attributeExpression.GetAttributes() );
 		}

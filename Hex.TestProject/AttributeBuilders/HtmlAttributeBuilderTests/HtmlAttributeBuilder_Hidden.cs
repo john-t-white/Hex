@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Html;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -10,7 +11,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		[TestMethod]
 		public void AddsAttributeCorrectly()
 		{
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Hidden();
 
 			Assert.AreSame( builder, result );
@@ -20,7 +21,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		[TestMethod]
 		public void WithTrueAddsAttributeCorrectly()
 		{
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Hidden( true );
 
 			Assert.AreSame( builder, result );
@@ -30,7 +31,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		[TestMethod]
 		public void WithFalseDoesNotAddAttribute()
 		{
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Hidden( false );
 
 			Assert.AreSame( builder, result );
@@ -40,7 +41,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		[TestMethod]
 		public void WithFalseRemovesAttributeIfPresent()
 		{
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Hidden( true ).Hidden( false );
 
 			Assert.AreSame( builder, result );

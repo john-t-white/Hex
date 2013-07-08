@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using Hex.Html;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -14,7 +15,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string name = "Name";
 			string value = "Value";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Styles( x => x.Style( name, value ) );
 
 			Assert.AreSame( builder, result );
@@ -27,7 +28,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		[TestMethod]
 		public void WithNullStyleAttributeExpressionReturnsCorrectly()
 		{
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Styles( null );
 
 			Assert.AreSame( builder, result );

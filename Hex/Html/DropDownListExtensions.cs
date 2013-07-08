@@ -24,7 +24,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element.</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is null or empty.</exception>
-		public static MvcHtmlString DropDownList( this HtmlHelper htmlHelper, string name, Action<DropDownListAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DropDownList( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.DropDownList( name, null, null, attributeExpression.GetAttributes() );
 		}
@@ -38,7 +38,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element.</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is null or empty.</exception>
-		public static MvcHtmlString DropDownList( this HtmlHelper htmlHelper, string name, string optionLabel, Action<DropDownListAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DropDownList( this HtmlHelper htmlHelper, string name, string optionLabel, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.DropDownList( name, null, optionLabel, attributeExpression.GetAttributes() );
 		}
@@ -52,7 +52,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element.</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is null or empty.</exception>
-		public static MvcHtmlString DropDownList( this HtmlHelper htmlHelper, string name, IEnumerable<SelectListItem> selectList, Action<DropDownListAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DropDownList( this HtmlHelper htmlHelper, string name, IEnumerable<SelectListItem> selectList, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.DropDownList( name, selectList, null, attributeExpression.GetAttributes() );
 		}
@@ -67,7 +67,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element.</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is null or empty.</exception>
-		public static MvcHtmlString DropDownList( this HtmlHelper htmlHelper, string name, IEnumerable<SelectListItem> selectList, string optionLabel, Action<DropDownListAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DropDownList( this HtmlHelper htmlHelper, string name, IEnumerable<SelectListItem> selectList, string optionLabel, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.DropDownList( name, selectList, optionLabel, attributeExpression.GetAttributes() );
 		}
@@ -82,7 +82,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString DropDownListFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<DropDownListAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DropDownListFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.DropDownListFor( expression, null, attributeExpression.GetAttributes() );
 		}
@@ -98,7 +98,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString DropDownListFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string optionLabel, Action<DropDownListAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DropDownListFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string optionLabel, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.DropDownListFor( expression, null, optionLabel, attributeExpression.GetAttributes() );
 		}
@@ -114,7 +114,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString DropDownListFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, Action<DropDownListAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DropDownListFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.DropDownListFor( expression, selectList, attributeExpression.GetAttributes() );
 		}
@@ -131,7 +131,7 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString DropDownListFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, string optionLabel, Action<DropDownListAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DropDownListFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, string optionLabel, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.DropDownListFor( expression, selectList, optionLabel, attributeExpression.GetAttributes() );
 		}

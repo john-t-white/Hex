@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Html;
+using Hex.AttributeBuilders;
 
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
@@ -12,7 +13,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 		{
 			string @class = "class";
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddClass( @class );
 
 			Assert.AreSame( builder, result );
@@ -32,7 +33,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 				"Class2"
 			};
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddClass( classes );
 
 			Assert.AreSame( builder, result );
@@ -52,7 +53,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 				"Class2"
 			};
 
-			HtmlAttributeBuilderFake builder = new HtmlAttributeBuilderFake();
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.AddClass( classes[ 0 ] ).AddClass( classes[ 1 ] );
 
 			Assert.AreSame( builder, result );
