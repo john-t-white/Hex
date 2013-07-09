@@ -9,6 +9,7 @@ namespace Hex
 	/// <summary>
 	/// Contains the collection of attributes and their values.
 	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable" )]
 	public class AttributeCollection : Dictionary<string, object>
 	{
 		/// <summary>
