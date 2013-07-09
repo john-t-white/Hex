@@ -73,6 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionAssemblyInfo.cs">
+      <Link>Properties\SolutionAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="AttributeBuilders\EventAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensions.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder.cs" />
