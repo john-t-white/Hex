@@ -11,69 +11,64 @@ namespace Hex.AttributeBuilders
 	/// <summary>
 	/// Extension methods for <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/> to provide link-based HTML attributes and their values.
 	/// </summary>
-	public static class HtmlAttributeBuilder_LinkExtensions
+	public partial class HtmlAttributeBuilder
 	{
 		/// <summary>
 		/// Represents the HTML attribute "hreflang".
 		/// </summary>
-		/// <param name="htmlAttributeBuilder">The <see cref=" Hex.AttributeBuilders.HtmlAttributeBuilder"/> instance that this method extends.</param>
 		/// <param name="languageCode">The value.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
-		public static HtmlAttributeBuilder HrefLang( this HtmlAttributeBuilder htmlAttributeBuilder, string languageCode )
+		public HtmlAttributeBuilder HrefLang( string languageCode )
 		{
-			htmlAttributeBuilder.Attributes[ HtmlAttributes.HrefLang ] = languageCode;
+			this.Attributes[ HtmlAttributes.HrefLang ] = languageCode;
 
-			return htmlAttributeBuilder;
+			return this;
 		}
 
 		/// <summary>
 		/// Represents the HTML attribute "media".
 		/// </summary>
-		/// <param name="htmlAttributeBuilder">The <see cref=" Hex.AttributeBuilders.HtmlAttributeBuilder"/> instance that this method extends.</param>
 		/// <param name="value">The value.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
-		public static HtmlAttributeBuilder Media( this HtmlAttributeBuilder htmlAttributeBuilder, string value )
+		public HtmlAttributeBuilder Media( string value )
 		{
-			htmlAttributeBuilder.Attributes[ HtmlAttributes.Media ] = value;
+			this.Attributes[ HtmlAttributes.Media ] = value;
 
-			return htmlAttributeBuilder;
+			return this;
 		}
 
 		/// <summary>
 		/// Represents the HTML attribute "rel".
 		/// </summary>
-		/// <param name="htmlAttributeBuilder">The <see cref=" Hex.AttributeBuilders.HtmlAttributeBuilder"/> instance that this method extends.</param>
 		/// <param name="rel">The value.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
-		public static HtmlAttributeBuilder Rel( this HtmlAttributeBuilder htmlAttributeBuilder, RelType rel )
+		public HtmlAttributeBuilder Rel( RelType rel )
 		{
-			htmlAttributeBuilder.Attributes[ HtmlAttributes.Rel ] = rel.ToLowerString();
+			this.Attributes[ HtmlAttributes.Rel ] = rel.ToLowerString();
 
-			return htmlAttributeBuilder;
+			return this;
 		}
 
 		/// <summary>
 		/// Represents the HTML attribute "target".
 		/// </summary>
-		/// <param name="htmlAttributeBuilder">The <see cref=" Hex.AttributeBuilders.HtmlAttributeBuilder"/> instance that this method extends.</param>
 		/// <param name="target">The value.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
-		public static HtmlAttributeBuilder Target( this HtmlAttributeBuilder htmlAttributeBuilder, TargetType target )
+		public HtmlAttributeBuilder Target( TargetType target )
 		{
-			return htmlAttributeBuilder.Target( string.Format( "_{0}", target.ToLowerString() ) );
+			return this.Target( string.Format( "_{0}", target.ToLowerString() ) );
 		}
 
 		/// <summary>
 		/// Represents the HTML attribute "target".
 		/// </summary>
-		/// <param name="htmlAttributeBuilder">The <see cref=" Hex.AttributeBuilders.HtmlAttributeBuilder"/> instance that this method extends.</param>
 		/// <param name="target">The value.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
-		public static HtmlAttributeBuilder Target( this HtmlAttributeBuilder htmlAttributeBuilder, string target )
+		public HtmlAttributeBuilder Target( string target )
 		{
-			htmlAttributeBuilder.Attributes[ HtmlAttributes.Target ] = target;
+			this.Attributes[ HtmlAttributes.Target ] = target;
 
-			return htmlAttributeBuilder;
+			return this;
 		}
 	}
 }

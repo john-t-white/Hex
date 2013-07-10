@@ -13,7 +13,7 @@ namespace Hex.AttributeBuilders
 	/// <summary>
 	/// Provides a fluent way to specify HTML attributes and their values.
 	/// </summary>
-	public class HtmlAttributeBuilder
+	public partial class HtmlAttributeBuilder
 	{
 		private const string DATA_ATTRIBUTE_PATTERN = "data-{0}";
 
