@@ -14,6 +14,8 @@ namespace Hex.AttributeBuilders
 	/// </summary>
 	public partial class HtmlAttributeBuilder
 	{
+		private const string DATE_TIME_FORMAT = "yyyy-MM-dd";
+
 		/// <summary>
 		/// Represents the HTML attribute "form". Multiple calls add additional values.
 		/// </summary>
@@ -173,7 +175,7 @@ namespace Hex.AttributeBuilders
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder Max( DateTime max )
 		{
-			this.Attributes[ HtmlAttributes.Max ] = max;
+			this.Attributes[ HtmlAttributes.Max ] = max.ToString( DATE_TIME_FORMAT );
 
 			return this;
 		}
@@ -209,7 +211,7 @@ namespace Hex.AttributeBuilders
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder Min( DateTime min )
 		{
-			this.Attributes[ HtmlAttributes.Min ] = min;
+			this.Attributes[ HtmlAttributes.Min ] = min.ToString( DATE_TIME_FORMAT );
 
 			return this;
 		}

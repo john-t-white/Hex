@@ -29,7 +29,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilder_InputExtensions
 			var result = builder.Max( value );
 
 			Assert.AreSame( builder, result );
-			Assert.AreEqual( value, builder.Attributes[ HtmlAttributes.Max ] );
+			Assert.AreEqual( value.ToString( "yyyy-MM-dd" ), builder.Attributes[ HtmlAttributes.Max ] );
 		}
 	}
 }
