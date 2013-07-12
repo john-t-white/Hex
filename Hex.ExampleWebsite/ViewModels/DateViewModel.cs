@@ -6,12 +6,12 @@ using System.Web;
 
 namespace Hex.ExampleWebsite.ViewModels
 {
-	public class ColorViewModel
+	public class DateViewModel
 	{
-		public string ColorAsString { get; set; }
+		public string DateAsString { get; set; }
 
-		public Color Color { get; set; }
+		public DateTime Date { get; set; }
 
-		public Color? NullableColor { get; set; }
+		public DateTime? NullableDate { get; set; }
 	}
 }

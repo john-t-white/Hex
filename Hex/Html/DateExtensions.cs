@@ -2,7 +2,6 @@
 using Hex.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -13,107 +12,108 @@ using System.Web.Routing;
 namespace Hex.Html
 {
 	/// <summary>
-	/// Represents support for HTML5 color inputs in an application with an expression for specifying HTML attributes.
+	/// Represents support for HTML5 date inputs in an application with an expression for specifying HTML attributes.
 	/// </summary>
-	public static class ColorExtensions
+	public static class DateExtensions
 	{
-		private const string COLOR_TYPE_ATTRIBUTE_VALUE = "color";
+		private const string DATE_TYPE_ATTRIBUTE_VALUE = "date";
+		private const string DATE_TIME_FORMAT = "yyyy-MM-dd";
 
 		/// <summary>
-		/// Returns a color input element by using the specified HTML helper and the name of the form field.
+		/// Returns a date input element by using the specified HTML helper and the name of the form field.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
-		/// <returns>An input element whose type attribute is set to "color".</returns>
-		public static MvcHtmlString Color( this HtmlHelper htmlHelper, string name )
+		/// <returns>An input element whose type attribute is set to "date".</returns>
+		public static MvcHtmlString Date( this HtmlHelper htmlHelper, string name )
 		{
-			return htmlHelper.Color( name, null, ( IDictionary<string, object> )null );
+			return htmlHelper.Date( name, null, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
-		/// Returns a color input element by using the specified HTML helper, the name of the form field, and the specified HTML attributes.
+		/// Returns a date input element by using the specified HTML helper, the name of the form field, and the specified HTML attributes.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "color".</returns>
-		public static MvcHtmlString Color( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
+		/// <returns>An input element whose type attribute is set to "date".</returns>
+		public static MvcHtmlString Date( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.Color( name, null, attributeExpression.GetAttributes() );
+			return htmlHelper.Date( name, null, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
-		/// Returns a color input element by using the specified HTML helper, the name of the form field, and the value.
+		/// Returns a date input element by using the specified HTML helper, the name of the form field, and the value.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">
-		///		The value of the color input element.
+		///		The value of the date input element.
 		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
 		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
 		/// </param>
-		/// <returns>An input element whose type attribute is set to "color".</returns>
-		public static MvcHtmlString Color( this HtmlHelper htmlHelper, string name, object value )
+		/// <returns>An input element whose type attribute is set to "date".</returns>
+		public static MvcHtmlString Date( this HtmlHelper htmlHelper, string name, object value )
 		{
-			return htmlHelper.Color( name, value, ( IDictionary<string, object> )null );
+			return htmlHelper.Date( name, value, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
-		/// Returns a color input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
+		/// Returns a date input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">
-		///		The value of the color input element.
+		///		The value of the date input element.
 		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
 		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
 		/// </param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "color".</returns>
-		public static MvcHtmlString Color( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
+		/// <returns>An input element whose type attribute is set to "date".</returns>
+		public static MvcHtmlString Date( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.Color( name, value, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Date( name, value, new RouteValueDictionary( htmlAttributes ) );
 		}
 
 		/// <summary>
-		/// Returns a color input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
+		/// Returns a date input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">
-		///		The value of the color input element.
+		///		The value of the date input element.
 		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
 		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
 		/// </param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "color".</returns>
-		public static MvcHtmlString Color( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
+		/// <returns>An input element whose type attribute is set to "date".</returns>
+		public static MvcHtmlString Date( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
 			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
-			htmlAttributes[ HtmlAttributes.Type ] = COLOR_TYPE_ATTRIBUTE_VALUE;
+			htmlAttributes[ HtmlAttributes.Type ] = DATE_TYPE_ATTRIBUTE_VALUE;
 
-			return htmlHelper.TextBox( name, ColorExtensions.ConvertIfColor( value ), htmlAttributes );
+			return htmlHelper.TextBox( name, DateExtensions.ConvertIfDateTime( value ), htmlAttributes );
 		}
 
 		/// <summary>
-		/// Returns a color input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
+		/// Returns a date input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">
-		///		The value of the color input element.
+		///		The value of the date input element.
 		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
 		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
 		/// </param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "color".</returns>
+		/// <returns>An input element whose type attribute is set to "date".</returns>
 		public static MvcHtmlString Color( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.Color( name, value, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
-		/// Returns a color input element for each property in the object that is represented by the specified expression.
+		/// Returns a date input element for each property in the object that is represented by the specified expression.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
@@ -121,13 +121,13 @@ namespace Hex.Html
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <returns>An input element whose type attribute is set to "color".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString ColorFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression )
+		public static MvcHtmlString DateFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression )
 		{
-			return htmlHelper.ColorFor( expression, ( IDictionary<string, object> )null );
+			return htmlHelper.DateFor( expression, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
-		/// Returns a color input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a date input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
@@ -136,13 +136,13 @@ namespace Hex.Html
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "color".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString ColorFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
+		public static MvcHtmlString DateFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
 		{
-			return htmlHelper.ColorFor( expression, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.DateFor( expression, new RouteValueDictionary( htmlAttributes ) );
 		}
 
 		/// <summary>
-		/// Returns a color input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a date input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
@@ -151,20 +151,20 @@ namespace Hex.Html
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "color".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString ColorFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IDictionary<string, object> htmlAttributes )
+		public static MvcHtmlString DateFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IDictionary<string, object> htmlAttributes )
 		{
 			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
-			htmlAttributes[ HtmlAttributes.Type ] = COLOR_TYPE_ATTRIBUTE_VALUE;
+			htmlAttributes[ HtmlAttributes.Type ] = DATE_TYPE_ATTRIBUTE_VALUE;
 
 			ModelMetadata valueMetadata = ModelMetadata.FromLambdaExpression<TModel, TProperty>( expression, htmlHelper.ViewData );
 
-			object value = ColorExtensions.ConvertIfColor( valueMetadata.Model );
+			object value = DateExtensions.ConvertIfDateTime( valueMetadata.Model );
 
 			return htmlHelper.TextBox( ExpressionHelper.GetExpressionText( expression ), value, htmlAttributes );
 		}
 
 		/// <summary>
-		/// Returns a color input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a date input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
@@ -173,25 +173,25 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "color".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString ColorFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
+		public static MvcHtmlString DateFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.ColorFor( expression, attributeExpression.GetAttributes() );
+			return htmlHelper.DateFor( expression, attributeExpression.GetAttributes() );
 		}
 
 		#region Internal Methods
 
-		private static object ConvertIfColor( object value )
+		private static object ConvertIfDateTime( object value )
 		{
-			if( value is Color || value is Nullable<Color> )
+			if( value is DateTime || value is Nullable<DateTime> )
 			{
-				if( value is Color )
+				if( value is DateTime )
 				{
-					value = ( ( Color )value ).ToHtml();
+					value = ( ( DateTime )value ).ToString( DATE_TIME_FORMAT );
 				}
-				else if( value is Nullable<Color> )
+				else if( value is Nullable<DateTime> )
 				{
-					Nullable<Color> colorValue = ( Nullable<Color> )value;
-					value = ( colorValue.HasValue ) ? colorValue.Value.ToHtml() : null;
+					Nullable<DateTime> dateTimeValue = ( Nullable<DateTime> )value;
+					value = ( dateTimeValue.HasValue ) ? dateTimeValue.Value.ToString( DATE_TIME_FORMAT ) : null;
 				}
 			}
 

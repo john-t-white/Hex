@@ -33,5 +33,23 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View( viewModel );
 		}
+
+		public ActionResult Date()
+		{
+			var viewModel = new DateViewModel()
+			{
+				Date = new DateTime( 2000, 12, 1 ),
+				NullableDate = new DateTime( 2000, 12,2 ),
+				DateAsString = "2000-12-03"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult Date( DateViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }
