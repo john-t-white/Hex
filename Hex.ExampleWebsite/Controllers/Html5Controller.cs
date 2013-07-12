@@ -85,5 +85,21 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View( viewModel );
 		}
+
+		public ActionResult Search()
+		{
+			var viewModel = new SearchViewModel()
+			{
+				Search = "Search"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult Search( SearchViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }

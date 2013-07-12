@@ -1,0 +1,16 @@
+﻿@using Hex.ExampleWebsite.ViewModels
+
+@model SearchViewModel
+
+@{
+    ViewBag.Title = "Html5 - Search";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using( Html.BeginForm() )
+{
+	<span>Search:</span>@Html.SearchFor( x => x.Search ) <br />
+
+	<input type="submit" value="Submit" />
+}
