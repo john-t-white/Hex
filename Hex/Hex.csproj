@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -88,9 +89,11 @@
     <Compile Include="AttributeValueCollection.cs" />
     <Compile Include="Extensions\ActionExtensions.cs" />
     <Compile Include="Extensions\BooleanExtensions.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Html\ActionLinkExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions.cs" />
+    <Compile Include="Html\ColorExtensions.cs" />
     <Compile Include="Html\FormExtensions.cs" />
     <Compile Include="Html\TextBoxExtensions.cs" />
     <Compile Include="Html\DropDownListExtensions.cs" />

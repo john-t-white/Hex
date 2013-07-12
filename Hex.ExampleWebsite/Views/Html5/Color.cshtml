@@ -1,0 +1,17 @@
+﻿@using Hex.ExampleWebsite.ViewModels
+
+@model ColorViewModel
+
+@{
+    ViewBag.Title = "Html5 - Color";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using( Html.BeginForm() )
+{
+	<span>Color as String:</span>@Html.Color( "ColorAsString", this.Model.ColorAsString )<br />
+	<span>Color:</span>@Html.ColorFor( x => x.Color ) <br />
+
+	<input type="submit" value="Submit" />
+}
