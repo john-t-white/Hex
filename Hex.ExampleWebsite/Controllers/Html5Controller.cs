@@ -67,5 +67,23 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View( viewModel );
 		}
+
+		public ActionResult Number()
+		{
+			var viewModel = new NumberViewModel()
+			{
+				Number = 1,
+				NullableNumber = 2,
+				NumberAsString = "3"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult Number( NumberViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }

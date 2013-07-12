@@ -19,7 +19,6 @@ namespace Hex.AttributeBuilders
 		/// <summary>
 		/// Represents the HTML attribute "form". Multiple calls add additional values.
 		/// </summary>
-		/// <param name="htmlAttributeBuilder">The <see cref=" Hex.AttributeBuilders.HtmlAttributeBuilder"/> instance that this method extends.</param>
 		/// <param name="formIds">The list of values.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder AddForm( params string[] formIds )

@@ -97,6 +97,7 @@
     <Compile Include="Html\DateExtensions.cs" />
     <Compile Include="Html\EmailExtensions.cs" />
     <Compile Include="Html\FormExtensions.cs" />
+    <Compile Include="Html\NumberExtensions.cs" />
     <Compile Include="Html\TextBoxExtensions.cs" />
     <Compile Include="Html\DropDownListExtensions.cs" />
     <Compile Include="Html\HiddenExtensions.cs" />

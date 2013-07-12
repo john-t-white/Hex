@@ -1,0 +1,18 @@
+﻿@using Hex.ExampleWebsite.ViewModels
+
+@model NumberViewModel
+
+@{
+    ViewBag.Title = "Html5 - Number";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using( Html.BeginForm() )
+{
+	<span>Number:</span>@Html.NumberFor( x => x.Number ) <br />
+	<span>Nullable Number:</span>@Html.NumberFor( x => x.NullableNumber ) <br />
+	<span>Number as String:</span>@Html.Number( "NumberAsString", this.Model.NumberAsString )<br />
+
+	<input type="submit" value="Submit" />
+}
