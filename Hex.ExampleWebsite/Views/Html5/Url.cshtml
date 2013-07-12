@@ -1,0 +1,17 @@
+﻿@using Hex.ExampleWebsite.ViewModels
+
+@model UrlViewModel
+
+@{
+    ViewBag.Title = "Html5 - Url";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using( Html.BeginForm() )
+{
+	<span>Url:</span>@Html.UrlFor( x => x.Url ) <br />
+	<span>Url as String:</span>@Html.Url( "UrlAsString", this.Model.UrlAsString )<br />
+
+	<input type="submit" value="Submit" />
+}

@@ -117,5 +117,22 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View( viewModel );
 		}
+
+		public ActionResult Url()
+		{
+			var viewModel = new UrlViewModel()
+			{
+				Url = new Uri( "http://www.example.com", UriKind.Absolute ),
+				UrlAsString = "http://www.example.com"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult Url( UrlViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }
