@@ -51,5 +51,21 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View( viewModel );
 		}
+
+		public ActionResult Email()
+		{
+			var viewModel = new EmailViewModel()
+			{
+				Email = "email@example.com"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult Email( EmailViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }

@@ -95,6 +95,7 @@
     <Compile Include="Html\CheckBoxExtensions.cs" />
     <Compile Include="Html\ColorExtensions.cs" />
     <Compile Include="Html\DateExtensions.cs" />
+    <Compile Include="Html\EmailExtensions.cs" />
     <Compile Include="Html\FormExtensions.cs" />
     <Compile Include="Html\TextBoxExtensions.cs" />
     <Compile Include="Html\DropDownListExtensions.cs" />

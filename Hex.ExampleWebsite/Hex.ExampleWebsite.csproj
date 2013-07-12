@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
+    <Compile Include="ViewModels\EmailViewModel.cs" />
     <Compile Include="ViewModels\DateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +148,7 @@
     <Content Include="Views\Html5\Index.cshtml" />
     <Content Include="Views\Html5\Color.cshtml" />
     <Content Include="Views\Html5\Date.cshtml" />
+    <Content Include="Views\Html5\Email.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
