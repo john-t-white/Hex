@@ -11,5 +11,9 @@ namespace Hex.ExampleWebsite.ViewModels
 		public string ColorAsString { get; set; }
 
 		public Color Color { get; set; }
+
+		public Color? NullableColor { get; set; }
+
+		public int? NullableInt { get; set; }
 	}
 }

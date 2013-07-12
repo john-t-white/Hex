@@ -21,6 +21,7 @@ namespace Hex.ExampleWebsite.Controllers
 			var viewModel = new ColorViewModel()
 			{
 				Color = System.Drawing.Color.Red,
+				NullableColor = System.Drawing.Color.Yellow,
 				ColorAsString = "#FF0000"
 			};
 

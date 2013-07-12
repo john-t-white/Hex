@@ -10,8 +10,9 @@
 
 @using( Html.BeginForm() )
 {
-	<span>Color as String:</span>@Html.Color( "ColorAsString", this.Model.ColorAsString )<br />
 	<span>Color:</span>@Html.ColorFor( x => x.Color ) <br />
+	<span>Nullable Color:</span>@Html.ColorFor( x => x.NullableColor ) <br />
+	<span>Color as String:</span>@Html.Color( "ColorAsString", this.Model.ColorAsString )<br />
 
 	<input type="submit" value="Submit" />
 }
