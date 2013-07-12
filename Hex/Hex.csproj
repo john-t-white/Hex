@@ -99,6 +99,7 @@
     <Compile Include="Html\FormExtensions.cs" />
     <Compile Include="Html\NumberExtensions.cs" />
     <Compile Include="Html\SearchExtensions.cs" />
+    <Compile Include="Html\TelephoneExtensions.cs" />
     <Compile Include="Html\TextBoxExtensions.cs" />
     <Compile Include="Html\DropDownListExtensions.cs" />
     <Compile Include="Html\HiddenExtensions.cs" />

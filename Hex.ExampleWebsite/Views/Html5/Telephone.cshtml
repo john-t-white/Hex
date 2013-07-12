@@ -1,0 +1,16 @@
+﻿@using Hex.ExampleWebsite.ViewModels
+
+@model TelephoneViewModel
+
+@{
+    ViewBag.Title = "Html5 - Telephone";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using( Html.BeginForm() )
+{
+	<span>Telephone:</span>@Html.TelephoneFor( x => x.Telephone ) <br />
+
+	<input type="submit" value="Submit" />
+}

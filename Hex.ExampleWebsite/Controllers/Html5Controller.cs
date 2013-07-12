@@ -101,5 +101,21 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View( viewModel );
 		}
+
+		public ActionResult Telephone()
+		{
+			var viewModel = new TelephoneViewModel()
+			{
+				Telephone = "(123) 456-7890"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult Telephone( TelephoneViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }
