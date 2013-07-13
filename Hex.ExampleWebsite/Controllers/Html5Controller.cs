@@ -118,7 +118,8 @@ namespace Hex.ExampleWebsite.Controllers
 			return this.View( viewModel );
 		}
 
-		public ActionResult Url()
+		[ActionName( "Url" )]
+		public ActionResult UrlView()
 		{
 			var viewModel = new UrlViewModel()
 			{
@@ -126,13 +127,30 @@ namespace Hex.ExampleWebsite.Controllers
 				UrlAsString = "http://www.example.com"
 			};
 
+			return this.View( "url", viewModel );
+		}
+
+		[HttpPost]
+		[ActionName( "Url" )]
+		public ActionResult UrlView( UrlViewModel viewModel )
+		{
+			return this.View( "url", viewModel );
+		}
+
+		public ActionResult Range()
+		{
+			var viewModel = new RangeViewModel()
+			{
+				Range = 10
+			};
+
 			return this.View( viewModel );
 		}
 
 		[HttpPost]
-		public ActionResult Url( UrlViewModel viewModel )
+		public ActionResult Range( RangeViewModel viewModel )
 		{
-			return this.View( viewModel );
+			return this.View(  viewModel );
 		}
 	}
 }

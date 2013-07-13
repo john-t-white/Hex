@@ -1,6 +1,5 @@
 ﻿using Hex.AttributeBuilders;
 using Hex.Extensions;
-using Hex.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,107 +12,37 @@ using System.Web.Routing;
 namespace Hex.Html
 {
 	/// <summary>
-	/// Represents support for HTML5 url inputs in an application with an expression for specifying HTML attributes.
+	/// Represents support for HTML5 range inputs in an application with an expression for specifying HTML attributes.
 	/// </summary>
-	public static class UrlExtensions
+	public static class RangeExtensions
 	{
-		private const string URL_TYPE_ATTRIBUTE_VALUE = "url";
+		private const string RANGE_TYPE_ATTRIBUTE_VALUE = "range";
 
 		/// <summary>
-		/// Returns a url input element by using the specified HTML helper and the name of the form field.
+		/// Returns a range input element by using the specified HTML helper and the name of the form field.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name )
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name )
 		{
-			return htmlHelper.Url( name, null, ( IDictionary<string, object> )null );
+			return htmlHelper.Range( name, null, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, and the specified HTML attributes.
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, and the specified HTML attributes.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.Url( name, null, attributeExpression.GetAttributes() );
+			return htmlHelper.Range( name, null, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, and the value.
-		/// </summary>
-		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
-		/// <param name="name">The name of the form field to return.</param>
-		/// <param name="value">
-		///		The url of the url input element.
-		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
-		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
-		/// </param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, object value )
-		{
-			return htmlHelper.Url( name, value, ( IDictionary<string, object> )null );
-		}
-
-		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
-		/// </summary>
-		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
-		/// <param name="name">The name of the form field to return.</param>
-		/// <param name="value">
-		///		The value of the url input element.
-		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
-		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
-		/// </param>
-		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
-		{
-			return htmlHelper.Url( name, value, new RouteValueDictionary( htmlAttributes ) );
-		}
-
-		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
-		/// </summary>
-		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
-		/// <param name="name">The name of the form field to return.</param>
-		/// <param name="value">
-		///		The value of the url input element.
-		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
-		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
-		/// </param>
-		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
-		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
-			htmlAttributes[ HtmlAttributes.Type ] = URL_TYPE_ATTRIBUTE_VALUE;
-
-			return htmlHelper.TextBox( name, value, htmlAttributes );
-		}
-
-		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
-		/// </summary>
-		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
-		/// <param name="name">The name of the form field to return.</param>
-		/// <param name="value">
-		///		The value of the url input element.
-		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
-		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
-		/// </param>
-		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
-		{
-			return htmlHelper.Url( name, value, attributeExpression.GetAttributes() );
-		}
-
-		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, and the value.
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, and the value.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
@@ -122,201 +51,275 @@ namespace Hex.Html
 		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
 		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
 		/// </param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="value" /> must be an absolute url.</exception>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, Uri value )
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value )
 		{
-			return htmlHelper.Url( name, value, ( IDictionary<string, object> )null );
+			return htmlHelper.Range( name, value, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">
-		///		The value of the url input element.
+		///		The value of the range input element.
 		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
 		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
 		/// </param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="value" /> must be an absolute url.</exception>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, Uri value, object htmlAttributes )
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.Url( name, value, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Range( name, value, new RouteValueDictionary( htmlAttributes ) );
 		}
 
 		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">
-		///		The value of the url input element.
+		///		The value of the range input element.
 		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
 		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
 		/// </param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="value" /> must be an absolute url.</exception>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, Uri value, IDictionary<string, object> htmlAttributes )
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
-			if( value != null && !value.IsAbsoluteUri )
-			{
-				throw new ArgumentException( ExceptionMessages.ABSOLUTE_URI_REQUIRED, "value" );
-			}
+			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes[ HtmlAttributes.Type ] = RANGE_TYPE_ATTRIBUTE_VALUE;
 
-			string urlValue = ( value != null ) ? value.AbsoluteUri : null;
-
-			return htmlHelper.Url( name, urlValue, htmlAttributes );
+			return htmlHelper.TextBox( name, value, htmlAttributes );
 		}
 
 		/// <summary>
-		/// Returns a url input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, the value, and the specified HTML attributes.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">
-		///		The value of the url input element.
+		///		The value of the range input element.
 		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
 		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
 		/// </param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="value" /> must be an absolute url.</exception>
-		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, Uri value, Action<HtmlAttributeBuilder> attributeExpression )
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.Url( name, value, attributeExpression.GetAttributes() );
+			return htmlHelper.Range( name, value, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
-		/// Returns a url input element for each property in the object that is represented by the specified expression.
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, the value, and maximum and minimum values.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field to return.</param>
+		/// <param name="value">
+		///		The url of the range input element.
+		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
+		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
+		/// </param>
+		/// <param name="min">The minimum value.</param>
+		/// <param name="max">The maximum value.</param>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, object min, object max )
+		{
+			return htmlHelper.Range( name, value, min, max, ( IDictionary<string, object> )null );
+		}
+
+		/// <summary>
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, the value, and maximum and minimum values.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field to return.</param>
+		/// <param name="value">
+		///		The url of the range input element.
+		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
+		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
+		/// </param>
+		/// <param name="min">The minimum value.</param>
+		/// <param name="max">The maximum value.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, object min, object max, object htmlAttributes )
+		{
+			return htmlHelper.Range( name, value, min, max, new RouteValueDictionary( htmlAttributes ) );
+		}
+
+		/// <summary>
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, the value, and maximum and minimum values.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field to return.</param>
+		/// <param name="value">
+		///		The url of the range input element.
+		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
+		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
+		/// </param>
+		/// <param name="min">The minimum value.</param>
+		/// <param name="max">The maximum value.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, object min, object max, IDictionary<string, object> htmlAttributes )
+		{
+			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes[ HtmlAttributes.Min ] = min;
+			htmlAttributes[ HtmlAttributes.Max ] = max;
+
+			return htmlHelper.Range( name, value, htmlAttributes );
+		}
+
+		/// <summary>
+		/// Returns a range input element by using the specified HTML helper, the name of the form field, the value, and maximum and minimum values.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field to return.</param>
+		/// <param name="value">
+		///		The url of the range input element.
+		///		If this value is null, the value of the element is retrieved from the <see cref="T:System.Web.Mvc.ViewDataDictionary" /> object.
+		///		If no value exists there, the value is retrieved from the <see cref="T:System.Web.Mvc.ModelStateDictionary" /> object.
+		/// </param>
+		/// <param name="min">The minimum value.</param>
+		/// <param name="max">The maximum value.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
+		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, object min, object max, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.Range( name, value, min, max, attributeExpression.GetAttributes() );
+		}
+
+		/// <summary>
+		/// Returns a range input element for each property in the object that is represented by the specified expression.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString UrlFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression )
+		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression )
 		{
-			return htmlHelper.UrlFor( expression, ( IDictionary<string, object> )null );
+			return htmlHelper.RangeFor( expression, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
-		/// Returns a url input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a range input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString UrlFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
+		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
 		{
-			return htmlHelper.UrlFor( expression, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.RangeFor( expression, new RouteValueDictionary( htmlAttributes ) );
 		}
 
 		/// <summary>
-		/// Returns a url input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a range input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString UrlFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IDictionary<string, object> htmlAttributes )
+		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IDictionary<string, object> htmlAttributes )
 		{
 			ModelMetadata valueMetadata = ModelMetadata.FromLambdaExpression( expression, htmlHelper.ViewData );
 
-			return htmlHelper.Url( ExpressionHelper.GetExpressionText( expression ), valueMetadata.Model, htmlAttributes );
+			return htmlHelper.Range( ExpressionHelper.GetExpressionText( expression ), valueMetadata.Model, htmlAttributes );
 		}
 
 		/// <summary>
-		/// Returns a url input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a range input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		public static MvcHtmlString UrlFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
+		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.UrlFor( expression, attributeExpression.GetAttributes() );
+			return htmlHelper.RangeFor( expression, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
-		/// Returns a url input element for each property in the object that is represented by the specified expression.
+		/// Returns a range input element for each property in the object that is represented by the specified expression.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
+		/// <param name="min">The minimum value.</param>
+		/// <param name="max">The maximum value.</param>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is not an absolute url.</exception>
-		public static MvcHtmlString UrlFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, Uri>> expression )
+		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object min, object max )
 		{
-			return htmlHelper.UrlFor( expression, ( IDictionary<string, object> )null );
+			return htmlHelper.RangeFor( expression, min, max, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
-		/// Returns a url input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a range input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="min">The minimum value.</param>
+		/// <param name="max">The maximum value.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is not an absolute url.</exception>
-		public static MvcHtmlString UrlFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, Uri>> expression, object htmlAttributes )
+		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object min, object max, object htmlAttributes )
 		{
-			return htmlHelper.UrlFor( expression, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.RangeFor( expression, min, max, new RouteValueDictionary( htmlAttributes ) );
 		}
 
 		/// <summary>
-		/// Returns a url input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a range input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="min">The minimum value.</param>
+		/// <param name="max">The maximum value.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is not an absolute url.</exception>
-		public static MvcHtmlString UrlFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, Uri>> expression, IDictionary<string, object> htmlAttributes )
+		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object min, object max, IDictionary<string, object> htmlAttributes )
 		{
-			ModelMetadata valueMetadata = ModelMetadata.FromLambdaExpression( expression, htmlHelper.ViewData );
+			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes[ HtmlAttributes.Min ] = min;
+			htmlAttributes[ HtmlAttributes.Max ] = max;
 
-			Uri value = ( Uri )valueMetadata.Model;
-
-			if( value != null && !value.IsAbsoluteUri )
-			{
-				throw new ArgumentException( ExceptionMessages.ABSOLUTE_URI_REQUIRED, "expression" );
-			}
-
-			return htmlHelper.Url( ExpressionHelper.GetExpressionText( expression ), ( Uri )valueMetadata.Model, htmlAttributes );
+			return htmlHelper.RangeFor( expression, htmlAttributes );
 		}
 
 		/// <summary>
-		/// Returns a url input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
+		/// Returns a range input element for each property in the object that is represented by the specified expression using the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="min">The minimum value.</param>
+		/// <param name="max">The maximum value.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "url".</returns>
+		/// <returns>An input element whose type attribute is set to "range".</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is not an absolute url.</exception>
-		public static MvcHtmlString UrlFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, Uri>> expression, Action<HtmlAttributeBuilder> attributeExpression )
+		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object min, object max, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.UrlFor( expression, attributeExpression.GetAttributes() );
+			return htmlHelper.RangeFor( expression, min, max, attributeExpression.GetAttributes() );
 		}
 	}
 }

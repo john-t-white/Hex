@@ -153,7 +153,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString DateFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IDictionary<string, object> htmlAttributes )
 		{
-			ModelMetadata valueMetadata = ModelMetadata.FromLambdaExpression<TModel, TProperty>( expression, htmlHelper.ViewData );
+			ModelMetadata valueMetadata = ModelMetadata.FromLambdaExpression( expression, htmlHelper.ViewData );
 
 			return htmlHelper.Date( ExpressionHelper.GetExpressionText( expression ), valueMetadata.Model, htmlAttributes );
 		}

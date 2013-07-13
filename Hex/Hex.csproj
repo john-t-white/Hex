@@ -98,6 +98,7 @@
     <Compile Include="Html\EmailExtensions.cs" />
     <Compile Include="Html\FormExtensions.cs" />
     <Compile Include="Html\NumberExtensions.cs" />
+    <Compile Include="Html\RangeExtensions.cs" />
     <Compile Include="Html\SearchExtensions.cs" />
     <Compile Include="Html\TelephoneExtensions.cs" />
     <Compile Include="Html\TextBoxExtensions.cs" />

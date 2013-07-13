@@ -1,0 +1,17 @@
+﻿@using Hex.ExampleWebsite.ViewModels
+
+@model RangeViewModel
+
+@{
+    ViewBag.Title = "Html5 - Range";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using( Html.BeginForm() )
+{
+	<span>Range:</span>@Html.RangeFor( x => x.Range, 1, 50 ) <br />
+	<span>Range as String:</span>@Html.Range( "Range", this.Model.Range, 1, 1000 )<br />
+
+	<input type="submit" value="Submit" />
+}
