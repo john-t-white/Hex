@@ -170,5 +170,23 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View( viewModel );
 		}
+
+		public ActionResult Month()
+		{
+			var viewModel = new MonthViewModel()
+			{
+				Month = new DateTime( 2000, 10, 1 ),
+				NullableMonth = new DateTime( 2000, 11, 1 ),
+				MonthAsString = "2000-12"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult Month( MonthViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }

@@ -1,0 +1,19 @@
+﻿@using Hex.ExampleWebsite.ViewModels
+
+@model MonthViewModel
+
+@{
+    ViewBag.Title = "Html5 - Month";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using( Html.BeginForm() )
+{
+	<span>Month:</span>@Html.MonthFor( x => x.Month ) <br />
+	<span>Nullable Month:</span>@Html.MonthFor( x => x.NullableMonth ) <br />
+	<span>Month as String:</span>@Html.Month( "MonthAsString", this.Model.MonthAsString )<br />
+	<span>Nullable Month as String:</span>@Html.Month( "NullableMonth", this.Model.NullableMonth )<br />
+
+	<input type="submit" value="Submit" />
+}
