@@ -18,10 +18,10 @@ namespace Hex.Html
 	{
 		private const TimeFormat DEFAULT_TIME_FORMAT = TimeFormat.Minute;
 		private const string DATE_TIME_LOCAL_TYPE_ATTRIBUTE_VALUE = "datetime-local";
-		private const string DATE_FORMAT = "yyyy-MM-ddT";
-		private const string MINUTE_TIME_FORMAT = "HH:mm";
-		private const string SECOND_TIME_FORMAT = "HH:mm:ss";
-		private const string MILLISECOND_TIME_FORMAT = "HH:mm:ss.fff";
+		//private const string DATE_FORMAT = "yyyy-MM-ddT";
+		//private const string MINUTE_TIME_FORMAT = "HH:mm";
+		//private const string SECOND_TIME_FORMAT = "HH:mm:ss";
+		//private const string MILLISECOND_TIME_FORMAT = "HH:mm:ss.fff";
 
 		/// <summary>
 		/// Returns a datetime-local input element by using the specified HTML helper and the name of the form field.
@@ -370,24 +370,9 @@ namespace Hex.Html
 		{
 			if( value is DateTime )
 			{
-				string timeFormatString;
-				switch( timeFormat )
-				{
-					case TimeFormat.Second:
-						timeFormatString = string.Format( "{0}{1}", DATE_FORMAT, SECOND_TIME_FORMAT );
-						break;
-
-					case TimeFormat.Millisecond:
-						timeFormatString = string.Format( "{0}{1}", DATE_FORMAT, MILLISECOND_TIME_FORMAT );
-						break;
-
-					default:
-						timeFormatString = string.Format( "{0}{1}", DATE_FORMAT, MINUTE_TIME_FORMAT );
-						break;
-				}
-
 				var valueAsDateTime = ( DateTime )value;
-				value = valueAsDateTime.ToString( timeFormatString );
+
+				value = valueAsDateTime.ToString( timeFormat, false );
 			}
 
 			return value;
@@ -397,18 +382,10 @@ namespace Hex.Html
 		{
 			if( !htmlAttributes.ContainsKey( HtmlAttributes.Step ) )
 			{
-				switch( timeFormat )
+				double? stepValue = timeFormat.GetStepValue();
+				if( stepValue.HasValue )
 				{
-					case TimeFormat.Second:
-						htmlAttributes[ HtmlAttributes.Step ] = 1;
-						break;
-
-					case TimeFormat.Millisecond:
-						htmlAttributes[ HtmlAttributes.Step ] = .001;
-						break;
-
-					default:
-						break;
+					htmlAttributes[ HtmlAttributes.Step ] = stepValue.Value;
 				}
 			}
 		}

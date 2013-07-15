@@ -18,9 +18,9 @@ namespace Hex.Html
 	{
 		private const TimeFormat DEFAULT_TIME_FORMAT = TimeFormat.Minute;
 		private const string TIME_TYPE_ATTRIBUTE_VALUE = "time";
-		private const string MINUTE_TIME_FORMAT = "HH:mm";
-		private const string SECOND_TIME_FORMAT = "HH:mm:ss";
-		private const string MILLISECOND_TIME_FORMAT = "HH:mm:ss.fff";
+		//private const string MINUTE_TIME_FORMAT = "HH:mm";
+		//private const string SECOND_TIME_FORMAT = "HH:mm:ss";
+		//private const string MILLISECOND_TIME_FORMAT = "HH:mm:ss.fff";
 
 		/// <summary>
 		/// Returns a time input element by using the specified HTML helper and the name of the form field.
@@ -369,24 +369,9 @@ namespace Hex.Html
 		{
 			if( value is DateTime )
 			{
-				string timeFormatString;
-				switch( timeFormat )
-				{
-					case TimeFormat.Second:
-						timeFormatString = SECOND_TIME_FORMAT;
-						break;
-
-					case TimeFormat.Millisecond:
-						timeFormatString = MILLISECOND_TIME_FORMAT;
-						break;
-
-					default:
-						timeFormatString = MINUTE_TIME_FORMAT;
-						break;
-				}
-
 				var valueAsDateTime = ( DateTime )value;
-				value = valueAsDateTime.ToString( timeFormatString );
+
+				value = valueAsDateTime.ToString( timeFormat, true );
 			}
 
 			return value;
@@ -396,18 +381,10 @@ namespace Hex.Html
 		{
 			if( !htmlAttributes.ContainsKey( HtmlAttributes.Step ) )
 			{
-				switch( timeFormat )
+				double? stepValue = timeFormat.GetStepValue();
+				if( stepValue.HasValue )
 				{
-					case TimeFormat.Second:
-						htmlAttributes[ HtmlAttributes.Step ] = 1;
-						break;
-
-					case TimeFormat.Millisecond:
-						htmlAttributes[ HtmlAttributes.Step ] = .001;
-						break;
-
-					default:
-						break;
+					htmlAttributes[ HtmlAttributes.Step ] = stepValue.Value;
 				}
 			}
 		}
