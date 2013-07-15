@@ -1,7 +1,7 @@
 Hex
 ===
 
-Extensions to HtmlHelper to provide a fluent strongly-type way of specified attributes. Every existing HtmlHelper method that exists has had overloads added to provide a strongly-typed fluent way of adding additional HTML attributes.
+Hex adds additional overloads to the HtmlHelper methods to provide support for most of the HTML5 input types and a strongly-typed fluent way of specifying additional HTML attributes instead of using the anonymous object.
 
 See the Wiki for documentation: https://github.com/john-t-white/Hex/wiki
 
