@@ -21,7 +21,7 @@ namespace Hex.ExampleWebsite.Controllers
 			var viewModel = new ColorViewModel()
 			{
 				Color = System.Drawing.Color.Red,
-				NullableColor = System.Drawing.Color.Yellow,
+				NullableColor = null,
 				ColorAsString = "#FF0000"
 			};
 
@@ -123,7 +123,7 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			var viewModel = new UrlViewModel()
 			{
-				Url = new Uri( "http://www.example.com", UriKind.Absolute ),
+				Url = null, // new Uri( "http://www.example.com", UriKind.Absolute ),
 				UrlAsString = "http://www.example.com"
 			};
 

@@ -177,17 +177,9 @@ namespace Hex.Html
 
 		private static object ConvertIfColor( object value )
 		{
-			if( value is Color || value is Nullable<Color> )
+			if( value is Color )
 			{
-				if( value is Color )
-				{
-					value = ( ( Color )value ).ToHtml();
-				}
-				else if( value is Nullable<Color> )
-				{
-					Nullable<Color> colorValue = ( Nullable<Color> )value;
-					value = ( colorValue.HasValue ) ? colorValue.Value.ToHtml() : null;
-				}
+				value = ( ( Color )value ).ToHtml();
 			}
 
 			return value;

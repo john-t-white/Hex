@@ -13,6 +13,7 @@
 	<span>Color:</span>@Html.ColorFor( x => x.Color ) <br />
 	<span>Nullable Color:</span>@Html.ColorFor( x => x.NullableColor ) <br />
 	<span>Color as String:</span>@Html.Color( "ColorAsString", this.Model.ColorAsString )<br />
+	<span>Nullable Color as String:</span>@Html.Color( "NullableColor", this.Model.NullableColor )<br />
 
 	<input type="submit" value="Submit" />
 }

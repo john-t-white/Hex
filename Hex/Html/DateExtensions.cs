@@ -177,17 +177,9 @@ namespace Hex.Html
 
 		private static object ConvertIfDateTime( object value )
 		{
-			if( value is DateTime || value is Nullable<DateTime> )
+			if( value is DateTime )
 			{
-				if( value is DateTime )
-				{
-					value = ( ( DateTime )value ).ToString( DATE_TIME_FORMAT );
-				}
-				else if( value is Nullable<DateTime> )
-				{
-					Nullable<DateTime> dateTimeValue = ( Nullable<DateTime> )value;
-					value = ( dateTimeValue.HasValue ) ? dateTimeValue.Value.ToString( DATE_TIME_FORMAT ) : null;
-				}
+				value = ( ( DateTime )value ).ToString( DATE_TIME_FORMAT );
 			}
 
 			return value;
