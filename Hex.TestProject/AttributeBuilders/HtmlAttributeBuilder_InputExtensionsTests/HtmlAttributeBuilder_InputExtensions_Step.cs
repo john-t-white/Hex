@@ -9,9 +9,21 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilder_InputExtensions
 	public class HtmlAttributeBuilder_InputExtensions_Step
 	{
 		[TestMethod]
-		public void AddsAttributeCorrectly()
+		public void IntegerAddsAttributeCorrectly()
 		{
 			int value = 1;
+
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
+			var result = builder.Step( value );
+
+			Assert.AreSame( builder, result );
+			Assert.AreEqual( value, builder.Attributes[ HtmlAttributes.Step ] );
+		}
+
+		[TestMethod]
+		public void DoubleAddsAttributeCorrectly()
+		{
+			double value = .1;
 
 			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Step( value );

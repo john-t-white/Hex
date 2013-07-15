@@ -112,6 +112,7 @@
     <Compile Include="Html\RadioButtonExtensions.cs" />
     <Compile Include="Html\RouteLinkExtensions.cs" />
     <Compile Include="Html\TextAreaExtensions.cs" />
+    <Compile Include="Html\TimeExtensions.cs" />
     <Compile Include="Html\UrlExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ExceptionMessages.Designer.cs">

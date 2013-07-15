@@ -250,4 +250,16 @@ namespace Hex.Html
 		/// </summary>
 		Soft
 	}
+
+	/// <summary>
+	/// Enumerates the values for the wrap HTML attribute.
+	/// </summary>
+	public enum TimeFormat
+	{
+		Minute,
+
+		Second,
+
+		Millisecond
+	}
 }

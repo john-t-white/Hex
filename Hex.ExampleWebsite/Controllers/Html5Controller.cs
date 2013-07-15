@@ -152,5 +152,23 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View(  viewModel );
 		}
+
+		public ActionResult Time()
+		{
+			var viewModel = new TimeViewModel()
+			{
+				Time = new DateTime( 2000, 12, 1, 13, 1, 1 ),
+				NullableTime = new DateTime( 2000, 12, 2, 13, 2, 2 ),
+				TimeAsString = "13:03:03"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult Time( TimeViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }

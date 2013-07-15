@@ -345,6 +345,18 @@ namespace Hex.AttributeBuilders
 		}
 
 		/// <summary>
+		/// Represents the HTML attribute "step".
+		/// </summary>
+		/// <param name="step">The value.</param>
+		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
+		public HtmlAttributeBuilder Step( double step )
+		{
+			this.Attributes[ HtmlAttributes.Step ] = step;
+
+			return this;
+		}
+
+		/// <summary>
 		/// Represents the HTML attribute "type".
 		/// </summary>
 		/// <param name="value">The value.</param>
