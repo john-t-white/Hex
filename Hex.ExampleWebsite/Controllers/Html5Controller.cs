@@ -123,7 +123,7 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			var viewModel = new UrlViewModel()
 			{
-				Url = null, // new Uri( "http://www.example.com", UriKind.Absolute ),
+				Url = new Uri( "http://www.example.com?returnUrl=http%3a%2f%2fredirect.example.com%3ftest%3dtest", UriKind.Absolute ),
 				UrlAsString = "http://www.example.com"
 			};
 
