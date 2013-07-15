@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
+    <Compile Include="ViewModels\DateTimeLocalViewModel.cs" />
     <Compile Include="ViewModels\MonthViewModel.cs" />
     <Compile Include="ViewModels\TimeViewModel.cs" />
     <Compile Include="ViewModels\RangeViewModel.cs" />
@@ -163,6 +164,7 @@
     <Content Include="Views\Html5\Range.cshtml" />
     <Content Include="Views\Html5\Time.cshtml" />
     <Content Include="Views\Html5\Month.cshtml" />
+    <Content Include="Views\Html5\DateTimeLocal.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

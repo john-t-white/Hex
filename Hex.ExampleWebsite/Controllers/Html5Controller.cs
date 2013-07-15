@@ -188,5 +188,23 @@ namespace Hex.ExampleWebsite.Controllers
 		{
 			return this.View( viewModel );
 		}
+
+		public ActionResult DateTimeLocal()
+		{
+			var viewModel = new DateTimeLocalViewModel()
+			{
+				DateTimeLocal = new DateTime( 2000, 12, 1, 13, 1, 1 ),
+				NullableDateTimeLocal = new DateTime( 2000, 12, 2, 13, 2, 2 ),
+				DateTimeLocalAsString = "2000-12-03T13:03"
+			};
+
+			return this.View( viewModel );
+		}
+
+		[HttpPost]
+		public ActionResult DateTimeLocal( DateTimeLocalViewModel viewModel )
+		{
+			return this.View( viewModel );
+		}
 	}
 }

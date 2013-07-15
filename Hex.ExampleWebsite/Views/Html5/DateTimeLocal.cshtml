@@ -1,0 +1,19 @@
+﻿@using Hex.ExampleWebsite.ViewModels
+
+@model DateTimeLocalViewModel
+
+@{
+	ViewBag.Title = "Html5 - DateTimeLocal";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using( Html.BeginForm() )
+{
+	<span>DateTimeLocal:</span>@Html.DateTimeLocalFor( x => x.DateTimeLocal, TimeFormat.Millisecond ) <br />
+	<span>Nullable DateTimeLocal:</span>@Html.DateTimeLocalFor( x => x.NullableDateTimeLocal ) <br />
+	<span>DateTimeLocal as String:</span>@Html.DateTimeLocal( "DateTimeLocalAsString", this.Model.DateTimeLocalAsString )<br />
+	<span>Nullable DateTimeLocal as String:</span>@Html.DateTimeLocal( "NullableDateTimeLocal", this.Model.NullableDateTimeLocal )<br />
+
+	<input type="submit" value="Submit" />
+}
