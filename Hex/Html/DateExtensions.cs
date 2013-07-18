@@ -92,7 +92,7 @@ namespace Hex.Html
 			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
 			htmlAttributes[ HtmlAttributes.Type ] = DATE_TYPE_ATTRIBUTE_VALUE;
 
-			return htmlHelper.TextBox( name, DateExtensions.ConvertIfDateTime( value ), htmlAttributes );
+			return htmlHelper.TextBox( name, value.ConvertIfDateTime( DATE_TIME_FORMAT ), htmlAttributes );
 		}
 
 		/// <summary>
@@ -172,19 +172,5 @@ namespace Hex.Html
 		{
 			return htmlHelper.DateFor( expression, attributeExpression.GetAttributes() );
 		}
-
-		#region Internal Methods
-
-		private static object ConvertIfDateTime( object value )
-		{
-			if( value is DateTime )
-			{
-				value = ( ( DateTime )value ).ToString( DATE_TIME_FORMAT );
-			}
-
-			return value;
-		}
-
-		#endregion
 	}
 }

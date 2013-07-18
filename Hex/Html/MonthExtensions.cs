@@ -92,7 +92,7 @@ namespace Hex.Html
 			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
 			htmlAttributes[ HtmlAttributes.Type ] = MONTH_TYPE_ATTRIBUTE_VALUE;
 
-			return htmlHelper.TextBox( name, MonthExtensions.ConvertIfDateTime( value ), htmlAttributes );
+			return htmlHelper.TextBox( name, value.ConvertIfDateTime( MONTH_FORMAT ), htmlAttributes );
 		}
 
 		/// <summary>
@@ -172,19 +172,5 @@ namespace Hex.Html
 		{
 			return htmlHelper.MonthFor( expression, attributeExpression.GetAttributes() );
 		}
-
-		#region Internal Methods
-
-		private static object ConvertIfDateTime( object value )
-		{
-			if( value is DateTime )
-			{
-				value = ( ( DateTime )value ).ToString( MONTH_FORMAT );
-			}
-
-			return value;
-		}
-
-		#endregion
 	}
 }

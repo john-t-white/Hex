@@ -92,6 +92,7 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\TimeFormatExtensions.cs" />
     <Compile Include="Html\ActionLinkExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions.cs" />

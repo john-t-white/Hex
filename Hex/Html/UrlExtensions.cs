@@ -92,7 +92,7 @@ namespace Hex.Html
 			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
 			htmlAttributes[ HtmlAttributes.Type ] = URL_TYPE_ATTRIBUTE_VALUE;
 
-			return htmlHelper.TextBox( name, UrlExtensions.ConvertIfUri( value ), htmlAttributes );
+			return htmlHelper.TextBox( name, value.ConvertIfUri(), htmlAttributes );
 		}
 
 		/// <summary>
@@ -172,19 +172,5 @@ namespace Hex.Html
 		{
 			return htmlHelper.UrlFor( expression, attributeExpression.GetAttributes() );
 		}
-
-		#region Internal Methods
-
-		private static object ConvertIfUri( object value )
-		{
-			if( value is Uri )
-			{
-				value = ( ( Uri )value ).AbsoluteUri;
-			}
-
-			return value;
-		}
-
-		#endregion
 	}
 }

@@ -92,7 +92,7 @@ namespace Hex.Html
 			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
 			htmlAttributes[ HtmlAttributes.Type ] = COLOR_TYPE_ATTRIBUTE_VALUE;
 
-			return htmlHelper.TextBox( name, ColorExtensions.ConvertIfColor( value ), htmlAttributes );
+			return htmlHelper.TextBox( name, value.ConvertIfColor(), htmlAttributes );
 		}
 
 		/// <summary>
@@ -172,19 +172,5 @@ namespace Hex.Html
 		{
 			return htmlHelper.ColorFor( expression, attributeExpression.GetAttributes() );
 		}
-
-		#region Internal Methods
-
-		private static object ConvertIfColor( object value )
-		{
-			if( value is Color )
-			{
-				value = ( ( Color )value ).ToHtml();
-			}
-
-			return value;
-		}
-
-		#endregion
 	}
 }

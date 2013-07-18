@@ -18,7 +18,7 @@ namespace Hex.Extensions
 		/// </summary>
 		/// <param name="color">The <see cref="System.Drawing.Color"/> instance that this method extends.</param>
 		/// <returns>The HTML RGB color.</returns>
-		public static string ToHtml( this Color color )
+		public static string ToHexadecimal( this Color color )
 		{
 			return string.Format( COLOR_PATTERN, color.R, color.G, color.B );
 		}

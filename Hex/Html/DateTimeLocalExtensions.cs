@@ -219,7 +219,7 @@ namespace Hex.Html
 
 			DateTimeLocalExtensions.AddStepAttribute( timeFormat, htmlAttributes );
 
-			return htmlHelper.TextBox( name, DateTimeLocalExtensions.ConvertIfDateTime( value, timeFormat ), htmlAttributes );
+			return htmlHelper.TextBox( name, value.ConvertIfDateTime( timeFormat, false ), htmlAttributes );
 		}
 
 		/// <summary>
@@ -365,18 +365,6 @@ namespace Hex.Html
 		}
 
 		#region Internal Methods
-
-		private static object ConvertIfDateTime( object value, TimeFormat timeFormat )
-		{
-			if( value is DateTime )
-			{
-				var valueAsDateTime = ( DateTime )value;
-
-				value = valueAsDateTime.ToString( timeFormat, false );
-			}
-
-			return value;
-		}
 
 		private static void AddStepAttribute( TimeFormat timeFormat, IDictionary<string, object> htmlAttributes )
 		{
