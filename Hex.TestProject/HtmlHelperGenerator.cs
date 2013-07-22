@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -95,8 +96,6 @@ namespace Hex.TestProject
 
 		private static RouteCollection CreateRouteCollection( string routeName, string routeUrl )
 		{
-			//routeCollection.Add( "namedroute", new Route( "named/{controller}/{action}/{id}", null ) { Defaults = new RouteValueDictionary( new { id = "defaultid" } ) } );
-			
 			var routeCollection = new RouteCollection()
 			{
 				new Route( "{controller}/{action}/{id}", null )
@@ -129,12 +128,18 @@ namespace Hex.TestProject
 
 		private static ViewContext CreateViewContext( HttpContextBase httpContext, RouteData routeData, ViewDataDictionary viewDataDictionary )
 		{
-			return new ViewContext()
+			var viewContext = new ViewContext()
 			{
 				HttpContext = httpContext,
 				RouteData = routeData,
 				ViewData = viewDataDictionary
 			};
+
+			StringBuilder viewContextStringBuilder = new StringBuilder();
+			StringWriter viewContextWriter = new StringWriter( viewContextStringBuilder );
+			viewContext.Writer = viewContextWriter;
+
+			return viewContext;
 		}
 
 		public static IViewDataContainer CreateViewDataContainer( ViewDataDictionary viewDataDictionary )

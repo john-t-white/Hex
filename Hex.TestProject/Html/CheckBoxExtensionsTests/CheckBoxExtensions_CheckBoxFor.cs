@@ -16,7 +16,7 @@ namespace Hex.TestProject.Html.CheckBoxExtensionsTests
 
 			CheckBoxViewModel viewModel = new CheckBoxViewModel( true );
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.CheckBoxFor( x => x.CheckBox, x => x.Attribute( attributeName, attributeValue ) );
 

@@ -170,6 +170,8 @@
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBox.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBoxFor.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxViewModel.cs" />
+    <Compile Include="Html\FormExtensionsTests\FormExtensions_BeginForm.cs" />
+    <Compile Include="Html\FormExtensionsTests\FormExtensions_BeginRouteForm.cs" />
     <Compile Include="Html\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
