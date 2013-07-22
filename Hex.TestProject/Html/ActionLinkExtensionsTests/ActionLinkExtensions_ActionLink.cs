@@ -21,7 +21,7 @@ namespace Hex.TestProject.Html.ActionLinkExtensionsTests
 
 			var result = htmlHelper.ActionLink( linkText, actionName, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/Home/{2}\">{3}</a>", attributeName, attributeValue, actionName, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}\">{4}</a>", attributeName, attributeValue, HtmlHelperGenerator.DefaultController, actionName, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -38,7 +38,7 @@ namespace Hex.TestProject.Html.ActionLinkExtensionsTests
 
 			var result = htmlHelper.ActionLink( linkText, actionName, new { RouteParameter = routeValue }, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/Home/{2}?RouteParameter={3}\">{4}</a>", attributeName, attributeValue, actionName, routeValue, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?RouteParameter={4}\">{5}</a>", attributeName, attributeValue, HtmlHelperGenerator.DefaultController, actionName, routeValue, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -59,7 +59,7 @@ namespace Hex.TestProject.Html.ActionLinkExtensionsTests
 
 			var result = htmlHelper.ActionLink( linkText, actionName, routeValues, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/Home/{2}?{3}={4}\">{5}</a>", attributeName, attributeValue, actionName, routeParameter, routeValue, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?{4}={5}\">{6}</a>", attributeName, attributeValue, HtmlHelperGenerator.DefaultController, actionName, routeParameter, routeValue, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
