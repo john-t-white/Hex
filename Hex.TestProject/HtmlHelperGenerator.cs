@@ -17,17 +17,22 @@ namespace Hex.TestProject
 
 		public static HtmlHelper<object> CreateHtmlHelper()
 		{
-			return HtmlHelperGenerator.InternalCreateHtmlHelper( null, null );
+			return HtmlHelperGenerator.InternalCreateHtmlHelper<object>( null, null, null );
+		}
+
+		public static HtmlHelper<TViewModel> CreateHtmlHelper<TViewModel>( TViewModel viewModel )
+		{
+			return HtmlHelperGenerator.InternalCreateHtmlHelper<TViewModel>( null, null, viewModel );
 		}
 
 		public static HtmlHelper<object> CreateHtmlHelperWithNamedRoute( string routeName, string routeUrl )
 		{
-			return HtmlHelperGenerator.InternalCreateHtmlHelper( routeName, routeUrl );
+			return HtmlHelperGenerator.InternalCreateHtmlHelper<object>( routeName, routeUrl, null );
 		}
 
 		#region Internal Methods
 
-		public static HtmlHelper<object> InternalCreateHtmlHelper( string routeName, string routeUrl )
+		public static HtmlHelper<TViewModel> InternalCreateHtmlHelper<TViewModel>( string routeName, string routeUrl, TViewModel viewModel )
 		{
 			HttpContextBase httpContext = HtmlHelperGenerator.CreateHttpContext( null, null, FormMethod.Get, Uri.UriSchemeHttp.ToString(), -1 );
 			RouteCollection routeCollection = HtmlHelperGenerator.CreateRouteCollection( routeName, routeUrl );
@@ -35,11 +40,15 @@ namespace Hex.TestProject
 			RouteData routeData = HtmlHelperGenerator.CreateRouteData();
 
 			ViewDataDictionary viewDataDictionary = new ViewDataDictionary();
+			if( viewModel != null )
+			{
+				viewDataDictionary.Model = viewModel;
+			}
 
 			ViewContext viewContext = HtmlHelperGenerator.CreateViewContext( httpContext, routeData, viewDataDictionary );
 			IViewDataContainer viewDataContainer = HtmlHelperGenerator.CreateViewDataContainer( viewDataDictionary );
 
-			HtmlHelper<object> htmlHelper = new HtmlHelper<object>( viewContext, viewDataContainer, routeCollection );
+			HtmlHelper<TViewModel> htmlHelper = new HtmlHelper<TViewModel>( viewContext, viewDataContainer, routeCollection );
 			return htmlHelper;
 		}
 
