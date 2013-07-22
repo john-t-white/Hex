@@ -191,6 +191,9 @@
     <Compile Include="Html\RadioButtonExtensionsTests\RadioButtonViewModel.cs" />
     <Compile Include="Html\RadioButtonExtensionsTests\RadioButtonExtensions_RadioButtonFor.cs" />
     <Compile Include="Html\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
+    <Compile Include="Html\TextAreaExtensionsTests\TextAreaExtensions_TextArea.cs" />
+    <Compile Include="Html\TextAreaExtensionsTests\TextAreaViewModel.cs" />
+    <Compile Include="Html\TextAreaExtensionsTests\TextAreaExtensions_TextAreaFor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
   </ItemGroup>
