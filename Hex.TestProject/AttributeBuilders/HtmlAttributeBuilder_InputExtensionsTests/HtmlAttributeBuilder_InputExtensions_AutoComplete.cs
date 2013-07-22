@@ -20,7 +20,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilder_InputExtensions
 		}
 
 		[TestMethod]
-		public void WithBooleanValueAddsAttributeCorrectly()
+		public void WithBooleanValueTrueAddsAttributeCorrectly()
 		{
 			bool value = true;
 
@@ -30,6 +30,19 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilder_InputExtensions
 			Assert.AreSame( builder, result );
 
 			Assert.AreEqual( AutoCompleteType.On.ToString().ToLower(), builder.Attributes[ HtmlAttributes.AutoComplete ] );
+		}
+
+		[TestMethod]
+		public void WithBooleanValueFalseAddsAttributeCorrectly()
+		{
+			bool value = false;
+
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
+			var result = builder.AutoComplete( value );
+
+			Assert.AreSame( builder, result );
+
+			Assert.AreEqual( AutoCompleteType.Off.ToString().ToLower(), builder.Attributes[ HtmlAttributes.AutoComplete ] );
 		}
 
 		[TestMethod]
