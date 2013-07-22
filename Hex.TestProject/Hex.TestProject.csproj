@@ -172,6 +172,9 @@
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxViewModel.cs" />
     <Compile Include="Html\FormExtensionsTests\FormExtensions_BeginForm.cs" />
     <Compile Include="Html\FormExtensionsTests\FormExtensions_BeginRouteForm.cs" />
+    <Compile Include="Html\HiddenExtensionsTests\HiddenExtensions_HiddenFor.cs" />
+    <Compile Include="Html\HiddenExtensionsTests\HiddenExtensions_Hidden.cs" />
+    <Compile Include="Html\HiddenExtensionsTests\HiddenViewModel.cs" />
     <Compile Include="Html\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />

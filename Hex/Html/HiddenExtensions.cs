@@ -25,7 +25,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "hidden".</returns>
 		public static MvcHtmlString Hidden( this HtmlHelper htmlHelper, string name, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.Hidden( name, attributeExpression.GetAttributes() );
+			return htmlHelper.Hidden( name, null, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
