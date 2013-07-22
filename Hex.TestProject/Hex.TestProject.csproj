@@ -178,6 +178,9 @@
     <Compile Include="Html\LabelExtensionsTests\LabelExtensions_LabelFor.cs" />
     <Compile Include="Html\LabelExtensionsTests\LabelExtensions_Label.cs" />
     <Compile Include="Html\LabelExtensionsTests\LabelViewModel.cs" />
+    <Compile Include="Html\ListBoxExtensionsTests\ListBoxExtensions_ListBoxFor.cs" />
+    <Compile Include="Html\ListBoxExtensionsTests\ListBoxExtensions_ListBox.cs" />
+    <Compile Include="Html\ListBoxExtensionsTests\ListBoxViewModel.cs" />
     <Compile Include="Html\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
