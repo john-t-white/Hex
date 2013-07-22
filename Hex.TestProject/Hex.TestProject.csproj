@@ -184,6 +184,9 @@
     <Compile Include="Html\ListBoxExtensionsTests\ListBoxExtensions_ListBoxFor.cs" />
     <Compile Include="Html\ListBoxExtensionsTests\ListBoxExtensions_ListBox.cs" />
     <Compile Include="Html\ListBoxExtensionsTests\ListBoxViewModel.cs" />
+    <Compile Include="Html\PasswordExtensionsTests\PasswordExtensions_PasswordFor.cs" />
+    <Compile Include="Html\PasswordExtensionsTests\PasswordExtensions_Password.cs" />
+    <Compile Include="Html\PasswordExtensionsTests\PasswordViewModel.cs" />
     <Compile Include="Html\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
