@@ -36,7 +36,12 @@ namespace Hex.TestProject.Html.ActionLinkExtensionsTests
 
 			HtmlHelper htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
 
-			var result = htmlHelper.ActionLink( linkText, actionName, new { RouteParameter = routeValue }, x => x.Attribute( attributeName, attributeValue ) );
+			object routeValues = new
+			{
+				RouteParameter = routeValue
+			};
+
+			var result = htmlHelper.ActionLink( linkText, actionName, routeValues, x => x.Attribute( attributeName, attributeValue ) );
 
 			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?RouteParameter={4}\">{5}</a>", attributeName, attributeValue, HtmlHelperGenerator.DefaultController, actionName, routeValue, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
@@ -92,7 +97,12 @@ namespace Hex.TestProject.Html.ActionLinkExtensionsTests
 
 			HtmlHelper htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
 
-			var result = htmlHelper.ActionLink( linkText, actionName, controllerName, new { RouteParameter = routeValue }, x => x.Attribute( attributeName, attributeValue ) );
+			object routeValues = new
+			{
+				RouteParameter = routeValue
+			};
+
+			var result = htmlHelper.ActionLink( linkText, actionName, controllerName, routeValues, x => x.Attribute( attributeName, attributeValue ) );
 
 			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?RouteParameter={4}\">{5}</a>", attributeName, attributeValue, controllerName, actionName, routeValue, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
@@ -155,7 +165,12 @@ namespace Hex.TestProject.Html.ActionLinkExtensionsTests
 
 			HtmlHelper htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
 
-			var result = htmlHelper.ActionLink( linkText, actionName, controllerName, protocol, hostName, fragment, new { RouteParameter = routeValue }, x => x.Attribute( attributeName, attributeValue ) );
+			object routeValues = new
+			{
+				RouteParameter = routeValue
+			};
+
+			var result = htmlHelper.ActionLink( linkText, actionName, controllerName, protocol, hostName, fragment, routeValues, x => x.Attribute( attributeName, attributeValue ) );
 
 			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"{2}://{3}/{4}/{5}?RouteParameter={6}#{7}\">{8}</a>", attributeName, attributeValue, protocol, hostName, controllerName, actionName, routeValue, fragment, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );

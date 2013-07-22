@@ -17,9 +17,21 @@ namespace Hex.TestProject
 
 		public static HtmlHelper<object> CreateHtmlHelper()
 		{
-			HttpContextBase httpContext = HtmlHelperGenerator.CreateHttpContext( null, null, FormMethod.Get , Uri.UriSchemeHttp.ToString(), -1 );
-			RouteCollection routeCollection = HtmlHelperGenerator.CreateRouteCollection();
-			
+			return HtmlHelperGenerator.InternalCreateHtmlHelper( null, null );
+		}
+
+		public static HtmlHelper<object> CreateHtmlHelperWithNamedRoute( string routeName, string routeUrl )
+		{
+			return HtmlHelperGenerator.InternalCreateHtmlHelper( routeName, routeUrl );
+		}
+
+		#region Internal Methods
+
+		public static HtmlHelper<object> InternalCreateHtmlHelper( string routeName, string routeUrl )
+		{
+			HttpContextBase httpContext = HtmlHelperGenerator.CreateHttpContext( null, null, FormMethod.Get, Uri.UriSchemeHttp.ToString(), -1 );
+			RouteCollection routeCollection = HtmlHelperGenerator.CreateRouteCollection( routeName, routeUrl );
+
 			RouteData routeData = HtmlHelperGenerator.CreateRouteData();
 
 			ViewDataDictionary viewDataDictionary = new ViewDataDictionary();
@@ -30,8 +42,6 @@ namespace Hex.TestProject
 			HtmlHelper<object> htmlHelper = new HtmlHelper<object>( viewContext, viewDataContainer, routeCollection );
 			return htmlHelper;
 		}
-
-		#region Internal Methods
 
 		public static HttpContextBase CreateHttpContext( string appPath, string requestPath, FormMethod httpMethod, string protocol, int port )
 		{
@@ -74,7 +84,7 @@ namespace Hex.TestProject
 			return mockHttpContext;
 		}
 
-		private static RouteCollection CreateRouteCollection()
+		private static RouteCollection CreateRouteCollection( string routeName, string routeUrl )
 		{
 			//routeCollection.Add( "namedroute", new Route( "named/{controller}/{action}/{id}", null ) { Defaults = new RouteValueDictionary( new { id = "defaultid" } ) } );
 			
@@ -90,6 +100,11 @@ namespace Hex.TestProject
 					} )
 				}
 			};
+
+			if( !string.IsNullOrWhiteSpace( routeName ) && !string.IsNullOrWhiteSpace( routeUrl ) )
+			{
+				routeCollection.Add( routeName, new Route( routeUrl, null ) );
+			}
 
 			return routeCollection;
 		}
