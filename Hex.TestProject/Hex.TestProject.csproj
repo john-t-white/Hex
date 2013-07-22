@@ -46,6 +46,7 @@
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -170,6 +171,9 @@
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBox.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBoxFor.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxViewModel.cs" />
+    <Compile Include="Html\ColorExtensionsTests\ColorExtensions_Color.cs" />
+    <Compile Include="Html\ColorExtensionsTests\ColorViewModel.cs" />
+    <Compile Include="Html\ColorExtensionsTests\ColorExtensions_ColorFor.cs" />
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListExtensions_DropDownListFor.cs" />
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListExtensions_DropDownList.cs" />
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListViewModel.cs" />
