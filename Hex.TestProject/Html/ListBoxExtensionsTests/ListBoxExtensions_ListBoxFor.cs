@@ -9,7 +9,7 @@ namespace Hex.TestProject.Html.ListBoxExtensionsTests
 	public class ListBoxExtensions_ListBoxFor
 	{
 		[TestMethod]
-		public void WithNameAndAttributeExpressionReturnsCorrectly()
+		public void WithExpressionAndAttributeExpressionReturnsCorrectly()
 		{
 			string attributeName = "AttributeName";
 			string attributeValue = "AttributeValue";
@@ -25,9 +25,8 @@ namespace Hex.TestProject.Html.ListBoxExtensionsTests
 		}
 
 		[TestMethod]
-		public void WithNameSelectListAndAttributeExpressionReturnsCorrectly()
+		public void WithExpressionSelectListAndAttributeExpressionReturnsCorrectly()
 		{
-			string name = "SelectList";
 			string attributeName = "AttributeName";
 			string attributeValue = "AttributeValue";
 			string selectListItemText = "Text1";

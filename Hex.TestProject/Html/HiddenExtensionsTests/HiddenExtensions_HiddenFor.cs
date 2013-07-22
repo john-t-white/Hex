@@ -9,7 +9,7 @@ namespace Hex.TestProject.Html.HiddenExtensionsTests
 	public class HiddenExtensions_HiddenFor
 	{
 		[TestMethod]
-		public void WithAttributeExpressionReturnsCorrectly()
+		public void WithExpressionAndAttributeExpressionReturnsCorrectly()
 		{
 			string value = "Value";
 			string attributeName = "AttributeName";

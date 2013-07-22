@@ -9,7 +9,7 @@ namespace Hex.TestProject.Html.CheckBoxExtensionsTests
 	public class CheckBoxExtensions_CheckBoxFor
 	{
 		[TestMethod]
-		public void WithNameAndAttributeExpressionReturnsCorrectly()
+		public void WithExpressionAndAttributeExpressionReturnsCorrectly()
 		{
 			string attributeName = "AttributeName";
 			string attributeValue = "AttributeValue";
