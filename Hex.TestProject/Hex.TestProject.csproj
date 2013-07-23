@@ -200,6 +200,9 @@
     <Compile Include="Html\MonthExtensionsTests\MonthExtensions_Month.cs" />
     <Compile Include="Html\MonthExtensionsTests\MonthViewModel.cs" />
     <Compile Include="Html\MonthExtensionsTests\MonthExtensions_MonthFor.cs" />
+    <Compile Include="Html\NumberExtensionsTests\NumberExtensions_Number.cs" />
+    <Compile Include="Html\NumberExtensionsTests\NumberViewModel.cs" />
+    <Compile Include="Html\NumberExtensionsTests\NumberExtensions_NumberFor.cs" />
     <Compile Include="Html\PasswordExtensionsTests\PasswordExtensions_PasswordFor.cs" />
     <Compile Include="Html\PasswordExtensionsTests\PasswordExtensions_Password.cs" />
     <Compile Include="Html\PasswordExtensionsTests\PasswordViewModel.cs" />
