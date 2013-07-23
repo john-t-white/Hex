@@ -337,21 +337,11 @@ namespace Hex.AttributeBuilders
 		/// </summary>
 		/// <param name="step">The value.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
-		public HtmlAttributeBuilder Step( int step )
+		public HtmlAttributeBuilder Step( object step )
 		{
-			this.Attributes[ HtmlAttributes.Step ] = step;
+			object value = ( step is TimeFormat ) ? ( ( TimeFormat )step ).GetStepValue() : step;
 
-			return this;
-		}
-
-		/// <summary>
-		/// Represents the HTML attribute "step".
-		/// </summary>
-		/// <param name="step">The value.</param>
-		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
-		public HtmlAttributeBuilder Step( double step )
-		{
-			this.Attributes[ HtmlAttributes.Step ] = step;
+			this.Attributes[ HtmlAttributes.Step ] = value;
 
 			return this;
 		}

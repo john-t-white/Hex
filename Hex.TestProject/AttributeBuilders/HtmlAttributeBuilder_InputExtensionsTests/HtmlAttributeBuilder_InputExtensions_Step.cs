@@ -9,7 +9,7 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilder_InputExtensions
 	public class HtmlAttributeBuilder_InputExtensions_Step
 	{
 		[TestMethod]
-		public void IntegerAddsAttributeCorrectly()
+		public void AddsAttributeCorrectly()
 		{
 			int value = 1;
 
@@ -21,15 +21,15 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilder_InputExtensions
 		}
 
 		[TestMethod]
-		public void DoubleAddsAttributeCorrectly()
+		public void WithTimeFormatAddsAttributeCorrectly()
 		{
-			double value = .1;
+			TimeFormat value = TimeFormat.Millisecond;
 
 			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
 			var result = builder.Step( value );
 
 			Assert.AreSame( builder, result );
-			Assert.AreEqual( value, builder.Attributes[ HtmlAttributes.Step ] );
+			Assert.AreEqual( .001, builder.Attributes[ HtmlAttributes.Step ] );
 		}
 	}
 }
