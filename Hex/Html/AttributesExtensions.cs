@@ -9,13 +9,28 @@ using System.Web.Routing;
 
 namespace Hex.Html
 {
+	/// <summary>
+	/// Represents support for specifying HTML attributes at anytime.
+	/// </summary>
 	public static class AttributesExtensions
 	{
+		/// <summary>
+		/// Returns a string of HTML attributes with the specified values.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>A string of HTML attributes with the specified values.</returns>
 		public static MvcHtmlString Attributes( this HtmlHelper htmlHelper, object htmlAttributes )
 		{
 			return htmlHelper.Attributes( new RouteValueDictionary( htmlAttributes ) );
 		}
 
+		/// <summary>
+		/// Returns a string of HTML attributes with the specified values.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>A string of HTML attributes with the specified values.</returns>
 		public static MvcHtmlString Attributes( this HtmlHelper htmlHelper, IDictionary<string, object> htmlAttributes )
 		{
 			if( htmlAttributes == null )
@@ -30,6 +45,12 @@ namespace Hex.Html
 			return MvcHtmlString.Create( string.Join( " ", attributeValues ) );
 		}
 
+		/// <summary>
+		/// Returns a string of HTML attributes with the specified values.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>A string of HTML attributes with the specified values.</returns>
 		public static MvcHtmlString Attributes( this HtmlHelper htmlHelper, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.Attributes( attributeExpression.GetAttributes() );
