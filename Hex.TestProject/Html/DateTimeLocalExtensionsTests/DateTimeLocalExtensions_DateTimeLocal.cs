@@ -261,5 +261,20 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 			string expectedResult = string.Format( "<input id=\"{0}\" name=\"{0}\" type=\"datetime-local\" value=\"{1}\" />", name, value.ToString( "yyyy-MM-ddTHH:mm" ) );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
+
+		[TestMethod]
+		public void WithSpecifyingStepAttributeOverridesTimeFormatReturnsCorrectly()
+		{
+			string name = "Name";
+			TimeFormat timeFormat = TimeFormat.Second;
+			double step = 10;
+
+			HtmlHelper htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
+
+			var result = htmlHelper.DateTimeLocal( name, timeFormat, x => x.Step( step ) );
+
+			string expectedResult = string.Format( "<input id=\"{0}\" name=\"{0}\" step=\"{1}\" type=\"datetime-local\" value=\"\" />", name, step );
+			Assert.AreEqual( expectedResult, result.ToHtmlString() );
+		}
 	}
 }

@@ -183,6 +183,9 @@
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListExtensions_DropDownListFor.cs" />
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListExtensions_DropDownList.cs" />
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListViewModel.cs" />
+    <Compile Include="Html\EmailExtensionsTests\EmailExtensions_Email.cs" />
+    <Compile Include="Html\EmailExtensionsTests\EmailViewModel.cs" />
+    <Compile Include="Html\EmailExtensionsTests\EmailExtensions_EmailFor.cs" />
     <Compile Include="Html\FormExtensionsTests\FormExtensions_BeginForm.cs" />
     <Compile Include="Html\FormExtensionsTests\FormExtensions_BeginRouteForm.cs" />
     <Compile Include="Html\HiddenExtensionsTests\HiddenExtensions_HiddenFor.cs" />
