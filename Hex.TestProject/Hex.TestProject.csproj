@@ -228,6 +228,9 @@
     <Compile Include="Html\TimeExtensionsTests\TimeExtensions_Time.cs" />
     <Compile Include="Html\TimeExtensionsTests\TimeViewModel.cs" />
     <Compile Include="Html\TimeExtensionsTests\TimeExtensions_TimeFor.cs" />
+    <Compile Include="Html\UrlExtensionsTests\UrlExtensions_UrlFor.cs" />
+    <Compile Include="Html\UrlExtensionsTests\UrlExtensions_Url.cs" />
+    <Compile Include="Html\UrlExtensionsTests\UrlViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
   </ItemGroup>
