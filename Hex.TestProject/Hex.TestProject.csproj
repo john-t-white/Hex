@@ -216,6 +216,9 @@
     <Compile Include="Html\SearchExtensionsTests\SearchExtensions_Search.cs" />
     <Compile Include="Html\SearchExtensionsTests\SearchViewModel.cs" />
     <Compile Include="Html\SearchExtensionsTests\SearchExtensions_SearchFor.cs" />
+    <Compile Include="Html\TelephoneExtensionsTests\TelephoneExtensions_Telephone.cs" />
+    <Compile Include="Html\TelephoneExtensionsTests\TelephoneViewModel.cs" />
+    <Compile Include="Html\TelephoneExtensionsTests\TelephoneExtensions_TelephoneFor.cs" />
     <Compile Include="Html\TextAreaExtensionsTests\TextAreaExtensions_TextArea.cs" />
     <Compile Include="Html\TextAreaExtensionsTests\TextAreaViewModel.cs" />
     <Compile Include="Html\TextAreaExtensionsTests\TextAreaExtensions_TextAreaFor.cs" />
