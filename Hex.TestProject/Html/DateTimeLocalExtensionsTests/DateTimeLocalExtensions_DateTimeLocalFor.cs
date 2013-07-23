@@ -12,7 +12,7 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 		[TestMethod]
 		public void WithExpressionReturnsCorrectly()
 		{
-			var viewModel = new DateTimeLocalViewModel( "2000-01-01TH13:01" );
+			var viewModel = new DateTimeLocalViewModel( "2000-01-01T13:01" );
 
 			HtmlHelper<DateTimeLocalViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
@@ -25,7 +25,7 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 		[TestMethod]
 		public void WithExpressionAndHtmlAttributesObjectReturnsCorrectly()
 		{
-			var viewModel = new DateTimeLocalViewModel( "2000-01-01TH13:01" );
+			var viewModel = new DateTimeLocalViewModel( "2000-01-01T13:01" );
 			string attributeValue = "attributeValue";
 
 			object htmlAttributes = new
@@ -44,7 +44,7 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 		[TestMethod]
 		public void WithExpressionAndHtmlAttributesDictionaryReturnsCorrectly()
 		{
-			var viewModel = new DateTimeLocalViewModel( "2000-01-01TH13:01" );
+			var viewModel = new DateTimeLocalViewModel( "2000-01-01T13:01" );
 			string attributeName = "attributeName";
 			string attributeValue = "attributeValue";
 
@@ -62,7 +62,7 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 		[TestMethod]
 		public void WithExpressionAndAttributeExpressionReturnsCorrectly()
 		{
-			var viewModel = new DateTimeLocalViewModel( "2000-01-01TH13:01" );
+			var viewModel = new DateTimeLocalViewModel( "2000-01-01T13:01" );
 			string attributeName = "attributeName";
 			string attributeValue = "attributeValue";
 
@@ -77,7 +77,7 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 		[TestMethod]
 		public void WithExpressionAndTimeFormatReturnsCorrectly()
 		{
-			var viewModel = new DateTimeLocalViewModel( "2000-01-01TH13:01:01" );
+			var viewModel = new DateTimeLocalViewModel( "2000-01-01T13:01:01" );
 			TimeFormat timeFormat = TimeFormat.Second;
 
 			HtmlHelper<DateTimeLocalViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
@@ -91,7 +91,7 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 		[TestMethod]
 		public void WithExpressionTimeFormatAndHtmlAttributesObjectReturnsCorrectly()
 		{
-			var viewModel = new DateTimeLocalViewModel( "2000-01-01TH13:01:01" );
+			var viewModel = new DateTimeLocalViewModel( "2000-01-01T13:01:01" );
 			TimeFormat timeFormat = TimeFormat.Second;
 			string attributeValue = "attributeValue";
 
@@ -111,7 +111,7 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 		[TestMethod]
 		public void WithExpressionTimeFormatAndHtmlAttributesDictionaryReturnsCorrectly()
 		{
-			var viewModel = new DateTimeLocalViewModel( "2000-01-01TH13:01:01" );
+			var viewModel = new DateTimeLocalViewModel( "2000-01-01T13:01:01" );
 			TimeFormat timeFormat = TimeFormat.Second;
 			string attributeName = "attributeName";
 			string attributeValue = "attributeValue";
@@ -130,7 +130,7 @@ namespace Hex.TestProject.Html.DateTimeLocalExtensionsTests
 		[TestMethod]
 		public void WithExpressionTimeFormatAndAttributeExpressionReturnsCorrectly()
 		{
-			var viewModel = new DateTimeLocalViewModel( "2000-01-01TH13:01:01" );
+			var viewModel = new DateTimeLocalViewModel( "2000-01-01T13:01:01" );
 			TimeFormat timeFormat = TimeFormat.Second;
 			string attributeName = "attributeName";
 			string attributeValue = "attributeValue";
