@@ -256,10 +256,19 @@ namespace Hex.Html
 	/// </summary>
 	public enum TimeFormat
 	{
+		/// <summary>
+		/// Represents time format down to the minute.
+		/// </summary>
 		Minute,
 
+		/// <summary>
+		/// Represents time format down to the second.
+		/// </summary>
 		Second,
 
+		/// <summary>
+		/// Represents time format down to the millisecond.
+		/// </summary>
 		Millisecond
 	}
 }
