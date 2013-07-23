@@ -213,6 +213,9 @@
     <Compile Include="Html\RangeExtensionsTests\RangeViewModel.cs" />
     <Compile Include="Html\RangeExtensionsTests\RangeExtensions_RangeFor.cs" />
     <Compile Include="Html\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
+    <Compile Include="Html\SearchExtensionsTests\SearchExtensions_Search.cs" />
+    <Compile Include="Html\SearchExtensionsTests\SearchViewModel.cs" />
+    <Compile Include="Html\SearchExtensionsTests\SearchExtensions_SearchFor.cs" />
     <Compile Include="Html\TextAreaExtensionsTests\TextAreaExtensions_TextArea.cs" />
     <Compile Include="Html\TextAreaExtensionsTests\TextAreaViewModel.cs" />
     <Compile Include="Html\TextAreaExtensionsTests\TextAreaExtensions_TextAreaFor.cs" />
