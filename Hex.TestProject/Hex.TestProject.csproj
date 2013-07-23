@@ -209,6 +209,9 @@
     <Compile Include="Html\RadioButtonExtensionsTests\RadioButtonExtensions_RadioButton.cs" />
     <Compile Include="Html\RadioButtonExtensionsTests\RadioButtonViewModel.cs" />
     <Compile Include="Html\RadioButtonExtensionsTests\RadioButtonExtensions_RadioButtonFor.cs" />
+    <Compile Include="Html\RangeExtensionsTests\RangeExtensions_Range.cs" />
+    <Compile Include="Html\RangeExtensionsTests\RangeViewModel.cs" />
+    <Compile Include="Html\RangeExtensionsTests\RangeExtensions_RangeFor.cs" />
     <Compile Include="Html\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
     <Compile Include="Html\TextAreaExtensionsTests\TextAreaExtensions_TextArea.cs" />
     <Compile Include="Html\TextAreaExtensionsTests\TextAreaViewModel.cs" />
