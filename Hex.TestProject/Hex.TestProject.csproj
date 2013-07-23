@@ -167,6 +167,15 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_Min.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_MaxLength.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_Max.cs" />
+    <Compile Include="Extensions\ActionExtensionsTests\ActionExtensions_GetAttributes.cs" />
+    <Compile Include="Extensions\BooleanExtensions\BooleanExtensions_ToLowerString.cs" />
+    <Compile Include="Extensions\ColorExtensionsTests\ColorExtensions_ToHexadecimal.cs" />
+    <Compile Include="Extensions\DateTimeExtensionsTests\DateTimeExtensions_ToString.cs" />
+    <Compile Include="Extensions\EnumExtensionsTests\EnumExtensions_ToLowerString.cs" />
+    <Compile Include="Extensions\ObjectExtensionsTests\ObjectExtensions_ConvertIfUri.cs" />
+    <Compile Include="Extensions\ObjectExtensionsTests\ObjectExtensions_ConvertIfDateTime.cs" />
+    <Compile Include="Extensions\ObjectExtensionsTests\ObjectExtensions_ConvertIfColor.cs" />
+    <Compile Include="Extensions\TimeFormatExtensionsTests\TimeFormatExtensions_GetStepValue.cs" />
     <Compile Include="Html\ActionLinkExtensionsTests\ActionLinkExtensions_ActionLink.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBox.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBoxFor.cs" />

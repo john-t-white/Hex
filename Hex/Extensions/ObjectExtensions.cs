@@ -29,6 +29,16 @@ namespace Hex.Extensions
 			return obj;
 		}
 
+		public static object ConvertIfDateTime( this object obj, TimeFormat timeFormat )
+		{
+			if( obj is DateTime )
+			{
+				return ( ( DateTime )obj ).ToString( timeFormat );
+			}
+
+			return obj;
+		}
+
 		public static object ConvertIfDateTime( this object obj, TimeFormat timeFormat, bool timeOnly )
 		{
 			if( obj is DateTime )

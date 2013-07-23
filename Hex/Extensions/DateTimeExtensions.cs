@@ -13,6 +13,11 @@ namespace Hex.Extensions
 		private const string SECOND_TIME_FORMAT = "HH:mm:ss";
 		private const string MILLISECOND_TIME_FORMAT = "HH:mm:ss.fff";
 
+		public static string ToString( this DateTime dateTime, TimeFormat timeFormat )
+		{
+			return dateTime.ToString( timeFormat, true );
+		}
+
 		public static string ToString( this DateTime dateTime, TimeFormat timeFormat, bool timeOnly )
 		{
 			string timeFormatString;

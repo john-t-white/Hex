@@ -218,7 +218,7 @@ namespace Hex.Html
 
 			TimeExtensions.AddStepAttribute( timeFormat, htmlAttributes );
 
-			return htmlHelper.TextBox( name, value.ConvertIfDateTime( timeFormat, true ), htmlAttributes );
+			return htmlHelper.TextBox( name, value.ConvertIfDateTime( timeFormat ), htmlAttributes );
 		}
 
 		/// <summary>
