@@ -95,6 +95,7 @@
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\TimeFormatExtensions.cs" />
     <Compile Include="Html\ActionLinkExtensions.cs" />
+    <Compile Include="Html\AttributesExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions.cs" />
     <Compile Include="Html\ColorExtensions.cs" />
     <Compile Include="Html\DateTimeLocalExtensions.cs" />

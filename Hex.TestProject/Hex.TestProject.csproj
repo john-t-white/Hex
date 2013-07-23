@@ -181,6 +181,7 @@
     <Compile Include="Extensions\ObjectExtensionsTests\ObjectExtensions_ConvertIfColor.cs" />
     <Compile Include="Extensions\TimeFormatExtensionsTests\TimeFormatExtensions_GetStepValue.cs" />
     <Compile Include="Html\ActionLinkExtensionsTests\ActionLinkExtensions_ActionLink.cs" />
+    <Compile Include="Html\AttributesExtensionsTests\AttributesExtensions_Attributes.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBox.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBoxFor.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxViewModel.cs" />
