@@ -177,6 +177,9 @@
     <Compile Include="Html\DateExtensionsTests\DateExtensions_Date.cs" />
     <Compile Include="Html\DateExtensionsTests\DateViewModel.cs" />
     <Compile Include="Html\DateExtensionsTests\DateExtensions_DateFor.cs" />
+    <Compile Include="Html\DateTimeLocalExtensionsTests\DateTimeLocalExtensions_DateTimeLocal.cs" />
+    <Compile Include="Html\DateTimeLocalExtensionsTests\DateTimeLocalViewModel.cs" />
+    <Compile Include="Html\DateTimeLocalExtensionsTests\DateTimeLocalExtensions_DateTimeLocalFor.cs" />
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListExtensions_DropDownListFor.cs" />
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListExtensions_DropDownList.cs" />
     <Compile Include="Html\DropDownListExtensionsTests\DropDownListViewModel.cs" />
