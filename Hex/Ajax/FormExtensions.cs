@@ -108,5 +108,50 @@ namespace Hex.Ajax
 		{
 			return ajaxHelper.BeginForm( actionName, controllerName, routeValues, ajaxOptions, attributeExpression.GetAttributes() );
 		}
+
+		/// <summary>
+		/// Writes an opening &lt;form&gt; tag to the response using the specified routing information.
+		/// </summary>
+		/// <param name="ajaxHelper">The AJAX helper.</param>
+		/// <param name="routeName">The name of the route to use to obtain the form post URL.</param>
+		/// <param name="ajaxOptions">An object that provides options for the asynchronous request.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;form&gt; tag.</returns>
+		public static MvcForm BeginRouteForm( this AjaxHelper ajaxHelper, string routeName, AjaxOptions ajaxOptions, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return ajaxHelper.BeginRouteForm( routeName, null, ajaxOptions, attributeExpression );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;form&gt; tag to the response using the specified routing information.
+		/// </summary>
+		/// <param name="ajaxHelper">The AJAX helper.</param>
+		/// <param name="routeName">The name of the route to use to obtain the form post URL.</param>
+		/// <param name="routeValues">
+		///		An object that contains the parameters for a route.
+		///		The parameters are retrieved through reflection by examining the properties of the object.
+		///		This object is typically created by using object initializer syntax.
+		/// </param>
+		/// <param name="ajaxOptions">An object that provides options for the asynchronous request.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;form&gt; tag.</returns>
+		public static MvcForm BeginRouteForm( this AjaxHelper ajaxHelper, string routeName, object routeValues, AjaxOptions ajaxOptions, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return ajaxHelper.BeginRouteForm( routeName, new RouteValueDictionary( routeValues ), ajaxOptions, attributeExpression );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;form&gt; tag to the response using the specified routing information.
+		/// </summary>
+		/// <param name="ajaxHelper">The AJAX helper.</param>
+		/// <param name="routeName">The name of the route to use to obtain the form post URL.</param>
+		/// <param name="routeValues">An object that contains the parameters for a route.</param>
+		/// <param name="ajaxOptions">An object that provides options for the asynchronous request.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;form&gt; tag.</returns>
+		public static MvcForm BeginRouteForm( this AjaxHelper ajaxHelper, string routeName, RouteValueDictionary routeValues, AjaxOptions ajaxOptions, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return ajaxHelper.BeginRouteForm( routeName, routeValues, ajaxOptions, attributeExpression.GetAttributes() );
+		}
 	}
 }

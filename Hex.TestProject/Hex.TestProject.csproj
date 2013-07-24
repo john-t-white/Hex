@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="Ajax\ActionLinkExtensionsTests\ActionLinkExtensions_ActionLink.cs" />
     <Compile Include="Ajax\FormExtensionsTests\FormExtensions_BeginForm.cs" />
+    <Compile Include="Ajax\FormExtensionsTests\FormExtensions_BeginRouteForm.cs" />
     <Compile Include="Ajax\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnSubmit.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnSelect.cs" />
