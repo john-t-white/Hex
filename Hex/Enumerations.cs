@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hex.Html
+namespace Hex
 {
 	/// <summary>
 	/// Enumerates the values for the autocomplete HTML attribute.

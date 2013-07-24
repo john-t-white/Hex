@@ -17,7 +17,7 @@ namespace Hex.Extensions
 		private const string MILLISECOND_TIME_FORMAT = "HH:mm:ss.fff";
 
 		/// <summary>
-		/// Returns the appropriate time only format string based on the <see cref="Hex.Html.TimeFormat"/>.
+		/// Returns the appropriate time only format string based on the <see cref="Hex.TimeFormat"/>.
 		/// </summary>
 		/// <param name="dateTime">The <see cref="System.DateTime"/> instance this method extends.</param>
 		/// <param name="timeFormat">The time format.</param>
@@ -28,7 +28,7 @@ namespace Hex.Extensions
 		}
 
 		/// <summary>
-		/// Returns the appropriate full date/time format string based on the <see cref="Hex.Html.TimeFormat"/>.  The date format will always be yyyy-MM-ddT.
+		/// Returns the appropriate full date/time format string based on the <see cref="Hex.TimeFormat"/>.  The date format will always be yyyy-MM-ddT.
 		/// </summary>
 		/// <param name="dateTime">The <see cref="System.DateTime"/> instance this method extends.</param>
 		/// <param name="timeFormat">The time format.</param>

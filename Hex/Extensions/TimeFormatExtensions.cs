@@ -7,15 +7,15 @@ using System.Text;
 namespace Hex.Extensions
 {
 	/// <summary>
-	/// Extensions to <see cref="Hex.Html.TimeFormat"/>.
+	/// Extensions to <see cref="Hex.TimeFormat"/>.
 	/// </summary>
 	public static class TimeFormatExtensions
 	{
 		/// <summary>
-		/// Gets the appropriate HTML attribute step value based on the <see cref="Hex.Html.TimeFormat"/>.
-		/// If <see cref="Hex.Html.TimeFormat.Minute"/> is specified, null is returned because that is the default value.
+		/// Gets the appropriate HTML attribute step value based on the <see cref="Hex.TimeFormat"/>.
+		/// If <see cref="Hex.TimeFormat.Minute"/> is specified, null is returned because that is the default value.
 		/// </summary>
-		/// <param name="timeFormat">The <see cref="Hex.Html.TimeFormat"/> instance this method extends.</param>
+		/// <param name="timeFormat">The <see cref="Hex.TimeFormat"/> instance this method extends.</param>
 		/// <returns>The appropriate HTML attribute step value.</returns>
 		public static double? GetStepValue( this TimeFormat timeFormat )
 		{

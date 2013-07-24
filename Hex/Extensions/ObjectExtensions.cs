@@ -44,7 +44,7 @@ namespace Hex.Extensions
 		}
 
 		/// <summary>
-		/// Will convert a <see cref="System.DateTime"/> using the format based on <see cref="Hex.Html.TimeFormat"/>, otherwise it will return the object passed in.
+		/// Will convert a <see cref="System.DateTime"/> using the format based on <see cref="Hex.TimeFormat"/>, otherwise it will return the object passed in.
 		/// </summary>
 		/// <param name="obj">The <see cref="System.Object"/> instance this method extends.</param>
 		/// <param name="timeFormat">The time format.</param>
@@ -60,7 +60,7 @@ namespace Hex.Extensions
 		}
 
 		/// <summary>
-		/// Will convert a <see cref="System.DateTime"/> using the format based on <see cref="Hex.Html.TimeFormat"/>, otherwise it will return the object passed in.
+		/// Will convert a <see cref="System.DateTime"/> using the format based on <see cref="Hex.TimeFormat"/>, otherwise it will return the object passed in.
 		/// </summary>
 		/// <param name="obj">The <see cref="System.Object"/> instance this method extends.</param>
 		/// <param name="timeFormat">The time format.</param>

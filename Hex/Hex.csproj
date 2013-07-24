@@ -111,7 +111,7 @@
     <Compile Include="Html\DropDownListExtensions.cs" />
     <Compile Include="Html\HiddenExtensions.cs" />
     <Compile Include="Html\HtmlAttributes.cs" />
-    <Compile Include="Html\Enumerations.cs" />
+    <Compile Include="Enumerations.cs" />
     <Compile Include="Html\LabelExtensions.cs" />
     <Compile Include="Html\ListBoxExtensions.cs" />
     <Compile Include="Html\PasswordExtensions.cs" />
