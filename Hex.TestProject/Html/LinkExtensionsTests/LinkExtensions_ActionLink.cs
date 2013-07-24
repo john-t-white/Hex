@@ -1,13 +1,13 @@
-﻿using Hex.Html;
-using System;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
+using Hex.Html;
 using System.Web.Routing;
 
-namespace Hex.TestProject.Html.ActionLinkExtensionsTests
+namespace Hex.TestProject.Html.LinkExtensionsTests
 {
 	[TestClass]
-	public class ActionLinkExtensions_ActionLink
+	public class LinkExtensions_ActionLink
 	{
 		[TestMethod]
 		public void WithLinkTextActionNameAndAttributeExpressionReturnsCorrectly()

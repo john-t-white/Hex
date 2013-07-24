@@ -78,9 +78,8 @@
     <Compile Include="..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Ajax\ActionLinkExtensions.cs" />
     <Compile Include="Ajax\FormExtensions.cs" />
-    <Compile Include="Ajax\RouteLinkExtensions.cs" />
+    <Compile Include="Ajax\LinkExtensions.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensions.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder.cs" />
@@ -97,11 +96,11 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\TimeFormatExtensions.cs" />
-    <Compile Include="Html\ActionLinkExtensions.cs" />
     <Compile Include="Html\AttributesExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions.cs" />
     <Compile Include="Html\ColorExtensions.cs" />
     <Compile Include="Html\DateTimeLocalExtensions.cs" />
+    <Compile Include="Html\LinkExtensions.cs" />
     <Compile Include="Html\MonthExtensions.cs" />
     <Compile Include="Html\DateExtensions.cs" />
     <Compile Include="Html\EmailExtensions.cs" />
@@ -119,7 +118,6 @@
     <Compile Include="Html\ListBoxExtensions.cs" />
     <Compile Include="Html\PasswordExtensions.cs" />
     <Compile Include="Html\RadioButtonExtensions.cs" />
-    <Compile Include="Html\RouteLinkExtensions.cs" />
     <Compile Include="Html\TextAreaExtensions.cs" />
     <Compile Include="Html\TimeExtensions.cs" />
     <Compile Include="Html\UrlExtensions.cs" />

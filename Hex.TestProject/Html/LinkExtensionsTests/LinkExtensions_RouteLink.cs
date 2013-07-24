@@ -4,10 +4,10 @@ using System.Web.Mvc;
 using Hex.Html;
 using System.Web.Routing;
 
-namespace Hex.TestProject.Html.RouteLinkExtensionsTests
+namespace Hex.TestProject.Html.LinkExtensionsTests
 {
 	[TestClass]
-	public class RouteLinkExtensions_RouteLink
+	public class LinkExtensions_RouteLink
 	{
 		[TestMethod]
 		public void WithLinkTextRouteValuesAndAttributeExpressionReturnsCorrectly()

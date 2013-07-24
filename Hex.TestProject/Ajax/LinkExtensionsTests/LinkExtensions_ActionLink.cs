@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
-using Hex.Ajax;
 using System.Web.Mvc.Ajax;
 using System.Web.Routing;
+using Hex.Ajax;
 
-namespace Hex.TestProject.Ajax.ActionLinkExtensionsTests
+namespace Hex.TestProject.Ajax.LinkExtensionsTests
 {
 	[TestClass]
-	public class ActionLinkExtensions_ActionLink
+	public class LinkExtensions_ActionLink
 	{
 		[TestMethod]
 		public void WithLinkTextActionNameAjaxOptionsAndAttributeExpressionReturnsCorrectly()

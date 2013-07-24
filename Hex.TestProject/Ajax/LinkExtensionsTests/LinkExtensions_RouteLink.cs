@@ -2,13 +2,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc.Ajax;
 using System.Web.Mvc;
-using Hex.Ajax;
 using System.Web.Routing;
+using Hex.Ajax;
 
-namespace Hex.TestProject.Ajax.RouteLinkExtensionsTests
+namespace Hex.TestProject.Ajax.LinkExtensionsTests
 {
 	[TestClass]
-	public class RouteLinkExtensions_RouteLink
+	public class LinkExtensions_RouteLink
 	{
 		[TestMethod]
 		public void WithLinkTextRouteValuesObjectAjaxOptionsAndAttributeExpressionReturnsCorrectly()

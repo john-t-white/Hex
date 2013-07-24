@@ -89,10 +89,10 @@
     <Compile Include="..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Ajax\ActionLinkExtensionsTests\ActionLinkExtensions_ActionLink.cs" />
     <Compile Include="Ajax\FormExtensionsTests\FormExtensions_BeginForm.cs" />
     <Compile Include="Ajax\FormExtensionsTests\FormExtensions_BeginRouteForm.cs" />
-    <Compile Include="Ajax\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
+    <Compile Include="Ajax\LinkExtensionsTests\LinkExtensions_ActionLink.cs" />
+    <Compile Include="Ajax\LinkExtensionsTests\LinkExtensions_RouteLink.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnSubmit.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnSelect.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnScroll.cs" />
@@ -185,7 +185,6 @@
     <Compile Include="Extensions\ObjectExtensionsTests\ObjectExtensions_ConvertIfDateTime.cs" />
     <Compile Include="Extensions\ObjectExtensionsTests\ObjectExtensions_ConvertIfColor.cs" />
     <Compile Include="Extensions\TimeFormatExtensionsTests\TimeFormatExtensions_GetStepValue.cs" />
-    <Compile Include="Html\ActionLinkExtensionsTests\ActionLinkExtensions_ActionLink.cs" />
     <Compile Include="Html\AttributesExtensionsTests\AttributesExtensions_Attributes.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBox.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBoxFor.cs" />
@@ -213,6 +212,8 @@
     <Compile Include="Html\LabelExtensionsTests\LabelExtensions_LabelFor.cs" />
     <Compile Include="Html\LabelExtensionsTests\LabelExtensions_Label.cs" />
     <Compile Include="Html\LabelExtensionsTests\LabelViewModel.cs" />
+    <Compile Include="Html\LinkExtensionsTests\LinkExtensions_ActionLink.cs" />
+    <Compile Include="Html\LinkExtensionsTests\LinkExtensions_RouteLink.cs" />
     <Compile Include="Html\ListBoxExtensionsTests\ListBoxExtensions_ListBoxFor.cs" />
     <Compile Include="Html\ListBoxExtensionsTests\ListBoxExtensions_ListBox.cs" />
     <Compile Include="Html\ListBoxExtensionsTests\ListBoxViewModel.cs" />
@@ -231,7 +232,6 @@
     <Compile Include="Html\RangeExtensionsTests\RangeExtensions_Range.cs" />
     <Compile Include="Html\RangeExtensionsTests\RangeViewModel.cs" />
     <Compile Include="Html\RangeExtensionsTests\RangeExtensions_RangeFor.cs" />
-    <Compile Include="Html\RouteLinkExtensionsTests\RouteLinkExtensions_RouteLink.cs" />
     <Compile Include="Html\SearchExtensionsTests\SearchExtensions_Search.cs" />
     <Compile Include="Html\SearchExtensionsTests\SearchViewModel.cs" />
     <Compile Include="Html\SearchExtensionsTests\SearchExtensions_SearchFor.cs" />
