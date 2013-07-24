@@ -89,6 +89,7 @@
     <Compile Include="..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Ajax\ActionLinkExtensionsTests\ActionLinkExtensions_ActionLink.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnSubmit.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnSelect.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnScroll.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="AttributeCollectionTests\AttributeCollection_GetAttributeValue.cs" />
     <Compile Include="AttributeNameValueCollectionTests\AttributeNameValueCollection_ToString.cs" />
     <Compile Include="AttributeValueCollectionTests\AttributeValueCollection_ToString.cs" />
+    <Compile Include="AjaxHelperGenerator.cs" />
     <Compile Include="Extensions\ActionExtensionsTests\ActionExtensions_GetAttributes.cs" />
     <Compile Include="Extensions\BooleanExtensions\BooleanExtensions_ToLowerString.cs" />
     <Compile Include="Extensions\ColorExtensionsTests\ColorExtensions_ToHexadecimal.cs" />
