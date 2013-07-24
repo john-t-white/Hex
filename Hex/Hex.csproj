@@ -79,6 +79,7 @@
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Ajax\ActionLinkExtensions.cs" />
+    <Compile Include="Ajax\RouteLinkExtensions.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensions.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder.cs" />
