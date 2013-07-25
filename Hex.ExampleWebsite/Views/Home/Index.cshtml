@@ -3,3 +3,8 @@
 }
 
 <h2>@ViewBag.Title</h2>
+
+@using( Html.BeginActionLink( "Index" ) )
+{
+	<span>This is a test to see if I can put <strong>ANY</strong> HTML inside of a link tag and have it render correctly.</span>
+}

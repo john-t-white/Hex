@@ -97,6 +97,11 @@ namespace Hex.Html
 		public readonly static string Hidden = "hidden";
 
 		/// <summary>
+		/// Represents the HTML attribute "href".
+		/// </summary>
+		public readonly static string Href = "href";
+
+		/// <summary>
 		/// Represents the HTML attribute "hreflang".
 		/// </summary>
 		public readonly static string HrefLang = "hreflang";

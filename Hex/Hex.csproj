@@ -101,6 +101,7 @@
     <Compile Include="Html\ColorExtensions.cs" />
     <Compile Include="Html\DateTimeLocalExtensions.cs" />
     <Compile Include="Html\LinkExtensions.cs" />
+    <Compile Include="Html\BeginLinkExtensions.cs" />
     <Compile Include="Html\MonthExtensions.cs" />
     <Compile Include="Html\DateExtensions.cs" />
     <Compile Include="Html\EmailExtensions.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Html\TextAreaExtensions.cs" />
     <Compile Include="Html\TimeExtensions.cs" />
     <Compile Include="Html\UrlExtensions.cs" />
+    <Compile Include="MvcLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ExceptionMessages.Designer.cs">
       <AutoGen>True</AutoGen>

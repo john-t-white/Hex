@@ -36,7 +36,8 @@ namespace Hex.Html
 		/// <param name="linkText">The inner text of the anchor element.</param>
 		/// <param name="actionName">The name of the action.</param>
 		/// <param name="routeValues">
-		///		An object that contains the parameters for a route. The parameters are retrieved through reflection by examining the properties of the object.
+		///		An object that contains the parameters for a route.
+		///		The parameters are retrieved through reflection by examining the properties of the object.
 		///		The object is typically created by using object initializer syntax.
 		///	</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
@@ -85,7 +86,8 @@ namespace Hex.Html
 		/// <param name="actionName">The name of the action.</param>
 		/// <param name="controllerName">The name of the controller.</param>
 		/// <param name="routeValues">
-		///		An object that contains the parameters for a route. The parameters are retrieved through reflection by examining the properties of the object.
+		///		An object that contains the parameters for a route.
+		///		The parameters are retrieved through reflection by examining the properties of the object.
 		///		The object is typically created by using object initializer syntax.
 		/// </param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
@@ -141,7 +143,8 @@ namespace Hex.Html
 		/// <param name="hostName">The host name for the URL.</param>
 		/// <param name="fragment">The URL fragment name (the anchor name).</param>
 		/// <param name="routeValues">
-		///		An object that contains the parameters for a route. The parameters are retrieved through reflection by examining the properties of the object.
+		///		An object that contains the parameters for a route.
+		///		The parameters are retrieved through reflection by examining the properties of the object.
 		///		The object is typically created by using object initializer syntax.
 		/// </param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
