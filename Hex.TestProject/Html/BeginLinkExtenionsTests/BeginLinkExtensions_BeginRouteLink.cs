@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace Hex.TestProject.Html.BeginLinkExtenionsTests
 {
 	[TestClass]
-	public class BeingLinkExtensions_BeginRouteLink
+	public class BeginLinkExtensions_BeginRouteLink
 	{
 		[TestMethod]
 		public void WithRouteValuesObjectReturnsCorrectly()

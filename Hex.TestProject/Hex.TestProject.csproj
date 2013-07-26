@@ -89,6 +89,9 @@
     <Compile Include="..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Ajax\BeginLinkExtensionsTests\BeginLinkExtensions_BeginActionLink.cs" />
+    <Compile Include="Ajax\BeginLinkExtensionsTests\BeginLinkExtensions_BeginRouteLink.cs" />
+    <Compile Include="Ajax\BeginLinkExtensionsTests\BeginLinkExtensions_EndLink.cs" />
     <Compile Include="Ajax\FormExtensionsTests\FormExtensions_BeginForm.cs" />
     <Compile Include="Ajax\FormExtensionsTests\FormExtensions_BeginRouteForm.cs" />
     <Compile Include="Ajax\LinkExtensionsTests\LinkExtensions_ActionLink.cs" />
@@ -188,7 +191,7 @@
     <Compile Include="Html\AttributesExtensionsTests\AttributesExtensions_Attributes.cs" />
     <Compile Include="Html\BeginLinkExtenionsTests\BeginLinkExtensions_BeginActionLink.cs" />
     <Compile Include="Html\BeginLinkExtenionsTests\BeginLinkExtensions_EndLink.cs" />
-    <Compile Include="Html\BeginLinkExtenionsTests\BeingLinkExtensions_BeginRouteLink.cs" />
+    <Compile Include="Html\BeginLinkExtenionsTests\BeginLinkExtensions_BeginRouteLink.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBox.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxExtensions_CheckBoxFor.cs" />
     <Compile Include="Html\CheckBoxExtensionsTests\CheckBoxViewModel.cs" />
