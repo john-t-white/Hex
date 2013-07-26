@@ -22,7 +22,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName )
 		{
-			return htmlHelper.BeginActionLink( actionName, null, null, null, null, new RouteValueDictionary(), ( IDictionary<string, object> )null );
+			return htmlHelper.BeginActionLink( actionName, null, null, null, null, null, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
@@ -34,7 +34,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginActionLink( actionName, null, null, null, null, new RouteValueDictionary(), attributeExpression.GetAttributes() );
+			return htmlHelper.BeginActionLink( actionName, null, null, null, null, null, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -138,7 +138,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName, string controllerName )
 		{
-			return htmlHelper.BeginActionLink( actionName, controllerName, null, null, null, new RouteValueDictionary(), ( IDictionary<string, object> )null );
+			return htmlHelper.BeginActionLink( actionName, controllerName, null, null, null, null, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
@@ -151,7 +151,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName, string controllerName, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginActionLink( actionName, controllerName, null, null, null, new RouteValueDictionary(), attributeExpression.GetAttributes() );
+			return htmlHelper.BeginActionLink( actionName, controllerName, null, null, null, null, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -235,7 +235,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName, string controllerName, string protocol, string hostName, string fragment, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginActionLink( actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(), attributeExpression.GetAttributes() );
+			return htmlHelper.BeginActionLink( actionName, controllerName, protocol, hostName, fragment, null, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -414,7 +414,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginRouteLink( this HtmlHelper htmlHelper, string routeName )
 		{
-			return htmlHelper.BeginRouteLink( routeName, null, null, null, new RouteValueDictionary(), ( IDictionary<string, object> )null );
+			return htmlHelper.BeginRouteLink( routeName, null, null, null, null, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
@@ -426,7 +426,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginRouteLink( this HtmlHelper htmlHelper, string routeName, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginRouteLink( routeName, null, null, null, new RouteValueDictionary(), attributeExpression.GetAttributes() );
+			return htmlHelper.BeginRouteLink( routeName, null, null, null, null, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -533,7 +533,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginRouteLink( this HtmlHelper htmlHelper, string routeName, string protocol, string hostName, string fragment, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginRouteLink( routeName, protocol, hostName, fragment, new RouteValueDictionary(), attributeExpression.GetAttributes() );
+			return htmlHelper.BeginRouteLink( routeName, protocol, hostName, fragment, null, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>

@@ -89,7 +89,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "month".</returns>
 		public static MvcHtmlString Month( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
 			htmlAttributes[ HtmlAttributes.Type ] = MONTH_TYPE_ATTRIBUTE_VALUE;
 
 			return htmlHelper.TextBox( name, value.ConvertIfDateTime( MONTH_FORMAT ), htmlAttributes );

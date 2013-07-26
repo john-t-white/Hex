@@ -89,7 +89,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "date".</returns>
 		public static MvcHtmlString Date( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
 			htmlAttributes[ HtmlAttributes.Type ] = DATE_TYPE_ATTRIBUTE_VALUE;
 
 			return htmlHelper.TextBox( name, value.ConvertIfDateTime( DATE_TIME_FORMAT ), htmlAttributes );

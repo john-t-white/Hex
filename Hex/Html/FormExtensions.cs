@@ -53,7 +53,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;form&gt; tag.</returns>
 		public static MvcForm BeginForm( this HtmlHelper htmlHelper, string actionName, string controllerName, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginForm( actionName, controllerName, new RouteValueDictionary(), FormMethod.Post, attributeExpression.GetAttributes() );
+			return htmlHelper.BeginForm( actionName, controllerName, null, FormMethod.Post, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;form&gt; tag.</returns>
 		public static MvcForm BeginForm( this HtmlHelper htmlHelper, string actionName, string controllerName, FormMethod method, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginForm( actionName, controllerName, new RouteValueDictionary(), method, attributeExpression.GetAttributes() );
+			return htmlHelper.BeginForm( actionName, controllerName, null, method, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -170,7 +170,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;form&gt; tag.</returns>
 		public static MvcForm BeginRouteForm( this HtmlHelper htmlHelper, string routeName, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginRouteForm( routeName, new RouteValueDictionary(), FormMethod.Post, attributeExpression.GetAttributes() );
+			return htmlHelper.BeginRouteForm( routeName, null, FormMethod.Post, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -183,7 +183,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;form&gt; tag.</returns>
 		public static MvcForm BeginRouteForm( this HtmlHelper htmlHelper, string routeName, FormMethod method, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.BeginRouteForm( routeName, new RouteValueDictionary(), method, attributeExpression.GetAttributes() );
+			return htmlHelper.BeginRouteForm( routeName, null, method, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>

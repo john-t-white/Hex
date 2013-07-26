@@ -213,7 +213,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "time".</returns>
 		public static MvcHtmlString Time( this HtmlHelper htmlHelper, string name, object value, TimeFormat timeFormat, IDictionary<string, object> htmlAttributes )
 		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
 			htmlAttributes[ HtmlAttributes.Type ] = TIME_TYPE_ATTRIBUTE_VALUE;
 
 			TimeExtensions.AddStepAttribute( timeFormat, htmlAttributes );

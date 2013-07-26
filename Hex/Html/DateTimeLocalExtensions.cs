@@ -214,7 +214,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "datetime-local".</returns>
 		public static MvcHtmlString DateTimeLocal( this HtmlHelper htmlHelper, string name, object value, TimeFormat timeFormat, IDictionary<string, object> htmlAttributes )
 		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
 			htmlAttributes[ HtmlAttributes.Type ] = DATE_TIME_LOCAL_TYPE_ATTRIBUTE_VALUE;
 
 			DateTimeLocalExtensions.AddStepAttribute( timeFormat, htmlAttributes );

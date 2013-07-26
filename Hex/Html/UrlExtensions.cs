@@ -89,7 +89,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "url".</returns>
 		public static MvcHtmlString Url( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
 			htmlAttributes[ HtmlAttributes.Type ] = URL_TYPE_ATTRIBUTE_VALUE;
 
 			return htmlHelper.TextBox( name, value.ConvertIfUri(), htmlAttributes );

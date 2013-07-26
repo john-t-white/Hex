@@ -30,7 +30,7 @@ namespace Hex.Ajax
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this AjaxHelper ajaxHelper, string actionName, AjaxOptions ajaxOptions )
 		{
-			return ajaxHelper.BeginActionLink( actionName, null, null, null, null, new RouteValueDictionary(), ajaxOptions, ( IDictionary<string, object> )null );
+			return ajaxHelper.BeginActionLink( actionName, null, null, null, null, null, ajaxOptions, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
@@ -44,7 +44,7 @@ namespace Hex.Ajax
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this AjaxHelper ajaxHelper, string actionName, AjaxOptions ajaxOptions, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return ajaxHelper.BeginActionLink( actionName, null, null, null, null, new RouteValueDictionary(), ajaxOptions, attributeExpression.GetAttributes() );
+			return ajaxHelper.BeginActionLink( actionName, null, null, null, null, null, ajaxOptions, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -162,7 +162,7 @@ namespace Hex.Ajax
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this AjaxHelper ajaxHelper, string actionName, string controllerName, AjaxOptions ajaxOptions )
 		{
-			return ajaxHelper.BeginActionLink( actionName, controllerName, null, null, null, new RouteValueDictionary(), ajaxOptions, ( IDictionary<string, object> )null );
+			return ajaxHelper.BeginActionLink( actionName, controllerName, null, null, null, null, ajaxOptions, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
@@ -177,7 +177,7 @@ namespace Hex.Ajax
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this AjaxHelper ajaxHelper, string actionName, string controllerName, AjaxOptions ajaxOptions, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return ajaxHelper.BeginActionLink( actionName, controllerName, null, null, null, new RouteValueDictionary(), ajaxOptions, attributeExpression.GetAttributes() );
+			return ajaxHelper.BeginActionLink( actionName, controllerName, null, null, null, null, ajaxOptions, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>

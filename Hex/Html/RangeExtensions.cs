@@ -88,7 +88,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "range".</returns>
 		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
 			htmlAttributes[ HtmlAttributes.Type ] = RANGE_TYPE_ATTRIBUTE_VALUE;
 
 			return htmlHelper.TextBox( name, value, htmlAttributes );
@@ -164,7 +164,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "range".</returns>
 		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, object min, object max, IDictionary<string, object> htmlAttributes )
 		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
 			htmlAttributes[ HtmlAttributes.Min ] = min;
 			htmlAttributes[ HtmlAttributes.Max ] = max;
 
@@ -298,7 +298,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object min, object max, IDictionary<string, object> htmlAttributes )
 		{
-			htmlAttributes = htmlAttributes ?? new RouteValueDictionary();
+			htmlAttributes = htmlAttributes ?? new Dictionary<string, object>();
 			htmlAttributes[ HtmlAttributes.Min ] = min;
 			htmlAttributes[ HtmlAttributes.Max ] = max;
 
