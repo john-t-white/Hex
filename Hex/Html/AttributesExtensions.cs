@@ -22,7 +22,7 @@ namespace Hex.Html
 		/// <returns>A string of HTML attributes with the specified values.</returns>
 		public static MvcHtmlString Attributes( this HtmlHelper htmlHelper, object htmlAttributes )
 		{
-			return htmlHelper.Attributes( new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Attributes( HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>

@@ -76,7 +76,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "datetime-local".</returns>
 		public static MvcHtmlString DateTimeLocal( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.DateTimeLocal( name, value, DEFAULT_TIME_FORMAT, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.DateTimeLocal( name, value, DEFAULT_TIME_FORMAT, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -135,7 +135,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "datetime-local".</returns>
 		public static MvcHtmlString DateTimeLocal( this HtmlHelper htmlHelper, string name, TimeFormat timeFormat, object htmlAttributes )
 		{
-			return htmlHelper.DateTimeLocal( name, null, timeFormat, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.DateTimeLocal( name, null, timeFormat, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -196,7 +196,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "datetime-local".</returns>
 		public static MvcHtmlString DateTimeLocal( this HtmlHelper htmlHelper, string name, object value, TimeFormat timeFormat, object htmlAttributes )
 		{
-			return htmlHelper.DateTimeLocal( name, value, timeFormat, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.DateTimeLocal( name, value, timeFormat, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -266,7 +266,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString DateTimeLocalFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
 		{
-			return htmlHelper.DateTimeLocalFor( expression, DEFAULT_TIME_FORMAT, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.DateTimeLocalFor( expression, DEFAULT_TIME_FORMAT, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -327,7 +327,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString DateTimeLocalFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TimeFormat timeFormat, object htmlAttributes )
 		{
-			return htmlHelper.DateTimeLocalFor( expression, timeFormat, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.DateTimeLocalFor( expression, timeFormat, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>

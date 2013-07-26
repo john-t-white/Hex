@@ -71,7 +71,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "email".</returns>
 		public static MvcHtmlString Email( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.Email( name, value, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Email( name, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -137,7 +137,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString EmailFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
 		{
-			return htmlHelper.EmailFor( expression, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.EmailFor( expression, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>

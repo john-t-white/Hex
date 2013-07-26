@@ -75,7 +75,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "time".</returns>
 		public static MvcHtmlString Time( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.Time( name, value, DEFAULT_TIME_FORMAT, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Time( name, value, DEFAULT_TIME_FORMAT, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -134,7 +134,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "time".</returns>
 		public static MvcHtmlString Time( this HtmlHelper htmlHelper, string name, TimeFormat timeFormat, object htmlAttributes )
 		{
-			return htmlHelper.Time( name, null, timeFormat, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Time( name, null, timeFormat, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -195,7 +195,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "time".</returns>
 		public static MvcHtmlString Time( this HtmlHelper htmlHelper, string name, object value, TimeFormat timeFormat, object htmlAttributes )
 		{
-			return htmlHelper.Time( name, value, timeFormat, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Time( name, value, timeFormat, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -265,7 +265,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString TimeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
 		{
-			return htmlHelper.TimeFor( expression, DEFAULT_TIME_FORMAT, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.TimeFor( expression, DEFAULT_TIME_FORMAT, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -326,7 +326,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString TimeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TimeFormat timeFormat, object htmlAttributes )
 		{
-			return htmlHelper.TimeFor( expression, timeFormat, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.TimeFor( expression, timeFormat, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>

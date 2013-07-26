@@ -71,7 +71,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "range".</returns>
 		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.Range( name, value, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Range( name, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -145,7 +145,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "range".</returns>
 		public static MvcHtmlString Range( this HtmlHelper htmlHelper, string name, object value, object min, object max, object htmlAttributes )
 		{
-			return htmlHelper.Range( name, value, min, max, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Range( name, value, min, max, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -216,7 +216,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
 		{
-			return htmlHelper.RangeFor( expression, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.RangeFor( expression, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -281,7 +281,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString RangeFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object min, object max, object htmlAttributes )
 		{
-			return htmlHelper.RangeFor( expression, min, max, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.RangeFor( expression, min, max, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>

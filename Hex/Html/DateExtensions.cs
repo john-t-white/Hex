@@ -72,7 +72,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "date".</returns>
 		public static MvcHtmlString Date( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.Date( name, value, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Date( name, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -138,7 +138,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString DateFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
 		{
-			return htmlHelper.DateFor( expression, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.DateFor( expression, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>

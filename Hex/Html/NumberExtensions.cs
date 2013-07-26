@@ -71,7 +71,7 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "number".</returns>
 		public static MvcHtmlString Number( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.Number( name, value, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.Number( name, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -137,7 +137,7 @@ namespace Hex.Html
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" /> parameter is null.</exception>
 		public static MvcHtmlString NumberFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes )
 		{
-			return htmlHelper.NumberFor( expression, new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.NumberFor( expression, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>

@@ -71,7 +71,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName, object routeValues, object htmlAttributes )
 		{
-			return htmlHelper.BeginActionLink( actionName, null, null, null, null, new RouteValueDictionary( routeValues ), new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.BeginActionLink( actionName, null, null, null, null, new RouteValueDictionary( routeValues ), HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -173,7 +173,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName, string controllerName, object routeValues, object htmlAttributes )
 		{
-			return htmlHelper.BeginActionLink( actionName, controllerName, null, null, null, new RouteValueDictionary( routeValues ), new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.BeginActionLink( actionName, controllerName, null, null, null, new RouteValueDictionary( routeValues ), HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -260,7 +260,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes )
 		{
-			return htmlHelper.BeginActionLink( actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary( routeValues ), new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.BeginActionLink( actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary( routeValues ), HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -352,7 +352,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginRouteLink( this HtmlHelper htmlHelper, object routeValues, object htmlAttributes )
 		{
-			return htmlHelper.BeginRouteLink( null, null, null, null, new RouteValueDictionary( routeValues ), new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.BeginRouteLink( null, null, null, null, new RouteValueDictionary( routeValues ), HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -463,7 +463,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginRouteLink( this HtmlHelper htmlHelper, string routeName, object routeValues, object htmlAttributes )
 		{
-			return htmlHelper.BeginRouteLink( routeName, null, null, null, new RouteValueDictionary( routeValues ), new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.BeginRouteLink( routeName, null, null, null, new RouteValueDictionary( routeValues ), HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -557,7 +557,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginRouteLink( this HtmlHelper htmlHelper, string routeName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes )
 		{
-			return htmlHelper.BeginRouteLink( routeName, protocol, hostName, fragment, new RouteValueDictionary( routeValues ), new RouteValueDictionary( htmlAttributes ) );
+			return htmlHelper.BeginRouteLink( routeName, protocol, hostName, fragment, new RouteValueDictionary( routeValues ), HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
