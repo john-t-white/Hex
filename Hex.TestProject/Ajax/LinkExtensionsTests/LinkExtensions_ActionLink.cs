@@ -10,6 +10,8 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 	[TestClass]
 	public class LinkExtensions_ActionLink
 	{
+		private const string ONCLICK_SCRIPT = "onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), { insertionMode: Sys.Mvc.InsertionMode.replace });\"";
+
 		[TestMethod]
 		public void WithLinkTextActionNameAjaxOptionsAndAttributeExpressionReturnsCorrectly()
 		{
@@ -23,7 +25,7 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 
 			var result = ajaxHelper.ActionLink( linkText, actionName, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}\" onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">{4}</a>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}\" {4}>{5}</a>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, ONCLICK_SCRIPT, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -46,7 +48,7 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 
 			var result = ajaxHelper.ActionLink( linkText, actionName, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?RouteParameter={4}\" onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">{5}</a>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, routeValue, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?RouteParameter={4}\" {5}>{6}</a>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, routeValue, ONCLICK_SCRIPT, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -68,7 +70,7 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 
 			var result = ajaxHelper.ActionLink( linkText, actionName, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?{4}={5}\" onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">{6}</a>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, routeParameter, routeValue, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?{4}={5}\" {6}>{7}</a>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, routeParameter, routeValue, ONCLICK_SCRIPT, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -86,7 +88,7 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 
 			var result = ajaxHelper.ActionLink( linkText, actionName, controllerName, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}\" onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">{4}</a>", attributeName, attributeValue, controllerName, actionName, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}\" {4}>{5}</a>", attributeName, attributeValue, controllerName, actionName, ONCLICK_SCRIPT, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -110,7 +112,7 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 
 			var result = ajaxHelper.ActionLink( linkText, actionName, controllerName, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?RouteParameter={4}\" onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">{5}</a>", attributeName, attributeValue, controllerName, actionName, routeValue, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?RouteParameter={4}\" {5}>{6}</a>", attributeName, attributeValue, controllerName, actionName, routeValue, ONCLICK_SCRIPT, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -133,7 +135,7 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 
 			var result = ajaxHelper.ActionLink( linkText, actionName, controllerName, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?{4}={5}\" onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">{6}</a>", attributeName, attributeValue, controllerName, actionName, routeParameter, routeValue, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"/{2}/{3}?{4}={5}\" {6}>{7}</a>", attributeName, attributeValue, controllerName, actionName, routeParameter, routeValue, ONCLICK_SCRIPT, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -160,7 +162,7 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 
 			var result = ajaxHelper.ActionLink( linkText, actionName, controllerName, protocol, hostName, fragment, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"{2}://{3}/{4}/{5}?RouteParameter={6}#{7}\" onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">{8}</a>", attributeName, attributeValue, protocol, hostName, controllerName, actionName, routeValue, fragment, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"{2}://{3}/{4}/{5}?RouteParameter={6}#{7}\" {8}>{9}</a>", attributeName, attributeValue, protocol, hostName, controllerName, actionName, routeValue, fragment, ONCLICK_SCRIPT, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -186,7 +188,7 @@ namespace Hex.TestProject.Ajax.LinkExtensionsTests
 
 			var result = ajaxHelper.ActionLink( linkText, actionName, controllerName, protocol, hostName, fragment, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"{2}://{3}/{4}/{5}?{6}={7}#{8}\" onclick=\"Sys.Mvc.AsyncHyperlink.handleClick(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">{9}</a>", attributeName, attributeValue, protocol, hostName, controllerName, actionName, routeParameter, routeValue, fragment, linkText );
+			string expectedResult = string.Format( "<a {0}=\"{1}\" href=\"{2}://{3}/{4}/{5}?{6}={7}#{8}\" {9}>{10}</a>", attributeName, attributeValue, protocol, hostName, controllerName, actionName, routeParameter, routeValue, fragment, ONCLICK_SCRIPT, linkText );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 	}

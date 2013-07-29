@@ -10,6 +10,9 @@ namespace Hex.TestProject.Ajax.FormExtensionsTests
 	[TestClass]
 	public class FormExtensions_BeginForm
 	{
+		private const string ONCLICK_SCRIPT = "onclick=\"Sys.Mvc.AsyncForm.handleClick(this, new Sys.UI.DomEvent(event));\"";
+		private const string ONSUBMIT_SCRIPT = "onsubmit=\"Sys.Mvc.AsyncForm.handleSubmit(this, new Sys.UI.DomEvent(event), { insertionMode: Sys.Mvc.InsertionMode.replace });\"";
+
 		[TestMethod]
 		public void WithActionNameAjaxOptionsAndAttributeExpressionReturnsCorrectly()
 		{
@@ -22,7 +25,7 @@ namespace Hex.TestProject.Ajax.FormExtensionsTests
 
 			var result = ajaxHelper.BeginForm( actionName, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}\" method=\"post\" onclick=\"Sys.Mvc.AsyncForm.handleClick(this, new Sys.UI.DomEvent(event));\" onsubmit=\"Sys.Mvc.AsyncForm.handleSubmit(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName );
+			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}\" method=\"post\" {4} {5}>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, ONCLICK_SCRIPT, ONSUBMIT_SCRIPT );
 			Assert.AreEqual( expectedResult, ajaxHelper.ViewContext.Writer.ToString() );
 		}
 
@@ -44,7 +47,7 @@ namespace Hex.TestProject.Ajax.FormExtensionsTests
 
 			var result = ajaxHelper.BeginForm( actionName, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}?RouteParameter={4}\" method=\"post\" onclick=\"Sys.Mvc.AsyncForm.handleClick(this, new Sys.UI.DomEvent(event));\" onsubmit=\"Sys.Mvc.AsyncForm.handleSubmit(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, routeValue );
+			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}?RouteParameter={4}\" method=\"post\" {5} {6}>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, routeValue, ONCLICK_SCRIPT, ONSUBMIT_SCRIPT );
 			Assert.AreEqual( expectedResult, ajaxHelper.ViewContext.Writer.ToString() );
 		}
 
@@ -65,7 +68,7 @@ namespace Hex.TestProject.Ajax.FormExtensionsTests
 
 			var result = ajaxHelper.BeginForm( actionName, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}?{4}={5}\" method=\"post\" onclick=\"Sys.Mvc.AsyncForm.handleClick(this, new Sys.UI.DomEvent(event));\" onsubmit=\"Sys.Mvc.AsyncForm.handleSubmit(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, routeParameter, routeValue );
+			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}?{4}={5}\" method=\"post\" {6} {7}>", attributeName, attributeValue, AjaxHelperGenerator.DefaultController, actionName, routeParameter, routeValue, ONCLICK_SCRIPT, ONSUBMIT_SCRIPT );
 			Assert.AreEqual( expectedResult, ajaxHelper.ViewContext.Writer.ToString() );
 		}
 
@@ -82,7 +85,7 @@ namespace Hex.TestProject.Ajax.FormExtensionsTests
 
 			var result = ajaxHelper.BeginForm( actionName, controllerName, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}\" method=\"post\" onclick=\"Sys.Mvc.AsyncForm.handleClick(this, new Sys.UI.DomEvent(event));\" onsubmit=\"Sys.Mvc.AsyncForm.handleSubmit(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">", attributeName, attributeValue, controllerName, actionName );
+			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}\" method=\"post\" {4} {5}>", attributeName, attributeValue, controllerName, actionName, ONCLICK_SCRIPT, ONSUBMIT_SCRIPT );
 			Assert.AreEqual( expectedResult, ajaxHelper.ViewContext.Writer.ToString() );
 		}
 
@@ -105,7 +108,7 @@ namespace Hex.TestProject.Ajax.FormExtensionsTests
 
 			var result = ajaxHelper.BeginForm( actionName, controllerName, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}?RouteParameter={4}\" method=\"post\" onclick=\"Sys.Mvc.AsyncForm.handleClick(this, new Sys.UI.DomEvent(event));\" onsubmit=\"Sys.Mvc.AsyncForm.handleSubmit(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">", attributeName, attributeValue, controllerName, actionName, routeValue );
+			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}?RouteParameter={4}\" method=\"post\" {5} {6}>", attributeName, attributeValue, controllerName, actionName, routeValue, ONCLICK_SCRIPT, ONSUBMIT_SCRIPT );
 			Assert.AreEqual( expectedResult, ajaxHelper.ViewContext.Writer.ToString() );
 		}
 
@@ -127,7 +130,7 @@ namespace Hex.TestProject.Ajax.FormExtensionsTests
 
 			var result = ajaxHelper.BeginForm( actionName, controllerName, routeValues, ajaxOptions, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}?{4}={5}\" method=\"post\" onclick=\"Sys.Mvc.AsyncForm.handleClick(this, new Sys.UI.DomEvent(event));\" onsubmit=\"Sys.Mvc.AsyncForm.handleSubmit(this, new Sys.UI.DomEvent(event), {{ insertionMode: Sys.Mvc.InsertionMode.replace }});\">", attributeName, attributeValue, controllerName, actionName, routeParameter, routeValue );
+			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"/{2}/{3}?{4}={5}\" method=\"post\" {6} {7}>", attributeName, attributeValue, controllerName, actionName, routeParameter, routeValue, ONCLICK_SCRIPT, ONSUBMIT_SCRIPT );
 			Assert.AreEqual( expectedResult, ajaxHelper.ViewContext.Writer.ToString() );
 		}
 	}
