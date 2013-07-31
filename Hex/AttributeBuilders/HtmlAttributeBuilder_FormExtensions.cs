@@ -24,15 +24,14 @@ namespace Hex.AttributeBuilders
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder AddAcceptCharsets( params string[] characterSets )
 		{
-			AttributeValueCollection attributeValues = this.Attributes.GetAttributeValue<AttributeValueCollection>( HtmlAttributes.AcceptCharset );
-			if( attributeValues == null )
+			AttributeValueCollection attributeValues = null;
+			if( !this.Attributes.TryGetValue<AttributeValueCollection>( HtmlAttributes.AcceptCharset, out attributeValues ) )
 			{
 				attributeValues = new AttributeValueCollection();
 				this.Attributes[ HtmlAttributes.AcceptCharset ] = attributeValues;
 			}
 
 			attributeValues.AddRange( characterSets );
-
 			return this;
 		}
 

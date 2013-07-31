@@ -10,7 +10,7 @@ namespace Hex
 	/// Contains a collection of name/value pairs for an attribute.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable" )]
-	public class AttributeNameValueCollection
+	public class StyleCollection
 		: Dictionary<string, object>
 	{
 

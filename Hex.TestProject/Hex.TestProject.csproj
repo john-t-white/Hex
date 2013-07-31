@@ -175,8 +175,7 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_MaxLength.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_Max.cs" />
     <Compile Include="AttributeCollectionTests\AttributeCollection_AddOrRemoveMinimizedAttribute.cs" />
-    <Compile Include="AttributeCollectionTests\AttributeCollection_GetAttributeValue.cs" />
-    <Compile Include="AttributeNameValueCollectionTests\AttributeNameValueCollection_ToString.cs" />
+    <Compile Include="StyleCollectionTests\StyleCollection_ToString.cs" />
     <Compile Include="AttributeValueCollectionTests\AttributeValueCollection_ToString.cs" />
     <Compile Include="AjaxHelperGenerator.cs" />
     <Compile Include="Extensions\ActionExtensionsTests\ActionExtensions_GetAttributes.cs" />

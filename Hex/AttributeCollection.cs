@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Hex
 {
@@ -27,23 +28,6 @@ namespace Hex
 			{
 				this[ attributeName ] = attributeName;
 			}
-		}
-
-		/// <summary>
-		/// Retrieves an attribute value cast to the specified type.  If the attribute doesn't exist in the collection, the default value of <typeparamref name="TAttributeValue"/> is returned."
-		/// </summary>
-		/// <typeparam name="TAttributeValue">The type of attribute value.</typeparam>
-		/// <param name="key">The name of the attribute.</param>
-		/// <returns>The attribute value, otherwise the default value of <typeparamref name="TAttributeValue"/> is returned.</returns>
-		public TAttributeValue GetAttributeValue<TAttributeValue>( string key )
-		{
-			object attributeValue;
-			if( !this.TryGetValue( key, out attributeValue ) )
-			{
-				return default( TAttributeValue );
-			}
-
-			return ( TAttributeValue )attributeValue;
 		}
 	}
 }

@@ -20,9 +20,9 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 
 			Assert.AreSame( builder, result );
 
-			AttributeNameValueCollection attributeNameValues = builder.Attributes[ HtmlAttributes.Style ] as AttributeNameValueCollection;
-			Assert.IsNotNull( attributeNameValues );
-			Assert.AreEqual( value, attributeNameValues[ name ] );
+			StyleCollection styles = builder.Attributes[ HtmlAttributes.Style ] as StyleCollection;
+			Assert.IsNotNull( styles );
+			Assert.AreEqual( value, styles[ name ] );
 		}
 
 		[TestMethod]

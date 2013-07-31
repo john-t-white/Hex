@@ -13,13 +13,13 @@ namespace Hex.TestProject.AttributeBuilders.StyleAttributeBuilderTests
 			string name = "Name";
 			string value = "Value";
 
-			AttributeNameValueCollection attributeNameValues = new AttributeNameValueCollection();
-			StyleAttributeBuilder builder = new StyleAttributeBuilder( attributeNameValues );
+			StyleCollection styles = new StyleCollection();
+			StyleAttributeBuilder builder = new StyleAttributeBuilder( styles );
 
 			var result = builder.Style( name, value );
 
 			Assert.AreSame( builder, result );
-			Assert.AreEqual( value, attributeNameValues[ name ] );
+			Assert.AreEqual( value, styles[ name ] );
 		}
 	}
 }

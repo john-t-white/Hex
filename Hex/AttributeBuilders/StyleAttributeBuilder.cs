@@ -11,16 +11,19 @@ namespace Hex.AttributeBuilders
 	/// </summary>
 	public class StyleAttributeBuilder
 	{
-		private AttributeNameValueCollection _attributeNameValues;
-
 		/// <summary>
 		/// Instaniates a new instance of <see cref="Hex.AttributeBuilders.StyleAttributeBuilder"/>.
 		/// </summary>
-		/// <param name="attributeNameValues"></param>
-		public StyleAttributeBuilder( AttributeNameValueCollection attributeNameValues )
+		/// <param name="styles"></param>
+		public StyleAttributeBuilder( StyleCollection styles )
 		{
-			this._attributeNameValues = attributeNameValues;
+			this.Styles = styles;
 		}
+
+		/// <summary>
+		/// Contains all of the style definitions.
+		/// </summary>
+		public StyleCollection Styles { get; private set; }
 
 		/// <summary>
 		/// Provides a way of adding a style value.
@@ -32,7 +35,7 @@ namespace Hex.AttributeBuilders
 		{
 			if( !string.IsNullOrWhiteSpace( name ) )
 			{
-				this._attributeNameValues[ name ] = value;
+				this.Styles[ name ] = value;
 			}
 
 			return this;

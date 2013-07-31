@@ -23,15 +23,14 @@ namespace Hex.AttributeBuilders
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder AddForm( params string[] formIds )
 		{
-			AttributeValueCollection attributeValues = this.Attributes.GetAttributeValue<AttributeValueCollection>( HtmlAttributes.Form );
-			if( attributeValues == null )
+			AttributeValueCollection attributeValues = null;
+			if( !this.Attributes.TryGetValue<AttributeValueCollection>( HtmlAttributes.Form, out attributeValues ) )
 			{
 				attributeValues = new AttributeValueCollection();
 				this.Attributes[ HtmlAttributes.Form ] = attributeValues;
 			}
 
 			attributeValues.AddRange( formIds );
-
 			return this;
 		}
 

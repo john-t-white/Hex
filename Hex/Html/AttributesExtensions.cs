@@ -38,11 +38,7 @@ namespace Hex.Html
 				return MvcHtmlString.Empty;
 			}
 
-			var attributeValues = ( from currentValue in htmlAttributes
-									select string.Format( "{0}=\"{1}\"", currentValue.Key, htmlHelper.AttributeEncode( currentValue.Value ) ) )
-									.ToArray();
-
-			return MvcHtmlString.Create( string.Join( " ", attributeValues ) );
+			return MvcHtmlString.Create( htmlAttributes.ToHtmlAttributeString() );
 		}
 
 		/// <summary>

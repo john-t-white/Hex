@@ -49,15 +49,14 @@ namespace Hex.AttributeBuilders
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder AddClass( params string[] classes )
 		{
-			AttributeValueCollection attributeValues = this.Attributes.GetAttributeValue<AttributeValueCollection>( HtmlAttributes.Class );
-			if( attributeValues == null )
+			AttributeValueCollection attributeValues = null;
+			if( !this.Attributes.TryGetValue<AttributeValueCollection>( HtmlAttributes.Class, out attributeValues ) )
 			{
 				attributeValues = new AttributeValueCollection();
 				this.Attributes[ HtmlAttributes.Class ] = attributeValues;
 			}
 
 			attributeValues.AddRange( classes );
-
 			return this;
 		}
 
@@ -71,8 +70,8 @@ namespace Hex.AttributeBuilders
 		{
 			if( !string.IsNullOrWhiteSpace( name ) )
 			{
-				AttributeValueCollection attributeValues = this.Attributes.GetAttributeValue<AttributeValueCollection>( name );
-				if( attributeValues == null )
+				AttributeValueCollection attributeValues = null;
+				if( !this.Attributes.TryGetValue<AttributeValueCollection>( name, out attributeValues ) )
 				{
 					attributeValues = new AttributeValueCollection();
 					this.Attributes[ name ] = attributeValues;
@@ -332,14 +331,14 @@ namespace Hex.AttributeBuilders
 		{
 			if( styleAttributeExpression != null )
 			{
-				AttributeNameValueCollection attributeNameValues = this.Attributes.GetAttributeValue<AttributeNameValueCollection>( HtmlAttributes.Style );
-				if( attributeNameValues == null )
+				StyleCollection styles = null;
+				if( !this.Attributes.TryGetValue<StyleCollection>( HtmlAttributes.Style, out styles ) )
 				{
-					attributeNameValues = new AttributeNameValueCollection();
-					this.Attributes[ HtmlAttributes.Style ] = attributeNameValues;
+					styles = new StyleCollection();
+					this.Attributes[ HtmlAttributes.Style ] = styles;
 				}
 
-				styleAttributeExpression( new StyleAttributeBuilder( attributeNameValues ) );
+				styleAttributeExpression( new StyleAttributeBuilder( styles ) );
 			}
 
 			return this;

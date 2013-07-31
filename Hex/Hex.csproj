@@ -88,13 +88,14 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensions.cs" />
     <Compile Include="AttributeBuilders\StyleAttributeBuilder.cs" />
     <Compile Include="AttributeCollection.cs" />
-    <Compile Include="AttributeNameValueCollection.cs" />
+    <Compile Include="StyleCollection.cs" />
     <Compile Include="AttributeValueCollection.cs" />
     <Compile Include="Extensions\ActionExtensions.cs" />
     <Compile Include="Extensions\BooleanExtensions.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\TimeFormatExtensions.cs" />
     <Compile Include="Html\AttributesExtensions.cs" />
