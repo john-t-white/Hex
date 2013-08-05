@@ -18,7 +18,7 @@ namespace Hex.Extensions
 		/// <param name="dictionary">The IDictionar&lt;string, object&gt; this method extends.</param>
 		/// <param name="key">The key whose value to get.</param>
 		/// <param name="value">When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type <typeparamref name="TValue"/>. This parameter is passed uninitialized.</param>
-		/// <returns>true if the object that implements IDictionary<TKey, TValue> contains an element with the specified key; otherwise, false.</returns>
+		/// <returns>true if the object that implements IDictionary&lt;TKey, TValue&gt; contains an element with the specified key; otherwise, false.</returns>
 		public static bool TryGetValue<TValue>( this IDictionary<string, object> dictionary, string key, out TValue value )
 		{
 			object attributeValue;
@@ -35,7 +35,7 @@ namespace Hex.Extensions
 		/// <summary>
 		/// Returns all of the items as a string of Html attributes.
 		/// </summary>
-		/// <param name="dictionary">The IDictionar<string, object> this method extends.</param>
+		/// <param name="dictionary">The IDictionary&lt;string, object&gt; this method extends.</param>
 		/// <returns>A string of Html attributes.</returns>
 		public static string ToHtmlAttributeString<TKey, TValue>( this IDictionary<TKey, TValue> dictionary )
 		{
