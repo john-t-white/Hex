@@ -14,7 +14,7 @@ namespace Hex.Extensions
 		/// <returns>The lower case string of the enumeration value.</returns>
 		public static string ToLowerString( this Enum enumeration )
 		{
-			return enumeration.ToString().ToLower();
+			return enumeration.ToString().ToLower().Replace( '_', '-' );
 		}
 	}
 }

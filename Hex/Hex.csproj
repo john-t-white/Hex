@@ -84,6 +84,7 @@
     <Compile Include="AttributeBuilders\EventAttributeBuilder.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensions.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilder_ImageExtensions.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_LinkExtensions.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensions.cs" />
     <Compile Include="AttributeBuilders\StyleAttributeBuilder.cs" />

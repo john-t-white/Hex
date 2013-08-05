@@ -44,6 +44,22 @@ namespace Hex
 	}
 
 	/// <summary>
+	/// Enumerates the values for the crossorigin HTML attribute.
+	/// </summary>
+	public enum CrossOriginType
+	{
+		/// <summary>
+		/// Represents crossorigin="anonymous".
+		/// </summary>
+		Anonymous,
+
+		/// <summary>
+		/// Represents crossorigin="use-credentials".
+		/// </summary>
+		Use_Credentials
+	}
+
+	/// <summary>
 	/// Enumerates the values for the dir HTML attribute.
 	/// </summary>
 	public enum DirType

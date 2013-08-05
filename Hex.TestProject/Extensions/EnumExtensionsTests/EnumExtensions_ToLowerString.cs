@@ -17,5 +17,15 @@ namespace Hex.TestProject.Extensions.EnumExtensionsTests
 
 			Assert.AreEqual( AutoCompleteType.Off.ToString().ToLower(), result );
 		}
+
+		[TestMethod]
+		public void ReplacesUnderscoreWithDashAndReturnsCorrectly()
+		{
+			CrossOriginType value = CrossOriginType.Use_Credentials;
+
+			var result = value.ToLowerString();
+
+			Assert.AreEqual( CrossOriginType.Use_Credentials.ToString().ToLower().Replace( '_', '-' ), result );
+		}
 	}
 }

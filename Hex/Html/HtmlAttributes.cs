@@ -62,6 +62,11 @@ namespace Hex.Html
 		public readonly static string ContextMenu = "contextmenu";
 
 		/// <summary>
+		/// Represents the HTML attribute "crossorigin".
+		/// </summary>
+		public readonly static string CrossOrigin = "crossorigin";
+
+		/// <summary>
 		/// Represents the HTML attribute "disabled".
 		/// </summary>
 		public readonly static string Disabled = "disabled";
@@ -97,6 +102,11 @@ namespace Hex.Html
 		public readonly static string FormNoValidate = "formnovalidate";
 
 		/// <summary>
+		/// Represents the HTML attribute "height".
+		/// </summary>
+		public readonly static string Height = "height";
+
+		/// <summary>
 		/// Represents the HTML attribute "hidden".
 		/// </summary>
 		public readonly static string Hidden = "hidden";
@@ -115,6 +125,11 @@ namespace Hex.Html
 		/// Represents the HTML attribute "id".
 		/// </summary>
 		public readonly static string Id = "id";
+
+		/// <summary>
+		/// Represents the HTML attribute "ismap".
+		/// </summary>
+		public readonly static string IsMap = "ismap";
 
 		/// <summary>
 		/// Represents the HTML attribute "lang".
@@ -202,6 +217,11 @@ namespace Hex.Html
 		public readonly static string SpellCheck = "spellcheck";
 
 		/// <summary>
+		/// Represents the HTML attribute "src".
+		/// </summary>
+		public readonly static string Src = "src";
+
+		/// <summary>
 		/// Represents the HTML attribute "step".
 		/// </summary>
 		public readonly static string Step = "step";
@@ -235,6 +255,16 @@ namespace Hex.Html
 		/// Represents the HTML attribute "type".
 		/// </summary>
 		public readonly static string Type = "type";
+
+		/// <summary>
+		/// Represents the HTML attribute "usemap".
+		/// </summary>
+		public readonly static string UseMap = "usemap";
+
+		/// <summary>
+		/// Represents the HTML attribute "width".
+		/// </summary>
+		public readonly static string Width = "width";
 
 		/// <summary>
 		/// Represents the HTML attribute "wrap".

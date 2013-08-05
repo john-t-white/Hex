@@ -130,6 +130,12 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Alt.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensionsTests\HtmlAttributeBuilder_FormExtensions_EncType.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensionsTests\HtmlAttributeBuilder_FormExtensions_NoValidate.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilder_ImageExtensionsTests\HtmlAttributeBuilder_ImageExtensions_Width.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilder_ImageExtensionsTests\HtmlAttributeBuilder_ImageExtensions_UseMap.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilder_ImageExtensionsTests\HtmlAttributeBuilder_ImageExtensions_Height.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilder_ImageExtensionsTests\HtmlAttributeBuilder_ImageExtensions_CrossOrigin.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilder_ImageExtensionsTests\HtmlAttributeBuilder_ImageExtensions_Src.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilder_ImageExtensionsTests\HtmlAttributeBuilder_ImageExtensions_IsMap.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_Name.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensionsTests\HtmlAttributeBuilder_FormExtensions_AddAcceptCharSets.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Events.cs" />
