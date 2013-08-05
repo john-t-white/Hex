@@ -22,6 +22,11 @@ namespace Hex.Html
 		public readonly static string AccessKey = "accesskey";
 
 		/// <summary>
+		/// Represents the HTML attribute "alt".
+		/// </summary>
+		public readonly static string Alt = "alt";
+
+		/// <summary>
 		/// Represents the HTML attribute "autocomplete".
 		/// </summary>
 		public readonly static string AutoComplete = "autocomplete";
@@ -180,6 +185,11 @@ namespace Hex.Html
 		/// Represents the HTML attribute "rows".
 		/// </summary>
 		public readonly static string Rows = "rows";
+
+		/// <summary>
+		/// Represents the HTML attribute "shape".
+		/// </summary>
+		public readonly static string Shape = "shape";
 
 		/// <summary>
 		/// Represents the HTML attribute "size".

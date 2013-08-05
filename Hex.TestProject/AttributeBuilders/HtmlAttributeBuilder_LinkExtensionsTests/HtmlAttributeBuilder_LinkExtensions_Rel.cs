@@ -11,13 +11,25 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilder_LinkExtensionsT
 		[TestMethod]
 		public void AddsAttributeCorrectly()
 		{
-			RelType value = RelType.Alternate;
+			string rel = "Alternate";
 
 			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
-			var result = builder.Rel( value );
+			var result = builder.Rel( rel );
 
 			Assert.AreSame( builder, result );
-			Assert.AreEqual( value.ToString().ToLower(), builder.Attributes[ HtmlAttributes.Rel ] );
+			Assert.AreEqual( rel, builder.Attributes[ HtmlAttributes.Rel ] );
+		}
+
+		[TestMethod]
+		public void WithRelTypeValueAddsAttributeCorrectly()
+		{
+			RelType rel = RelType.Alternate;
+
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
+			var result = builder.Rel( rel );
+
+			Assert.AreSame( builder, result );
+			Assert.AreEqual( rel.ToString().ToLower(), builder.Attributes[ HtmlAttributes.Rel ] );
 		}
 	}
 }

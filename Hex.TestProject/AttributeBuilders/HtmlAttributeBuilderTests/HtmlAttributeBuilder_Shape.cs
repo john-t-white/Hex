@@ -6,7 +6,7 @@ using Hex.AttributeBuilders;
 namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 {
 	[TestClass]
-	public class HtmlAttributeBuilder_Dir
+	public class HtmlAttributeBuilder_Shape
 	{
 		[TestMethod]
 		public void AddsAttributeCorrectly()
@@ -14,22 +14,22 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			string value = "Value";
 
 			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
-			var result = builder.Dir( value );
+			var result = builder.Shape( value );
 
 			Assert.AreSame( builder, result );
-			Assert.AreEqual( value, builder.Attributes[ HtmlAttributes.Dir ] );
+			Assert.AreEqual( value, builder.Attributes[ HtmlAttributes.Shape ] );
 		}
 
 		[TestMethod]
-		public void WithDirTypeValueAddsAttributeCorrectly()
+		public void WithShapeTypeValueAddsAttributeCorrectly()
 		{
-			DirType value = DirType.Ltr;
+			ShapeType value = ShapeType.Circle;
 
 			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
-			var result = builder.Dir( value );
+			var result = builder.Shape( value );
 
 			Assert.AreSame( builder, result );
-			Assert.AreEqual( value.ToString().ToLower(), builder.Attributes[ HtmlAttributes.Dir ] );
+			Assert.AreEqual( value.ToString().ToLower(), builder.Attributes[ HtmlAttributes.Shape ] );
 		}
 	}
 }

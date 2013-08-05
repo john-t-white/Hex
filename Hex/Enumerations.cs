@@ -194,6 +194,32 @@ namespace Hex
 	}
 
 	/// <summary>
+	/// Enumerates the values for the shape HTML attribute.
+	/// </summary>
+	public enum ShapeType
+	{
+		/// <summary>
+		/// Represents shape="default".
+		/// </summary>
+		Default,
+
+		/// <summary>
+		/// Represents shape="rect".
+		/// </summary>
+		Rect,
+
+		/// <summary>
+		/// Represents shape="circle".
+		/// </summary>
+		Circle,
+
+		/// <summary>
+		/// Represents shape="poly".
+		/// </summary>
+		Poly
+	}
+
+	/// <summary>
 	/// Enumerates the values for the target HTML attribute.
 	/// </summary>
 	public enum TargetType

@@ -84,6 +84,18 @@ namespace Hex.AttributeBuilders
 		}
 
 		/// <summary>
+		/// Represents the HTML attribute "alt".
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
+		public HtmlAttributeBuilder Alt( string value )
+		{
+			this.Attributes[ HtmlAttributes.Alt ] = value;
+
+			return this;
+		}
+
+		/// <summary>
 		/// Provides a way of adding a generic attribute and value.
 		/// </summary>
 		/// <param name="name">The name of the attribute.</param>
@@ -156,7 +168,17 @@ namespace Hex.AttributeBuilders
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder Dir( DirType dir )
 		{
-			this.Attributes[ HtmlAttributes.Dir ] = dir.ToLowerString();
+			return this.Dir( dir.ToLowerString() );
+		}
+
+		/// <summary>
+		/// Represents the HTML attribute "dir".
+		/// </summary>
+		/// <param name="dir">The value.</param>
+		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
+		public HtmlAttributeBuilder Dir( object dir )
+		{
+			this.Attributes[ HtmlAttributes.Dir ] = dir;
 
 			return this;
 		}
@@ -297,6 +319,28 @@ namespace Hex.AttributeBuilders
 		public HtmlAttributeBuilder Lang( string languageCode )
 		{
 			this.Attributes[ HtmlAttributes.Lang ] = languageCode;
+
+			return this;
+		}
+
+		/// <summary>
+		/// Represents the HTML attribute "shape".
+		/// </summary>
+		/// <param name="shape">The value.</param>
+		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
+		public HtmlAttributeBuilder Shape( ShapeType shape )
+		{
+			return this.Shape( shape.ToLowerString() );
+		}
+
+		/// <summary>
+		/// Represents the HTML attribute "shape".
+		/// </summary>
+		/// <param name="shape">The value.</param>
+		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
+		public HtmlAttributeBuilder Shape( object shape )
+		{
+			this.Attributes[ HtmlAttributes.Shape ] = shape;
 
 			return this;
 		}

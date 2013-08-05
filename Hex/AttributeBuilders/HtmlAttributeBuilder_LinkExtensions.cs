@@ -14,6 +14,18 @@ namespace Hex.AttributeBuilders
 	public partial class HtmlAttributeBuilder
 	{
 		/// <summary>
+		/// Represents the HTML attribute "href".
+		/// </summary>
+		/// <param name="url">The value.</param>
+		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
+		public HtmlAttributeBuilder Href( object url )
+		{
+			this.Attributes[ HtmlAttributes.Href ] = url.ConvertIfUri();
+
+			return this;
+		}
+
+		/// <summary>
 		/// Represents the HTML attribute "hreflang".
 		/// </summary>
 		/// <param name="languageCode">The value.</param>
@@ -44,7 +56,17 @@ namespace Hex.AttributeBuilders
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder Rel( RelType rel )
 		{
-			this.Attributes[ HtmlAttributes.Rel ] = rel.ToLowerString();
+			return this.Rel( rel.ToLowerString() );
+		}
+
+		/// <summary>
+		/// Represents the HTML attribute "rel".
+		/// </summary>
+		/// <param name="rel">The value.</param>
+		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
+		public HtmlAttributeBuilder Rel( object rel )
+		{
+			this.Attributes[ HtmlAttributes.Rel ] = rel;
 
 			return this;
 		}

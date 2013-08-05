@@ -126,6 +126,8 @@
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnChange.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnBlur.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_Event.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Shape.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Alt.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensionsTests\HtmlAttributeBuilder_FormExtensions_EncType.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensionsTests\HtmlAttributeBuilder_FormExtensions_NoValidate.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_Name.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Attribute.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_If.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_Type.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilder_LinkExtensionsTests\HtmlAttributeBuilder_LinkExtensions_Href.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_LinkExtensionsTests\HtmlAttributeBuilder_LinkExtensions_Target.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_LinkExtensionsTests\HtmlAttributeBuilder_LinkExtensions_Rel.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_LinkExtensionsTests\HtmlAttributeBuilder_LinkExtensions_Media.cs" />
