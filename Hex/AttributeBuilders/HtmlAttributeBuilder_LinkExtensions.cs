@@ -64,7 +64,7 @@ namespace Hex.AttributeBuilders
 		/// </summary>
 		/// <param name="rel">The value.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
-		public HtmlAttributeBuilder Rel( object rel )
+		public HtmlAttributeBuilder Rel( string rel )
 		{
 			this.Attributes[ HtmlAttributes.Rel ] = rel;
 
