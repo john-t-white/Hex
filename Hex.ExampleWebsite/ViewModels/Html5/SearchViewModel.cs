@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 
-namespace Hex.ExampleWebsite.ViewModels
+namespace Hex.ExampleWebsite.ViewModels.Html5
 {
-	public class TelephoneViewModel
+	public class SearchViewModel
 	{
-		public string Telephone { get; set; }
+		public string Search { get; set; }
 	}
 }

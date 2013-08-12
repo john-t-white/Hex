@@ -1,4 +1,4 @@
-﻿using Hex.ExampleWebsite.ViewModels;
+﻿using Hex.ExampleWebsite.ViewModels.Html5;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

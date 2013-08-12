@@ -120,17 +120,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\ColorViewModel.cs" />
-    <Compile Include="ViewModels\DateTimeLocalViewModel.cs" />
-    <Compile Include="ViewModels\MonthViewModel.cs" />
-    <Compile Include="ViewModels\TimeViewModel.cs" />
-    <Compile Include="ViewModels\RangeViewModel.cs" />
-    <Compile Include="ViewModels\UrlViewModel.cs" />
-    <Compile Include="ViewModels\TelephoneViewModel.cs" />
-    <Compile Include="ViewModels\SearchViewModel.cs" />
-    <Compile Include="ViewModels\NumberViewModel.cs" />
-    <Compile Include="ViewModels\EmailViewModel.cs" />
-    <Compile Include="ViewModels\DateViewModel.cs" />
+    <Compile Include="ViewModels\Html5\ColorViewModel.cs" />
+    <Compile Include="ViewModels\Html5\DateTimeLocalViewModel.cs" />
+    <Compile Include="ViewModels\Html5\MonthViewModel.cs" />
+    <Compile Include="ViewModels\Html5\TimeViewModel.cs" />
+    <Compile Include="ViewModels\Html5\RangeViewModel.cs" />
+    <Compile Include="ViewModels\Html5\UrlViewModel.cs" />
+    <Compile Include="ViewModels\Html5\TelephoneViewModel.cs" />
+    <Compile Include="ViewModels\Html5\SearchViewModel.cs" />
+    <Compile Include="ViewModels\Html5\NumberViewModel.cs" />
+    <Compile Include="ViewModels\Html5\EmailViewModel.cs" />
+    <Compile Include="ViewModels\Html5\DateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
