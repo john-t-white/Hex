@@ -5,6 +5,8 @@ Hex adds additional overloads to the HtmlHelper methods to provide support for m
 
 See the Wiki for documentation: https://github.com/john-t-white/Hex/wiki
 
+Blogs about Hex: http://staticdotnet.wordpress.com/category/hex/
+
 ### NuGet
 It is located up on NuGet at the following location:
 
