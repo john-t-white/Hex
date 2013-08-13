@@ -1,0 +1,30 @@
+﻿@using Hex.ExampleWebsite.ViewModels.CheckBoxValue
+
+@model IndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using( Html.BeginForm() )
+{
+	<h2>Strings</h2>
+	@Html.ValidationMessageFor( x => x.SelectedStringValues )<br />
+	foreach( string currentStringValue in this.Model.StringValues )
+	{
+		@Html.CheckBoxFor( x => x.SelectedStringValues, currentStringValue, x => x.Id( string.Format( "SelectedStringValues-{0}", currentStringValue ) ) )<b>@currentStringValue</b><br />
+	}
+	
+	<h2>Integers</h2>
+	@Html.ValidationMessageFor( x => x.SelectedIntValues )<br />
+	foreach( int currentIntValue in this.Model.IntValues )
+	{
+		@Html.CheckBoxFor( x => x.SelectedIntValues, currentIntValue, x => x.Id( string.Format( "SelectedIntValues-{0}", currentIntValue ) ) )<b>@currentIntValue</b><br />
+	}
+	
+	@Html.TextBoxFor( x => x.RequiredTextBox )
+	
+	<input type="submit" value="submit" />
+}

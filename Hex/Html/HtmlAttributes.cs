@@ -262,6 +262,11 @@ namespace Hex.Html
 		public readonly static string UseMap = "usemap";
 
 		/// <summary>
+		/// Represents the HTML attribute "value".
+		/// </summary>
+		public readonly static string Value = "value";
+
+		/// <summary>
 		/// Represents the HTML attribute "width".
 		/// </summary>
 		public readonly static string Width = "width";
