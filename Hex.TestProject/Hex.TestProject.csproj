@@ -184,6 +184,8 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_MaxLength.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensionsTests\HtmlAttributeBuilder_InputExtensions_Max.cs" />
     <Compile Include="AttributeCollectionTests\AttributeCollection_AddOrRemoveMinimizedAttribute.cs" />
+    <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxExtensions_WithValue_CheckBoxFor.cs" />
+    <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxViewModel.cs" />
     <Compile Include="StyleCollectionTests\StyleCollection_ToString.cs" />
     <Compile Include="AttributeValueCollectionTests\AttributeValueCollection_ToString.cs" />
     <Compile Include="AjaxHelperGenerator.cs" />

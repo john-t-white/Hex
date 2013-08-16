@@ -12,16 +12,20 @@ namespace Hex.ExampleWebsite.Controllers
         public ActionResult Index()
         {
 			var viewModel = new IndexViewModel();
-			viewModel.StringValues.Add( "One" );
-			viewModel.StringValues.Add( "Two" );
-			viewModel.StringValues.Add( "Three" );
+			viewModel.StringValues.Add( "Value One" );
+			viewModel.StringValues.Add( "Value Two" );
+			viewModel.StringValues.Add( "Value Three" );
 
 			viewModel.IntValues.Add( 1 );
 			viewModel.IntValues.Add( 2 );
 			viewModel.IntValues.Add( 3 );
 
+			viewModel.NestedEntities.Add( new NestedEntity( 1, "Entity One" ) );
+			viewModel.NestedEntities.Add( new NestedEntity( 2, "Entity Two" ) );
+			viewModel.NestedEntities.Add( new NestedEntity( 3, "Entity Three" ) );
+
 			viewModel.SelectedStringValues = new List<string>();
-			viewModel.SelectedStringValues.Add( "Three" );
+			viewModel.SelectedStringValues.Add( "Value Three" );
 
             return View( "Index", viewModel );
         }
@@ -29,13 +33,17 @@ namespace Hex.ExampleWebsite.Controllers
 		[HttpPost]
 		public ActionResult Index( IndexViewModel viewModel )
 		{
-			viewModel.StringValues.Add( "One" );
-			viewModel.StringValues.Add( "Two" );
-			viewModel.StringValues.Add( "Three" );
+			viewModel.StringValues.Add( "Value One" );
+			viewModel.StringValues.Add( "Value Two" );
+			viewModel.StringValues.Add( "Value Three" );
 
 			viewModel.IntValues.Add( 1 );
 			viewModel.IntValues.Add( 2 );
 			viewModel.IntValues.Add( 3 );
+
+			viewModel.NestedEntities.Add( new NestedEntity( 1, "Entity One" ) );
+			viewModel.NestedEntities.Add( new NestedEntity( 2, "Entity Two" ) );
+			viewModel.NestedEntities.Add( new NestedEntity( 3, "Entity Three" ) );
 
 			return View( "Index", viewModel );
 		}

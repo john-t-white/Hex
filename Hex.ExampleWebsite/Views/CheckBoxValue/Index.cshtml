@@ -14,17 +14,22 @@
 	@Html.ValidationMessageFor( x => x.SelectedStringValues )<br />
 	foreach( string currentStringValue in this.Model.StringValues )
 	{
-		@Html.CheckBoxFor( x => x.SelectedStringValues, currentStringValue, x => x.Id( string.Format( "SelectedStringValues-{0}", currentStringValue ) ) )<b>@currentStringValue</b><br />
+		@Html.CheckBoxFor( x => x.SelectedStringValues, currentStringValue )<b>@currentStringValue</b><br />
 	}
 	
 	<h2>Integers</h2>
 	@Html.ValidationMessageFor( x => x.SelectedIntValues )<br />
 	foreach( int currentIntValue in this.Model.IntValues )
 	{
-		@Html.CheckBoxFor( x => x.SelectedIntValues, currentIntValue, x => x.Id( string.Format( "SelectedIntValues-{0}", currentIntValue ) ) )<b>@currentIntValue</b><br />
+		@Html.CheckBoxFor( x => x.SelectedIntValues, currentIntValue )<b>@currentIntValue</b><br />
 	}
 	
-	@Html.TextBoxFor( x => x.RequiredTextBox )
+	<h2>Entities</h2>
+	@Html.ValidationMessageFor( x => x.SelectedEntityIds )<br />
+	foreach( NestedEntity currentEntity in this.Model.NestedEntities )
+	{
+		@Html.CheckBoxFor( x => x.SelectedEntityIds, currentEntity.Id )<b>@currentEntity.Name</b><br />
+	}
 	
 	<input type="submit" value="submit" />
 }

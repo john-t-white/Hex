@@ -15,7 +15,7 @@ namespace Hex.Html
 	/// <summary>
 	/// Represents support for HTML check boxes in an application with an expression for specifying HTML attributes.
 	/// </summary>
-	public static class CheckBoxExtensions
+	public static partial class CheckBoxExtensions
 	{
 		/// <summary>
 		/// Returns a check box input element by using the specified HTML helper, the name of the form field, and the HTML attributes.
@@ -54,73 +54,6 @@ namespace Hex.Html
 		public static MvcHtmlString CheckBoxFor<TModel>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, bool>> expression, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBoxFor( expression, attributeExpression.GetAttributes() );
-		}
-
-
-
-		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value )
-		{
-			return htmlHelper.CheckBoxFor( expression, value, ( IDictionary<string, object> )null );
-		}
-
-		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, object htmlAttributes )
-		{
-			return htmlHelper.CheckBoxFor( expression, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
-		}
-
-		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, IDictionary<string, object> htmlAttributes )
-		{
-			ModelMetadata modelMetadata = ModelMetadata.FromLambdaExpression( expression, htmlHelper.ViewData );
-
-			return htmlHelper.CheckBoxBuilder( modelMetadata, ExpressionHelper.GetExpressionText( expression ), value, htmlAttributes );
-		}
-
-		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, Action<HtmlAttributeBuilder> attributeExpression )
-		{
-			return htmlHelper.CheckBoxFor( expression, value, attributeExpression.GetAttributes() );
-		}
-
-		private static MvcHtmlString CheckBoxBuilder<TProperty>( this HtmlHelper htmlHelper, ModelMetadata modelMetadata, string name, TProperty value, IDictionary<string, object> htmlAttributes )
-		{
-			string fullHtmlFieldName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName( name );
-			string formattedValue = htmlHelper.FormatValue( value, null );
-
-			TagBuilder tagBuilder = new TagBuilder( "input" );
-			tagBuilder.MergeAttributes<string, object>( htmlAttributes );
-			tagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.CheckBox ) );
-			tagBuilder.MergeAttribute( HtmlAttributes.Name, fullHtmlFieldName, true );
-			tagBuilder.MergeAttribute( HtmlAttributes.Value, formattedValue, true );
-
-			IEnumerable<string> modelValues = new string[] {};
-			ModelState modelState;
-			if( htmlHelper.ViewData.ModelState.TryGetValue( fullHtmlFieldName, out modelState ) )
-			{
-				if( modelState.Value != null )
-				{
-					modelValues = ( IEnumerable<string> )modelState.Value.RawValue;
-				}
-
-				if( modelState.Errors.Count > 0 )
-				{
-					tagBuilder.AddCssClass( HtmlHelper.ValidationInputCssClassName );
-				}
-			}
-			else if( modelMetadata.Model != null )
-			{
-				IEnumerable<TProperty> enumerableModel = ( IEnumerable<TProperty> )modelMetadata.Model;
-				modelValues = ( from TProperty currentValue in enumerableModel
-								select htmlHelper.FormatValue( currentValue, null ) ).ToArray();
-			}
-
-			if( modelValues.Any( x => x == formattedValue ) )
-			{
-				tagBuilder.MergeAttribute( HtmlAttributes.Checked, HtmlAttributes.Checked );
-			}
-
-			tagBuilder.MergeAttributes( htmlHelper.GetUnobtrusiveValidationAttributes( name, modelMetadata ) );
-			tagBuilder.GenerateId( fullHtmlFieldName );
-
-			return MvcHtmlString.Create( tagBuilder.ToString( TagRenderMode.SelfClosing ) );
 		}
 	}
 }

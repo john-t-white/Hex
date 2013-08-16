@@ -127,6 +127,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CheckBoxValue\IndexViewModel.cs" />
+    <Compile Include="ViewModels\CheckBoxValue\NestedEntity.cs" />
     <Compile Include="ViewModels\Html5\ColorViewModel.cs" />
     <Compile Include="ViewModels\Html5\DateTimeLocalViewModel.cs" />
     <Compile Include="ViewModels\Html5\MonthViewModel.cs" />

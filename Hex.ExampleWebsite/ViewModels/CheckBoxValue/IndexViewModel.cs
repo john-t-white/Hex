@@ -12,6 +12,7 @@ namespace Hex.ExampleWebsite.ViewModels.CheckBoxValue
 		{
 			this.StringValues = new List<string>();
 			this.IntValues = new List<int>();
+			this.NestedEntities = new List<NestedEntity>();
 		}
 
 		public List<string> StringValues { get; private set; }
@@ -23,7 +24,8 @@ namespace Hex.ExampleWebsite.ViewModels.CheckBoxValue
 		[Required]
 		public List<int> SelectedIntValues { get; set; }
 
-		[Required]
-		public string RequiredTextBox { get; set; }
+		public List<NestedEntity> NestedEntities { get; set; }
+
+		public List<int> SelectedEntityIds { get; set; }
 	}
 }
