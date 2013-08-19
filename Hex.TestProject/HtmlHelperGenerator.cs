@@ -18,22 +18,27 @@ namespace Hex.TestProject
 
 		public static HtmlHelper<object> CreateHtmlHelper()
 		{
-			return HtmlHelperGenerator.InternalCreateHtmlHelper<object>( null, null, null );
+			return HtmlHelperGenerator.InternalCreateHtmlHelper<object>( null, null, null, false );
 		}
 
 		public static HtmlHelper<TViewModel> CreateHtmlHelper<TViewModel>( TViewModel viewModel )
 		{
-			return HtmlHelperGenerator.InternalCreateHtmlHelper<TViewModel>( null, null, viewModel );
+			return HtmlHelperGenerator.InternalCreateHtmlHelper<TViewModel>( null, null, viewModel, false );
+		}
+
+		public static HtmlHelper<TViewModel> CreateHtmlHelper<TViewModel>( TViewModel viewModel, bool enabledUnobtrusiveValidation )
+		{
+			return HtmlHelperGenerator.InternalCreateHtmlHelper<TViewModel>( null, null, viewModel, enabledUnobtrusiveValidation );
 		}
 
 		public static HtmlHelper<object> CreateHtmlHelperWithNamedRoute( string routeName, string routeUrl )
 		{
-			return HtmlHelperGenerator.InternalCreateHtmlHelper<object>( routeName, routeUrl, null );
+			return HtmlHelperGenerator.InternalCreateHtmlHelper<object>( routeName, routeUrl, null, false );
 		}
 
 		#region Internal Methods
 
-		public static HtmlHelper<TViewModel> InternalCreateHtmlHelper<TViewModel>( string routeName, string routeUrl, TViewModel viewModel )
+		public static HtmlHelper<TViewModel> InternalCreateHtmlHelper<TViewModel>( string routeName, string routeUrl, TViewModel viewModel, bool enabledUnobtrusiveValidation )
 		{
 			HttpContextBase httpContext = HtmlHelperGenerator.CreateHttpContext( null, null, FormMethod.Get, Uri.UriSchemeHttp.ToString(), -1 );
 			RouteCollection routeCollection = HtmlHelperGenerator.CreateRouteCollection( routeName, routeUrl );
@@ -46,7 +51,7 @@ namespace Hex.TestProject
 				viewDataDictionary.Model = viewModel;
 			}
 
-			ViewContext viewContext = HtmlHelperGenerator.CreateViewContext( httpContext, routeData, viewDataDictionary );
+			ViewContext viewContext = HtmlHelperGenerator.CreateViewContext( httpContext, routeData, viewDataDictionary, enabledUnobtrusiveValidation );
 			IViewDataContainer viewDataContainer = HtmlHelperGenerator.CreateViewDataContainer( viewDataDictionary );
 
 			HtmlHelper<TViewModel> htmlHelper = new HtmlHelper<TViewModel>( viewContext, viewDataContainer, routeCollection );
@@ -126,7 +131,7 @@ namespace Hex.TestProject
 			return routeData;
 		}
 
-		private static ViewContext CreateViewContext( HttpContextBase httpContext, RouteData routeData, ViewDataDictionary viewDataDictionary )
+		private static ViewContext CreateViewContext( HttpContextBase httpContext, RouteData routeData, ViewDataDictionary viewDataDictionary, bool enabledUnobtrusiveValidation )
 		{
 			var viewContext = new ViewContext()
 			{
@@ -134,6 +139,9 @@ namespace Hex.TestProject
 				RouteData = routeData,
 				ViewData = viewDataDictionary
 			};
+
+			viewContext.UnobtrusiveJavaScriptEnabled = enabledUnobtrusiveValidation;
+			viewContext.ClientValidationEnabled = enabledUnobtrusiveValidation;
 
 			StringBuilder viewContextStringBuilder = new StringBuilder();
 			StringWriter viewContextWriter = new StringWriter( viewContextStringBuilder );
