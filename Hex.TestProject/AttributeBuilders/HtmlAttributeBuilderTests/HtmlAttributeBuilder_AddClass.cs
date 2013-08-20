@@ -63,5 +63,17 @@ namespace Hex.TestProject.AttributeBuilders.HtmlAttributeBuilderTests
 			Assert.IsNotNull( attributeValues );
 			CollectionAssert.AreEquivalent( classes, attributeValues );
 		}
+
+		[TestMethod]
+		public void NullClassesReturnsCorrectly()
+		{
+			string[] classes = null;
+
+			HtmlAttributeBuilder builder = new HtmlAttributeBuilder();
+			var result = builder.AddClass( @classes );
+
+			Assert.AreSame( builder, result );
+			Assert.IsFalse( builder.Attributes.ContainsKey( HtmlAttributes.Class ) );
+		}
 	}
 }

@@ -43,12 +43,17 @@ namespace Hex.AttributeBuilders
 		}
 
 		/// <summary>
-		/// Represents the HTML attribute "class". Multiple calls add additional values.
+		/// Adds classes to the HTML attribute "class". Multiple calls add additional values.
 		/// </summary>
-		/// <param name="classes">The list of values.</param>
+		/// <param name="classes">The list of classes to add.</param>
 		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
 		public HtmlAttributeBuilder AddClass( params string[] classes )
 		{
+			if( classes == null )
+			{
+				return this;
+			}
+
 			AttributeValueCollection attributeValues = null;
 			if( !this.Attributes.TryGetValue<AttributeValueCollection>( HtmlAttributes.Class, out attributeValues ) )
 			{
@@ -57,6 +62,30 @@ namespace Hex.AttributeBuilders
 			}
 
 			attributeValues.AddRange( classes );
+			return this;
+		}
+
+		/// <summary>
+		/// Removes classes from the HTML attribute "class".
+		/// </summary>
+		/// <param name="classes">The list of classes to remove.</param>
+		/// <returns>The same instance of <see cref="Hex.AttributeBuilders.HtmlAttributeBuilder"/>.</returns>
+		public HtmlAttributeBuilder RemoveClass( params string[] classes )
+		{
+			if( classes == null )
+			{
+				return this;
+			}
+
+			AttributeValueCollection attributeValues = null;
+			if( this.Attributes.TryGetValue<AttributeValueCollection>( HtmlAttributes.Class, out attributeValues ) )
+			{
+				foreach( var currentClass in classes )
+				{
+					attributeValues.Remove( currentClass );
+				}
+			}
+
 			return this;
 		}
 
