@@ -90,6 +90,7 @@
     <Compile Include="AttributeBuilders\StyleAttributeBuilder.cs" />
     <Compile Include="AttributeCollection.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValue.cs" />
+    <Compile Include="Html\DescriptionExtensions.cs" />
     <Compile Include="StyleCollection.cs" />
     <Compile Include="AttributeValueCollection.cs" />
     <Compile Include="Extensions\ActionExtensions.cs" />
