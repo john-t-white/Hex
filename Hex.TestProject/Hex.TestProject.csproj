@@ -127,6 +127,7 @@
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnChange.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_OnBlur.cs" />
     <Compile Include="AttributeBuilders\EventAttributeBuilderTests\EventAttributeBuilder_Event.cs" />
+    <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_RemoveClass.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Shape.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilderTests\HtmlAttributeBuilder_Alt.cs" />
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_FormExtensionsTests\HtmlAttributeBuilder_FormExtensions_EncType.cs" />

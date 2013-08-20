@@ -84,6 +84,11 @@ namespace Hex.AttributeBuilders
 				{
 					attributeValues.Remove( currentClass );
 				}
+
+				if( attributeValues.Count == 0 )
+				{
+					this.Attributes.Remove( HtmlAttributes.Class );
+				}
 			}
 
 			return this;
