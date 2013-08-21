@@ -3,128 +3,259 @@ using Hex.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
+using System.Linq.Expressions;
+using System.Collections;
 
 namespace Hex.Html
 {
 	/// <summary>
-	/// Represents support for HTML check boxes and specifying a value in an application.
+	/// Represents support for HTML checkbox with a value in an application with an expression for specifying HTML attributes.
 	/// </summary>
 	public static partial class CheckBoxExtensions
 	{
+		private const string INPUT_ELEMENT = "input";
+
 		/// <summary>
-		/// Returns a check box input element by using the specified HTML helper and the value.
+		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper and the name of the form field.
 		/// </summary>
-		/// <typeparam name="TModel">The type of the model.</typeparam>
-		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
-		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
-		/// <param name="value">The value of the checkbox.</param>
-		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
-		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value )
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue )
 		{
-			return htmlHelper.CheckBoxFor( expression, value, ( IDictionary<string, object> )null );
+			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, false, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
-		/// Returns a check box input element by using the specified HTML helper, the value and the specified HTML attributes.
+		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper, the name of the form field and the HTML attributes.
 		/// </summary>
-		/// <typeparam name="TModel">The type of the model.</typeparam>
-		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
-		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
-		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
-		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, object htmlAttributes )
+		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, object htmlAttributes )
 		{
-			return htmlHelper.CheckBoxFor( expression, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, false, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
-		/// Returns a check box input element by using the specified HTML helper, the value and the specified HTML attributes.
+		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper and the name of the form field.
 		/// </summary>
-		/// <typeparam name="TModel">The type of the model.</typeparam>
-		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
-		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
-		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
-		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, IDictionary<string, object> htmlAttributes )
+		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, IDictionary<string, object> htmlAttributes )
 		{
-			ModelMetadata modelMetadata = ModelMetadata.FromLambdaExpression( expression, htmlHelper.ViewData );
-
-			return CheckBoxExtensions.CheckBoxWithValueBuilder( htmlHelper, modelMetadata, ExpressionHelper.GetExpressionText( expression ), value, htmlAttributes );
+			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, false, htmlAttributes );
 		}
 
 		/// <summary>
-		/// Returns a check box input element by using the specified HTML helper, the value and the specified HTML attributes.
+		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper and the name of the form field.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, false, attributeExpression.GetAttributes() );
+		}
+
+		/// <summary>
+		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper, the name of the form field and a value to indicate whether the check box is selected.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, bool isChecked )
+		{
+			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, isChecked, ( IDictionary<string, object> )null );
+		}
+
+		/// <summary>
+		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper, the name of the form field, a value to indicate whether the check box is selected and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, bool isChecked, object htmlAttributes )
+		{
+			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, isChecked, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+		}
+
+		/// <summary>
+		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper, the name of the form field, a value to indicate whether the check box is selected and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, bool isChecked, IDictionary<string, object> htmlAttributes )
+		{
+			var modelMetadata = ModelMetadata.FromStringExpression( name, htmlHelper.ViewData );
+
+			return CheckBoxExtensions.CheckBoxWithValueBuilder( htmlHelper, modelMetadata, name, checkedValue, uncheckedValue, isChecked, htmlAttributes );
+		}
+
+		/// <summary>
+		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper, the name of the form field, a value to indicate whether the check box is selected and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, bool isChecked, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, isChecked, attributeExpression.GetAttributes() );
+		}
+
+		/// <summary>
+		/// Returns a check box input element for each property in the object that is represented by the specified expression.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
-		/// <param name="value">The value of the checkbox.</param>
-		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
-		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, Action<HtmlAttributeBuilder> attributeExpression )
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
+		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty checkedValue, TProperty uncheckedValue )
 		{
-			return htmlHelper.CheckBoxFor( expression, value, attributeExpression.GetAttributes() );
+			return htmlHelper.CheckBoxFor( expression, checkedValue, uncheckedValue, ( IDictionary<string, object> )null );
 		}
 
-		#region Internal Methods
-
-		private static MvcHtmlString CheckBoxWithValueBuilder<TModel, TProperty>( HtmlHelper<TModel> htmlHelper, ModelMetadata modelMetadata, string name, TProperty value, IDictionary<string, object> htmlAttributes )
+		/// <summary>
+		/// Returns a check box input element for each property in the object that is represented by the specified expression, using the specified HTML attributes.
+		/// </summary>
+		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
+		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty checkedValue, TProperty uncheckedValue, object htmlAttributes )
 		{
-			if( value == null )
+			return htmlHelper.CheckBoxFor( expression, checkedValue, uncheckedValue, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+		}
+
+		/// <summary>
+		/// Returns a check box input element for each property in the object that is represented by the specified expression, using the specified HTML attributes.
+		/// </summary>
+		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
+		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty checkedValue, TProperty uncheckedValue, IDictionary<string, object> htmlAttributes )
+		{
+			var modelMetadata = ModelMetadata.FromLambdaExpression( expression, htmlHelper.ViewData );
+
+			return CheckBoxExtensions.CheckBoxWithValueBuilder( htmlHelper, modelMetadata, ExpressionHelper.GetExpressionText( expression ), checkedValue, uncheckedValue, null, htmlAttributes );
+		}
+
+		/// <summary>
+		/// Returns a check box input element for each property in the object that is represented by the specified expression, using the specified HTML attributes.
+		/// </summary>
+		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="checkedValue">The value when it is checked.</param>
+		/// <param name="uncheckedValue">The value when it is unchecked.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
+		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty checkedValue, TProperty uncheckedValue, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.CheckBoxFor( expression, checkedValue, uncheckedValue, attributeExpression.GetAttributes() );
+		}
+
+		#region Intenal Methods
+
+		private static MvcHtmlString CheckBoxWithValueBuilder( HtmlHelper htmlHelper, ModelMetadata modelMetadata, string name, object checkedValue, object uncheckedValue, bool? isChecked, IDictionary<string, object> htmlAttributes )
+		{
+			if( checkedValue == null )
 			{
-				throw new ArgumentNullException( "value " );
+				throw new ArgumentNullException( "checkedValue" );
+			}
+
+			if( uncheckedValue == null )
+			{
+				throw new ArgumentNullException( "uncheckedValue" );
 			}
 
 			string fullHtmlFieldName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName( name );
-			string formattedValue = htmlHelper.FormatValue( value, null );
+			string formattedCheckedValue = htmlHelper.FormatValue( checkedValue, null );
 
-			TagBuilder tagBuilder = new TagBuilder( "input" );
-			tagBuilder.MergeAttributes<string, object>( htmlAttributes );
-			tagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.CheckBox ) );
-			tagBuilder.MergeAttribute( HtmlAttributes.Name, fullHtmlFieldName, true );
-			tagBuilder.MergeAttribute( HtmlAttributes.Id, CheckBoxExtensions.GetCheckBoxWithValueId( htmlHelper, fullHtmlFieldName, formattedValue ) );
-			tagBuilder.MergeAttribute( HtmlAttributes.Value, formattedValue, true );
-			tagBuilder.MergeAttributes( htmlHelper.GetUnobtrusiveValidationAttributes( name, modelMetadata ) );
+			TagBuilder checkedTagBuilder = new TagBuilder( INPUT_ELEMENT );
+			checkedTagBuilder.MergeAttributes<string, object>( htmlAttributes );
+			checkedTagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.CheckBox ) );
+			checkedTagBuilder.MergeAttribute( HtmlAttributes.Name, fullHtmlFieldName, true );
+			checkedTagBuilder.MergeAttribute( HtmlAttributes.Id, TagBuilder.CreateSanitizedId( fullHtmlFieldName ) );
+			checkedTagBuilder.MergeAttribute( HtmlAttributes.Value, formattedCheckedValue, true );
+			checkedTagBuilder.MergeAttributes( htmlHelper.GetUnobtrusiveValidationAttributes( name, modelMetadata ) );
 
-			ModelState modelState;
-			if( htmlHelper.ViewData.ModelState.TryGetValue( fullHtmlFieldName, out modelState ) )
+			ModelState modelState = null;
+			object modelStateValue = htmlHelper.ViewData.ModelState.GetModelStateValue( fullHtmlFieldName, modelMetadata.ModelType, out modelState );
+			if( modelStateValue != null || modelMetadata.Model != null )
 			{
-				if( modelState.Errors.Count > 0 )
-				{
-					tagBuilder.AddCssClass( HtmlHelper.ValidationInputCssClassName );
-				}
+				var modelValue = ( isChecked.HasValue ) ? modelStateValue : modelMetadata.Model;
+
+				var formattedModelValue = htmlHelper.FormatValue( modelValue, null );
+				isChecked = string.Equals( formattedCheckedValue, formattedModelValue, StringComparison.Ordinal );
 			}
 
-			if( modelMetadata.Model != null )
+			if( isChecked.HasValue && isChecked.Value )
 			{
-				var modelValues = ( from TProperty currentValue in ( IEnumerable<TProperty> )modelMetadata.Model
-									select htmlHelper.FormatValue( currentValue, null ) );
-
-				if( modelValues.Any( x => x == formattedValue ) )
-				{
-					tagBuilder.MergeAttribute( HtmlAttributes.Checked, HtmlAttributes.Checked );
-				}
+				checkedTagBuilder.MergeAttribute( HtmlAttributes.Checked, HtmlAttributes.Checked );
 			}
 
-			return MvcHtmlString.Create( tagBuilder.ToString( TagRenderMode.SelfClosing ) );
-		}
+			if( modelState != null && modelState.Errors.Count > 0 )
+			{
+				checkedTagBuilder.AddCssClass( HtmlHelper.ValidationInputCssClassName );
+			}
 
-		private static string GetCheckBoxWithValueId( HtmlHelper htmlhelper, string fullHtmlFieldName, string formattedValue )
-		{
-			return TagBuilder.CreateSanitizedId( string.Format( "{0}.{1}", fullHtmlFieldName, formattedValue ) );
+			string formattedUncheckedValue = htmlHelper.FormatValue( uncheckedValue, null );
+
+			TagBuilder uncheckedTagBuilder = new TagBuilder( INPUT_ELEMENT );
+			uncheckedTagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.Hidden ) );
+			uncheckedTagBuilder.MergeAttribute( HtmlAttributes.Name, fullHtmlFieldName );
+			uncheckedTagBuilder.MergeAttribute( HtmlAttributes.Value, formattedUncheckedValue );
+
+			StringBuilder checkBoxStringBuilder = new StringBuilder( checkedTagBuilder.ToString( TagRenderMode.SelfClosing ) );
+			checkBoxStringBuilder.Append( uncheckedTagBuilder.ToString( TagRenderMode.SelfClosing ) );
+
+			return MvcHtmlString.Create( checkBoxStringBuilder.ToString() );
 		}
 
 		#endregion

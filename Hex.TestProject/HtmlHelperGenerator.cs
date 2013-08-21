@@ -21,6 +21,11 @@ namespace Hex.TestProject
 			return HtmlHelperGenerator.InternalCreateHtmlHelper<object>( null, null, null, false );
 		}
 
+		public static HtmlHelper<object> CreateHtmlHelper( bool enabledUnobtrusiveValidation )
+		{
+			return HtmlHelperGenerator.InternalCreateHtmlHelper<object>( null, null, null, enabledUnobtrusiveValidation );
+		}
+
 		public static HtmlHelper<TViewModel> CreateHtmlHelper<TViewModel>( TViewModel viewModel )
 		{
 			return HtmlHelperGenerator.InternalCreateHtmlHelper<TViewModel>( null, null, viewModel, false );

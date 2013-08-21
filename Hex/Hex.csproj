@@ -89,6 +89,8 @@
     <Compile Include="AttributeBuilders\HtmlAttributeBuilder_InputExtensions.cs" />
     <Compile Include="AttributeBuilders\StyleAttributeBuilder.cs" />
     <Compile Include="AttributeCollection.cs" />
+    <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
+    <Compile Include="Html\CheckBoxListItemExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValue.cs" />
     <Compile Include="Html\DescriptionExtensions.cs" />
     <Compile Include="StyleCollection.cs" />

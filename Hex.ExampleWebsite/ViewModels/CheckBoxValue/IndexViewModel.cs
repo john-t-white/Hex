@@ -27,5 +27,13 @@ namespace Hex.ExampleWebsite.ViewModels.CheckBoxValue
 		public List<NestedEntity> NestedEntities { get; set; }
 
 		public List<int> SelectedEntityIds { get; set; }
+
+		public YesNoType? CheckBoxWithValue { get; set; }
+	}
+
+	public enum YesNoType
+	{
+		Yes,
+		No
 	}
 }

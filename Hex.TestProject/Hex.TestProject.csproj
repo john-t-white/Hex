@@ -188,8 +188,12 @@
     <Compile Include="AttributeCollectionTests\AttributeCollection_AddOrRemoveMinimizedAttribute.cs" />
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionayExtensions_ToHtmlAttributeString.cs" />
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionaryExtensions_TryGetValue.cs" />
-    <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxExtensions_WithValue_CheckBoxFor.cs" />
+    <Compile Include="Extensions\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_GetModelStateValue.cs" />
+    <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxExtensions_WithValue_CheckBox.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxViewModel.cs" />
+    <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxExtensions_WithValue_CheckBoxFor.cs" />
+    <Compile Include="Html\CheckBoxListItemExtensionsTests\CheckBoxListItemExtensions_CheckBoxFor.cs" />
+    <Compile Include="Html\CheckBoxListItemExtensionsTests\CheckBoxListItemViewModel.cs" />
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionExtensions_DescriptionFor.cs" />
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionExtensions_Description.cs" />
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionViewModel.cs" />

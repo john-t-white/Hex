@@ -7,6 +7,9 @@ using System.Web.Mvc;
 
 namespace Hex.Html
 {
+	/// <summary>
+	/// Provides a mechanism to get descriptions.
+	/// </summary>
 	public static class DescriptionExtensions
 	{
 		/// <summary>

@@ -13,7 +13,7 @@ using System.Collections;
 namespace Hex.Html
 {
 	/// <summary>
-	/// Represents support for HTML check boxes in an application with an expression for specifying HTML attributes.
+	/// Represents support for HTML checkbox in an application with an expression for specifying HTML attributes.
 	/// </summary>
 	public static partial class CheckBoxExtensions
 	{
@@ -39,7 +39,8 @@ namespace Hex.Html
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, bool isChecked, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.CheckBox( name, isChecked, attributeExpression.GetAttributes() );
+			//Need to call the extension using the static interface because it is not resolving the correct extension off of the htmlHelper.
+			return InputExtensions.CheckBox( htmlHelper, name, isChecked, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>

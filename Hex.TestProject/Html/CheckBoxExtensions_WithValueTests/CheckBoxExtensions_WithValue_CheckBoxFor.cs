@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Hex.Html;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.Mvc;
-using Hex.Html;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using System.Globalization;
 
 namespace Hex.TestProject.Html.CheckBoxExtensions_WithValueTests
@@ -11,253 +11,219 @@ namespace Hex.TestProject.Html.CheckBoxExtensions_WithValueTests
 	public class CheckBoxExtensions_WithValue_CheckBoxFor
 	{
 		[TestMethod]
-		public void ReturnsCorrectly()
+		public void WithViewModelPropertyDoesNotHaveEitherValueReturnsCorrectly()
 		{
-			string value = "Value One";
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
 
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
+			var viewModel = new CheckBoxViewModel();
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
 
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value );
-
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
 		[TestMethod]
 		[ExpectedException( typeof( ArgumentNullException ) )]
-		public void WithValueNullThrowsArgumentNullException()
+		public void WithNullCheckedValueThrowsArgumentNullException()
 		{
-			string value = null;
+			string checkedValue = null;
+			string uncheckedValue = "UncheckedValue";
 
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
+			var viewModel = new CheckBoxViewModel();
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
+		}
 
-			htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value );
+		[TestMethod]
+		[ExpectedException( typeof( ArgumentNullException ) )]
+		public void WithNullUncheckedValueThrowsArgumentNullException()
+		{
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = null;
+
+			var viewModel = new CheckBoxViewModel();
+
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
+		}
+
+		[TestMethod]
+		public void WithViewModelPropertyEqualsCheckedValueReturnsCorrectly()
+		{
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
+
+			var viewModel = new CheckBoxViewModel()
+			{
+				CheckBoxValue = checkedValue
+			};
+
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
+
+			string expectedResult = string.Format( "<input checked=\"checked\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
+			Assert.AreEqual( expectedResult, result.ToHtmlString() );
+		}
+
+		[TestMethod]
+		public void WithViewModelPropertyEqualsUncheckedValueReturnsCorrectly()
+		{
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
+
+			var viewModel = new CheckBoxViewModel()
+			{
+				CheckBoxValue = uncheckedValue
+			};
+
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
+
+			string expectedResult = string.Format( "<input id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
+			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
 		[TestMethod]
 		public void WithHtmlAttributesObjectReturnsCorrectly()
 		{
-			string value = "Value One";
-			string attributeValue = "AttributeValue";
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
+			string attributeValue = "attributeValue";
 
-			var htmlAttributes = new
+			object htmlAttributes = new
 			{
 				AttributeName = attributeValue
 			};
 
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
+			var viewModel = new CheckBoxViewModel();
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue, htmlAttributes );
 
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value, htmlAttributes );
-
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input AttributeName=\"{0}\" id=\"{1}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{2}\" />", attributeValue, expectedId, value );
+			string expectedResult = string.Format( "<input AttributeName=\"{0}\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{1}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{2}\" />", attributeValue, checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
-		}
-
-		[TestMethod]
-		[ExpectedException( typeof( ArgumentNullException ) )]
-		public void WithHtmlAttributesObjectAndNullValueThrowsArgumentNullException()
-		{
-			string value = null;
-			string attributeValue = "AttributeValue";
-
-			var htmlAttributes = new
-			{
-				AttributeName = attributeValue
-			};
-
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
-
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value, htmlAttributes );
 		}
 
 		[TestMethod]
 		public void WithHtmlAttributesDictionaryReturnsCorrectly()
 		{
-			string value = "Value One";
-			string attributeName = "AttributeName";
-			string attributeValue = "AttributeValue";
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
+			string attributeName = "attributeName";
+			string attributeValue = "attributeValue";
 
-			var htmlAttributes = new Dictionary<string, object>();
+			Dictionary<string, object> htmlAttributes = new Dictionary<string, object>();
 			htmlAttributes.Add( attributeName, attributeValue );
 
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
+			var viewModel = new CheckBoxViewModel();
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue, htmlAttributes );
 
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value, htmlAttributes );
-
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"{2}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{3}\" />", attributeName, attributeValue, expectedId, value );
+			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{2}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{3}\" />", attributeName, attributeValue, checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
-		}
-
-		[TestMethod]
-		[ExpectedException( typeof( ArgumentNullException ) )]
-		public void WithHtmlAttributesDictionaryAndNullValueThrowsArgumentNullException()
-		{
-			string value = null;
-			string attributeName = "AttributeName";
-			string attributeValue = "AttributeValue";
-
-			var htmlAttributes = new Dictionary<string, object>();
-			htmlAttributes.Add( attributeName, attributeValue );
-
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
-
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value, htmlAttributes );
 		}
 
 		[TestMethod]
 		public void WithAttributeExpressionReturnsCorrectly()
 		{
-			string value = "Value One";
-			string attributeName = "AttributeName";
-			string attributeValue = "AttributeValue";
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
+			string attributeName = "attributeName";
+			string attributeValue = "attributeValue";
 
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
+			var viewModel = new CheckBoxViewModel();
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue, x => x.Attribute( attributeName, attributeValue ) );
 
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value, x => x.Attribute( attributeName, attributeValue ) );
-
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"{2}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{3}\" />", attributeName, attributeValue, expectedId, value );
-			Assert.AreEqual( expectedResult, result.ToHtmlString() );
-		}
-
-		[TestMethod]
-		[ExpectedException( typeof( ArgumentNullException ) )]
-		public void WithAttributeExpressionAndNullValueThrowsArgumentNullException()
-		{
-			string value = null;
-			string attributeName = "AttributeName";
-			string attributeValue = "AttributeValue";
-
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
-
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value, x => x.Attribute( attributeName, attributeValue ) );
-		}
-
-		[TestMethod]
-		public void WithModelValueContainsCheckBoxValueReturnsCorrectly()
-		{
-			string value = "Value One";
-
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
-			viewModel.SelectedCheckBoxValues = new string[] { value, "Other Value" };
-
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value );
-
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input checked=\"checked\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
-			Assert.AreEqual( expectedResult, result.ToHtmlString() );
-		}
-
-		[TestMethod]
-		public void WithModelValueDoesNotContainsCheckBoxValueReturnsCorrectly()
-		{
-			string value = "Value One";
-
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
-			viewModel.SelectedCheckBoxValues = new string[] { "This Value", "Other Value" };
-
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value );
-
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{2}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{3}\" />", attributeName, attributeValue, checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
 		[TestMethod]
 		public void WithModelStateErrorReturnsCorrectly()
 		{
-			string value = "Value One";
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
 
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
+			var viewModel = new CheckBoxViewModel();
 
-			ModelState selectedCheckBoxValuesModelState = new ModelState()
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			( ( HtmlHelper )htmlHelper ).ViewData.ModelState.AddModelError( "CheckBoxValue", "ErrorMessage" );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
+
+			string expectedResult = string.Format( "<input class=\"input-validation-error\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
+			Assert.AreEqual( expectedResult, result.ToHtmlString() );
+		}
+
+		[TestMethod]
+		public void WithModelStateValueEqualsCheckedValueAndModelValueEqualsUncheckedValueReturnsCorrectly()
+		{
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
+
+			var viewModel = new CheckBoxViewModel()
 			{
-				Value = new ValueProviderResult( value, value, CultureInfo.InvariantCulture )
+				CheckBoxValue = uncheckedValue
 			};
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-			htmlHelper.ViewData.ModelState.AddModelError( "SelectedCheckBoxValues", "ErrorMessage" );
+			ModelState modelState = new ModelState();
+			modelState.Value = new ValueProviderResult( checkedValue, checkedValue, CultureInfo.InvariantCulture );
 
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			( ( HtmlHelper )htmlHelper ).ViewData.ModelState.Add( "CheckBoxValue", modelState );
 
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input class=\"input-validation-error\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
+
+			string expectedResult = string.Format( "<input id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
 		[TestMethod]
-		public void WithRequiredAnnotationAndUnobtrusiveValidationEnabledReturnsCorrectly()
+		public void WithModelStateValueEqualsUncheckedValueAndModelValueEqualsCheckedValueReturnsCorrectly()
 		{
-			string value = "Value One";
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
 
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
-
-			ModelState selectedCheckBoxValuesModelState = new ModelState()
+			var viewModel = new CheckBoxViewModel()
 			{
-				Value = new ValueProviderResult( value, value, CultureInfo.InvariantCulture )
+				CheckBoxValue = checkedValue
 			};
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel, true );
+			ModelState modelState = new ModelState();
+			modelState.Value = new ValueProviderResult( uncheckedValue, uncheckedValue, CultureInfo.InvariantCulture );
 
-			var result = htmlHelper.CheckBoxFor( x => x.RequiredSelectedCheckBoxValues, value );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			( ( HtmlHelper )htmlHelper ).ViewData.ModelState.Add( "CheckBoxValue", modelState );
 
-			string expectedId = string.Format( "RequiredSelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input data-val=\"true\" data-val-required=\"The RequiredSelectedCheckBoxValues field is required.\" id=\"{0}\" name=\"RequiredSelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
+
+			string expectedResult = string.Format( "<input checked=\"checked\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
 		[TestMethod]
-		public void WithNameAttributeSpecifiedReturnsCorrectly()
+		public void WithModelStateValueEqualsCheckedValueAndModelValueIsNullReturnsCorrectly()
 		{
-			string value = "Value One";
+			string checkedValue = "CheckedValue";
+			string uncheckedValue = "UncheckedValue";
 
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
+			var viewModel = new CheckBoxViewModel();
 
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			ModelState modelState = new ModelState();
+			modelState.Value = new ValueProviderResult( checkedValue, checkedValue, CultureInfo.InvariantCulture );
 
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value, x => x.Name( "Updated Name" ) );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxViewModel>( viewModel );
+			( ( HtmlHelper )htmlHelper ).ViewData.ModelState.Add( "CheckBoxValue", modelState );
 
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
-			Assert.AreEqual( expectedResult, result.ToHtmlString() );
-		}
+			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
 
-		[TestMethod]
-		public void WithValueAttributeSpecifiedReturnsCorrectly()
-		{
-			string value = "Value One";
-
-			CheckBoxViewModel viewModel = new CheckBoxViewModel();
-
-			HtmlHelper<CheckBoxViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			var result = htmlHelper.CheckBoxFor( x => x.SelectedCheckBoxValues, value, x => x.Attribute( "value", "Updated Value" ) );
-
-			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 	}
