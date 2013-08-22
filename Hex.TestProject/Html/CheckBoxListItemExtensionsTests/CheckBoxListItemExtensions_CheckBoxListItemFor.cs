@@ -8,7 +8,7 @@ using System.Globalization;
 namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 {
 	[TestClass]
-	public class CheckBoxListItemExtensions_CheckBoxFor
+	public class CheckBoxListItemExtensions_CheckBoxListItemFor
 	{
 		[TestMethod]
 		public void ReturnsCorrectly()
@@ -17,7 +17,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 
 			var viewModel = new CheckBoxListItemViewModel();
 
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
@@ -34,7 +34,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 
 			var viewModel = new CheckBoxListItemViewModel();
 
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 		}
@@ -62,25 +62,6 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 		}
 
 		[TestMethod]
-		[ExpectedException( typeof( ArgumentNullException ) )]
-		public void WithHtmlAttributesObjectAndNullValueThrowsArgumentNullException()
-		{
-			string value = null;
-			string attributeValue = "AttributeValue";
-
-			var htmlAttributes = new
-			{
-				AttributeName = attributeValue
-			};
-
-			var viewModel = new CheckBoxListItemViewModel();
-
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, htmlAttributes );
-		}
-
-		[TestMethod]
 		public void WithHtmlAttributesDictionaryReturnsCorrectly()
 		{
 			string value = "Value One";
@@ -102,24 +83,6 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 		}
 
 		[TestMethod]
-		[ExpectedException( typeof( ArgumentNullException ) )]
-		public void WithHtmlAttributesDictionaryAndNullValueThrowsArgumentNullException()
-		{
-			string value = null;
-			string attributeName = "AttributeName";
-			string attributeValue = "AttributeValue";
-
-			var htmlAttributes = new Dictionary<string, object>();
-			htmlAttributes.Add( attributeName, attributeValue );
-
-			var viewModel = new CheckBoxListItemViewModel();
-
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, htmlAttributes );
-		}
-
-		[TestMethod]
 		public void WithAttributeExpressionReturnsCorrectly()
 		{
 			string value = "Value One";
@@ -128,28 +91,13 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 
 			var viewModel = new CheckBoxListItemViewModel();
 
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, x => x.Attribute( attributeName, attributeValue ) );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
 			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"{2}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{3}\" />", attributeName, attributeValue, expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
-		}
-
-		[TestMethod]
-		[ExpectedException( typeof( ArgumentNullException ) )]
-		public void WithAttributeExpressionAndNullValueThrowsArgumentNullException()
-		{
-			string value = null;
-			string attributeName = "AttributeName";
-			string attributeValue = "AttributeValue";
-
-			var viewModel = new CheckBoxListItemViewModel();
-
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-
-			htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, x => x.Attribute( attributeName, attributeValue ) );
 		}
 
 		[TestMethod]
@@ -160,7 +108,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var viewModel = new CheckBoxListItemViewModel();
 			viewModel.SelectedCheckBoxValues = new string[] { value, "Other Value" };
 
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
@@ -177,7 +125,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var viewModel = new CheckBoxListItemViewModel();
 			viewModel.SelectedCheckBoxValues = new string[] { "This Value", "Other Value" };
 
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
@@ -192,11 +140,6 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			string value = "Value One";
 
 			var viewModel = new CheckBoxListItemViewModel();
-
-			ModelState selectedCheckBoxValuesModelState = new ModelState()
-			{
-				Value = new ValueProviderResult( value, value, CultureInfo.InvariantCulture )
-			};
 
 			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 			( ( HtmlHelper )htmlHelper ).ViewData.ModelState.AddModelError( "SelectedCheckBoxValues", "ErrorMessage" );
@@ -236,7 +179,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 
 			var viewModel = new CheckBoxListItemViewModel();
 
-			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, x => x.Name( "Updated Name" ) );
 
@@ -258,6 +201,52 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
 			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			Assert.AreEqual( expectedResult, result.ToHtmlString() );
+		}
+
+		[TestMethod]
+		public void WithModelStateValueContainsValueAndModelValueDoesNotContainValueReturnsCorrectly()
+		{
+			string value = "Value";
+
+			var viewModel = new CheckBoxListItemViewModel();
+			viewModel.SelectedCheckBoxValues = new string[] { "ThisValue", "Other Value" };
+
+			string[] modelStateValue = new string[] { value, "OtherValue" };
+
+			ModelState modelState = new ModelState();
+			modelState.Value = new ValueProviderResult( modelStateValue, string.Join( ",", modelStateValue ), CultureInfo.InvariantCulture );
+
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxListItemViewModel>( viewModel );
+			( ( HtmlHelper )htmlHelper ).ViewData.ModelState.Add( "SelectedCheckBoxValues", modelState );
+
+			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
+
+			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
+			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			Assert.AreEqual( expectedResult, result.ToHtmlString() );
+		}
+
+		[TestMethod]
+		public void WithModelStateValueDoesNotContainValueAndModelValueContainsValueReturnsCorrectly()
+		{
+			string value = "Value";
+
+			var viewModel = new CheckBoxListItemViewModel();
+			viewModel.SelectedCheckBoxValues = new string[] { value, "Other Value" };
+
+			string[] modelStateValue = new string[] { "ThisValue", "OtherValue" };
+
+			ModelState modelState = new ModelState();
+			modelState.Value = new ValueProviderResult( modelStateValue, string.Join( ",", modelStateValue ), CultureInfo.InvariantCulture );
+
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper<CheckBoxListItemViewModel>( viewModel );
+			( ( HtmlHelper )htmlHelper ).ViewData.ModelState.Add( "SelectedCheckBoxValues", modelState );
+
+			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
+
+			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
+			string expectedResult = string.Format( "<input checked=\"checked\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 	}

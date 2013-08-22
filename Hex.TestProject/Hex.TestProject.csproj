@@ -192,8 +192,9 @@
     <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxExtensions_WithValue_CheckBox.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxViewModel.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValueTests\CheckBoxExtensions_WithValue_CheckBoxFor.cs" />
-    <Compile Include="Html\CheckBoxListItemExtensionsTests\CheckBoxListItemExtensions_CheckBoxFor.cs" />
+    <Compile Include="Html\CheckBoxListItemExtensionsTests\CheckBoxListItemExtensions_CheckBoxListItemFor.cs" />
     <Compile Include="Html\CheckBoxListItemExtensionsTests\CheckBoxListItemViewModel.cs" />
+    <Compile Include="Html\CheckBoxListItemExtensionsTests\CheckBoxListItemExtensions_CheckBoxListItem.cs" />
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionExtensions_DescriptionFor.cs" />
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionExtensions_Description.cs" />
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionViewModel.cs" />

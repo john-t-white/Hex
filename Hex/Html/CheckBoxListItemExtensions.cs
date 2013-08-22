@@ -15,6 +15,53 @@ namespace Hex.Html
 	/// </summary>
 	public static partial class CheckBoxListItemExtensions
 	{
+		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value )
+		{
+			return htmlHelper.CheckBoxListItem( name, value, null, ( IDictionary<string, object> )null );
+		}
+
+		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
+		{
+			return htmlHelper.CheckBoxListItem( name, value, null, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+		}
+
+		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
+		{
+			return htmlHelper.CheckBoxListItem( name, value, null, htmlAttributes );
+		}
+
+		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.CheckBoxListItem( name, value, null, attributeExpression.GetAttributes() );
+		}
+
+		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IEnumerable selectedValues )
+		{
+			return htmlHelper.CheckBoxListItem( name, value, selectedValues, ( IDictionary<string, object> )null );
+		}
+
+		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IEnumerable selectedValues, object htmlAttributes )
+		{
+			return htmlHelper.CheckBoxListItem( name, value, selectedValues, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+		}
+
+		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IEnumerable selectedValues, IDictionary<string, object> htmlAttributes )
+		{
+			ModelMetadata modelMetadata = ModelMetadata.FromStringExpression( name, htmlHelper.ViewData );
+
+			return CheckBoxListItemExtensions.CheckBoxListItemBuilder( htmlHelper, modelMetadata, name, value, selectedValues, htmlAttributes );
+		}
+
+		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IEnumerable selectedValues, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.CheckBoxListItem( name, value, selectedValues, attributeExpression.GetAttributes() );
+		}
+
+
+
+
+
+
 		/// <summary>
 		/// Returns a check box input element by using the specified HTML helper and the value.
 		/// </summary>
@@ -82,7 +129,7 @@ namespace Hex.Html
 
 		#region Internal Methods
 
-		private static MvcHtmlString CheckBoxListItemBuilder( HtmlHelper htmlHelper, ModelMetadata modelMetadata, string name, object value, bool? isChecked, IDictionary<string, object> htmlAttributes )
+		private static MvcHtmlString CheckBoxListItemBuilder( HtmlHelper htmlHelper, ModelMetadata modelMetadata, string name, object value, IEnumerable selectedValues, IDictionary<string, object> htmlAttributes )
 		{
 			if( value == null )
 			{
@@ -100,12 +147,12 @@ namespace Hex.Html
 			tagBuilder.MergeAttribute( HtmlAttributes.Value, formattedValue, true );
 			tagBuilder.MergeAttributes( htmlHelper.GetUnobtrusiveValidationAttributes( name, modelMetadata ) );
 
+			IEnumerable<string> modelValues = null;
 			ModelState modelState = null;
 			IEnumerable<string> modelStateValue = ( IEnumerable<string> )htmlHelper.ViewData.ModelState.GetModelStateValue( fullHtmlFieldName, typeof( IEnumerable<string> ), out modelState );
 			if( modelStateValue != null || modelMetadata.Model != null )
 			{
-				IEnumerable<string> modelValues;
-				if( isChecked.HasValue )
+				if( selectedValues != null )
 				{
 					modelValues = modelStateValue;
 				}
@@ -114,11 +161,14 @@ namespace Hex.Html
 					modelValues = ( from object currentValue in ( IEnumerable )modelMetadata.Model
 									select htmlHelper.FormatValue( currentValue, null ) );
 				}
-				
-				isChecked = modelValues.Any( x => x == formattedValue );
+			}
+			else if( selectedValues != null )
+			{
+				modelValues = ( from object currentValue in selectedValues
+								select htmlHelper.FormatValue( currentValue, null ) );
 			}
 
-			if( isChecked.HasValue && isChecked.Value )
+			if( modelValues != null && modelValues.Any( x => x == formattedValue ) )
 			{
 				tagBuilder.MergeAttribute( HtmlAttributes.Checked, HtmlAttributes.Checked );
 			}
