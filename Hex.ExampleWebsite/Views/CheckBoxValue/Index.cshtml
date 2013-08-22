@@ -10,16 +10,12 @@
 
 @using( Html.BeginForm() )
 {
-	<h2>Strings</h2>@*
+	<h2>Strings</h2>
 	@Html.ValidationMessageFor( x => x.SelectedStringValues )<br />
 	foreach( string currentStringValue in this.Model.StringValues )
 	{
 		@Html.CheckBoxListItemFor( x => x.SelectedStringValues, currentStringValue )<b>@currentStringValue</b><br />
-	}*@
-	
-	<input type="checkbox" name="SelectedStringValues.[0]" value="Value One" /><b>Value One</b><br />
-	<input type="checkbox" name="SelectedStringValues.[1]" value="Value Two" /><b>Value Two</b><br />
-	<input type="checkbox" name="SelectedStringValues.[2]" value="Value Three" /><b>Value Three</b><br />
+	}
 	
 	<h2>Integers</h2>
 	@Html.ValidationMessageFor( x => x.SelectedIntValues )<br />

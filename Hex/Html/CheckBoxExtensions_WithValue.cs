@@ -27,6 +27,7 @@ namespace Hex.Html
 		/// <param name="checkedValue">The value when it is checked.</param>
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue )
 		{
 			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, false, ( IDictionary<string, object> )null );
@@ -41,6 +42,7 @@ namespace Hex.Html
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, object htmlAttributes )
 		{
 			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, false, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
@@ -55,6 +57,7 @@ namespace Hex.Html
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, IDictionary<string, object> htmlAttributes )
 		{
 			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, false, htmlAttributes );
@@ -69,6 +72,7 @@ namespace Hex.Html
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, false, attributeExpression.GetAttributes() );
@@ -83,6 +87,7 @@ namespace Hex.Html
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, bool isChecked )
 		{
 			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, isChecked, ( IDictionary<string, object> )null );
@@ -98,6 +103,7 @@ namespace Hex.Html
 		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, bool isChecked, object htmlAttributes )
 		{
 			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, isChecked, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
@@ -113,6 +119,7 @@ namespace Hex.Html
 		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, bool isChecked, IDictionary<string, object> htmlAttributes )
 		{
 			var modelMetadata = ModelMetadata.FromStringExpression( name, htmlHelper.ViewData );
@@ -130,6 +137,7 @@ namespace Hex.Html
 		/// <param name="isChecked">true to select the check box; otherwise, false.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox".</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBox( this HtmlHelper htmlHelper, string name, object checkedValue, object uncheckedValue, bool isChecked, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBox( name, checkedValue, uncheckedValue, isChecked, attributeExpression.GetAttributes() );
@@ -145,6 +153,7 @@ namespace Hex.Html
 		/// <param name="checkedValue">The value when it is checked.</param>
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty checkedValue, TProperty uncheckedValue )
 		{
 			return htmlHelper.CheckBoxFor( expression, checkedValue, uncheckedValue, ( IDictionary<string, object> )null );
@@ -161,6 +170,7 @@ namespace Hex.Html
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty checkedValue, TProperty uncheckedValue, object htmlAttributes )
 		{
 			return htmlHelper.CheckBoxFor( expression, checkedValue, uncheckedValue, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
@@ -177,6 +187,7 @@ namespace Hex.Html
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty checkedValue, TProperty uncheckedValue, IDictionary<string, object> htmlAttributes )
 		{
 			var modelMetadata = ModelMetadata.FromLambdaExpression( expression, htmlHelper.ViewData );
@@ -195,6 +206,7 @@ namespace Hex.Html
 		/// <param name="uncheckedValue">The value when it is unchecked.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the specified expression.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression" />, <paramref name="checkedValue" /> or <paramref name="uncheckedValue" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty checkedValue, TProperty uncheckedValue, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBoxFor( expression, checkedValue, uncheckedValue, attributeExpression.GetAttributes() );

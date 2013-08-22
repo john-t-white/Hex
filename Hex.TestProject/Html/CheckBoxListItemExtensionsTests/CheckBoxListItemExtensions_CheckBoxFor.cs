@@ -199,7 +199,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			};
 
 			HtmlHelper<CheckBoxListItemViewModel> htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
-			htmlHelper.ViewData.ModelState.AddModelError( "SelectedCheckBoxValues", "ErrorMessage" );
+			( ( HtmlHelper )htmlHelper ).ViewData.ModelState.AddModelError( "SelectedCheckBoxValues", "ErrorMessage" );
 
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 

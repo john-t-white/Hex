@@ -1,6 +1,7 @@
 ﻿using Hex.AttributeBuilders;
 using Hex.Extensions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -23,7 +24,7 @@ namespace Hex.Html
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="value">The value of the checkbox.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItemFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value )
 		{
 			return htmlHelper.CheckBoxListItemFor( expression, value, ( IDictionary<string, object> )null );
@@ -39,7 +40,7 @@ namespace Hex.Html
 		/// <param name="value">The value of the checkbox.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItemFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, object htmlAttributes )
 		{
 			return htmlHelper.CheckBoxListItemFor( expression, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
@@ -55,12 +56,12 @@ namespace Hex.Html
 		/// <param name="value">The value of the checkbox.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItemFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, IDictionary<string, object> htmlAttributes )
 		{
 			ModelMetadata modelMetadata = ModelMetadata.FromLambdaExpression( expression, htmlHelper.ViewData );
 
-			return CheckBoxListItemExtensions.CheckBoxListItemBuilder( htmlHelper, modelMetadata, ExpressionHelper.GetExpressionText( expression ), value, htmlAttributes );
+			return CheckBoxListItemExtensions.CheckBoxListItemBuilder( htmlHelper, modelMetadata, ExpressionHelper.GetExpressionText( expression ), value, null, htmlAttributes );
 		}
 
 		/// <summary>
@@ -73,7 +74,7 @@ namespace Hex.Html
 		/// <param name="value">The value of the checkbox.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="expression"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItemFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IEnumerable<TProperty>>> expression, TProperty value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBoxListItemFor( expression, value, attributeExpression.GetAttributes() );
@@ -81,7 +82,7 @@ namespace Hex.Html
 
 		#region Internal Methods
 
-		private static MvcHtmlString CheckBoxListItemBuilder<TModel, TProperty>( HtmlHelper<TModel> htmlHelper, ModelMetadata modelMetadata, string name, TProperty value, IDictionary<string, object> htmlAttributes )
+		private static MvcHtmlString CheckBoxListItemBuilder( HtmlHelper htmlHelper, ModelMetadata modelMetadata, string name, object value, bool? isChecked, IDictionary<string, object> htmlAttributes )
 		{
 			if( value == null )
 			{
@@ -99,24 +100,32 @@ namespace Hex.Html
 			tagBuilder.MergeAttribute( HtmlAttributes.Value, formattedValue, true );
 			tagBuilder.MergeAttributes( htmlHelper.GetUnobtrusiveValidationAttributes( name, modelMetadata ) );
 
-			ModelState modelState;
-			if( htmlHelper.ViewData.ModelState.TryGetValue( fullHtmlFieldName, out modelState ) )
+			ModelState modelState = null;
+			IEnumerable<string> modelStateValue = ( IEnumerable<string> )htmlHelper.ViewData.ModelState.GetModelStateValue( fullHtmlFieldName, typeof( IEnumerable<string> ), out modelState );
+			if( modelStateValue != null || modelMetadata.Model != null )
 			{
-				if( modelState.Errors.Count > 0 )
+				IEnumerable<string> modelValues;
+				if( isChecked.HasValue )
 				{
-					tagBuilder.AddCssClass( HtmlHelper.ValidationInputCssClassName );
+					modelValues = modelStateValue;
 				}
+				else
+				{
+					modelValues = ( from object currentValue in ( IEnumerable )modelMetadata.Model
+									select htmlHelper.FormatValue( currentValue, null ) );
+				}
+				
+				isChecked = modelValues.Any( x => x == formattedValue );
 			}
 
-			if( modelMetadata.Model != null )
+			if( isChecked.HasValue && isChecked.Value )
 			{
-				var modelValues = ( from TProperty currentValue in ( IEnumerable<TProperty> )modelMetadata.Model
-									select htmlHelper.FormatValue( currentValue, null ) );
+				tagBuilder.MergeAttribute( HtmlAttributes.Checked, HtmlAttributes.Checked );
+			}
 
-				if( modelValues.Any( x => x == formattedValue ) )
-				{
-					tagBuilder.MergeAttribute( HtmlAttributes.Checked, HtmlAttributes.Checked );
-				}
+			if( modelState != null && modelState.Errors.Count > 0 )
+			{
+				tagBuilder.AddCssClass( HtmlHelper.ValidationInputCssClassName );
 			}
 
 			return MvcHtmlString.Create( tagBuilder.ToString( TagRenderMode.SelfClosing ) );
