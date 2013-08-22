@@ -15,36 +15,100 @@ namespace Hex.Html
 	/// </summary>
 	public static partial class CheckBoxListItemExtensions
 	{
+		/// <summary>
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper and the value.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="value">The value of the checkbox.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value )
 		{
 			return htmlHelper.CheckBoxListItem( name, value, null, ( IDictionary<string, object> )null );
 		}
 
+		/// <summary>
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
 			return htmlHelper.CheckBoxListItem( name, value, null, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
+		/// <summary>
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
 			return htmlHelper.CheckBoxListItem( name, value, null, htmlAttributes );
 		}
 
+		/// <summary>
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBoxListItem( name, value, null, attributeExpression.GetAttributes() );
 		}
 
+		/// <summary>
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value and the list of selected values.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="selectedValues">The list of selected values.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IEnumerable selectedValues )
 		{
 			return htmlHelper.CheckBoxListItem( name, value, selectedValues, ( IDictionary<string, object> )null );
 		}
 
+		/// <summary>
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value, the list of selected values and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="selectedValues">The list of selected values.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IEnumerable selectedValues, object htmlAttributes )
 		{
 			return htmlHelper.CheckBoxListItem( name, value, selectedValues, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
+		/// <summary>
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value, the list of selected values and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="selectedValues">The list of selected values.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IEnumerable selectedValues, IDictionary<string, object> htmlAttributes )
 		{
 			ModelMetadata modelMetadata = ModelMetadata.FromStringExpression( name, htmlHelper.ViewData );
@@ -52,18 +116,23 @@ namespace Hex.Html
 			return CheckBoxListItemExtensions.CheckBoxListItemBuilder( htmlHelper, modelMetadata, name, value, selectedValues, htmlAttributes );
 		}
 
+		/// <summary>
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value, the list of selected values and the HTML attributes.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field.</param>
+		/// <param name="value">The value of the checkbox.</param>
+		/// <param name="selectedValues">The list of selected values.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An input element whose type attribute is set to "checkbox" and the value attribute set to <paramref name="value"/>.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="name"/> or <paramref name="value" /> parameter is null.</exception>
 		public static MvcHtmlString CheckBoxListItem( this HtmlHelper htmlHelper, string name, object value, IEnumerable selectedValues, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.CheckBoxListItem( name, value, selectedValues, attributeExpression.GetAttributes() );
 		}
 
-
-
-
-
-
 		/// <summary>
-		/// Returns a check box input element by using the specified HTML helper and the value.
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper and the value.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
@@ -78,7 +147,7 @@ namespace Hex.Html
 		}
 
 		/// <summary>
-		/// Returns a check box input element by using the specified HTML helper, the value and the specified HTML attributes.
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value and the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
@@ -94,7 +163,7 @@ namespace Hex.Html
 		}
 
 		/// <summary>
-		/// Returns a check box input element by using the specified HTML helper, the value and the specified HTML attributes.
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value and the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
@@ -112,7 +181,7 @@ namespace Hex.Html
 		}
 
 		/// <summary>
-		/// Returns a check box input element by using the specified HTML helper, the value and the specified HTML attributes.
+		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper, the value and the specified HTML attributes.
 		/// </summary>
 		/// <typeparam name="TModel">The type of the model.</typeparam>
 		/// <typeparam name="TProperty">The type of the property.</typeparam>
