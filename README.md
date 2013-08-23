@@ -1,7 +1,10 @@
 Hex
 ===
 
-Hex adds additional overloads to the HtmlHelper methods to provide support for most of the HTML5 input types and a strongly-typed fluent way of specifying additional HTML attributes instead of using the anonymous object.
+Hex adds additional overloads to the HtmlHelper methods to provide support for most of the HTML5 input types and a strongly-typed fluent
+way of specifying additional HTML attributes instead of using the anonymous object.
+
+Hex also adds additional overloads for building checkboxes and checkbox lists.
 
 Documentation: http://staticdotnet.wordpress.com/Hex
 
