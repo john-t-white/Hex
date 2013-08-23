@@ -24,7 +24,7 @@ namespace Hex.ExampleWebsite.Controllers
 			viewModel.NestedEntities.Add( new NestedEntity( 2, "Entity Two" ) );
 			viewModel.NestedEntities.Add( new NestedEntity( 3, "Entity Three" ) );
 
-			viewModel.SelectedStringValues = new CheckBoxList<string>();
+			viewModel.SelectedStringValues = new CheckBoxValues<string>();
 			viewModel.SelectedStringValues.Add( "Value Three" );
 
             return View( "Index", viewModel );

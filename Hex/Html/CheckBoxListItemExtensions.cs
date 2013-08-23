@@ -16,6 +16,11 @@ namespace Hex.Html
 	public static partial class CheckBoxListItemExtensions
 	{
 		/// <summary>
+		/// The name of the hidden input used for checkbox lists.
+		/// </summary>
+		public static readonly string CheckBoxListHiddenName = "CheckBoxList";
+
+		/// <summary>
 		/// Returns a checkbox input element to be used in a list of checkboxes by using the specified HTML helper and the value.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
@@ -207,7 +212,7 @@ namespace Hex.Html
 
 			var checkBoxListStringBuilder = new StringBuilder();
 
-			string checkBoxListHiddenName = string.Format( "{0}.CheckBoxList", name );
+			string checkBoxListHiddenName = string.Format( "{0}.{1}", name, CheckBoxListItemExtensions.CheckBoxListHiddenName );
 			if( htmlHelper.ViewContext.HttpContext.Items[ checkBoxListHiddenName ] == null )
 			{
 				TagBuilder baseTagBuilder = new TagBuilder( HtmlElements.Input );

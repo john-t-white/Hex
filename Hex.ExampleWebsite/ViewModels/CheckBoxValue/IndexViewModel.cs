@@ -17,16 +17,16 @@ namespace Hex.ExampleWebsite.ViewModels.CheckBoxValue
 
 		public List<string> StringValues { get; private set; }
 
-		public CheckBoxList<string> SelectedStringValues { get; set; }
+		public CheckBoxValues<string> SelectedStringValues { get; set; }
 
 		public List<int> IntValues { get; private set; }
 
 		[Required]
-		public CheckBoxList<int> SelectedIntValues { get; set; }
+		public CheckBoxValues<int> SelectedIntValues { get; set; }
 
 		public List<NestedEntity> NestedEntities { get; set; }
 
-		public CheckBoxList<int> SelectedEntityIds { get; set; }
+		public CheckBoxValues<int> SelectedEntityIds { get; set; }
 
 		public YesNoType? CheckBoxWithValue { get; set; }
 	}
