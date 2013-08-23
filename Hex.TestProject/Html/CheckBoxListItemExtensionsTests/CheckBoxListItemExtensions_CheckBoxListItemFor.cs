@@ -223,7 +223,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input checked=\"checked\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -246,7 +246,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input checked=\"checked\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 	}

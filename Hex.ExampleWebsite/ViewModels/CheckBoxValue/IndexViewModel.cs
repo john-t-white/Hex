@@ -17,7 +17,7 @@ namespace Hex.ExampleWebsite.ViewModels.CheckBoxValue
 
 		public List<string> StringValues { get; private set; }
 
-		public List<string> SelectedStringValues { get; set; }
+		public CheckBoxList<string> SelectedStringValues { get; set; }
 
 		public List<int> IntValues { get; private set; }
 

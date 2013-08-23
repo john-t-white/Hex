@@ -12,6 +12,7 @@
 {
 	<h2>Strings</h2>
 	@Html.ValidationMessageFor( x => x.SelectedStringValues )<br />
+	<input type="hidden" name="SelectedStringValues.CheckBoxList" value="" />
 	foreach( string currentStringValue in this.Model.StringValues )
 	{
 		@Html.CheckBoxListItemFor( x => x.SelectedStringValues, currentStringValue )<b>@currentStringValue</b><br />

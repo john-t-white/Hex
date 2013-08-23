@@ -241,7 +241,7 @@ namespace Hex.Html
 			object modelStateValue = htmlHelper.ViewData.ModelState.GetModelStateValue( fullHtmlFieldName, modelMetadata.ModelType, out modelState );
 			if( modelStateValue != null || modelMetadata.Model != null )
 			{
-				var modelValue = ( isChecked.HasValue ) ? modelStateValue : modelMetadata.Model;
+				var modelValue = ( modelStateValue != null ) ? modelStateValue : modelMetadata.Model;
 
 				var formattedModelValue = htmlHelper.FormatValue( modelValue, null );
 				isChecked = string.Equals( formattedCheckedValue, formattedModelValue, StringComparison.Ordinal );

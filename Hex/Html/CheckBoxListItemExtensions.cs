@@ -221,11 +221,11 @@ namespace Hex.Html
 			IEnumerable<string> modelStateValue = ( IEnumerable<string> )htmlHelper.ViewData.ModelState.GetModelStateValue( fullHtmlFieldName, typeof( IEnumerable<string> ), out modelState );
 			if( modelStateValue != null || modelMetadata.Model != null )
 			{
-				if( selectedValues != null )
+				if( modelStateValue != null )
 				{
 					modelValues = modelStateValue;
 				}
-				else
+				else if ( modelMetadata.Model != null )
 				{
 					modelValues = ( from object currentValue in ( IEnumerable )modelMetadata.Model
 									select htmlHelper.FormatValue( currentValue, null ) );

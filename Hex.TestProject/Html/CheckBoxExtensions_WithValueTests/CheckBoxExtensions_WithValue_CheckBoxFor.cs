@@ -180,7 +180,7 @@ namespace Hex.TestProject.Html.CheckBoxExtensions_WithValueTests
 
 			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
 
-			string expectedResult = string.Format( "<input id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
+			string expectedResult = string.Format( "<input checked=\"checked\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -203,7 +203,7 @@ namespace Hex.TestProject.Html.CheckBoxExtensions_WithValueTests
 
 			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
 
-			string expectedResult = string.Format( "<input checked=\"checked\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
+			string expectedResult = string.Format( "<input id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -223,7 +223,7 @@ namespace Hex.TestProject.Html.CheckBoxExtensions_WithValueTests
 
 			var result = htmlHelper.CheckBoxFor( x => x.CheckBoxValue, checkedValue, uncheckedValue );
 
-			string expectedResult = string.Format( "<input id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
+			string expectedResult = string.Format( "<input checked=\"checked\" id=\"CheckBoxValue\" name=\"CheckBoxValue\" type=\"checkbox\" value=\"{0}\" /><input name=\"CheckBoxValue\" type=\"hidden\" value=\"{1}\" />", checkedValue, uncheckedValue );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 	}
