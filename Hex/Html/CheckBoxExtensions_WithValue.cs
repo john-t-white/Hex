@@ -17,8 +17,6 @@ namespace Hex.Html
 	/// </summary>
 	public static partial class CheckBoxExtensions
 	{
-		private const string INPUT_ELEMENT = "input";
-
 		/// <summary>
 		/// Returns a check box input element with the specified values for checked and unchecked by using the specified HTML helper and the name of the form field.
 		/// </summary>
@@ -229,7 +227,7 @@ namespace Hex.Html
 			string fullHtmlFieldName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName( name );
 			string formattedCheckedValue = htmlHelper.FormatValue( checkedValue, null );
 
-			TagBuilder checkedTagBuilder = new TagBuilder( INPUT_ELEMENT );
+			TagBuilder checkedTagBuilder = new TagBuilder( HtmlElements.Input );
 			checkedTagBuilder.MergeAttributes<string, object>( htmlAttributes );
 			checkedTagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.CheckBox ) );
 			checkedTagBuilder.MergeAttribute( HtmlAttributes.Name, fullHtmlFieldName, true );
@@ -259,7 +257,7 @@ namespace Hex.Html
 
 			string formattedUncheckedValue = htmlHelper.FormatValue( uncheckedValue, null );
 
-			TagBuilder uncheckedTagBuilder = new TagBuilder( INPUT_ELEMENT );
+			TagBuilder uncheckedTagBuilder = new TagBuilder( HtmlElements.Input );
 			uncheckedTagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.Hidden ) );
 			uncheckedTagBuilder.MergeAttribute( HtmlAttributes.Name, fullHtmlFieldName );
 			uncheckedTagBuilder.MergeAttribute( HtmlAttributes.Value, formattedUncheckedValue );

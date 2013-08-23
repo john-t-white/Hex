@@ -22,11 +22,11 @@ namespace Hex.ExampleWebsite.ViewModels.CheckBoxValue
 		public List<int> IntValues { get; private set; }
 
 		[Required]
-		public List<int> SelectedIntValues { get; set; }
+		public CheckBoxList<int> SelectedIntValues { get; set; }
 
 		public List<NestedEntity> NestedEntities { get; set; }
 
-		public List<int> SelectedEntityIds { get; set; }
+		public CheckBoxList<int> SelectedEntityIds { get; set; }
 
 		public YesNoType? CheckBoxWithValue { get; set; }
 	}

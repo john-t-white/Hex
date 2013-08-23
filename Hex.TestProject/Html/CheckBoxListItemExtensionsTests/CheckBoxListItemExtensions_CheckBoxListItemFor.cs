@@ -22,7 +22,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -57,7 +57,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, htmlAttributes );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input AttributeName=\"{0}\" id=\"{1}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{2}\" />", attributeValue, expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input AttributeName=\"{0}\" id=\"{1}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{2}\" />", attributeValue, expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -78,7 +78,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, htmlAttributes );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"{2}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{3}\" />", attributeName, attributeValue, expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input {0}=\"{1}\" id=\"{2}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{3}\" />", attributeName, attributeValue, expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -96,7 +96,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, x => x.Attribute( attributeName, attributeValue ) );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"{2}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{3}\" />", attributeName, attributeValue, expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input {0}=\"{1}\" id=\"{2}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{3}\" />", attributeName, attributeValue, expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -113,7 +113,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input checked=\"checked\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input checked=\"checked\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -130,7 +130,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -147,7 +147,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input class=\"input-validation-error\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input class=\"input-validation-error\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -168,7 +168,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.RequiredSelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "RequiredSelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input data-val=\"true\" data-val-required=\"The RequiredSelectedCheckBoxValues field is required.\" id=\"{0}\" name=\"RequiredSelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"RequiredSelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input data-val=\"true\" data-val-required=\"The RequiredSelectedCheckBoxValues field is required.\" id=\"{0}\" name=\"RequiredSelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -184,7 +184,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, x => x.Name( "Updated Name" ) );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -200,7 +200,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value, x => x.Attribute( "value", "Updated Value" ) );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -223,7 +223,7 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input checked=\"checked\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input checked=\"checked\" id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -246,8 +246,30 @@ namespace Hex.TestProject.Html.CheckBoxListItemExtensionsTests
 			var result = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, value );
 
 			string expectedId = string.Format( "SelectedCheckBoxValues_{0}", value.Replace( ' ', '_' ) );
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
+			string expectedResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedId, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
+		}
+
+		[TestMethod]
+		public void MultipleCallsOnlyRendersOneHiddenInputReturnsCorrectly()
+		{
+			string valueOne = "Value One";
+			string valueTwo = "Value Two";
+
+			var viewModel = new CheckBoxListItemViewModel();
+
+			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
+
+			var firstResult = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, valueOne );
+			var secondResult = htmlHelper.CheckBoxListItemFor( x => x.SelectedCheckBoxValues, valueTwo );
+
+			string expectedFirstId = string.Format( "SelectedCheckBoxValues_{0}", valueOne.Replace( ' ', '_' ) );
+			string expectedFirstResult = string.Format( "<input name=\"SelectedCheckBoxValues.CheckBoxList\" type=\"hidden\" value=\"\" /><input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedFirstId, valueOne );
+			Assert.AreEqual( expectedFirstResult, firstResult.ToHtmlString() );
+
+			string expectedSecondId = string.Format( "SelectedCheckBoxValues_{0}", valueTwo.Replace( ' ', '_' ) );
+			string expectedSecondResult = string.Format( "<input id=\"{0}\" name=\"SelectedCheckBoxValues\" type=\"checkbox\" value=\"{1}\" />", expectedSecondId, valueTwo );
+			Assert.AreEqual( expectedSecondResult, secondResult.ToHtmlString() );
 		}
 	}
 }

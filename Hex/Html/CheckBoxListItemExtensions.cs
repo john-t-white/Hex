@@ -205,10 +205,25 @@ namespace Hex.Html
 				throw new ArgumentNullException( "value" );
 			}
 
+			var checkBoxListStringBuilder = new StringBuilder();
+
+			string checkBoxListHiddenName = string.Format( "{0}.CheckBoxList", name );
+			if( htmlHelper.ViewContext.HttpContext.Items[ checkBoxListHiddenName ] == null )
+			{
+				TagBuilder baseTagBuilder = new TagBuilder( HtmlElements.Input );
+				baseTagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.Hidden ) );
+				baseTagBuilder.MergeAttribute( HtmlAttributes.Name, checkBoxListHiddenName );
+				baseTagBuilder.MergeAttribute( HtmlAttributes.Value, string.Empty );
+				checkBoxListStringBuilder.Append( baseTagBuilder.ToString( TagRenderMode.SelfClosing ) );
+
+				htmlHelper.ViewContext.HttpContext.Items[ checkBoxListHiddenName ] = true;
+			}
+
+
 			string fullHtmlFieldName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName( name );
 			string formattedValue = htmlHelper.FormatValue( value, null );
 
-			TagBuilder tagBuilder = new TagBuilder( "input" );
+			TagBuilder tagBuilder = new TagBuilder( HtmlElements.Input );
 			tagBuilder.MergeAttributes<string, object>( htmlAttributes );
 			tagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.CheckBox ) );
 			tagBuilder.MergeAttribute( HtmlAttributes.Name, fullHtmlFieldName, true );
@@ -247,7 +262,9 @@ namespace Hex.Html
 				tagBuilder.AddCssClass( HtmlHelper.ValidationInputCssClassName );
 			}
 
-			return MvcHtmlString.Create( tagBuilder.ToString( TagRenderMode.SelfClosing ) );
+			checkBoxListStringBuilder.Append( tagBuilder.ToString( TagRenderMode.SelfClosing ) );
+
+			return MvcHtmlString.Create( checkBoxListStringBuilder.ToString() );
 		}
 
 		private static string GetCheckBoxWithValueId( HtmlHelper htmlhelper, string fullHtmlFieldName, string formattedValue )

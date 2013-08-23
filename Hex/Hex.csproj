@@ -94,6 +94,7 @@
     <Compile Include="Html\CheckBoxListItemExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValue.cs" />
     <Compile Include="Html\DescriptionExtensions.cs" />
+    <Compile Include="Html\HtmlElements.cs" />
     <Compile Include="ModelBinders\CheckBoxListModelBinder.cs" />
     <Compile Include="StyleCollection.cs" />
     <Compile Include="AttributeValueCollection.cs" />
