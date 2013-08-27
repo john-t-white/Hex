@@ -198,6 +198,9 @@
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionExtensions_DescriptionFor.cs" />
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionExtensions_Description.cs" />
     <Compile Include="Html\DescriptionExtensionsTests\DescriptionViewModel.cs" />
+    <Compile Include="Html\SubmitButtonExtensionsTests\SubmitButtonExtensions_SubmitButton.cs" />
+    <Compile Include="Html\SubmitButtonExtensionsTests\SubmitButtonViewModel.cs" />
+    <Compile Include="Html\SubmitButtonExtensionsTests\SubmitButtonExtensions_SubmitButtonFor.cs" />
     <Compile Include="StyleCollectionTests\StyleCollection_ToString.cs" />
     <Compile Include="AttributeValueCollectionTests\AttributeValueCollection_ToString.cs" />
     <Compile Include="AjaxHelperGenerator.cs" />

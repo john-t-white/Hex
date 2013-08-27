@@ -1,5 +1,6 @@
 ﻿using Hex.AttributeBuilders;
 using Hex.Extensions;
+using Hex.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -212,7 +213,14 @@ namespace Hex.Html
 
 			var checkBoxListStringBuilder = new StringBuilder();
 
-			string checkBoxListHiddenName = string.Format( "{0}.{1}", name, CheckBoxListItemExtensions.CheckBoxListHiddenName );
+			string fullHtmlFieldName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName( name );
+
+			if( string.IsNullOrWhiteSpace( fullHtmlFieldName ) )
+			{
+				throw new ArgumentException( ExceptionMessages.VALUE_CANNOT_BE_NULL_OR_EMPTY, "name" );
+			}
+
+			string checkBoxListHiddenName = string.Format( "{0}.{1}", fullHtmlFieldName, CheckBoxListItemExtensions.CheckBoxListHiddenName );
 			if( htmlHelper.ViewContext.HttpContext.Items[ checkBoxListHiddenName ] == null )
 			{
 				TagBuilder baseTagBuilder = new TagBuilder( HtmlElements.Input );
@@ -224,8 +232,6 @@ namespace Hex.Html
 				htmlHelper.ViewContext.HttpContext.Items[ checkBoxListHiddenName ] = true;
 			}
 
-
-			string fullHtmlFieldName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName( name );
 			string formattedValue = htmlHelper.FormatValue( value, null );
 
 			TagBuilder tagBuilder = new TagBuilder( HtmlElements.Input );

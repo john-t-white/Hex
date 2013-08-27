@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Linq.Expressions;
 using System.Collections;
+using Hex.Resources;
 
 namespace Hex.Html
 {
@@ -225,6 +226,12 @@ namespace Hex.Html
 			}
 
 			string fullHtmlFieldName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName( name );
+
+			if( string.IsNullOrWhiteSpace( fullHtmlFieldName ) )
+			{
+				throw new ArgumentException( ExceptionMessages.VALUE_CANNOT_BE_NULL_OR_EMPTY, "name" );
+			}
+
 			string formattedCheckedValue = htmlHelper.FormatValue( checkedValue, null );
 
 			TagBuilder checkedTagBuilder = new TagBuilder( HtmlElements.Input );
