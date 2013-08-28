@@ -3,10 +3,10 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
+namespace Hex.TestProject.Html.SubmitInputButtonExtensionsTests
 {
 	[TestClass]
-	public class SubmitButtonExtensions_SubmitButton
+	public class SubmitInputButtonExtensions_SubmitInputButton
 	{
 		[TestMethod]
 		public void ReturnsCorrectly()
@@ -16,9 +16,9 @@ namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
 
 			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
 
-			var result = htmlHelper.SubmitButton( name, value );
+			var result = htmlHelper.SubmitInputButton( name, value );
 
-			string expectedResult = string.Format( "<input id=\"{0}\" name=\"{0}\" type=\"submit\" value=\"{1}\" />", name, value );
+			string expectedResult = string.Format( "<input name=\"{0}\" type=\"submit\" value=\"{1}\" />", name, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -36,9 +36,9 @@ namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
 
 			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
 
-			var result = htmlHelper.SubmitButton( name, value, htmlAttributes );
+			var result = htmlHelper.SubmitInputButton( name, value, htmlAttributes );
 
-			string expectedResult = string.Format( "<input AttributeName=\"{0}\" id=\"{1}\" name=\"{1}\" type=\"submit\" value=\"{2}\" />", attributeValue, name, value );
+			string expectedResult = string.Format( "<input AttributeName=\"{0}\" name=\"{1}\" type=\"submit\" value=\"{2}\" />", attributeValue, name, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -55,9 +55,9 @@ namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
 
 			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
 
-			var result = htmlHelper.SubmitButton( name, value, htmlAttributes );
+			var result = htmlHelper.SubmitInputButton( name, value, htmlAttributes );
 
-			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"{2}\" name=\"{2}\" type=\"submit\" value=\"{3}\" />", attributeName, attributeValue, name, value );
+			string expectedResult = string.Format( "<input {0}=\"{1}\" name=\"{2}\" type=\"submit\" value=\"{3}\" />", attributeName, attributeValue, name, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 
@@ -71,9 +71,9 @@ namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
 
 			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
 
-			var result = htmlHelper.SubmitButton( name, value, x => x.Attribute( attributeName, attributeValue ) );
+			var result = htmlHelper.SubmitInputButton( name, value, x => x.Attribute( attributeName, attributeValue ) );
 
-			string expectedResult = string.Format( "<input {0}=\"{1}\" id=\"{2}\" name=\"{2}\" type=\"submit\" value=\"{3}\" />", attributeName, attributeValue, name, value );
+			string expectedResult = string.Format( "<input {0}=\"{1}\" name=\"{2}\" type=\"submit\" value=\"{3}\" />", attributeName, attributeValue, name, value );
 			Assert.AreEqual( expectedResult, result.ToHtmlString() );
 		}
 	}

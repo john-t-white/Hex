@@ -23,6 +23,22 @@ namespace Hex
 	}
 
 	/// <summary>
+	/// Enumerates the values for the type attribute in the HTML element button.
+	/// </summary>
+	public enum ButtonType
+	{
+		/// <summary>
+		/// Represents type="button".
+		/// </summary>
+		Button,
+
+		/// <summary>
+		/// Represents type="submit".
+		/// </summary>
+		Submit
+	}
+
+	/// <summary>
 	/// Enumerates the values for the contenteditable HTML attribute.
 	/// </summary>
 	public enum ContentEditableType

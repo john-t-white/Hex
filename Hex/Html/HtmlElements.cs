@@ -11,6 +11,11 @@ namespace Hex.Html
 	public static class HtmlElements
 	{
 		/// <summary>
+		/// Represents the HTML element "button".
+		/// </summary>
+		public readonly static string Button = "button";
+
+		/// <summary>
 		/// Represents the HTML element "input".
 		/// </summary>
 		public readonly static string Input = "input";

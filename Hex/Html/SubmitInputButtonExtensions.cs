@@ -13,7 +13,7 @@ namespace Hex.Html
 	/// <summary>
 	/// Represents support for HTML inputs of type "submit".
 	/// </summary>
-	public static class SubmitButtonExtensions
+	public static class SubmitInputButtonExtensions
 	{
 		private const string INPUT_TYPE_SUBMIT = "submit";
 
@@ -24,9 +24,9 @@ namespace Hex.Html
 		/// <param name="name">The name of the submit button.</param>
 		/// <param name="value">The value of the submit button.</param>
 		/// <returns>An input element whose type attribute is set to "submit".</returns>
-		public static MvcHtmlString SubmitButton( this HtmlHelper htmlHelper, string name, object value )
+		public static MvcHtmlString SubmitInputButton( this HtmlHelper htmlHelper, string name, object value )
 		{
-			return htmlHelper.SubmitButton( name, value, ( IDictionary<string, object> )null );
+			return htmlHelper.SubmitInputButton( name, value, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
@@ -37,9 +37,9 @@ namespace Hex.Html
 		/// <param name="value">The value of the submit button.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "submit".</returns>
-		public static MvcHtmlString SubmitButton( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
+		public static MvcHtmlString SubmitInputButton( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
-			return htmlHelper.SubmitButton( name, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+			return htmlHelper.SubmitInputButton( name, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -50,9 +50,9 @@ namespace Hex.Html
 		/// <param name="value">The value of the submit button.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "submit".</returns>
-		public static MvcHtmlString SubmitButton( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
+		public static MvcHtmlString SubmitInputButton( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
-			return SubmitButtonExtensions.SubmitButtonBuilder( htmlHelper, name, value, htmlAttributes );
+			return SubmitInputButtonExtensions.SubmitInputButtonBuilder( htmlHelper, name, value, htmlAttributes );
 		}
 
 		/// <summary>
@@ -63,9 +63,9 @@ namespace Hex.Html
 		/// <param name="value">The value of the submit button.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "submit".</returns>
-		public static MvcHtmlString SubmitButton( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
+		public static MvcHtmlString SubmitInputButton( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.SubmitButton( name, value, attributeExpression.GetAttributes() );
+			return htmlHelper.SubmitInputButton( name, value, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>
@@ -78,9 +78,9 @@ namespace Hex.Html
 		/// <param name="value">The value of the submit button.</param>
 		/// <returns>An input element whose type attribute is set to "submit".</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is null or empty.</exception>
-		public static MvcHtmlString SubmitButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value )
+		public static MvcHtmlString SubmitInputButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value )
 		{
-			return htmlHelper.SubmitButtonFor( expression, value, ( IDictionary<string, object> )null );
+			return htmlHelper.SubmitInputButtonFor( expression, value, ( IDictionary<string, object> )null );
 		}
 
 		/// <summary>
@@ -94,9 +94,9 @@ namespace Hex.Html
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "submit".</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is null or empty.</exception>
-		public static MvcHtmlString SubmitButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, object htmlAttributes )
+		public static MvcHtmlString SubmitInputButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, object htmlAttributes )
 		{
-			return htmlHelper.SubmitButtonFor( expression, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+			return htmlHelper.SubmitInputButtonFor( expression, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
 		/// <summary>
@@ -110,14 +110,14 @@ namespace Hex.Html
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "submit".</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is null or empty.</exception>
-		public static MvcHtmlString SubmitButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, IDictionary<string, object> htmlAttributes )
+		public static MvcHtmlString SubmitInputButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, IDictionary<string, object> htmlAttributes )
 		{
 			if( expression == null )
 			{
 				throw new ArgumentNullException( "expression" );
 			}
 
-			return SubmitButtonExtensions.SubmitButtonBuilder( htmlHelper, ExpressionHelper.GetExpressionText( expression ), value, htmlAttributes );
+			return SubmitInputButtonExtensions.SubmitInputButtonBuilder( htmlHelper, ExpressionHelper.GetExpressionText( expression ), value, htmlAttributes );
 		}
 
 		/// <summary>
@@ -131,14 +131,14 @@ namespace Hex.Html
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>An input element whose type attribute is set to "submit".</returns>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="expression" /> parameter is null or empty.</exception>
-		public static MvcHtmlString SubmitButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, Action<HtmlAttributeBuilder> attributeExpression )
+		public static MvcHtmlString SubmitInputButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
-			return htmlHelper.SubmitButtonFor( expression, value, attributeExpression.GetAttributes() );
+			return htmlHelper.SubmitInputButtonFor( expression, value, attributeExpression.GetAttributes() );
 		}
 
 		#region Internal Methods
 
-		private static MvcHtmlString SubmitButtonBuilder( HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
+		private static MvcHtmlString SubmitInputButtonBuilder( HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
 			string fullHtmlFieldName = htmlHelper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName( name );
 
@@ -151,8 +151,7 @@ namespace Hex.Html
 			tagBuilder.MergeAttributes( htmlAttributes );
 			tagBuilder.MergeAttribute( HtmlAttributes.Type, INPUT_TYPE_SUBMIT, true );
 			tagBuilder.MergeAttribute( HtmlAttributes.Name, fullHtmlFieldName, true );
-			tagBuilder.MergeAttribute( HtmlAttributes.Id, TagBuilder.CreateSanitizedId( name ) );
-			tagBuilder.MergeAttribute( HtmlAttributes.Value, htmlHelper.FormatValue( value, null ) );
+			tagBuilder.MergeAttribute( HtmlAttributes.Value, htmlHelper.FormatValue( value, null ), true );
 
 			return new MvcHtmlString( tagBuilder.ToString( TagRenderMode.SelfClosing ) );
 		}
