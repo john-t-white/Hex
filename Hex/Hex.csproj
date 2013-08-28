@@ -95,7 +95,7 @@
     <Compile Include="CheckBoxValues.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Html\ButtonExtensions.cs" />
-    <Compile Include="Html\ButtonHelper.cs" />
+    <Compile Include="Html\Helpers\ButtonHelper.cs" />
     <Compile Include="Html\CheckBoxListItemExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValue.cs" />
     <Compile Include="Html\DescriptionExtensions.cs" />

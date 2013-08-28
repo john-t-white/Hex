@@ -1,5 +1,6 @@
 ﻿using Hex.AttributeBuilders;
 using Hex.Extensions;
+using Hex.Html.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

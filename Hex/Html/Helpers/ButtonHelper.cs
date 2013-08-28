@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Hex.Html
+namespace Hex.Html.Helpers
 {
 	internal static class ButtonHelper
 	{
