@@ -21,7 +21,7 @@ namespace Hex.Html
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
-		/// <param name="buttonText">The text of the button.</param>
+		/// <param name="buttonText">The value of the form field to return.</param>
 		/// <param name="value">The value of the button.</param>
 		/// <returns>A button element whose type attribute is set to "button".</returns>
 		public static MvcHtmlString Button( this HtmlHelper htmlHelper, string name, string buttonText, object value )
@@ -35,7 +35,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="buttonText">The text of the button.</param>
-		/// <param name="value">The value of the button.</param>
+		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>A button element whose type attribute is set to "button".</returns>
 		public static MvcHtmlString Button( this HtmlHelper htmlHelper, string name, string buttonText, object value, object htmlAttributes )
@@ -49,7 +49,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="buttonText">The text of the button.</param>
-		/// <param name="value">The value of the button.</param>
+		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>A button element whose type attribute is set to "button".</returns>
 		public static MvcHtmlString Button( this HtmlHelper htmlHelper, string name, string buttonText, object value, IDictionary<string, object> htmlAttributes )
@@ -63,7 +63,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="buttonText">The text of the button.</param>
-		/// <param name="value">The value of the button.</param>
+		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>A button element whose type attribute is set to "button".</returns>
 		public static MvcHtmlString Button( this HtmlHelper htmlHelper, string name, string buttonText, object value, Action<HtmlAttributeBuilder> attributeExpression )
@@ -79,7 +79,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="buttonText">The text of the button.</param>
-		/// <param name="value">The value of the button.</param>
+		/// <param name="value">The value of the form field to return.</param>
 		/// <returns>A button element whose type attribute is set to "button".</returns>
 		public static MvcHtmlString ButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string buttonText, TProperty value )
 		{
@@ -94,7 +94,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="buttonText">The text of the button.</param>
-		/// <param name="value">The value of the button.</param>
+		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
 		/// <returns>A button element whose type attribute is set to "button".</returns>
 		public static MvcHtmlString ButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string buttonText, TProperty value, object htmlAttributes )
@@ -110,7 +110,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="buttonText">The text of the button.</param>
-		/// <param name="value">The value of the button.</param>
+		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
 		/// <returns>A button element whose type attribute is set to "button".</returns>
 		public static MvcHtmlString ButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string buttonText, TProperty value, IDictionary<string, object> htmlAttributes )
@@ -126,7 +126,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="buttonText">The text of the button.</param>
-		/// <param name="value">The value of the button.</param>
+		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
 		/// <returns>A button element whose type attribute is set to "button".</returns>
 		public static MvcHtmlString ButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string buttonText, TProperty value, Action<HtmlAttributeBuilder> attributeExpression )

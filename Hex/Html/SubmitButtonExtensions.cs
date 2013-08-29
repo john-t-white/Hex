@@ -10,6 +10,9 @@ using System.Web.Mvc;
 
 namespace Hex.Html
 {
+	/// <summary>
+	/// Represents support for HTML5 button in an application with HTML attributes.
+	/// </summary>
 	public static class SubmitButtonExtensions
 	{
 		/// <summary>

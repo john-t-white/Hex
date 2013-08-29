@@ -298,7 +298,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginActionLink( this HtmlHelper htmlHelper, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes )
 		{
-			htmlHelper.GenerateLinkInternal( null, actionName, controllerName, protocol, hostName, fragment, routeValues, htmlAttributes, true );
+			BeginLinkExtensions.GenerateLinkInternal( htmlHelper, null, actionName, controllerName, protocol, hostName, fragment, routeValues, htmlAttributes, true );
 
 			return new MvcLink( htmlHelper.ViewContext );
 		}
@@ -593,7 +593,7 @@ namespace Hex.Html
 		/// <returns>An opening &lt;a&gt; tag.</returns>
 		public static MvcLink BeginRouteLink( this HtmlHelper htmlHelper, string routeName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes )
 		{
-			htmlHelper.GenerateLinkInternal( routeName, null, null, protocol, hostName, fragment, routeValues, htmlAttributes, false );
+			BeginLinkExtensions.GenerateLinkInternal( htmlHelper, routeName, null, null, protocol, hostName, fragment, routeValues, htmlAttributes, false );
 
 			return new MvcLink( htmlHelper.ViewContext );
 		}
@@ -615,7 +615,7 @@ namespace Hex.Html
 		}
 
 		/// <summary>
-		/// Writes the closing &lt;/s&gt; tag to the response.
+		/// Writes the closing &lt;/a&gt; tag to the response.
 		/// </summary>
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		public static void EndLink( this HtmlHelper htmlHelper )
@@ -627,16 +627,16 @@ namespace Hex.Html
 
 		internal static void EndLink( ViewContext viewContext )
 		{
-			viewContext.Writer.Write( "</a>" );
+			viewContext.Writer.Write( string.Format( "</{0}>", HtmlElements.Anchor ) );
 		}
 
-		private static void GenerateLinkInternal( this HtmlHelper htmlHelper, string routeName, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, bool includeImplicitMvcValues )
+		private static void GenerateLinkInternal( HtmlHelper htmlHelper, string routeName, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, bool includeImplicitMvcValues )
 		{
 			string url = UrlHelper.GenerateUrl( routeName, actionName, controllerName, protocol, hostName, fragment, routeValues, htmlHelper.RouteCollection, htmlHelper.ViewContext.RequestContext, includeImplicitMvcValues );
 
-			TagBuilder linkTagBuilder = new TagBuilder( "a" );
+			TagBuilder linkTagBuilder = new TagBuilder( HtmlElements.Anchor );
 			linkTagBuilder.MergeAttributes( htmlAttributes );
-			linkTagBuilder.MergeAttribute( HtmlAttributes.Href, url );
+			linkTagBuilder.MergeAttribute( HtmlAttributes.Href, url, true );
 
 			htmlHelper.ViewContext.Writer.Write( linkTagBuilder.ToString( TagRenderMode.StartTag ) );
 		}
