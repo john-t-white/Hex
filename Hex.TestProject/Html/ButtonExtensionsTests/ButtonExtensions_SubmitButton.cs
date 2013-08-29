@@ -3,10 +3,10 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
+namespace Hex.TestProject.Html.ButtonExtensionsTests
 {
 	[TestClass]
-	public class SubmitButtonExtensions_SubmitButton
+	public class ButtonExtensions_SubmitButton
 	{
 		[TestMethod]
 		public void ReturnsCorrectly()

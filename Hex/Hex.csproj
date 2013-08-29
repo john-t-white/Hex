@@ -96,12 +96,10 @@
     <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Html\BeginButtonExtensions.cs" />
     <Compile Include="Html\ButtonExtensions.cs" />
-    <Compile Include="Html\Helpers\ButtonHelper.cs" />
     <Compile Include="Html\CheckBoxListItemExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValue.cs" />
     <Compile Include="Html\DescriptionExtensions.cs" />
     <Compile Include="Html\HtmlElements.cs" />
-    <Compile Include="Html\SubmitButtonExtensions.cs" />
     <Compile Include="Html\SubmitInputButtonExtensions.cs" />
     <Compile Include="ModelBinders\CheckBoxValuesModelBinder.cs" />
     <Compile Include="MvcButton.cs" />

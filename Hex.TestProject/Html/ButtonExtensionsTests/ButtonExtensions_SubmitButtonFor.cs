@@ -3,10 +3,10 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
+namespace Hex.TestProject.Html.ButtonExtensionsTests
 {
 	[TestClass]
-	public class SubmitButtonExtensions_SubmitButtonFor
+	public class ButtonExtensions_SubmitButtonFor
 	{
 		[TestMethod]
 		public void ReturnsCorrectly()
@@ -14,7 +14,7 @@ namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
 			string buttonText = "ButtonText";
 			string value = "Value";
 
-			var viewModel = new SubmitButtonViewModel();
+			var viewModel = new ButtonViewModel();
 			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.SubmitButtonFor( x => x.SubmitButton, buttonText, value );
@@ -35,7 +35,7 @@ namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
 				AttributeName = attributeValue
 			};
 
-			var viewModel = new SubmitButtonViewModel();
+			var viewModel = new ButtonViewModel();
 			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.SubmitButtonFor( x => x.SubmitButton, buttonText, value, htmlAttributes );
@@ -55,7 +55,7 @@ namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
 			var htmlAttributes = new Dictionary<string, object>();
 			htmlAttributes.Add( attributeName, attributeValue );
 
-			var viewModel = new SubmitButtonViewModel();
+			var viewModel = new ButtonViewModel();
 			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.SubmitButtonFor( x => x.SubmitButton, buttonText, value, htmlAttributes );
@@ -72,7 +72,7 @@ namespace Hex.TestProject.Html.SubmitButtonExtensionsTests
 			string attributeName = "AttributeName";
 			string attributeValue = "AttributeValue";
 
-			var viewModel = new SubmitButtonViewModel();
+			var viewModel = new ButtonViewModel();
 			var htmlHelper = HtmlHelperGenerator.CreateHtmlHelper( viewModel );
 
 			var result = htmlHelper.SubmitButtonFor( x => x.SubmitButton, buttonText, value, x => x.Attribute( attributeName, attributeValue ) );
