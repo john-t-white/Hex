@@ -21,7 +21,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">The value of the form field to return.</param>
-		/// <returns>An opening &lt;button&gt; tag.</returns>
+		/// <returns>An opening &lt;button&gt; tag with type="button".</returns>
 		public static MvcButton BeginButton( this HtmlHelper htmlHelper, string name, object value )
 		{
 			return htmlHelper.BeginButton( name, value, ( IDictionary<string, object> )null );
@@ -34,7 +34,7 @@ namespace Hex.Html
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
-		/// <returns>An opening &lt;button&gt; tag.</returns>
+		/// <returns>An opening &lt;button&gt; tag with type="button".</returns>
 		public static MvcButton BeginButton( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
 		{
 			return htmlHelper.BeginButton( name, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
@@ -47,7 +47,7 @@ namespace Hex.Html
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
-		/// <returns>An opening &lt;button&gt; tag.</returns>
+		/// <returns>An opening &lt;button&gt; tag with type="button".</returns>
 		public static MvcButton BeginButton( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
 		{
 			BeginButtonExtensions.BeginButtonBuilder( htmlHelper, name, value, ButtonType.Button, htmlAttributes );
@@ -62,7 +62,7 @@ namespace Hex.Html
 		/// <param name="name">The name of the form field to return.</param>
 		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An opening &lt;button&gt; tag.</returns>
+		/// <returns>An opening &lt;button&gt; tag with type="button".</returns>
 		public static MvcButton BeginButton( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.BeginButton( name, value, attributeExpression.GetAttributes() );
@@ -76,7 +76,7 @@ namespace Hex.Html
 		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="value">The value of the form field to return.</param>
-		/// <returns>An opening &lt;button&gt; tag.</returns>
+		/// <returns>An opening &lt;button&gt; tag with type="button".</returns>
 		public static MvcButton BeginButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value )
 		{
 			return htmlHelper.BeginButtonFor( expression, value, ( IDictionary<string, object> )null );
@@ -91,7 +91,7 @@ namespace Hex.Html
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
-		/// <returns>An opening &lt;button&gt; tag.</returns>
+		/// <returns>An opening &lt;button&gt; tag with type="button".</returns>
 		public static MvcButton BeginButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, object htmlAttributes )
 		{
 			return htmlHelper.BeginButtonFor( expression, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
@@ -106,7 +106,7 @@ namespace Hex.Html
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
-		/// <returns>An opening &lt;button&gt; tag.</returns>
+		/// <returns>An opening &lt;button&gt; tag with type="button".</returns>
 		public static MvcButton BeginButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, IDictionary<string, object> htmlAttributes )
 		{
 			BeginButtonExtensions.BeginButtonBuilder( htmlHelper, ExpressionHelper.GetExpressionText( expression ), value, ButtonType.Button, htmlAttributes );
@@ -123,10 +123,124 @@ namespace Hex.Html
 		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
 		/// <param name="value">The value of the form field to return.</param>
 		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
-		/// <returns>An opening &lt;button&gt; tag.</returns>
+		/// <returns>An opening &lt;button&gt; tag with type="button".</returns>
 		public static MvcButton BeginButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.BeginButtonFor( expression, value, attributeExpression.GetAttributes() );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;button&gt; tag to the response.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field to return.</param>
+		/// <param name="value">The value of the form field to return.</param>
+		/// <returns>An opening &lt;button&gt; tag with type="submit".</returns>
+		public static MvcButton BeginSubmitButton( this HtmlHelper htmlHelper, string name, object value )
+		{
+			return htmlHelper.BeginSubmitButton( name, value, ( IDictionary<string, object> )null );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;button&gt; tag to the response.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field to return.</param>
+		/// <param name="value">The value of the form field to return.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;button&gt; tag with type="submit".</returns>
+		public static MvcButton BeginSubmitButton( this HtmlHelper htmlHelper, string name, object value, object htmlAttributes )
+		{
+			return htmlHelper.BeginSubmitButton( name, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;button&gt; tag to the response.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field to return.</param>
+		/// <param name="value">The value of the form field to return.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;button&gt; tag with type="submit".</returns>
+		public static MvcButton BeginSubmitButton( this HtmlHelper htmlHelper, string name, object value, IDictionary<string, object> htmlAttributes )
+		{
+			BeginButtonExtensions.BeginButtonBuilder( htmlHelper, name, value, ButtonType.Submit, htmlAttributes );
+
+			return new MvcButton( htmlHelper.ViewContext );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;button&gt; tag to the response.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="name">The name of the form field to return.</param>
+		/// <param name="value">The value of the form field to return.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;button&gt; tag with type="submit".</returns>
+		public static MvcButton BeginSubmitButton( this HtmlHelper htmlHelper, string name, object value, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.BeginSubmitButton( name, value, attributeExpression.GetAttributes() );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;button&gt; tag to the response.
+		/// </summary>
+		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="value">The value of the form field to return.</param>
+		/// <returns>An opening &lt;button&gt; tag with type="submit".</returns>
+		public static MvcButton BeginSubmitButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value )
+		{
+			return htmlHelper.BeginSubmitButtonFor( expression, value, ( IDictionary<string, object> )null );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;button&gt; tag to the response.
+		/// </summary>
+		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="value">The value of the form field to return.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;button&gt; tag with type="submit".</returns>
+		public static MvcButton BeginSubmitButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, object htmlAttributes )
+		{
+			return htmlHelper.BeginSubmitButtonFor( expression, value, HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;button&gt; tag to the response.
+		/// </summary>
+		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="value">The value of the form field to return.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;button&gt; tag with type="submit".</returns>
+		public static MvcButton BeginSubmitButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, IDictionary<string, object> htmlAttributes )
+		{
+			BeginButtonExtensions.BeginButtonBuilder( htmlHelper, ExpressionHelper.GetExpressionText( expression ), value, ButtonType.Submit, htmlAttributes );
+
+			return new MvcButton( htmlHelper.ViewContext );
+		}
+
+		/// <summary>
+		/// Writes an opening &lt;button&gt; tag to the response.
+		/// </summary>
+		/// <typeparam name="TModel">The type of the model.</typeparam>
+		/// <typeparam name="TProperty">The type of the property.</typeparam>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+		/// <param name="value">The value of the form field to return.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;button&gt; tag with type="submit".</returns>
+		public static MvcButton BeginSubmitButtonFor<TModel, TProperty>( this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, TProperty value, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.BeginSubmitButtonFor( expression, value, attributeExpression.GetAttributes() );
 		}
 
 		/// <summary>

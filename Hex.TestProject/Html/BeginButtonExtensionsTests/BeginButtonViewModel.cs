@@ -8,5 +8,7 @@ namespace Hex.TestProject.Html.BeginButtonExtensionsTests
 	public class BeginButtonViewModel
 	{
 		public string BeginButton { get; set; }
+
+		public string BeginSubmitButton { get; set; }
 	}
 }

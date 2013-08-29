@@ -193,6 +193,8 @@
     <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonViewModel.cs" />
     <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonExtensions_BeginButtonFor.cs" />
     <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonExtensions_EndButton.cs" />
+    <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonExtensions_BeginSubmitButton.cs" />
+    <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonExtensions_BeginSubmitButtonFor.cs" />
     <Compile Include="Html\ButtonExtensionsTests\ButtonExtensions_Button.cs" />
     <Compile Include="Html\ButtonExtensionsTests\ButtonViewModel.cs" />
     <Compile Include="Html\ButtonExtensionsTests\ButtonExtensions_ButtonFor.cs" />
