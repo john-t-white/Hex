@@ -14,21 +14,21 @@
 	@Html.ValidationMessageFor( x => x.SelectedStringValues )<br />
 	foreach( string currentStringValue in this.Model.StringValues )
 	{
-		@Html.CheckBoxListItemFor( x => x.SelectedStringValues, currentStringValue )<b>@currentStringValue</b><br />
+		@Html.CheckBoxListItemFor( x => x.SelectedStringValues, currentStringValue ) @Html.CheckBoxListItemLabelFor( x => x.SelectedStringValues, currentStringValue )<br />
 	}
 	
 	<h2>Integers</h2>
 	@Html.ValidationMessageFor( x => x.SelectedIntValues )<br />
 	foreach( int currentIntValue in this.Model.IntValues )
 	{
-		@Html.CheckBoxListItemFor( x => x.SelectedIntValues, currentIntValue )<b>@currentIntValue</b><br />
+		@Html.CheckBoxListItemFor( x => x.SelectedIntValues, currentIntValue ) @Html.CheckBoxListItemLabelFor( x => x.SelectedIntValues, currentIntValue )<br />
 	}
 	
 	<h2>Entities</h2>
 	@Html.ValidationMessageFor( x => x.SelectedEntityIds )<br />
 	foreach( NestedEntity currentEntity in this.Model.NestedEntities )
 	{
-		@Html.CheckBoxListItemFor( x => x.SelectedEntityIds, currentEntity.Id )<b>@currentEntity.Name</b><br />
+		@Html.CheckBoxListItemFor( x => x.SelectedEntityIds, currentEntity.Id ) @Html.CheckBoxListItemLabelFor( x => x.SelectedEntityIds, currentEntity.Id, currentEntity.Name )<br />
 	}
 	
 	<br />
