@@ -147,6 +147,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExceptionMessages.resx</DependentUpon>
     </Compile>
+    <Compile Include="Wizard\IWizardStepCollection.cs" />
+    <Compile Include="Wizard\WizardStep.cs" />
+    <Compile Include="Wizard\WizardStepLinkedList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

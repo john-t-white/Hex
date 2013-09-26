@@ -70,6 +70,33 @@ namespace Hex.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The current wizard step must exist in the collection..
+        /// </summary>
+        internal static string CURRENT_WIZARD_STEP_DOES_NOT_EXIST_IN_COLLECTION {
+            get {
+                return ResourceManager.GetString("CURRENT_WIZARD_STEP_DOES_NOT_EXIST_IN_COLLECTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no next wizard step in the collection..
+        /// </summary>
+        internal static string NEXT_WIZARD_STEP_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("NEXT_WIZARD_STEP_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no previous wizard step in the collection..
+        /// </summary>
+        internal static string PREVIOUS_WIZARD_STEP_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("PREVIOUS_WIZARD_STEP_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Value cannot be null or empty..
         /// </summary>
         internal static string VALUE_CANNOT_BE_NULL_OR_EMPTY {
