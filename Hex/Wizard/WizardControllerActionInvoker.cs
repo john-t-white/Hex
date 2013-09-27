@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace Hex.Wizard
 {
 	public class WizardControllerActionInvoker
-		: ControllerActionInvoker, IWizardControllerActionInvoker
+		: ControllerActionInvoker, IWizardActionInvoker
 	{
 		public ActionDescriptor[] GetWizardActions( ControllerContext controllerContext )
 		{

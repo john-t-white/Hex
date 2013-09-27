@@ -147,7 +147,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExceptionMessages.resx</DependentUpon>
     </Compile>
-    <Compile Include="Wizard\IWizardControllerActionInvoker.cs" />
+    <Compile Include="Wizard\IWizardActionInvoker.cs" />
     <Compile Include="Wizard\IWizardStepCollection.cs" />
     <Compile Include="Wizard\WizardControllerActionInvoker.cs" />
     <Compile Include="Wizard\WizardStep.cs" />

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Hex.Wizard
 {
-	public interface IWizardControllerActionInvoker
+	public interface IWizardActionInvoker
 		: IActionInvoker
 	{
 		ActionDescriptor[] GetWizardActions( ControllerContext controllerContext );
