@@ -8,7 +8,19 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 	public class WizardStep_ctor
 	{
 		[TestMethod]
-		public void CreatesCorrectly()
+		public void WithActionNameCreatesCorrectly()
+		{
+			string actionName = "ActionName";
+
+			WizardStep wizardStep = new WizardStep( actionName );
+
+			Assert.AreEqual( actionName, wizardStep.ActionName );
+			Assert.AreEqual( actionName, wizardStep.Name );
+			Assert.IsNull( wizardStep.Description );
+		}
+
+		[TestMethod]
+		public void WithActionNameNameAndDescriptionCreatesCorrectly()
 		{
 			string actionName = "ActionName";
 			string name = "Name";
@@ -19,6 +31,20 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( name, wizardStep.Name );
 			Assert.AreEqual( description, wizardStep.Description );
+		}
+
+		[TestMethod]
+		public void WithActionNameNullNameAndNullDescriptionCreatesCorrectly()
+		{
+			string actionName = "ActionName";
+			string name = null;
+			string description = null;
+
+			WizardStep wizardStep = new WizardStep( actionName, name, description );
+
+			Assert.AreEqual( actionName, wizardStep.ActionName );
+			Assert.AreEqual( actionName, wizardStep.Name );
+			Assert.IsNull( wizardStep.Description );
 		}
 
 		[TestMethod]

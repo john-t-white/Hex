@@ -20,7 +20,7 @@ namespace Hex.Wizard
 			}
 
 			this.ActionName = actionName;
-			this.Name = name;
+			this.Name = name ?? actionName;
 			this.Description = description;
 		}
 

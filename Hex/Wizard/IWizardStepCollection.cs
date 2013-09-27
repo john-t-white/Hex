@@ -8,6 +8,8 @@ namespace Hex.Wizard
 	public interface IWizardStepCollection
 		: IEnumerable<WizardStep>
 	{
+		int Count { get; }
+
 		WizardStep CurrentStep { get; set; }
 
 		WizardStep FirstStep { get; }

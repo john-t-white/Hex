@@ -297,6 +297,10 @@
     <Compile Include="Html\UrlExtensionsTests\UrlViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
+    <Compile Include="Wizard\WizardContextTests\FakeWizardControllerWithWizardStepAttributes.cs" />
+    <Compile Include="Wizard\WizardContextTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\WizardContextTests\WizardContext_InitializeWizardSteps.cs" />
+    <Compile Include="Wizard\WizardContextTests\WizardContext_ctor.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeControllerWithDifferentOrder.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeControllerWithNoWizardStepAttributes.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_GetWizardSteps.cs" />

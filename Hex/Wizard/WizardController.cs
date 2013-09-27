@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Hex.Wizard
 {
@@ -10,6 +11,13 @@ namespace Hex.Wizard
 		: Controller
 	{
 		#region Controller Members
+
+		protected override void Initialize( RequestContext requestContext )
+		{
+			base.Initialize( requestContext );
+
+			this.WizardContext = new WizardContext( requestContext, this );
+		}
 
 		protected override IActionInvoker CreateActionInvoker()
 		{
@@ -29,5 +37,7 @@ namespace Hex.Wizard
 		}
 
 		#endregion
+
+		public IWizardContext WizardContext { get; set; }
 	}
 }
