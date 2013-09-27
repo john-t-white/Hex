@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
+namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 {
-	public class FakeController
+	public class FakeWizardControllerWithDifferentOrder
 		: WizardController
 	{
+		[WizardStep( Order = 1 )]
 		public ActionResult StepOne()
 		{
 			throw new NotImplementedException();
@@ -20,6 +21,7 @@ namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 			throw new NotImplementedException();
 		}
 
+		[WizardStep( Order = -1 )]
 		public ActionResult StepThree()
 		{
 			throw new NotImplementedException();

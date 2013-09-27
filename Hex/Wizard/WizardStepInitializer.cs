@@ -16,6 +16,8 @@ namespace Hex.Wizard
 				   let currentWizardStepAttribute = currentActionDescriptor.GetCustomAttributes( typeof( WizardStepAttribute ), false ).FirstOrDefault() as WizardStepAttribute
 				   let currentName = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Name : null
 				   let currentDescription = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Description : null
+				   let currentOrder = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Order : 0
+				   orderby currentOrder
 				   select new WizardStep( currentActionDescriptor.ActionName, currentName, currentDescription );
 		}
 	}

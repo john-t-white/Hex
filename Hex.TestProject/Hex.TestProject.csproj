@@ -297,10 +297,14 @@
     <Compile Include="Html\UrlExtensionsTests\UrlViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
-    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeController.cs" />
+    <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithDifferentOrder.cs" />
+    <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithWizardStepAttributes.cs" />
+    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_GetWizardSteps.cs" />
     <Compile Include="Wizard\WizardControllerTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_ActionInvoker.cs" />
+    <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\WizardStepInitializerTests\WizardStepInitializer_InitializeWizardSteps.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_MoveToPreviousStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_MoveToNextStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_HasPreviousStep.cs" />

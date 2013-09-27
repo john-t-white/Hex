@@ -13,7 +13,7 @@ namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 		public void ReturnsCorrectly()
 		{
 			RequestContext requestContext = new RequestContext();
-			FakeController controller = new FakeController();
+			FakeWizardController controller = new FakeWizardController();
 			ControllerContext controllerContext = new ControllerContext( requestContext, controller );
 
 			WizardControllerActionInvoker wizardControllerActionInvoker = new WizardControllerActionInvoker();
