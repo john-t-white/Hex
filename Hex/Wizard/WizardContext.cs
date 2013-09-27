@@ -11,6 +11,10 @@ namespace Hex.Wizard
 		: IWizardContext
 	{
 		public WizardContext( RequestContext requestContext, WizardController wizardController )
+			: this( requestContext, wizardController, wizardController.ControllerContext, wizardController.ActionInvoker, wizardController.ValueProvider )
+		{ }
+
+		public WizardContext( RequestContext requestContext, WizardController wizardController, ControllerContext controllerContext, IWizardActionInvoker actionInvoker, IValueProvider valueProvider )
 		{
 			if( requestContext == null )
 			{
@@ -22,29 +26,52 @@ namespace Hex.Wizard
 				throw new ArgumentNullException( "wizardController" );
 			}
 
+			if( controllerContext == null )
+			{
+				throw new ArgumentNullException( "controllerContext" );
+			}
+
+			if( actionInvoker == null )
+			{
+				throw new ArgumentNullException( "actionInvoker" );
+			}
+
+			if( valueProvider == null )
+			{
+				throw new ArgumentNullException( "valueProvider" );
+			}
+
 			this.RequestContext = requestContext;
 			this.WizardController = wizardController;
-			this.ActionInvoker = wizardController.ActionInvoker;
+			this.ControllerContext = controllerContext;
+			this.ActionInvoker = actionInvoker;
+			this.ValueProvider = valueProvider;
 		}
 
 		public RequestContext RequestContext { get; private set; }
 
 		public WizardController WizardController { get; private set; }
 
-		public IWizardActionInvoker ActionInvoker { get; set; }
+		public ControllerContext ControllerContext { get; private set; }
 
-		public IWizardStepCollection WizardSteps { get; set; }
+		public IWizardActionInvoker ActionInvoker { get; private set; }
+
+		public IWizardStepCollection WizardSteps { get; private set; }
+
+		public IValueProvider ValueProvider { get; private set; }
 
 		public void Initialize()
 		{
-			this.InitializeWizardSteps();
+			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
+			if( wizardStateTokenResult == null )
+			{
+				this.InitializeWizardSteps();
+			}
 		}
 
 		public void InitializeWizardSteps()
 		{
-			ControllerContext controllerContext = this.WizardController.ControllerContext;
-
-			ActionDescriptor[] actionDescriptors = this.ActionInvoker.GetWizardActions( controllerContext );
+			ActionDescriptor[] actionDescriptors = this.ActionInvoker.GetWizardActions( this.ControllerContext );
 
 			WizardStep[] wizardSteps = ( from ActionDescriptor currentActionDescriptor in actionDescriptors
 										 let currentWizardStepAttribute = currentActionDescriptor.GetCustomAttributes( typeof( WizardStepAttribute ), false ).FirstOrDefault() as WizardStepAttribute
