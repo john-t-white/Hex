@@ -315,7 +315,9 @@
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_FirstStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_CurrentStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_ctor.cs" />
+    <Compile Include="Wizard\WizardStepStateTests\WizardStepState_BinarySerialization.cs" />
     <Compile Include="Wizard\WizardStepStateTests\WizardStepState_ctor.cs" />
+    <Compile Include="Wizard\WizardStepStateValueCollectionTests\WizardStepStateValueCollection_BinarySerialization.cs" />
     <Compile Include="Wizard\WizardStepTests\WizardStep_ctor.cs" />
   </ItemGroup>
   <ItemGroup>

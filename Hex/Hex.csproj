@@ -158,6 +158,7 @@
     <Compile Include="Wizard\WizardStepLinkedList.cs" />
     <Compile Include="Wizard\WizardStepInitializer.cs" />
     <Compile Include="Wizard\WizardStepState.cs" />
+    <Compile Include="Wizard\WizardStepStateValueCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

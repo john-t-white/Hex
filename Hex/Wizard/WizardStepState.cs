@@ -9,7 +9,7 @@ namespace Hex.Wizard
 	[Serializable]
 	public class WizardStepState
 	{
-		public WizardStepState( string actionName )
+		public WizardStepState( string actionName, WizardStepStateValueCollection values )
 		{
 			if( string.IsNullOrWhiteSpace( actionName ) )
 			{
@@ -17,8 +17,11 @@ namespace Hex.Wizard
 			}
 
 			this.ActionName = actionName;
+			this.Values = values;
 		}
 
 		public string ActionName { get; private set; }
+
+		public WizardStepStateValueCollection Values { get; private set; }
 	}
 }
