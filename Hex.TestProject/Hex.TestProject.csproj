@@ -300,6 +300,8 @@
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeControllerWithDifferentOrder.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeControllerWithNoWizardStepAttributes.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_GetWizardSteps.cs" />
+    <Compile Include="Wizard\WizardControllerTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\WizardControllerTests\WizardController_ActionInvoker.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_MoveToPreviousStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_MoveToNextStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_HasPreviousStep.cs" />

@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="Wizard\IWizardActionInvoker.cs" />
     <Compile Include="Wizard\IWizardStepCollection.cs" />
+    <Compile Include="Wizard\WizardController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvoker.cs" />
     <Compile Include="Wizard\WizardStep.cs" />
     <Compile Include="Wizard\WizardStepAttribute.cs" />
