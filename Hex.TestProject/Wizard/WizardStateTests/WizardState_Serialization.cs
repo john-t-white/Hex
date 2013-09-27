@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Wizard;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Hex.TestProject.Wizard.WizardStateTests
 {
@@ -12,10 +13,7 @@ namespace Hex.TestProject.Wizard.WizardStateTests
 		[TestMethod]
 		public void SerializesAndDeserializesBinaryCorrectly()
 		{
-			string currentStepActionName = "CurrentStepActionName";
-			WizardStepState[] steps = new WizardStepState[] { new WizardStepState( currentStepActionName, null ) };
-
-			WizardState wizardState = new WizardState( currentStepActionName, steps );
+			WizardState wizardState = this.GenerateWizardState();
 
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
 
@@ -29,7 +27,34 @@ namespace Hex.TestProject.Wizard.WizardStateTests
 				deserializedWizardState = ( WizardState )binaryFormatter.Deserialize( memoryStream );
 			}
 
-			Assert.AreEqual( wizardState.CurrentStepActionName, deserializedWizardState.CurrentStepActionName );
+			this.AssertSerialization( wizardState, deserializedWizardState );
+		}
+
+		[TestMethod]
+		public void SerializesAndDeserializesJsonCorrectly()
+		{
+			WizardState wizardState = this.GenerateWizardState();
+
+			string serializedWizardState = JsonConvert.SerializeObject( wizardState );
+
+			WizardState deserializedWizardState = JsonConvert.DeserializeObject<WizardState>( serializedWizardState );
+
+			this.AssertSerialization( wizardState, deserializedWizardState );
+		}
+
+
+
+		private WizardState GenerateWizardState()
+		{
+			string currentStepActionName = "CurrentStepActionName";
+			WizardStepState[] steps = new WizardStepState[] { new WizardStepState( currentStepActionName, null ) };
+
+			return new WizardState( currentStepActionName, steps );
+		}
+
+		private void AssertSerialization( WizardState originalWizardState, WizardState deserializedWizardState )
+		{
+			Assert.AreEqual( originalWizardState.CurrentStepActionName, deserializedWizardState.CurrentStepActionName );
 			Assert.IsNotNull( deserializedWizardState.Steps );
 		}
 	}
