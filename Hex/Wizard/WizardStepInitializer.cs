@@ -7,6 +7,11 @@ using System.Web.Routing;
 
 namespace Hex.Wizard
 {
+	public interface IWizardStepInitializer
+	{
+		IEnumerable<WizardStep> InitializeWizardSteps( RequestContext requestContext, ActionDescriptor[] wizardActions );
+	}
+
 	public class WizardStepInitializer
 		: IWizardStepInitializer
 	{
