@@ -9,6 +9,8 @@ namespace Hex.Wizard
 {
 	public interface IWizardContext
 	{
+		void Initialize();
+
 		RequestContext RequestContext { get; }
 
 		WizardController WizardController { get; }

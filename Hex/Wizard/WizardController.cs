@@ -10,13 +10,18 @@ namespace Hex.Wizard
 	public abstract class WizardController
 		: Controller
 	{
+		private IWizardContext _wizardContext;
+
 		#region Controller Members
 
 		protected override void Initialize( RequestContext requestContext )
 		{
 			base.Initialize( requestContext );
 
-			this.WizardContext = new WizardContext( requestContext, this );
+			IWizardContext wizardContext = this.CreateWizardContext( requestContext );
+			wizardContext.Initialize();
+
+			this.WizardContext = wizardContext;
 		}
 
 		protected override IActionInvoker CreateActionInvoker()
@@ -39,5 +44,10 @@ namespace Hex.Wizard
 		#endregion
 
 		public IWizardContext WizardContext { get; set; }
+
+		protected virtual IWizardContext CreateWizardContext( RequestContext requestContext )
+		{
+			return new WizardContext( requestContext, this );
+		}
 	}
 }
