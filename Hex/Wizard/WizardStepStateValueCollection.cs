@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hex.JsonConverters;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -8,6 +10,7 @@ using System.Text;
 namespace Hex.Wizard
 {
 	[Serializable]
+	[JsonConverter( typeof( WizardStepStateValueCollectionConverter ) )]
 	public class WizardStepStateValueCollection
 		: NameValueCollection
 	{
