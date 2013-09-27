@@ -33,8 +33,7 @@ namespace Hex.Wizard
 
 			ActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
 
-			IEnumerable<WizardStep> wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions );
-			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
+			this.InitializeWizardSteps( requestContext, wizardActions );		
 		}
 
 		protected override IActionInvoker CreateActionInvoker()
@@ -82,5 +81,15 @@ namespace Hex.Wizard
 		{
 			return new WizardStepInitializer();
 		}
+
+		#region Internal Methods
+
+		private void InitializeWizardSteps( RequestContext requestContext, ActionDescriptor[] wizardActions )
+		{
+			IEnumerable<WizardStep> wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions );
+			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
+		}
+
+		#endregion
 	}
 }
