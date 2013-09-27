@@ -7,10 +7,9 @@ using System.Web.Mvc;
 
 namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 {
-	public class FakeControllerWithDifferentOrder
+	public class FakeController
 		: WizardController
 	{
-		[WizardStep( Order = 1 )]
 		public ActionResult StepOne()
 		{
 			throw new NotImplementedException();
@@ -21,7 +20,6 @@ namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 			throw new NotImplementedException();
 		}
 
-		[WizardStep( Order = -1 )]
 		public ActionResult StepThree()
 		{
 			throw new NotImplementedException();

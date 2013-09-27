@@ -13,13 +13,7 @@ namespace Hex.Wizard
 		{
 			ControllerDescriptor controllerDescriptor = this.GetControllerDescriptor( controllerContext );
 
-			var wizardActions = from ActionDescriptor currentActionDescriptor in controllerDescriptor.GetCanonicalActions()
-								let currentWizardStepAttribute = currentActionDescriptor.GetCustomAttributes( typeof( WizardStepAttribute ), false ).FirstOrDefault() as WizardStepAttribute
-								let currentOrder = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Order : 0
-								orderby currentOrder
-								select currentActionDescriptor;
-
-			return wizardActions.ToArray();
+			return controllerDescriptor.GetCanonicalActions();
 		}
 	}
 }

@@ -297,12 +297,7 @@
     <Compile Include="Html\UrlExtensionsTests\UrlViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
-    <Compile Include="Wizard\WizardContextTests\FakeWizardControllerWithWizardStepAttributes.cs" />
-    <Compile Include="Wizard\WizardContextTests\FakeWizardController.cs" />
-    <Compile Include="Wizard\WizardContextTests\WizardContext_InitializeWizardSteps.cs" />
-    <Compile Include="Wizard\WizardContextTests\WizardContext_ctor.cs" />
-    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeControllerWithDifferentOrder.cs" />
-    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeControllerWithNoWizardStepAttributes.cs" />
+    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_GetWizardSteps.cs" />
     <Compile Include="Wizard\WizardControllerTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_ActionInvoker.cs" />
@@ -316,6 +311,7 @@
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_FirstStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_CurrentStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_ctor.cs" />
+    <Compile Include="Wizard\WizardStepStateTests\WizardStepState_ctor.cs" />
     <Compile Include="Wizard\WizardStepTests\WizardStep_ctor.cs" />
   </ItemGroup>
   <ItemGroup>

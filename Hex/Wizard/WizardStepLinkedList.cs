@@ -9,7 +9,7 @@ namespace Hex.Wizard
 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable", Justification = "Not intended to be serialized" )]
 	public class WizardStepLinkedList
-		: LinkedList<WizardStep>, IWizardStepCollection
+		: LinkedList<WizardStep>
 	{
 		private WizardStep _currentStep;
 

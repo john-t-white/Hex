@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hex.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,19 +13,28 @@ namespace Hex.Wizard
 	{
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
 
-		private IWizardContext _wizardContext;
-		private IWizardStepCollection _wizardSteps;
+		private Lazy<IWizardStepInitializer> _wizardStepInitializer;
+
+		protected WizardController()
+		{
+			this._wizardStepInitializer = new Lazy<IWizardStepInitializer>( this.CreateWizardStepInitializer );
+		}
 
 		#region Controller Members
 
 		protected override void Initialize( RequestContext requestContext )
 		{
+			if( requestContext.RouteData.Values.ContainsKey( ACTION_ROUTE_VALUE_NAME ) )
+			{
+				throw new InvalidOperationException( ExceptionMessages.WIZARD_CANNOT_CONTAIN_ACTION_IN_ROUTE );
+			}
+
 			base.Initialize( requestContext );
 
-			IWizardContext wizardContext = this.CreateWizardContext( requestContext );
-			wizardContext.Initialize();
+			ActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
 
-			this.WizardContext = wizardContext;
+			IEnumerable<WizardStep> wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions );
+			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
 		}
 
 		protected override IActionInvoker CreateActionInvoker()
@@ -53,28 +63,24 @@ namespace Hex.Wizard
 
 		#endregion
 
-		public IWizardContext WizardContext { get; set; }
+		public WizardStepLinkedList WizardSteps { get; set; }
 
-		public IWizardStepCollection WizardSteps
+
+
+
+		public IWizardStepInitializer WizardStepInitializer
 		{
 			get
 			{
-				if( this._wizardSteps != null )
-				{
-					return this._wizardSteps;
-				}
-
-				return this.WizardContext.WizardSteps;
-			}
-			set
-			{
-				this._wizardSteps = value;
+				return this._wizardStepInitializer.Value;
 			}
 		}
 
-		protected virtual IWizardContext CreateWizardContext( RequestContext requestContext )
+
+
+		protected IWizardStepInitializer CreateWizardStepInitializer()
 		{
-			return new WizardContext( requestContext, this );
+			return new WizardStepInitializer();
 		}
 	}
 }

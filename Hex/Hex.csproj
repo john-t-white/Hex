@@ -149,14 +149,15 @@
     </Compile>
     <Compile Include="Wizard\Constants.cs" />
     <Compile Include="Wizard\IWizardActionInvoker.cs" />
-    <Compile Include="Wizard\IWizardContext.cs" />
-    <Compile Include="Wizard\IWizardStepCollection.cs" />
-    <Compile Include="Wizard\WizardContext.cs" />
+    <Compile Include="Wizard\IWizardStepInitializer.cs" />
     <Compile Include="Wizard\WizardController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvoker.cs" />
+    <Compile Include="Wizard\WizardState.cs" />
     <Compile Include="Wizard\WizardStep.cs" />
     <Compile Include="Wizard\WizardStepAttribute.cs" />
     <Compile Include="Wizard\WizardStepLinkedList.cs" />
+    <Compile Include="Wizard\WizardStepInitializer.cs" />
+    <Compile Include="Wizard\WizardStepState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

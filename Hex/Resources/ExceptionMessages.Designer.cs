@@ -104,5 +104,14 @@ namespace Hex.Resources {
                 return ResourceManager.GetString("VALUE_CANNOT_BE_NULL_OR_EMPTY", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wizard controllers must not have an action defined in the route..
+        /// </summary>
+        internal static string WIZARD_CANNOT_CONTAIN_ACTION_IN_ROUTE {
+            get {
+                return ResourceManager.GetString("WIZARD_CANNOT_CONTAIN_ACTION_IN_ROUTE", resourceCulture);
+            }
+        }
     }
 }
