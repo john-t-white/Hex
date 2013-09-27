@@ -10,7 +10,10 @@ namespace Hex.Wizard
 	public abstract class WizardController
 		: Controller
 	{
+		private const string ACTION_ROUTE_VALUE_NAME = "action";
+
 		private IWizardContext _wizardContext;
+		private IWizardStepCollection _wizardSteps;
 
 		#region Controller Members
 
@@ -41,9 +44,33 @@ namespace Hex.Wizard
 			}
 		}
 
+		protected override IAsyncResult BeginExecuteCore( AsyncCallback callback, object state )
+		{
+			this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = this.WizardSteps.CurrentStep.ActionName;
+
+			return base.BeginExecuteCore( callback, state );
+		}
+
 		#endregion
 
 		public IWizardContext WizardContext { get; set; }
+
+		public IWizardStepCollection WizardSteps
+		{
+			get
+			{
+				if( this._wizardSteps != null )
+				{
+					return this._wizardSteps;
+				}
+
+				return this.WizardContext.WizardSteps;
+			}
+			set
+			{
+				this._wizardSteps = value;
+			}
+		}
 
 		protected virtual IWizardContext CreateWizardContext( RequestContext requestContext )
 		{
