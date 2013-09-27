@@ -322,7 +322,7 @@
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_ctor.cs" />
     <Compile Include="Wizard\WizardStepStateTests\WizardStepState_Serialization.cs" />
     <Compile Include="Wizard\WizardStepStateTests\WizardStepState_ctor.cs" />
-    <Compile Include="Wizard\WizardStepStateValueCollectionTests\WizardStepStateValueCollection_Serialization.cs" />
+    <Compile Include="Wizard\WizardStepValueCollectionTests\WizardStepStateValueCollection_Serialization.cs" />
     <Compile Include="Wizard\WizardStepTests\WizardStep_ctor.cs" />
   </ItemGroup>
   <ItemGroup>

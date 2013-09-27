@@ -47,7 +47,7 @@ namespace Hex.TestProject.Wizard.WizardStepStateTests
 		private WizardStepState GenerateWizardStepState()
 		{
 			string actionName = "ActionName";
-			WizardStepStateValueCollection values = new WizardStepStateValueCollection();
+			WizardStepValueCollection values = new WizardStepValueCollection();
 
 			return new WizardStepState( actionName, values );
 		}

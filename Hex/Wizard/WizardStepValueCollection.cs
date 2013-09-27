@@ -10,15 +10,15 @@ using System.Text;
 namespace Hex.Wizard
 {
 	[Serializable]
-	[JsonConverter( typeof( WizardStepStateValueCollectionConverter ) )]
-	public class WizardStepStateValueCollection
+	[JsonConverter( typeof( WizardStepValueCollectionConverter ) )]
+	public class WizardStepValueCollection
 		: NameValueCollection
 	{
-		public WizardStepStateValueCollection()
+		public WizardStepValueCollection()
 			: base()
 		{}
 
-		protected WizardStepStateValueCollection( SerializationInfo info, StreamingContext context )
+		protected WizardStepValueCollection( SerializationInfo info, StreamingContext context )
 			: base( info, context )
 		{ }
 	}

@@ -11,7 +11,7 @@ namespace Hex.TestProject.Wizard.WizardStepStateTests
 		public void CreatesCorrectly()
 		{
 			string actionName = "ActionName";
-			WizardStepStateValueCollection values = new WizardStepStateValueCollection();
+			WizardStepValueCollection values = new WizardStepValueCollection();
 
 			WizardStepState wizardStepState = new WizardStepState( actionName, values );
 
@@ -24,7 +24,7 @@ namespace Hex.TestProject.Wizard.WizardStepStateTests
 		public void NullActionNameThrowsArgumentException()
 		{
 			string actionName = null;
-			WizardStepStateValueCollection values = new WizardStepStateValueCollection();
+			WizardStepValueCollection values = new WizardStepValueCollection();
 
 			new WizardStepState( actionName, values );
 		}
@@ -34,7 +34,7 @@ namespace Hex.TestProject.Wizard.WizardStepStateTests
 		public void EmptyActionNameThrowsArgumentNullException()
 		{
 			string actionName = string.Empty;
-			WizardStepStateValueCollection values = new WizardStepStateValueCollection();
+			WizardStepValueCollection values = new WizardStepValueCollection();
 
 			new WizardStepState( actionName, values );
 		}
@@ -44,7 +44,7 @@ namespace Hex.TestProject.Wizard.WizardStepStateTests
 		public void WhitespaceActionNameThrowsArgumentNullException()
 		{
 			string actionName = " ";
-			WizardStepStateValueCollection values = new WizardStepStateValueCollection();
+			WizardStepValueCollection values = new WizardStepValueCollection();
 
 			new WizardStepState( actionName, values );
 		}

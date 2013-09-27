@@ -8,12 +8,12 @@ using System.Text;
 
 namespace Hex.JsonConverters
 {
-	public class WizardStepStateValueCollectionConverter
+	public class WizardStepValueCollectionConverter
 		: JsonConverter
 	{
 		public override bool CanConvert( Type objectType )
 		{
-			return typeof( WizardStepStateValueCollection ).IsAssignableFrom( objectType );
+			return typeof( WizardStepValueCollection ).IsAssignableFrom( objectType );
 		}
 
 		public override object ReadJson( JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer )
@@ -23,7 +23,7 @@ namespace Hex.JsonConverters
 				return existingValue;
 			}
 
-			WizardStepStateValueCollection wizardStepFormState = ( existingValue == null ) ? new WizardStepStateValueCollection() : ( WizardStepStateValueCollection )existingValue;
+			WizardStepValueCollection wizardStepFormState = ( existingValue == null ) ? new WizardStepValueCollection() : ( WizardStepValueCollection )existingValue;
 
 			JObject jObject = JObject.Load( reader );
 
@@ -43,7 +43,7 @@ namespace Hex.JsonConverters
 		{
 			if( value != null )
 			{
-				WizardStepStateValueCollection wizardStepFormState = ( WizardStepStateValueCollection )value;
+				WizardStepValueCollection wizardStepFormState = ( WizardStepValueCollection )value;
 
 				writer.WriteStartObject();
 

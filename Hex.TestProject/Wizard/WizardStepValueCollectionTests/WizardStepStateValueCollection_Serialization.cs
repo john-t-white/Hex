@@ -5,26 +5,26 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Hex.TestProject.Wizard.WizardStepStateValueCollectionTests
+namespace Hex.TestProject.Wizard.WizardStepValueCollectionTests
 {
 	[TestClass]
-	public class WizardStepStateValueCollection_Serialization
+	public class WizardStepValueCollection_Serialization
 	{
 		[TestMethod]
 		public void SerializesAndDeserializesBinaryCorrectly()
 		{
-			WizardStepStateValueCollection wizardStepStateValueCollection = this.GenerateWizardStepStateValueCollection();
+			WizardStepValueCollection wizardStepStateValueCollection = this.GenerateWizardStepStateValueCollection();
 
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-			WizardStepStateValueCollection deserializedWizardStepStateValueCollection;
+			WizardStepValueCollection deserializedWizardStepStateValueCollection;
 			using( MemoryStream memoryStream = new MemoryStream() )
 			{
 				binaryFormatter.Serialize( memoryStream, wizardStepStateValueCollection );
 
 				memoryStream.Position = 0;
 
-				deserializedWizardStepStateValueCollection = ( WizardStepStateValueCollection )binaryFormatter.Deserialize( memoryStream );
+				deserializedWizardStepStateValueCollection = ( WizardStepValueCollection )binaryFormatter.Deserialize( memoryStream );
 			}
 
 			this.AssertSerialization( wizardStepStateValueCollection, deserializedWizardStepStateValueCollection );
@@ -33,23 +33,23 @@ namespace Hex.TestProject.Wizard.WizardStepStateValueCollectionTests
 		[TestMethod]
 		public void SerializesAndDeserializesJsonCorrectly()
 		{
-			WizardStepStateValueCollection wizardStepStateValueCollection = this.GenerateWizardStepStateValueCollection();
+			WizardStepValueCollection wizardStepStateValueCollection = this.GenerateWizardStepStateValueCollection();
 
 			string serializedWizardStepStateValueCollection = JsonConvert.SerializeObject( wizardStepStateValueCollection );
 
-			WizardStepStateValueCollection deserializedWizardStepStateValueCollection = JsonConvert.DeserializeObject<WizardStepStateValueCollection>( serializedWizardStepStateValueCollection );
+			WizardStepValueCollection deserializedWizardStepStateValueCollection = JsonConvert.DeserializeObject<WizardStepValueCollection>( serializedWizardStepStateValueCollection );
 
 			this.AssertSerialization( wizardStepStateValueCollection, deserializedWizardStepStateValueCollection );
 		}
 
 
 
-		private WizardStepStateValueCollection GenerateWizardStepStateValueCollection()
+		private WizardStepValueCollection GenerateWizardStepStateValueCollection()
 		{
 			string name1 = "Name1";
 			string name2 = "Name2";
 
-			WizardStepStateValueCollection wizardStepStateValueCollection = new WizardStepStateValueCollection();
+			WizardStepValueCollection wizardStepStateValueCollection = new WizardStepValueCollection();
 			wizardStepStateValueCollection.Add( name1, "Name1Value1" );
 			wizardStepStateValueCollection.Add( name1, "Name1Value2" );
 
@@ -59,7 +59,7 @@ namespace Hex.TestProject.Wizard.WizardStepStateValueCollectionTests
 			return wizardStepStateValueCollection;
 		}
 
-		private void AssertSerialization( WizardStepStateValueCollection originalWizardStepStateValueCollection, WizardStepStateValueCollection deserializedWizardStepStateValueCollection )
+		private void AssertSerialization( WizardStepValueCollection originalWizardStepStateValueCollection, WizardStepValueCollection deserializedWizardStepStateValueCollection )
 		{
 			Assert.AreEqual( originalWizardStepStateValueCollection.Count, deserializedWizardStepStateValueCollection.Count );
 
