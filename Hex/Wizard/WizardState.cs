@@ -21,6 +21,12 @@ namespace Hex.Wizard
 				throw new ArgumentNullException( "steps" );
 			}
 
+			if( !steps.Any( x => x.ActionName == currentStepActionName ) )
+			{
+				string exceptionMessage = string.Format( ExceptionMessages.CURRENT_STEP_ACTION_NAME_DOES_NOT_EXIST_IN_STEPS, currentStepActionName );
+				throw new ArgumentException( exceptionMessage, "currentStepActionName" );
+			}
+
 			this.CurrentStepActionName = currentStepActionName;
 			this.Steps = steps;
 		}

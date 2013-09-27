@@ -70,6 +70,15 @@ namespace Hex.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The currentStepActionName &apos;{0}&apos; does not exist in the list of steps..
+        /// </summary>
+        internal static string CURRENT_STEP_ACTION_NAME_DOES_NOT_EXIST_IN_STEPS {
+            get {
+                return ResourceManager.GetString("CURRENT_STEP_ACTION_NAME_DOES_NOT_EXIST_IN_STEPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The current wizard step must exist in the collection..
         /// </summary>
         internal static string CURRENT_WIZARD_STEP_DOES_NOT_EXIST_IN_COLLECTION {

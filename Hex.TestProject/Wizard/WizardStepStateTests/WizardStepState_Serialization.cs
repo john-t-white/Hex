@@ -7,10 +7,10 @@ using System.IO;
 namespace Hex.TestProject.Wizard.WizardStepStateTests
 {
 	[TestClass]
-	public class WizardStepState_BinarySerialization
+	public class WizardStepState_Serialization
 	{
 		[TestMethod]
-		public void SerializesAndDeserializesCorrectly()
+		public void SerializesAndDeserializesBinaryCorrectly()
 		{
 			string actionName = "ActionName";
 			WizardStepStateValueCollection values = new WizardStepStateValueCollection();

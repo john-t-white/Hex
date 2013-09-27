@@ -120,6 +120,9 @@
   <data name="ABSOLUTE_URI_REQUIRED" xml:space="preserve">
     <value>The url specified must be an absolute url.</value>
   </data>
+  <data name="CURRENT_STEP_ACTION_NAME_DOES_NOT_EXIST_IN_STEPS" xml:space="preserve">
+    <value>The currentStepActionName '{0}' does not exist in the list of steps.</value>
+  </data>
   <data name="CURRENT_WIZARD_STEP_DOES_NOT_EXIST_IN_COLLECTION" xml:space="preserve">
     <value>The current wizard step must exist in the collection.</value>
   </data>
