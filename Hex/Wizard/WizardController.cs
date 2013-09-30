@@ -14,10 +14,12 @@ namespace Hex.Wizard
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
 
 		private Lazy<IWizardStepInitializer> _wizardStepInitializer;
+		private Lazy<IWizardStateProvider> _wizardStateProvider;
 
 		protected WizardController()
 		{
 			this._wizardStepInitializer = new Lazy<IWizardStepInitializer>( this.CreateWizardStepInitializer );
+			this._wizardStateProvider = new Lazy<IWizardStateProvider>( this.CreateWizardStateProvider );
 		}
 
 		#region Controller Members
@@ -75,11 +77,24 @@ namespace Hex.Wizard
 			}
 		}
 
+		public IWizardStateProvider WizardStateProvider
+		{
+			get
+			{
+				return this._wizardStateProvider.Value;
+			}
+		}
 
 
-		protected IWizardStepInitializer CreateWizardStepInitializer()
+
+		protected virtual IWizardStepInitializer CreateWizardStepInitializer()
 		{
 			return new WizardStepInitializer();
+		}
+
+		protected virtual IWizardStateProvider CreateWizardStateProvider()
+		{
+			return new FormWizardStateProvider();
 		}
 
 		#region Internal Methods
