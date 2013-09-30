@@ -94,8 +94,6 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 
 		private ActionDescriptor[] GetWizardActions( Type wizardControllerType )
 		{
-			BindingFlags bindingFlags = BindingFlags.DeclaredOnly;
-
 			ReflectedControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor( wizardControllerType );
 			return controllerDescriptor.GetCanonicalActions();
 		}

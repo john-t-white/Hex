@@ -301,6 +301,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
     <Compile Include="Wizard\FormWizardStateProviderTests\FormWizardStateProvider_SaveAndLoad.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Order.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Description.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\FakeWizardControllerWithWizardStepAttribute.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Name.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ctor.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_WizardStepsInitializer.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_WizardStateProvider.cs" />
     <Compile Include="Wizard\WizardStateTests\WizardState_Serialization.cs" />
