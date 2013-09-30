@@ -17,6 +17,7 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( actionName, wizardStep.Name );
 			Assert.IsNull( wizardStep.Description );
+			Assert.IsNull( wizardStep.Values );
 		}
 
 		[TestMethod]
@@ -31,6 +32,23 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( name, wizardStep.Name );
 			Assert.AreEqual( description, wizardStep.Description );
+			Assert.IsNull( wizardStep.Values );
+		}
+
+		[TestMethod]
+		public void WithActionNameNameDescriptionAndValuesCreatesCorrectly()
+		{
+			string actionName = "ActionName";
+			string name = "Name";
+			string description = "Description";
+			WizardStepValueCollection values = new WizardStepValueCollection();
+
+			WizardStep wizardStep = new WizardStep( actionName, name, description, values );
+
+			Assert.AreEqual( actionName, wizardStep.ActionName );
+			Assert.AreEqual( name, wizardStep.Name );
+			Assert.AreEqual( description, wizardStep.Description );
+			Assert.AreSame( values, wizardStep.Values );
 		}
 
 		[TestMethod]
@@ -45,6 +63,23 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( actionName, wizardStep.Name );
 			Assert.IsNull( wizardStep.Description );
+			Assert.IsNull( wizardStep.Values );
+		}
+
+		[TestMethod]
+		public void WithActionNameNullNameNullDescriptionAndNullValuesCreatesCorrectly()
+		{
+			string actionName = "ActionName";
+			string name = null;
+			string description = null;
+			WizardStepValueCollection values = null;
+
+			WizardStep wizardStep = new WizardStep( actionName, name, description, values );
+
+			Assert.AreEqual( actionName, wizardStep.ActionName );
+			Assert.AreEqual( actionName, wizardStep.Name );
+			Assert.IsNull( wizardStep.Description );
+			Assert.IsNull( wizardStep.Values );
 		}
 
 		[TestMethod]

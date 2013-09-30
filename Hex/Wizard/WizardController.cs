@@ -1,4 +1,5 @@
-﻿using Hex.Resources;
+﻿using Hex.Extensions;
+using Hex.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,7 +145,7 @@ namespace Hex.Wizard
 			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardState.Steps
 										 let currentWizardAction = wizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
 										 where currentWizardAction != null
-										 select new WizardStep( currentWizardAction.ActionName, currentWizardAction.Name, currentWizardAction.Description ) ).ToArray();
+										 select new WizardStep( currentWizardAction.ActionName, currentWizardAction.Name, currentWizardAction.Description, currentWizardStateStep.Values ) ).ToArray();
 
 			WizardStep currentWizardStep = wizardSteps.FirstOrDefault( x => wizardState.CurrentStepActionName == x.ActionName );
 
@@ -159,7 +160,7 @@ namespace Hex.Wizard
 				if( this.ModelState.IsValid )
 				{
 					this.WizardSteps.MoveToNextStep();
-					//this.SetControllerModelState();
+					this.ModelState.Update( this.WizardSteps.CurrentStep.Values );
 				}
 
 				return;
@@ -169,7 +170,7 @@ namespace Hex.Wizard
 			if( wizardPreviousButtonValueResult != null )
 			{
 				this.WizardSteps.MoveToPreviousStep();
-				//this.SetControllerModelState();
+				this.ModelState.Update( this.WizardSteps.CurrentStep.Values );
 
 				return;
 			}
