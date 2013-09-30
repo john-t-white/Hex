@@ -6,5 +6,6 @@
 
 @using( Html.BeginWizardForm() )
 {
-	@Html.SubmitInputButton( "Next", "Next" );
+	@Html.PreviousWizardStepSubmitInputButton()
+	@Html.NextWizardStepSubmitInputButton()
 }

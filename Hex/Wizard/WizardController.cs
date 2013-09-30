@@ -13,14 +13,11 @@ namespace Hex.Wizard
 	{
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
 
-		private Lazy<IWizardStepInitializer> _wizardStepInitializer;
-		private Lazy<IWizardStateProvider> _wizardStateProvider;
+		private IWizardStepInitializer _wizardStepInitializer;
+		private IWizardStateProvider _wizardStateProvider;
 
 		protected WizardController()
-		{
-			this._wizardStepInitializer = new Lazy<IWizardStepInitializer>( this.CreateWizardStepInitializer );
-			this._wizardStateProvider = new Lazy<IWizardStateProvider>( this.CreateWizardStateProvider );
-		}
+		{ }
 
 		#region Controller Members
 
@@ -43,6 +40,8 @@ namespace Hex.Wizard
 			else
 			{
 				this.LoadWizardState( requestContext, wizardStateTokenResult.AttemptedValue, wizardActions );
+
+				this.ProcessWizardButton();
 			}
 			
 		}
@@ -82,7 +81,16 @@ namespace Hex.Wizard
 		{
 			get
 			{
-				return this._wizardStepInitializer.Value;
+				if( this._wizardStepInitializer == null )
+				{
+					_wizardStepInitializer = this.CreateWizardStepInitializer();
+				}
+
+				return this._wizardStepInitializer;
+			}
+			set
+			{
+				this._wizardStepInitializer = value;
 			}
 		}
 
@@ -90,7 +98,16 @@ namespace Hex.Wizard
 		{
 			get
 			{
-				return this._wizardStateProvider.Value;
+				if( this._wizardStateProvider == null )
+				{
+					_wizardStateProvider = this.CreateWizardStateProvider();
+				}
+
+				return this._wizardStateProvider;
+			}
+			set
+			{
+				this._wizardStateProvider = value;
 			}
 		}
 
@@ -109,16 +126,6 @@ namespace Hex.Wizard
 
 
 
-
-		public string SaveWizardState( RequestContext requestContext )
-		{
-			var wizardStepStates = from currentWizardStep in this.WizardSteps
-								   select new WizardStepState( currentWizardStep.ActionName, null );
-
-			WizardState wizardState = new WizardState( this.WizardSteps.CurrentStep.ActionName, wizardStepStates.ToArray() );
-
-			return this.WizardStateProvider.Save( requestContext, wizardState );
-		}
 
 		#region Internal Methods
 
@@ -147,8 +154,42 @@ namespace Hex.Wizard
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps, currentWizardStep );
 		}
 
+		internal void ProcessWizardButton()
+		{
+			ValueProviderResult wizardNextButtonValueResult = this.ValueProvider.GetValue( Constants.WIZARD_NEXT_BUTTON_NAME );
+			if( wizardNextButtonValueResult != null )
+			{
+				if( this.ModelState.IsValid )
+				{
+					this.WizardSteps.MoveToNextStep();
+					//this.SetControllerModelState();
+				}
+
+				return;
+			}
+
+			ValueProviderResult wizardPreviousButtonValueResult = this.ValueProvider.GetValue( Constants.WIZARD_PREVIOUS_BUTTON_NAME );
+			if( wizardPreviousButtonValueResult != null )
+			{
+				this.WizardSteps.MoveToPreviousStep();
+				//this.SetControllerModelState();
+
+				return;
+			}
+		}
 
 
+
+
+		internal string SaveWizardState( RequestContext requestContext )
+		{
+			var wizardStepStates = from currentWizardStep in this.WizardSteps
+								   select new WizardStepState( currentWizardStep.ActionName, null );
+
+			WizardState wizardState = new WizardState( this.WizardSteps.CurrentStep.ActionName, wizardStepStates.ToArray() );
+
+			return this.WizardStateProvider.Save( requestContext, wizardState );
+		}
 
 		internal static WizardController FromHtmlHelper( HtmlHelper htmlHelper )
 		{

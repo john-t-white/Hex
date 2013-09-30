@@ -105,6 +105,7 @@
     <Compile Include="Html\DescriptionExtensions.cs" />
     <Compile Include="Html\HtmlElements.cs" />
     <Compile Include="Html\SubmitInputButtonExtensions.cs" />
+    <Compile Include="Html\WizardButtonExtensions.cs" />
     <Compile Include="Html\WizardFormExtensions.cs" />
     <Compile Include="JsonConverters\WizardStepValueCollectionConverter.cs" />
     <Compile Include="ModelBinders\CheckBoxValuesModelBinder.cs" />
