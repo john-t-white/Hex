@@ -9,17 +9,18 @@ namespace Hex.Wizard
 	public interface IWizardActionInvoker
 		: IActionInvoker
 	{
-		ActionDescriptor[] GetWizardActions( ControllerContext controllerContext );
+		WizardActionDescriptor[] GetWizardActions( ControllerContext controllerContext );
 	}
 
 	public class WizardControllerActionInvoker
 		: ControllerActionInvoker, IWizardActionInvoker
 	{
-		public ActionDescriptor[] GetWizardActions( ControllerContext controllerContext )
+		public WizardActionDescriptor[] GetWizardActions( ControllerContext controllerContext )
 		{
 			ControllerDescriptor controllerDescriptor = this.GetControllerDescriptor( controllerContext );
 
-			return controllerDescriptor.GetCanonicalActions();
+			return ( from ActionDescriptor currentActionDescriptor in controllerDescriptor.GetCanonicalActions()
+					 select new WizardActionDescriptor( currentActionDescriptor ) ).ToArray();
 		}
 	}
 }

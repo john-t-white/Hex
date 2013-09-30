@@ -18,18 +18,18 @@ namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 
 			WizardControllerActionInvoker wizardControllerActionInvoker = new WizardControllerActionInvoker();
 
-			ActionDescriptor[] wizardActions = wizardControllerActionInvoker.GetWizardActions( controllerContext );
+			WizardActionDescriptor[] wizardActions = wizardControllerActionInvoker.GetWizardActions( controllerContext );
 
 			Assert.IsNotNull( wizardActions );
 			Assert.AreEqual( 3, wizardActions.Length );
 
-			ActionDescriptor wizardStepOne = wizardActions[ 0 ];
+			WizardActionDescriptor wizardStepOne = wizardActions[ 0 ];
 			Assert.AreEqual( "StepOne", wizardStepOne.ActionName );
 
-			ActionDescriptor wizardStepTwo = wizardActions[ 1 ];
+			WizardActionDescriptor wizardStepTwo = wizardActions[ 1 ];
 			Assert.AreEqual( "StepTwo", wizardStepTwo.ActionName );;
 
-			ActionDescriptor wizardStepThree = wizardActions[ 2 ];
+			WizardActionDescriptor wizardStepThree = wizardActions[ 2 ];
 			Assert.AreEqual( "StepThree", wizardStepThree.ActionName );
 		}
 	}

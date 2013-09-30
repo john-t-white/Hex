@@ -314,7 +314,7 @@
     <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithDifferentOrder.cs" />
     <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithWizardStepAttributes.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardController.cs" />
-    <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_GetWizardSteps.cs" />
+    <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_GetWizardActions.cs" />
     <Compile Include="Wizard\WizardControllerTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_ActionInvoker.cs" />
     <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardController.cs" />

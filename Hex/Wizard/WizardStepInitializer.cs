@@ -9,21 +9,17 @@ namespace Hex.Wizard
 {
 	public interface IWizardStepInitializer
 	{
-		IEnumerable<WizardStep> InitializeWizardSteps( RequestContext requestContext, ActionDescriptor[] wizardActions );
+		IEnumerable<WizardStep> InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions );
 	}
 
 	public class WizardStepInitializer
 		: IWizardStepInitializer
 	{
-		public IEnumerable<WizardStep> InitializeWizardSteps( RequestContext requestContext, ActionDescriptor[] wizardActions )
+		public IEnumerable<WizardStep> InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions )
 		{
-			return from ActionDescriptor currentActionDescriptor in wizardActions
-				   let currentWizardStepAttribute = currentActionDescriptor.GetCustomAttributes( typeof( WizardStepAttribute ), false ).FirstOrDefault() as WizardStepAttribute
-				   let currentName = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Name : null
-				   let currentDescription = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Description : null
-				   let currentOrder = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Order : 0
-				   orderby currentOrder
-				   select new WizardStep( currentActionDescriptor.ActionName, currentName, currentDescription );
+			return from WizardActionDescriptor currentActionDescriptor in wizardActions
+				   orderby currentActionDescriptor.Order
+				   select new WizardStep( currentActionDescriptor.ActionName, currentActionDescriptor.Name, currentActionDescriptor.Description );
 		}
 	}
 }

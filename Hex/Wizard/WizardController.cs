@@ -30,7 +30,7 @@ namespace Hex.Wizard
 
 			base.Initialize( requestContext );
 
-			ActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
+			WizardActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
 
 			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
 			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
@@ -129,7 +129,7 @@ namespace Hex.Wizard
 
 		#region Internal Methods
 
-		private void InitializeWizardSteps( RequestContext requestContext, ActionDescriptor[] wizardActions )
+		private void InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions )
 		{
 			IEnumerable<WizardStep> wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions );
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
@@ -137,17 +137,14 @@ namespace Hex.Wizard
 
 
 
-		private void LoadWizardState( RequestContext requestContext, string wizardStateToken, ActionDescriptor[] wizardActions )
+		private void LoadWizardState( RequestContext requestContext, string wizardStateToken, WizardActionDescriptor[] wizardActions )
 		{
 			WizardState wizardState = this.WizardStateProvider.Load( requestContext, wizardStateToken );
 
 			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardState.Steps
 										 let currentWizardAction = wizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
-										 let currentWizardStepAttribute = currentWizardAction.GetCustomAttributes( typeof( WizardStepAttribute ), false ).FirstOrDefault() as WizardStepAttribute
-										 let currentName = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Name : null
-										 let currentDescription = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Description : null
 										 where currentWizardAction != null
-										 select new WizardStep( currentWizardAction.ActionName, currentName, currentDescription ) ).ToArray();
+										 select new WizardStep( currentWizardAction.ActionName, currentWizardAction.Name, currentWizardAction.Description ) ).ToArray();
 
 			WizardStep currentWizardStep = wizardSteps.FirstOrDefault( x => wizardState.CurrentStepActionName == x.ActionName );
 

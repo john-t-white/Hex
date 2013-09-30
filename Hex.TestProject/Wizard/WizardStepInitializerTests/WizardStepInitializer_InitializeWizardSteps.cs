@@ -17,7 +17,7 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 		{
 			RequestContext requestContext = new RequestContext();
 
-			ActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardController ) );
+			WizardActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardController ) );
 
 			WizardStepInitializer wizardStepInitializer = new WizardStepInitializer();
 			WizardStep[] wizardSteps = wizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions ).ToArray();
@@ -45,7 +45,7 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 		{
 			RequestContext requestContext = new RequestContext();
 
-			ActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardControllerWithWizardStepAttributes ) );
+			WizardActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardControllerWithWizardStepAttributes ) );
 
 			WizardStepInitializer wizardStepInitializer = new WizardStepInitializer();
 			WizardStep[] wizardSteps = wizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions ).ToArray();
@@ -73,7 +73,7 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 		{
 			RequestContext requestContext = new RequestContext();
 
-			ActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardControllerWithDifferentOrder ) );
+			WizardActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardControllerWithDifferentOrder ) );
 
 			WizardStepInitializer wizardStepInitializer = new WizardStepInitializer();
 			WizardStep[] wizardSteps = wizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions ).ToArray();
@@ -92,10 +92,11 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 
 
 
-		private ActionDescriptor[] GetWizardActions( Type wizardControllerType )
+		private WizardActionDescriptor[] GetWizardActions( Type wizardControllerType )
 		{
 			ReflectedControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor( wizardControllerType );
-			return controllerDescriptor.GetCanonicalActions();
+			return ( from ActionDescriptor currentActionDescriptor in controllerDescriptor.GetCanonicalActions()
+					 select new WizardActionDescriptor( currentActionDescriptor ) ).ToArray();
 		}
 	}
 }
