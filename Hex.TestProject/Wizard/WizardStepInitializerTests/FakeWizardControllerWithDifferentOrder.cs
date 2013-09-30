@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 {
 	public class FakeWizardControllerWithDifferentOrder
-		: WizardController
+		: WizardController<object>
 	{
 		[WizardStep( Order = 1 )]
 		public ActionResult StepOne()

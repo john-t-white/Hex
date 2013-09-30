@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 {
 	public class FakeWizardControllerWithWizardStepAttribute
-		: WizardController
+		: WizardController<object>
 	{
 		[WizardStep( Name = "Name", Description = "Description", Order = 1 )]
 		public ActionResult StepOne()

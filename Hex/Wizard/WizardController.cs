@@ -9,6 +9,30 @@ using System.Web.Routing;
 
 namespace Hex.Wizard
 {
+	public abstract class WizardController<TWizardFormModel>
+		: WizardController
+	{
+		public override Type WizardFormModelType
+		{
+			get
+			{
+				return typeof( TWizardFormModel );
+			}
+		}
+
+		public new TWizardFormModel WizardFormModel
+		{
+			get
+			{
+				return ( TWizardFormModel )base.WizardFormModel;
+			}
+			set
+			{
+				base.WizardFormModel = value;
+			}
+		}
+	}
+
 	public abstract class WizardController
 		: Controller
 	{
@@ -32,6 +56,8 @@ namespace Hex.Wizard
 			base.Initialize( requestContext );
 
 			WizardActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
+
+			this.WizardFormModel = Activator.CreateInstance( this.WizardFormModelType, true );
 
 			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
 			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
@@ -73,10 +99,11 @@ namespace Hex.Wizard
 
 		#endregion
 
+		public abstract Type WizardFormModelType { get; }
+
+		public object WizardFormModel { get; set; }
+
 		public WizardStepLinkedList WizardSteps { get; set; }
-
-
-
 
 		public IWizardStepInitializer WizardStepInitializer
 		{
@@ -111,8 +138,6 @@ namespace Hex.Wizard
 				this._wizardStateProvider = value;
 			}
 		}
-
-
 
 		protected virtual IWizardStepInitializer CreateWizardStepInitializer()
 		{

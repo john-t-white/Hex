@@ -7,7 +7,7 @@ using System.Text;
 namespace Hex.TestProject.Wizard.WizardControllerTests
 {
 	public class FakeWizardController
-		: WizardController
+		: WizardController<object>
 	{
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Hex.Wizard;
+﻿using Hex.TestWebsite.Models.SimpleWizard;
+using Hex.Wizard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.Mvc;
 namespace Hex.TestWebsite.Controllers
 {
 	public class SimpleWizardController
-		: WizardController
+		: WizardController<SimpleWizardFormModel>
 	{
 		public ActionResult FirstStep()
 		{
