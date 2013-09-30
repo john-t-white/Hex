@@ -193,6 +193,7 @@
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionaryExtensions_TryGetValue.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_GetModelStateValue.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_Update.cs" />
+    <Compile Include="Extensions\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_ToWizardStepValueCollection.cs" />
     <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonExtensions_BeginButton.cs" />
     <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonViewModel.cs" />
     <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonExtensions_BeginButtonFor.cs" />

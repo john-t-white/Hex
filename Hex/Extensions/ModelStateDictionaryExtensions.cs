@@ -34,56 +34,71 @@ namespace Hex.Extensions
 
 
 
-		//public static WizardStepValueCollection ToWizardStepValueCollection( this ModelStateDictionary modelStateDictionary, IValueProvider valueProvider )
-		//{
-		//	WizardStepValueCollection wizardStepValues = new WizardStepValueCollection();
+		public static WizardStepValueCollection ToWizardStepValueCollection( this ModelStateDictionary modelStateDictionary, IValueProvider valueProvider )
+		{
+			if( modelStateDictionary == null )
+			{
+				throw new ArgumentNullException( "modelStateDictionary" );
+			}
 
-		//	foreach( KeyValuePair<string, ModelState> currentModelState in modelStateDictionary )
-		//	{
-		//		object rawValue = currentModelState.Value.Value.RawValue;
-		//		if( rawValue is IEnumerable )
-		//		{
-		//			foreach( var currentRawValue in ( IEnumerable )rawValue )
-		//			{
-		//				wizardStepValues.Add( currentModelState.Key, currentRawValue.ToString() );
-		//			}
-		//		}
-		//		else
-		//		{
-		//			wizardStepValues.Add( currentModelState.Key, rawValue.ToString() );
-		//		}
-		//	}
+			if( valueProvider == null )
+			{
+				throw new ArgumentNullException( "valueProvider" );
+			}
 
-		//	var possibleIndexes = ( from string currentModelStateName in wizardStepValues
-		//							let bracketIndex = currentModelStateName.LastIndexOf( '[' )
-		//							where bracketIndex >= 0
-		//							select string.Concat( currentModelStateName.Substring( 0, bracketIndex ), ".index" ) ).Distinct().ToList();
+			WizardStepValueCollection wizardStepValues = new WizardStepValueCollection();
 
-		//	foreach( string currentPossibleIndex in possibleIndexes )
-		//	{
-		//		ValueProviderResult currentValueProviderResult = valueProvider.GetValue( currentPossibleIndex );
-		//		if( currentValueProviderResult != null )
-		//		{
-		//			object rawValue = currentValueProviderResult.RawValue;
-		//			if( rawValue is IEnumerable )
-		//			{
-		//				foreach( var currentRawValue in ( IEnumerable )rawValue )
-		//				{
-		//					wizardStepValues.Add( currentPossibleIndex, currentRawValue.ToString() );
-		//				}
-		//			}
-		//			else
-		//			{
-		//				wizardStepValues.Add( currentPossibleIndex, rawValue.ToString() );
-		//			}
-		//		}
-		//	}
+			foreach( KeyValuePair<string, ModelState> currentModelState in modelStateDictionary )
+			{
+				object rawValue = currentModelState.Value.Value.RawValue;
+				if( rawValue is IEnumerable )
+				{
+					foreach( var currentRawValue in ( IEnumerable )rawValue )
+					{
+						wizardStepValues.Add( currentModelState.Key, currentRawValue.ToString() );
+					}
+				}
+				else
+				{
+					wizardStepValues.Add( currentModelState.Key, rawValue.ToString() );
+				}
+			}
 
-		//	return wizardStepValues;
-		//}
+			var possibleIndexes = ( from string currentModelStateName in wizardStepValues
+									let bracketIndex = currentModelStateName.LastIndexOf( '[' )
+									where bracketIndex >= 0
+									select string.Concat( currentModelStateName.Substring( 0, bracketIndex ), ".index" ) ).Distinct().ToList();
+
+			foreach( string currentPossibleIndex in possibleIndexes )
+			{
+				ValueProviderResult currentValueProviderResult = valueProvider.GetValue( currentPossibleIndex );
+				if( currentValueProviderResult != null )
+				{
+					object rawValue = currentValueProviderResult.RawValue;
+					if( rawValue is IEnumerable )
+					{
+						foreach( var currentRawValue in ( IEnumerable )rawValue )
+						{
+							wizardStepValues.Add( currentPossibleIndex, currentRawValue.ToString() );
+						}
+					}
+					else
+					{
+						wizardStepValues.Add( currentPossibleIndex, rawValue.ToString() );
+					}
+				}
+			}
+
+			return wizardStepValues;
+		}
 
 		public static void Update( this ModelStateDictionary modelStateDictionary, WizardStepValueCollection values )
 		{
+			if( modelStateDictionary == null )
+			{
+				throw new ArgumentNullException( "modelStateDictionary" );
+			}
+
 			modelStateDictionary.Clear();
 
 			if( values != null )
