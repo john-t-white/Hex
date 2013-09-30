@@ -300,6 +300,7 @@
     <Compile Include="Html\UrlExtensionsTests\UrlViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
+    <Compile Include="Wizard\FormWizardStateProviderTests\FormWizardStateProvider_SaveAndLoad.cs" />
     <Compile Include="Wizard\WizardStateTests\WizardState_Serialization.cs" />
     <Compile Include="Wizard\WizardStateTests\WizardState_ctor.cs" />
     <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithDifferentOrder.cs" />

@@ -152,6 +152,8 @@
       <DependentUpon>ExceptionMessages.resx</DependentUpon>
     </Compile>
     <Compile Include="Wizard\Constants.cs" />
+    <Compile Include="Wizard\FormWizardStateProvider.cs" />
+    <Compile Include="Wizard\IWizardStateProvider.cs" />
     <Compile Include="Wizard\WizardController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvoker.cs" />
     <Compile Include="Wizard\WizardState.cs" />
