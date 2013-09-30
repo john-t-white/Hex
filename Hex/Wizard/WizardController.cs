@@ -35,7 +35,16 @@ namespace Hex.Wizard
 
 			ActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
 
-			this.InitializeWizardSteps( requestContext, wizardActions );		
+			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
+			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
+			{
+				this.InitializeWizardSteps( requestContext, wizardActions );
+			}
+			else
+			{
+				this.LoadWizardState( requestContext, wizardStateTokenResult.AttemptedValue, wizardActions );
+			}
+			
 		}
 
 		protected override IActionInvoker CreateActionInvoker()
@@ -97,12 +106,59 @@ namespace Hex.Wizard
 			return new FormWizardStateProvider();
 		}
 
+
+
+
+
+		public string SaveWizardState( RequestContext requestContext )
+		{
+			var wizardStepStates = from currentWizardStep in this.WizardSteps
+								   select new WizardStepState( currentWizardStep.ActionName, null );
+
+			WizardState wizardState = new WizardState( this.WizardSteps.CurrentStep.ActionName, wizardStepStates.ToArray() );
+
+			return this.WizardStateProvider.Save( requestContext, wizardState );
+		}
+
 		#region Internal Methods
 
 		private void InitializeWizardSteps( RequestContext requestContext, ActionDescriptor[] wizardActions )
 		{
 			IEnumerable<WizardStep> wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions );
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
+		}
+
+
+
+		private void LoadWizardState( RequestContext requestContext, string wizardStateToken, ActionDescriptor[] wizardActions )
+		{
+			WizardState wizardState = this.WizardStateProvider.Load( requestContext, wizardStateToken );
+
+			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardState.Steps
+										 let currentWizardAction = wizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
+										 let currentWizardStepAttribute = currentWizardAction.GetCustomAttributes( typeof( WizardStepAttribute ), false ).FirstOrDefault() as WizardStepAttribute
+										 let currentName = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Name : null
+										 let currentDescription = ( currentWizardStepAttribute != null ) ? currentWizardStepAttribute.Description : null
+										 where currentWizardAction != null
+										 select new WizardStep( currentWizardAction.ActionName, currentName, currentDescription ) ).ToArray();
+
+			WizardStep currentWizardStep = wizardSteps.FirstOrDefault( x => wizardState.CurrentStepActionName == x.ActionName );
+
+			this.WizardSteps = new WizardStepLinkedList( wizardSteps, currentWizardStep );
+		}
+
+
+
+
+		internal static WizardController FromHtmlHelper( HtmlHelper htmlHelper )
+		{
+			WizardController wizardController = htmlHelper.ViewContext.Controller as WizardController;
+			if( wizardController == null )
+			{
+				throw new InvalidOperationException( "Wizard forms can only be used with a wizard controller." );
+			}
+
+			return wizardController;
 		}
 
 		#endregion

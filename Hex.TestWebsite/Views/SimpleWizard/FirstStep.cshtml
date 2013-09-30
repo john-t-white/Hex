@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "FirstStep";
+}
+
+<h2>FirstStep</h2>
+
+@using( Html.BeginWizardForm() )
+{
+	@Html.SubmitInputButton( "Next", "Next" );
+}
