@@ -149,10 +149,6 @@ namespace Hex.Wizard
 			return new FormWizardStateProvider();
 		}
 
-
-
-
-
 		#region Internal Methods
 
 		private void InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions )
