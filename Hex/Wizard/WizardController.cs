@@ -159,8 +159,8 @@ namespace Hex.Wizard
 			{
 				if( this.ModelState.IsValid )
 				{
-					this.WizardSteps.MoveToNextStep();
-					this.ModelState.Update( this.WizardSteps.CurrentStep.Values );
+					WizardStep currentWizardStep = this.WizardSteps.MoveToNextStep();
+					this.ModelState.Update( currentWizardStep.Values );
 				}
 
 				return;
@@ -169,8 +169,8 @@ namespace Hex.Wizard
 			ValueProviderResult wizardPreviousButtonValueResult = this.ValueProvider.GetValue( Constants.WIZARD_PREVIOUS_BUTTON_NAME );
 			if( wizardPreviousButtonValueResult != null )
 			{
-				this.WizardSteps.MoveToPreviousStep();
-				this.ModelState.Update( this.WizardSteps.CurrentStep.Values );
+				WizardStep currentWizardStep = this.WizardSteps.MoveToPreviousStep();
+				this.ModelState.Update( currentWizardStep.Values );
 
 				return;
 			}
