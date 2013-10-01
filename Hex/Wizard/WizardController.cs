@@ -183,13 +183,13 @@ namespace Hex.Wizard
 			{
 				IValueProvider valueProvider = new WizardStepValueCollectionValueProvider( currentWizardStep.Values, CultureInfo.CurrentUICulture );
 				
-				this.BindWizardFormModel( new ModelStateDictionary(), valueProvider );
+				this.BindWizardFormModel( new ModelStateDictionary(), valueProvider, null );
 			}
 		}
 
 		protected virtual void UpdateWizardFormModel()
 		{
-			this.BindWizardFormModel( this.ModelState, this.ValueProvider );
+			this.BindWizardFormModel( this.ModelState, this.ValueProvider, Constants.WIZARD_FORM_MODEL_NAME );
 
 			this.WizardSteps.CurrentStep.Values = this.ModelState.ToWizardStepValueCollection( this.ValueProvider );
 		}
@@ -220,15 +220,14 @@ namespace Hex.Wizard
 
 
 
-		private void BindWizardFormModel( ModelStateDictionary modelStateDictionary, IValueProvider valueProvider )
+		private void BindWizardFormModel( ModelStateDictionary modelStateDictionary, IValueProvider valueProvider, string modelName )
 		{
 			IModelBinder binder = System.Web.Mvc.ModelBinders.Binders.GetBinder( this.WizardFormModelType );
 			var bindingContext = new ModelBindingContext()
 			{
 				ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType( () => this.WizardFormModel, this.WizardFormModelType ),
 				ModelState = modelStateDictionary,
-				FallbackToEmptyPrefix = true,
-				ModelName = Constants.WIZARD_FORM_MODEL_NAME,
+				ModelName = modelName,
 				ValueProvider = valueProvider
 			};
 
