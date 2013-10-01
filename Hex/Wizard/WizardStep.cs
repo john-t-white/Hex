@@ -35,6 +35,6 @@ namespace Hex.Wizard
 
 		public string Description { get; private set; }
 
-		public WizardStepValueCollection Values { get; private set; }
+		public WizardStepValueCollection Values { get; set; }
 	}
 }

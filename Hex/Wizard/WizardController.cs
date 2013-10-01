@@ -2,6 +2,7 @@
 using Hex.Resources;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
@@ -37,6 +38,7 @@ namespace Hex.Wizard
 		: Controller
 	{
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
+		private const string WIZARD_FORM_MODEL_NAME = "WizardFormModel";
 
 		private IWizardStepInitializer _wizardStepInitializer;
 		private IWizardStateProvider _wizardStateProvider;
@@ -67,6 +69,10 @@ namespace Hex.Wizard
 			else
 			{
 				this.LoadWizardState( requestContext, wizardStateTokenResult.AttemptedValue, wizardActions );
+
+				this.RestoreWizardFormModel();
+
+				this.UpdateWizardFormModel();
 
 				this.ProcessWizardButton();
 			}
@@ -173,7 +179,24 @@ namespace Hex.Wizard
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps, currentWizardStep );
 		}
 
-		internal void ProcessWizardButton()
+		protected virtual void RestoreWizardFormModel()
+		{
+			foreach( WizardStep currentWizardStep in this.WizardSteps.Where( x => x.Values != null ) )
+			{
+				IValueProvider valueProvider = new WizardStepValueCollectionValueProvider( currentWizardStep.Values, CultureInfo.CurrentUICulture );
+				
+				this.BindWizardFormModel( new ModelStateDictionary(), valueProvider );
+			}
+		}
+
+		protected virtual void UpdateWizardFormModel()
+		{
+			this.BindWizardFormModel( this.ModelState, this.ValueProvider );
+
+			this.WizardSteps.CurrentStep.Values = this.ModelState.ToWizardStepValueCollection( this.ValueProvider );
+		}
+
+		private void ProcessWizardButton()
 		{
 			ValueProviderResult wizardNextButtonValueResult = this.ValueProvider.GetValue( Constants.WIZARD_NEXT_BUTTON_NAME );
 			if( wizardNextButtonValueResult != null )
@@ -199,11 +222,28 @@ namespace Hex.Wizard
 
 
 
+		private void BindWizardFormModel( ModelStateDictionary modelStateDictionary, IValueProvider valueProvider )
+		{
+			IModelBinder binder = System.Web.Mvc.ModelBinders.Binders.GetBinder( this.WizardFormModelType );
+			var bindingContext = new ModelBindingContext()
+			{
+				ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType( () => this.WizardFormModel, this.WizardFormModelType ),
+				ModelState = modelStateDictionary,
+				FallbackToEmptyPrefix = true,
+				ModelName = WIZARD_FORM_MODEL_NAME,
+				ValueProvider = valueProvider
+			};
+
+			binder.BindModel( this.ControllerContext, bindingContext );
+		}
+
+
+
 
 		internal string SaveWizardState( RequestContext requestContext )
 		{
 			var wizardStepStates = from currentWizardStep in this.WizardSteps
-								   select new WizardStepState( currentWizardStep.ActionName, null );
+								   select new WizardStepState( currentWizardStep.ActionName, currentWizardStep.Values );
 
 			WizardState wizardState = new WizardState( this.WizardSteps.CurrentStep.ActionName, wizardStepStates.ToArray() );
 

@@ -8,7 +8,7 @@ namespace Hex.Wizard
 	public interface IWizardStepViewModel<TWizardFormModel>
 		: IWizardStepViewModel
 	{
-		TWizardFormModel WizardFormModel { get; }
+		TWizardFormModel WizardFormModel { get; set; }
 	}
 
 	public interface IWizardStepViewModel
