@@ -10,6 +10,8 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 	[TestClass]
 	public class ModelStateDictionaryExtensions_Update
 	{
+		private const string WIZARD_FORM_MODEL_NAME_PREFIX = "WizardFormModel.";
+
 		[TestMethod]
 		public void UpdatesCorrectly()
 		{
@@ -30,15 +32,16 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 			}
 
 			ModelStateDictionary modelStateDictionary = new ModelStateDictionary();
-			modelStateDictionary.SetModelValue( "Key", new ValueProviderResult( "RawValue", "AttemptedValue", CultureInfo.CurrentUICulture ) );
+			modelStateDictionary.SetModelValue( "ModelStateValueToBeRemoved", new ValueProviderResult( "RawValue", "AttemptedValue", CultureInfo.CurrentUICulture ) );
 
 			modelStateDictionary.Update( wizardStepValues );
 
 			Assert.AreEqual( wizardStepValueNames.Length, modelStateDictionary.Count );
 			foreach( string currentName in wizardStepValueNames )
 			{
-				Assert.IsTrue( modelStateDictionary.ContainsKey( currentName ) );
-				ValueProviderResult currentValueProviderResult = modelStateDictionary[ currentName ].Value;
+				string expectedModelStateName = string.Format( "{0}{1}", WIZARD_FORM_MODEL_NAME_PREFIX, currentName );
+				Assert.IsTrue( modelStateDictionary.ContainsKey( expectedModelStateName ) );
+				ValueProviderResult currentValueProviderResult = modelStateDictionary[ expectedModelStateName ].Value;
 
 				Assert.IsNotNull( currentValueProviderResult );
 

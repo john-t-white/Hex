@@ -126,6 +126,9 @@
   <data name="CURRENT_WIZARD_STEP_DOES_NOT_EXIST_IN_COLLECTION" xml:space="preserve">
     <value>The current wizard step must exist in the collection.</value>
   </data>
+  <data name="MISSING_MODEL_STATE_NAME_PREFIX" xml:space="preserve">
+    <value>Model state names should all start with the prefix '{0}'.</value>
+  </data>
   <data name="NEXT_WIZARD_STEP_NOT_FOUND" xml:space="preserve">
     <value>There is no next wizard step in the collection.</value>
   </data>

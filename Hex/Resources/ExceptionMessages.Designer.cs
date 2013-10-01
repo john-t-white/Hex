@@ -88,6 +88,15 @@ namespace Hex.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Model state names should all start with the prefix &apos;{0}&apos;..
+        /// </summary>
+        internal static string MISSING_MODEL_STATE_NAME_PREFIX {
+            get {
+                return ResourceManager.GetString("MISSING_MODEL_STATE_NAME_PREFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no next wizard step in the collection..
         /// </summary>
         internal static string NEXT_WIZARD_STEP_NOT_FOUND {

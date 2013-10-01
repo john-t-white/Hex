@@ -1,4 +1,5 @@
-﻿using Hex.Wizard;
+﻿using Hex.Resources;
+using Hex.Wizard;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Hex.Wizard
 	public static class ModelStateDictionaryExtensions
 	{
 		private const string MODEL_STATE_NAME_PREFIX = Constants.WIZARD_FORM_MODEL_NAME + ".";
+		private const string MODEL_STATE_NAME_INDEX_SUFFIX = ".index";
 
 		public static WizardStepValueCollection ToWizardStepValueCollection( this ModelStateDictionary modelStateDictionary, IValueProvider valueProvider )
 		{
@@ -32,14 +34,14 @@ namespace Hex.Wizard
 
 			foreach( KeyValuePair<string, ModelState> currentModelState in modelStateDictionary )
 			{
-				wizardStepValues.Add( currentModelState.Key, currentModelState.Value.Value );
+				wizardStepValues.Add( ModelStateDictionaryExtensions.TrimWizardModelNamePrefix( currentModelState.Key ), currentModelState.Value.Value );
 			}
 
 			foreach( string currentPossibleIndex in ModelStateDictionaryExtensions.GetPossibleIndexes( modelStateDictionary ) )
 			{
 				ValueProviderResult currentValueProviderResult = valueProvider.GetValue( currentPossibleIndex );
 
-				wizardStepValues.Add( currentPossibleIndex, currentValueProviderResult );
+				wizardStepValues.Add( ModelStateDictionaryExtensions.TrimWizardModelNamePrefix( currentPossibleIndex ), currentValueProviderResult );
 			}
 
 			return wizardStepValues;
@@ -62,7 +64,7 @@ namespace Hex.Wizard
 					string attemptedValue = string.Join( ",", rawValues );
 					ValueProviderResult valueProviderResult = new ValueProviderResult( rawValues, attemptedValue, CultureInfo.CurrentUICulture );
 
-					modelStateDictionary.SetModelValue( currentName, valueProviderResult );
+					modelStateDictionary.SetModelValue( string.Format( "{0}{1}", MODEL_STATE_NAME_PREFIX, currentName ), valueProviderResult );
 				}
 			}
 		}
@@ -72,7 +74,18 @@ namespace Hex.Wizard
 			return ( from string currentModelStateName in modelStateDictionary.Keys
 					 let bracketIndex = currentModelStateName.LastIndexOf( '[' )
 					 where bracketIndex >= 0
-					 select string.Concat( currentModelStateName.Substring( 0, bracketIndex ), ".index" ) ).Distinct().ToArray();
+					 select string.Concat( currentModelStateName.Substring( 0, bracketIndex ), MODEL_STATE_NAME_INDEX_SUFFIX ) ).Distinct().ToArray();
+		}
+
+		private static string TrimWizardModelNamePrefix( string modelStateName )
+		{
+			if( !modelStateName.StartsWith( MODEL_STATE_NAME_PREFIX ) )
+			{
+				string exceptionMessage = string.Format( ExceptionMessages.MISSING_MODEL_STATE_NAME_PREFIX, MODEL_STATE_NAME_PREFIX );
+				throw new InvalidOperationException( exceptionMessage );
+			}
+
+			return modelStateName.Substring( MODEL_STATE_NAME_PREFIX.Length );
 		}
 	}
 }

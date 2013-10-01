@@ -11,6 +11,8 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 	[TestClass]
 	public class ModelStateDictionaryExtensions_ToWizardStepValueCollection
 	{
+		private const string WIZARD_FORM_MODEL_NAME_PREFIX = "WizardFormModel.";
+
 		[TestMethod]
 		public void ReturnsCorrectly()
 		{
@@ -23,11 +25,12 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 			Assert.AreEqual( modelStateDictionary.Count, wizardStepValues.Count );
 			foreach( string currentModelStateName in modelStateDictionary.Keys )
 			{
-				Assert.IsTrue( wizardStepValues.AllKeys.Contains( currentModelStateName ) );
+				string expectedWizardStepValueName = currentModelStateName.Substring( WIZARD_FORM_MODEL_NAME_PREFIX.Length );
+				Assert.IsTrue( wizardStepValues.AllKeys.Contains( expectedWizardStepValueName ) );
 
 				ValueProviderResult currentValueProviderResult = modelStateDictionary[ currentModelStateName ].Value;
 				string[] currentRawValues = ( string[] )currentValueProviderResult.RawValue;
-				string[] currentWizardStepValues = wizardStepValues.GetValues( currentModelStateName );
+				string[] currentWizardStepValues = wizardStepValues.GetValues( expectedWizardStepValueName );
 
 				Assert.AreEqual( currentRawValues.Length, currentWizardStepValues.Length );
 				foreach( string currentRawValue in currentRawValues )
@@ -52,10 +55,13 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 		[TestMethod]
 		public void WithIndexesReturnsCorrectly()
 		{
-			ModelStateDictionary modelStateDictionary = this.GenerateModelStateDictionaryWithIndex( "NameWithIndex", "IndexValue" );
+			string nameWithIndex = "NameWithIndex";
+			string indexValue = "IndexValue";
+
+			ModelStateDictionary modelStateDictionary = this.GenerateModelStateDictionaryWithIndex( nameWithIndex, indexValue );
 
 			NameValueCollection nameValueCollection = new NameValueCollection();
-			nameValueCollection.Add( string.Format( "{0}.Index", "NameWithIndex" ), "IndexValue" );
+			nameValueCollection.Add( string.Format( "{0}{1}.Index", WIZARD_FORM_MODEL_NAME_PREFIX, nameWithIndex ), indexValue );
 
 			IValueProvider valueProvider = this.GenerateNameValueCollectionProvider( nameValueCollection );
 
@@ -64,11 +70,12 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 			Assert.AreEqual( modelStateDictionary.Count + nameValueCollection.Count, wizardStepValues.Count );
 			foreach( string currentModelStateName in modelStateDictionary.Keys )
 			{
-				Assert.IsTrue( wizardStepValues.AllKeys.Contains( currentModelStateName ) );
+				string expectedWizardStepValueName = currentModelStateName.Substring( WIZARD_FORM_MODEL_NAME_PREFIX.Length );
+				Assert.IsTrue( wizardStepValues.AllKeys.Contains( expectedWizardStepValueName ) );
 
 				ValueProviderResult currentValueProviderResult = modelStateDictionary[ currentModelStateName ].Value;
 				string[] currentRawValues = ( string[] )currentValueProviderResult.RawValue;
-				string[] currentWizardStepValues = wizardStepValues.GetValues( currentModelStateName );
+				string[] currentWizardStepValues = wizardStepValues.GetValues( expectedWizardStepValueName );
 
 				Assert.AreEqual( currentRawValues.Length, currentWizardStepValues.Length );
 				foreach( string currentRawValue in currentRawValues )
@@ -79,10 +86,11 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 
 			foreach( string currentKey in nameValueCollection.AllKeys )
 			{
-				Assert.IsTrue( wizardStepValues.AllKeys.Contains( currentKey, StringComparer.InvariantCultureIgnoreCase ) );
+				string expectedWizardStepValueIndexName = currentKey.Substring( WIZARD_FORM_MODEL_NAME_PREFIX.Length );
+				Assert.IsTrue( wizardStepValues.AllKeys.Contains( expectedWizardStepValueIndexName, StringComparer.InvariantCultureIgnoreCase ) );
 
 				string[] currentIndexValues = nameValueCollection.GetValues( currentKey );
-				string[] currentWizardStepValues = wizardStepValues.GetValues( currentKey );
+				string[] currentWizardStepValues = wizardStepValues.GetValues( expectedWizardStepValueIndexName );
 
 				Assert.AreEqual( currentIndexValues.Length, currentWizardStepValues.Length );
 				foreach( string currentIndexValue in currentIndexValues )
@@ -117,7 +125,8 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 					currentValues[ currentValueIndex ] = string.Format( "{0}Value{1}", currentName, currentValueIndex );
 				}
 
-				modelStateDictionary.SetModelValue( currentName, new ValueProviderResult( currentValues, string.Join( ",", currentValues ), CultureInfo.CurrentUICulture ) );
+				string currentModelStateName = string.Format( "{0}{1}", WIZARD_FORM_MODEL_NAME_PREFIX, currentName );
+				modelStateDictionary.SetModelValue( currentModelStateName, new ValueProviderResult( currentValues, string.Join( ",", currentValues ), CultureInfo.CurrentUICulture ) );
 			}
 
 			return modelStateDictionary;
@@ -127,7 +136,7 @@ namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 		{
 			ModelStateDictionary modelStateDictionary = this.GenerateModelStateDictionary();
 
-			string modelStateName = string.Format( "{0}[{1}]", modelStateWithIndexName, indexValue );
+			string modelStateName = string.Format( "{0}{1}[{2}]", WIZARD_FORM_MODEL_NAME_PREFIX, modelStateWithIndexName, indexValue );
 			string modelStateValue = string.Format( "{0}Value", modelStateWithIndexName );
 
 			modelStateDictionary.SetModelValue( modelStateName, new ValueProviderResult( new string[] { modelStateValue }, modelStateValue, CultureInfo.CurrentUICulture ) );
