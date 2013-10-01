@@ -25,5 +25,7 @@ namespace Hex.Wizard
 
 			this.WizardFormModel = ( TWizardFormModel )wizardFormModel;
 		}
+
+		public WizardStepLinkedList WizardSteps { get; set; }
 	}
 }

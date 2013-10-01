@@ -14,5 +14,7 @@ namespace Hex.Wizard
 	public interface IWizardStepViewModel
 	{
 		void SetWizardFormModel( object wizardFormModel );
+
+		WizardStepLinkedList WizardSteps { get; set; }
 	}
 }

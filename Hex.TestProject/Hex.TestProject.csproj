@@ -309,6 +309,9 @@
     <Compile Include="Wizard\WizardActionDescriptorTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Name.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ctor.cs" />
+    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeViewModel.cs" />
+    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardStepViewModel.cs" />
+    <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_CreateActionResult.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_WizardStepsInitializer.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_WizardStateProvider.cs" />
     <Compile Include="Wizard\WizardStateTests\WizardState_Serialization.cs" />

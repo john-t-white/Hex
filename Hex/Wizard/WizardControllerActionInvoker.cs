@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hex.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,7 @@ namespace Hex.Wizard
 					Type viewModelInterfaceType = OPEN_WIZARD_STEP_VIEW_MODEL_INTERFACE.MakeGenericType( wizardController.WizardFormModelType );
 					if( !( viewModelInterfaceType.IsAssignableFrom( viewResultBase.Model.GetType() ) ) )
 					{
-						string exceptionMessage = string.Format( "The wizard step view model must implement '{0}'.", viewModelInterfaceType.FullName );
+						string exceptionMessage = string.Format( ExceptionMessages.WIZARD_STEP_VIEW_MODEL_DOES_NOT_IMPLEMENT_IWIZARDSTEPVIEWMODEL, viewModelInterfaceType.FullName );
 						throw new InvalidOperationException( exceptionMessage );
 					}
 
@@ -53,6 +54,7 @@ namespace Hex.Wizard
 				}
 
 				wizardStepViewModel.SetWizardFormModel( wizardController.WizardFormModel );
+				wizardStepViewModel.WizardSteps = wizardController.WizardSteps;
 			}
 
 			return actionResult;

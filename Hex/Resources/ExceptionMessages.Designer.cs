@@ -122,5 +122,14 @@ namespace Hex.Resources {
                 return ResourceManager.GetString("WIZARD_CANNOT_CONTAIN_ACTION_IN_ROUTE", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The wizard step view model must implement &apos;{0}&apos;..
+        /// </summary>
+        internal static string WIZARD_STEP_VIEW_MODEL_DOES_NOT_IMPLEMENT_IWIZARDSTEPVIEWMODEL {
+            get {
+                return ResourceManager.GetString("WIZARD_STEP_VIEW_MODEL_DOES_NOT_IMPLEMENT_IWIZARDSTEPVIEWMODEL", resourceCulture);
+            }
+        }
     }
 }
