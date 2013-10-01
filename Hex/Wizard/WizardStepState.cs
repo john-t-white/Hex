@@ -1,4 +1,5 @@
 ﻿using Hex.Resources;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,10 @@ namespace Hex.Wizard
 			this.Values = values;
 		}
 
+		[JsonProperty( PropertyName = "a" )]
 		public string ActionName { get; private set; }
 
+		[JsonProperty( PropertyName = "v" )]
 		public WizardStepValueCollection Values { get; private set; }
 	}
 }
