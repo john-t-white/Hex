@@ -6,12 +6,15 @@ using System.Web;
 
 namespace Hex.TestWebsite.Models.SimpleWizard
 {
-	public class FirstStepFormModel
+	public class SecondStepFormModel
 	{
 		[Required]
-		public string FirstName { get; set; }
+		public string Username { get; set; }
 
 		[Required]
-		public string LastName { get; set; }
+		public string Password { get; set; }
+
+		[Required]
+		public string ConfirmPassword { get; set; }
 	}
 }

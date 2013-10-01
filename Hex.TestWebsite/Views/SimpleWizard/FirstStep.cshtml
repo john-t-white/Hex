@@ -11,7 +11,7 @@
 
 @using( Html.BeginWizardForm() )
 {
-	@Html.ValidationSummary()
+	@Html.ValidationSummary( true )
 
 	@Html.ValidationMessageFor( x => x.WizardFormModel.FirstStep.FirstName )<br />
 	@Html.LabelFor( x => x.WizardFormModel.FirstStep.FirstName )

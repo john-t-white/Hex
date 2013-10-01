@@ -1,4 +1,9 @@
-﻿@{
+﻿@using Hex.Wizard
+@using Hex.TestWebsite.Models.SimpleWizard
+
+@model WizardStepViewModel<SimpleWizardFormModel>
+
+@{
     ViewBag.Title = "SecondStep";
 }
 
@@ -6,6 +11,20 @@
 
 @using( Html.BeginWizardForm() )
 {
+	@Html.ValidationSummary( true )
+
+	@Html.ValidationMessageFor( x => x.WizardFormModel.SecondStep.Username )<br />
+	@Html.LabelFor( x => x.WizardFormModel.SecondStep.Username )
+	@Html.TextBoxFor( x => x.WizardFormModel.SecondStep.Username )<br />
+	
+	@Html.ValidationMessageFor( x => x.WizardFormModel.SecondStep.Password )<br />
+	@Html.LabelFor( x => x.WizardFormModel.SecondStep.Password )
+	@Html.PasswordFor( x => x.WizardFormModel.SecondStep.Password )<br />
+	
+	@Html.ValidationMessageFor( x => x.WizardFormModel.SecondStep.ConfirmPassword )<br />
+	@Html.LabelFor( x => x.WizardFormModel.SecondStep.ConfirmPassword )
+	@Html.PasswordFor( x => x.WizardFormModel.SecondStep.ConfirmPassword )<br />
+	
 	@Html.PreviousWizardStepSubmitInputButton()
 	@Html.NextWizardStepSubmitInputButton()
 }
