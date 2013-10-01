@@ -1,4 +1,9 @@
-﻿@{
+﻿@using Hex.Wizard
+@using Hex.TestWebsite.Models.SimpleWizard
+
+@model WizardStepViewModel<SimpleWizardFormModel>
+
+@{
     ViewBag.Title = "FirstStep";
 }
 
@@ -6,6 +11,16 @@
 
 @using( Html.BeginWizardForm() )
 {
+	@Html.ValidationSummary()
+
+	@Html.ValidationMessageFor( x => x.WizardFormModel.FirstStep.FirstName )<br />
+	@Html.LabelFor( x => x.WizardFormModel.FirstStep.FirstName )
+	@Html.TextBoxFor( x => x.WizardFormModel.FirstStep.FirstName )<br />
+	
+	@Html.ValidationMessageFor( x => x.WizardFormModel.FirstStep.LastName )<br />
+	@Html.LabelFor( x => x.WizardFormModel.FirstStep.LastName )
+	@Html.TextBoxFor( x => x.WizardFormModel.FirstStep.LastName )<br />
+	
 	@Html.PreviousWizardStepSubmitInputButton()
 	@Html.NextWizardStepSubmitInputButton()
 }

@@ -156,6 +156,7 @@
     <Compile Include="Wizard\Constants.cs" />
     <Compile Include="Wizard\FormWizardStateProvider.cs" />
     <Compile Include="Wizard\IWizardStateProvider.cs" />
+    <Compile Include="Wizard\IWizardStepViewModel.cs" />
     <Compile Include="Wizard\WizardActionDescriptor.cs" />
     <Compile Include="Wizard\WizardController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvoker.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Wizard\WizardStepInitializer.cs" />
     <Compile Include="Wizard\WizardStepState.cs" />
     <Compile Include="Wizard\WizardStepValueCollection.cs" />
+    <Compile Include="Wizard\WizardStepViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

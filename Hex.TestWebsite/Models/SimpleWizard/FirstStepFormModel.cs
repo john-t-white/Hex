@@ -5,8 +5,10 @@ using System.Web;
 
 namespace Hex.TestWebsite.Models.SimpleWizard
 {
-	public class SimpleWizardFormModel
+	public class FirstStepFormModel
 	{
-		public FirstStepFormModel FirstStep { get; set; }
+		public string FirstName { get; set; }
+
+		public string LastName { get; set; }
 	}
 }
