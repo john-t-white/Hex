@@ -14,6 +14,8 @@ namespace Hex.Wizard
 	/// </summary>
 	public static class ModelStateDictionaryExtensions
 	{
+		private const string MODEL_STATE_NAME_PREFIX = Constants.WIZARD_FORM_MODEL_NAME + ".";
+
 		public static WizardStepValueCollection ToWizardStepValueCollection( this ModelStateDictionary modelStateDictionary, IValueProvider valueProvider )
 		{
 			if( modelStateDictionary == null )
@@ -30,43 +32,14 @@ namespace Hex.Wizard
 
 			foreach( KeyValuePair<string, ModelState> currentModelState in modelStateDictionary )
 			{
-				object rawValue = currentModelState.Value.Value.RawValue;
-				if( rawValue is IEnumerable )
-				{
-					foreach( var currentRawValue in ( IEnumerable )rawValue )
-					{
-						wizardStepValues.Add( currentModelState.Key, currentRawValue.ToString() );
-					}
-				}
-				else
-				{
-					wizardStepValues.Add( currentModelState.Key, rawValue.ToString() );
-				}
+				wizardStepValues.Add( currentModelState.Key, currentModelState.Value.Value );
 			}
 
-			var possibleIndexes = ( from string currentModelStateName in wizardStepValues
-									let bracketIndex = currentModelStateName.LastIndexOf( '[' )
-									where bracketIndex >= 0
-									select string.Concat( currentModelStateName.Substring( 0, bracketIndex ), ".index" ) ).Distinct().ToList();
-
-			foreach( string currentPossibleIndex in possibleIndexes )
+			foreach( string currentPossibleIndex in ModelStateDictionaryExtensions.GetPossibleIndexes( modelStateDictionary ) )
 			{
 				ValueProviderResult currentValueProviderResult = valueProvider.GetValue( currentPossibleIndex );
-				if( currentValueProviderResult != null )
-				{
-					object rawValue = currentValueProviderResult.RawValue;
-					if( rawValue is IEnumerable )
-					{
-						foreach( var currentRawValue in ( IEnumerable )rawValue )
-						{
-							wizardStepValues.Add( currentPossibleIndex, currentRawValue.ToString() );
-						}
-					}
-					else
-					{
-						wizardStepValues.Add( currentPossibleIndex, rawValue.ToString() );
-					}
-				}
+
+				wizardStepValues.Add( currentPossibleIndex, currentValueProviderResult );
 			}
 
 			return wizardStepValues;
@@ -92,6 +65,14 @@ namespace Hex.Wizard
 					modelStateDictionary.SetModelValue( currentName, valueProviderResult );
 				}
 			}
+		}
+
+		private static string[] GetPossibleIndexes( ModelStateDictionary modelStateDictionary )
+		{
+			return ( from string currentModelStateName in modelStateDictionary.Keys
+					 let bracketIndex = currentModelStateName.LastIndexOf( '[' )
+					 where bracketIndex >= 0
+					 select string.Concat( currentModelStateName.Substring( 0, bracketIndex ), ".index" ) ).Distinct().ToArray();
 		}
 	}
 }
