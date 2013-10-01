@@ -4,9 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
 using System.Globalization;
 using Hex.Wizard;
-using Hex.Extensions;
 
-namespace Hex.TestProject.Extensions.ModelStateDictionaryExtensionsTests
+namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 {
 	[TestClass]
 	public class ModelStateDictionaryExtensions_Update

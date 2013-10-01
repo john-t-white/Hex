@@ -11,5 +11,7 @@ namespace Hex.Wizard
 
 		internal const string WIZARD_PREVIOUS_BUTTON_NAME = "__wizardPreviousButton";
 		internal const string WIZARD_NEXT_BUTTON_NAME = "__wizardNextButton";
+
+		internal const string WIZARD_FORM_MODEL_NAME = "WizardFormModel";
 	}
 }

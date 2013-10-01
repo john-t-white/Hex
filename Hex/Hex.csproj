@@ -157,6 +157,7 @@
     <Compile Include="Wizard\FormWizardStateProvider.cs" />
     <Compile Include="Wizard\IWizardStateProvider.cs" />
     <Compile Include="Wizard\IWizardStepViewModel.cs" />
+    <Compile Include="Wizard\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Wizard\WizardActionDescriptor.cs" />
     <Compile Include="Wizard\WizardController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvoker.cs" />

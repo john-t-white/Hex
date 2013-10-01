@@ -1,5 +1,4 @@
-﻿using Hex.Extensions;
-using Hex.Resources;
+﻿using Hex.Resources;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -38,8 +37,7 @@ namespace Hex.Wizard
 		: Controller
 	{
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
-		private const string WIZARD_FORM_MODEL_NAME = "WizardFormModel";
-
+		
 		private IWizardStepInitializer _wizardStepInitializer;
 		private IWizardStateProvider _wizardStateProvider;
 
@@ -230,7 +228,7 @@ namespace Hex.Wizard
 				ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType( () => this.WizardFormModel, this.WizardFormModelType ),
 				ModelState = modelStateDictionary,
 				FallbackToEmptyPrefix = true,
-				ModelName = WIZARD_FORM_MODEL_NAME,
+				ModelName = Constants.WIZARD_FORM_MODEL_NAME,
 				ValueProvider = valueProvider
 			};
 

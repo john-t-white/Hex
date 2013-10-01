@@ -2,12 +2,11 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
-using Hex.Extensions;
 using System.Globalization;
 using Hex.Wizard;
 using System.Collections.Specialized;
 
-namespace Hex.TestProject.Extensions.ModelStateDictionaryExtensionsTests
+namespace Hex.TestProject.Wizard.ModelStateDictionaryExtensionsTests
 {
 	[TestClass]
 	public class ModelStateDictionaryExtensions_ToWizardStepValueCollection
