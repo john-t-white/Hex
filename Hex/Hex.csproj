@@ -167,6 +167,7 @@
     <Compile Include="Wizard\WizardStepInitializer.cs" />
     <Compile Include="Wizard\WizardStepState.cs" />
     <Compile Include="Wizard\WizardStepValueCollection.cs" />
+    <Compile Include="Wizard\WizardStepValueCollectionValueProvider.cs" />
     <Compile Include="Wizard\WizardStepViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
