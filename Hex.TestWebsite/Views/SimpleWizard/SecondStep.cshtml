@@ -25,7 +25,7 @@
 	@Html.LabelFor( x => x.WizardFormModel.SecondStep.ConfirmPassword )
 	@Html.PasswordFor( x => x.WizardFormModel.SecondStep.ConfirmPassword )<br />
 	
-	@Html.PreviousWizardStepSubmitInputButton()
+	@Html.PreviousWizardStepSubmitInputButton( x => x.AddClass( "cancel" ) )
 	@Html.NextWizardStepSubmitInputButton()
 }
 
