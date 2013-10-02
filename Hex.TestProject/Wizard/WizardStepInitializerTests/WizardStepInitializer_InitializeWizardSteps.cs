@@ -41,7 +41,7 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 		}
 
 		[TestMethod]
-		public void WithWizardStepAttributeReturnsCorrectly()
+		public void WithDisplayAttributeReturnsCorrectly()
 		{
 			RequestContext requestContext = new RequestContext();
 

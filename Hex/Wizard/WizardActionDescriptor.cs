@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
@@ -9,8 +10,8 @@ namespace Hex.Wizard
 	public class WizardActionDescriptor
 		: ActionDescriptor
 	{
-		private bool _wizardStepAttributeInitialized = false;
-		private WizardStepAttribute _wizardStepAttribute = null;
+		private bool _displayAttributeInitialized = false;
+		private DisplayAttribute _displayAttribute = null;
 
 		public WizardActionDescriptor( ActionDescriptor actionDescriptor )
 		{
@@ -58,10 +59,10 @@ namespace Hex.Wizard
 		{
 			get
 			{
-				WizardStepAttribute wizardStepAttribute = this.GetWizardStepAttribute();
-				if( wizardStepAttribute != null )
+				DisplayAttribute displayAttribute = this.GetDisplayAttribute();
+				if( displayAttribute != null )
 				{
-					return wizardStepAttribute.Name;
+					return displayAttribute.GetName();
 				}
 
 				return null;
@@ -72,10 +73,10 @@ namespace Hex.Wizard
 		{
 			get
 			{
-				WizardStepAttribute wizardStepAttribute = this.GetWizardStepAttribute();
-				if( wizardStepAttribute != null )
+				DisplayAttribute displayAttribute = this.GetDisplayAttribute();
+				if( displayAttribute != null )
 				{
-					return wizardStepAttribute.Description;
+					return displayAttribute.GetDescription();
 				}
 
 				return null;
@@ -86,10 +87,10 @@ namespace Hex.Wizard
 		{
 			get
 			{
-				WizardStepAttribute wizardStepAttribute = this.GetWizardStepAttribute();
-				if( wizardStepAttribute != null )
+				DisplayAttribute displayAttribute = this.GetDisplayAttribute();
+				if( displayAttribute != null )
 				{
-					return wizardStepAttribute.Order;
+					return displayAttribute.GetOrder() ?? 0;
 				}
 
 				return 0;
@@ -98,15 +99,15 @@ namespace Hex.Wizard
 
 		#region Internal Methods
 
-		private WizardStepAttribute GetWizardStepAttribute()
+		private DisplayAttribute GetDisplayAttribute()
 		{
-			if( !this._wizardStepAttributeInitialized )
+			if( !this._displayAttributeInitialized )
 			{
-				this._wizardStepAttribute = this.ActionDescriptor.GetCustomAttributes( typeof( WizardStepAttribute ), false ).FirstOrDefault() as WizardStepAttribute;
-				this._wizardStepAttributeInitialized = true;
+				this._displayAttribute = this.ActionDescriptor.GetCustomAttributes( typeof( DisplayAttribute ), false ).FirstOrDefault() as DisplayAttribute;
+				this._displayAttributeInitialized = true;
 			}
 
-			return this._wizardStepAttribute;
+			return this._displayAttribute;
 		}
 
 		#endregion

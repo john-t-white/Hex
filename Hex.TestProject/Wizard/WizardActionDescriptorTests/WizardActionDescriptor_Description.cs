@@ -21,7 +21,7 @@ namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 		}
 
 		[TestMethod]
-		public void WithoutWizardStepAttributeReturnsCorrectly()
+		public void WithoutDisplayAttributeReturnsCorrectly()
 		{
 			ActionDescriptor actionDescriptor = this.GetWizardAction( typeof( FakeWizardController ) );
 

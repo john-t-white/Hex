@@ -46,6 +46,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -168,7 +169,6 @@
     <Compile Include="Wizard\WizardControllerActionInvoker.cs" />
     <Compile Include="Wizard\WizardState.cs" />
     <Compile Include="Wizard\WizardStep.cs" />
-    <Compile Include="Wizard\WizardStepAttribute.cs" />
     <Compile Include="Wizard\WizardStepLinkedList.cs" />
     <Compile Include="Wizard\WizardStepInitializer.cs" />
     <Compile Include="Wizard\WizardStepState.cs" />
