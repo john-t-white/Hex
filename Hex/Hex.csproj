@@ -103,6 +103,7 @@
     <Compile Include="Html\CheckBoxExtensions_WithValue.cs" />
     <Compile Include="Html\CheckBoxListItemLabelExtensions.cs" />
     <Compile Include="Html\DescriptionExtensions.cs" />
+    <Compile Include="Html\FormHelper.cs" />
     <Compile Include="Html\HtmlElements.cs" />
     <Compile Include="Html\SubmitInputButtonExtensions.cs" />
     <Compile Include="Html\WizardButtonExtensions.cs" />

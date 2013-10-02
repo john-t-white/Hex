@@ -10,6 +10,20 @@ namespace Hex.TestProject.Html.FormExtensionsTests
 	public class FormExtensions_BeginForm
 	{
 		[TestMethod]
+		public void WithAttributeExpressionReturnsCorrectly()
+		{
+			string attributeName = "AttributeName";
+			string attributeValue = "AttributeValue";
+
+			HtmlHelper htmlHelper = HtmlHelperGenerator.CreateHtmlHelper();
+
+			var result = htmlHelper.BeginForm( x => x.Attribute( attributeName, attributeValue ) );
+
+			string expectedResult = string.Format( "<form {0}=\"{1}\" action=\"http://localhost\" method=\"post\">", attributeName, attributeValue );
+			Assert.AreEqual( expectedResult, htmlHelper.ViewContext.Writer.ToString() );
+		}
+
+		[TestMethod]
 		public void WithRouteValuesAndAttributeExpressionReturnsCorrectly()
 		{
 			string attributeName = "AttributeName";

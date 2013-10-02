@@ -93,6 +93,7 @@ namespace Hex.TestProject
 				uri = new Uri( protocol + "://localhost" );
 			}
 			mockHttpRequest.Stub( o => o.Url ).Return( uri );
+			mockHttpRequest.Stub( o => o.RawUrl ).Return( uri.OriginalString );
 
 			mockHttpRequest.Stub( o => o.PathInfo ).Return( String.Empty );
 			mockHttpRequest.Stub( o => o.HttpMethod ).Return( HtmlHelper.GetFormMethodString( httpMethod ) );
