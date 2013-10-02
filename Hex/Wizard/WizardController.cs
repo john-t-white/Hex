@@ -184,8 +184,6 @@ namespace Hex.Wizard
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
 		}
 
-
-
 		private void LoadWizardState( RequestContext requestContext, string wizardStateToken, WizardActionDescriptor[] wizardActions )
 		{
 			WizardState wizardState = this.WizardStateProvider.Load( requestContext, wizardStateToken );
@@ -200,7 +198,7 @@ namespace Hex.Wizard
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps, currentWizardStep );
 		}
 
-		protected virtual void RestoreWizardFormModel()
+		private void RestoreWizardFormModel()
 		{
 			foreach( WizardStep currentWizardStep in this.WizardSteps.Where( x => x.Values != null ) )
 			{
@@ -210,7 +208,7 @@ namespace Hex.Wizard
 			}
 		}
 
-		protected virtual void UpdateWizardFormModel()
+		private void UpdateWizardFormModel()
 		{
 			this.BindWizardFormModel( this.ModelState, this.ValueProvider, Constants.WIZARD_FORM_MODEL_NAME );
 
@@ -226,8 +224,6 @@ namespace Hex.Wizard
 			}
 		}
 
-
-
 		private void BindWizardFormModel( ModelStateDictionary modelStateDictionary, IValueProvider valueProvider, string modelName )
 		{
 			IModelBinder binder = System.Web.Mvc.ModelBinders.Binders.GetBinder( this.WizardFormModelType );
@@ -241,9 +237,6 @@ namespace Hex.Wizard
 
 			binder.BindModel( this.ControllerContext, bindingContext );
 		}
-
-
-
 
 		internal string SaveWizardState( RequestContext requestContext )
 		{
