@@ -40,6 +40,7 @@ namespace Hex.Wizard
 		
 		private IWizardStepInitializer _wizardStepInitializer;
 		private IWizardStateProvider _wizardStateProvider;
+		private IWizardButtonCommandFactory _wizardButtonCommandFactory;
 
 		protected WizardController()
 		{ }
@@ -143,6 +144,23 @@ namespace Hex.Wizard
 			}
 		}
 
+		public IWizardButtonCommandFactory WizardButtonCommandFactory
+		{
+			get
+			{
+				if( this._wizardButtonCommandFactory == null )
+				{
+					_wizardButtonCommandFactory = this.CreateWizardButtonCommandFactory();
+				}
+
+				return this._wizardButtonCommandFactory;
+			}
+			set
+			{
+				this._wizardButtonCommandFactory = value;
+			}
+		}
+
 		protected virtual IWizardStepInitializer CreateWizardStepInitializer()
 		{
 			return new WizardStepInitializer();
@@ -151,6 +169,11 @@ namespace Hex.Wizard
 		protected virtual IWizardStateProvider CreateWizardStateProvider()
 		{
 			return new FormWizardStateProvider();
+		}
+
+		protected virtual IWizardButtonCommandFactory CreateWizardButtonCommandFactory()
+		{
+			return new WizardButtonCommandFactory();
 		}
 
 		#region Internal Methods
@@ -196,25 +219,10 @@ namespace Hex.Wizard
 
 		private void ProcessWizardButton()
 		{
-			ValueProviderResult wizardNextButtonValueResult = this.ValueProvider.GetValue( Constants.WIZARD_NEXT_BUTTON_NAME );
-			if( wizardNextButtonValueResult != null )
+			IWizardButtonCommand buttonCommand = this.WizardButtonCommandFactory.GetButtonCommand( this );
+			if( buttonCommand != null )
 			{
-				if( this.ModelState.IsValid )
-				{
-					WizardStep currentWizardStep = this.WizardSteps.MoveToNextStep();
-					this.ModelState.Update( currentWizardStep.Values );
-				}
-
-				return;
-			}
-
-			ValueProviderResult wizardPreviousButtonValueResult = this.ValueProvider.GetValue( Constants.WIZARD_PREVIOUS_BUTTON_NAME );
-			if( wizardPreviousButtonValueResult != null )
-			{
-				WizardStep currentWizardStep = this.WizardSteps.MoveToPreviousStep();
-				this.ModelState.Update( currentWizardStep.Values );
-
-				return;
+				buttonCommand.ExecuteCommand( this );
 			}
 		}
 

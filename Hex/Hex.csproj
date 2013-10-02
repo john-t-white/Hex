@@ -156,10 +156,14 @@
     </Compile>
     <Compile Include="Wizard\Constants.cs" />
     <Compile Include="Wizard\FormWizardStateProvider.cs" />
+    <Compile Include="Wizard\IWizardButtonCommand.cs" />
     <Compile Include="Wizard\IWizardStateProvider.cs" />
     <Compile Include="Wizard\IWizardStepViewModel.cs" />
     <Compile Include="Wizard\ModelStateDictionaryExtensions.cs" />
+    <Compile Include="Wizard\NextWizardButtonCommand.cs" />
+    <Compile Include="Wizard\PreviousWizardButtonCommand.cs" />
     <Compile Include="Wizard\WizardActionDescriptor.cs" />
+    <Compile Include="Wizard\WizardButtonCommandFactory.cs" />
     <Compile Include="Wizard\WizardController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvoker.cs" />
     <Compile Include="Wizard\WizardState.cs" />
