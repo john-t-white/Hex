@@ -17,6 +17,9 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( actionName, wizardStep.Name );
 			Assert.IsNull( wizardStep.Description );
+			Assert.IsNull( wizardStep.Prompt );
+			Assert.IsNull( wizardStep.GroupName );
+			Assert.IsNull( wizardStep.ShortName );
 			Assert.IsNull( wizardStep.Values );
 		}
 
@@ -26,12 +29,18 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 			string actionName = "ActionName";
 			string name = "Name";
 			string description = "Description";
+			string prompt = "Prompt";
+			string groupName = "GroupName";
+			string shortName = "ShortName";
 
-			WizardStep wizardStep = new WizardStep( actionName, name, description );
+			WizardStep wizardStep = new WizardStep( actionName, name, description, prompt, groupName, shortName );
 
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( name, wizardStep.Name );
 			Assert.AreEqual( description, wizardStep.Description );
+			Assert.AreEqual( prompt, wizardStep.Prompt );
+			Assert.AreEqual( groupName, wizardStep.GroupName );
+			Assert.AreEqual( shortName, wizardStep.ShortName );
 			Assert.IsNull( wizardStep.Values );
 		}
 
@@ -41,44 +50,62 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 			string actionName = "ActionName";
 			string name = "Name";
 			string description = "Description";
+			string prompt = "Prompt";
+			string groupName = "GroupName";
+			string shortName = "ShortName";
 			WizardStepValueCollection values = new WizardStepValueCollection();
 
-			WizardStep wizardStep = new WizardStep( actionName, name, description, values );
+			WizardStep wizardStep = new WizardStep( actionName, name, description, prompt, groupName, shortName, values );
 
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( name, wizardStep.Name );
 			Assert.AreEqual( description, wizardStep.Description );
+			Assert.AreEqual( prompt, wizardStep.Prompt );
+			Assert.AreEqual( groupName, wizardStep.GroupName );
+			Assert.AreEqual( shortName, wizardStep.ShortName );
 			Assert.AreSame( values, wizardStep.Values );
 		}
 
 		[TestMethod]
-		public void WithActionNameNullNameAndNullDescriptionCreatesCorrectly()
+		public void WithActionNameNullNameNullDescriptionNullPromptNullGroupNameAndNullShortNameCreatesCorrectly()
 		{
 			string actionName = "ActionName";
 			string name = null;
 			string description = null;
+			string prompt = null;
+			string groupName = null;
+			string shortName = null;
 
-			WizardStep wizardStep = new WizardStep( actionName, name, description );
+			WizardStep wizardStep = new WizardStep( actionName, name, description, prompt, groupName, shortName );
 
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( actionName, wizardStep.Name );
 			Assert.IsNull( wizardStep.Description );
+			Assert.IsNull( wizardStep.Prompt );
+			Assert.IsNull( wizardStep.GroupName );
+			Assert.IsNull( wizardStep.ShortName );
 			Assert.IsNull( wizardStep.Values );
 		}
 
 		[TestMethod]
-		public void WithActionNameNullNameNullDescriptionAndNullValuesCreatesCorrectly()
+		public void WithActionNameNullNameNullDescriptionNullPromptNullGroupNameNullShortNameAndNullValuesCreatesCorrectly()
 		{
 			string actionName = "ActionName";
 			string name = null;
 			string description = null;
+			string prompt = null;
+			string groupName = null;
+			string shortName = null;
 			WizardStepValueCollection values = null;
 
-			WizardStep wizardStep = new WizardStep( actionName, name, description, values );
+			WizardStep wizardStep = new WizardStep( actionName, name, description, prompt, groupName, shortName, values );
 
 			Assert.AreEqual( actionName, wizardStep.ActionName );
 			Assert.AreEqual( actionName, wizardStep.Name );
 			Assert.IsNull( wizardStep.Description );
+			Assert.IsNull( wizardStep.Prompt );
+			Assert.IsNull( wizardStep.GroupName );
+			Assert.IsNull( wizardStep.ShortName );
 			Assert.IsNull( wizardStep.Values );
 		}
 
@@ -88,7 +115,7 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 		{
 			string actionName = null;
 
-			new WizardStep( actionName, "Name", "Description" );
+			new WizardStep( actionName, "Name", "Description", "Prompt", "GroupName", "ShortName" );
 		}
 
 		[TestMethod]
@@ -97,7 +124,7 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 		{
 			string actionName = string.Empty;
 
-			new WizardStep( actionName, "Name", "Description" );
+			new WizardStep( actionName, "Name", "Description", "Prompt", "GroupName", "ShortName" );
 		}
 
 		[TestMethod]
@@ -106,7 +133,7 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 		{
 			string actionName = " ";
 
-			new WizardStep( actionName, "Name", "Description" );
+			new WizardStep( actionName, "Name", "Description", "Prompt", "GroupName", "ShortName" );
 		}
 	}
 }

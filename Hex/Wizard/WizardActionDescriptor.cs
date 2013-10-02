@@ -97,6 +97,48 @@ namespace Hex.Wizard
 			}
 		}
 
+		public string Prompt
+		{
+			get
+			{
+				DisplayAttribute displayAttribute = this.GetDisplayAttribute();
+				if( displayAttribute != null )
+				{
+					return displayAttribute.GetPrompt();
+				}
+
+				return null;
+			}
+		}
+
+		public string GroupName
+		{
+			get
+			{
+				DisplayAttribute displayAttribute = this.GetDisplayAttribute();
+				if( displayAttribute != null )
+				{
+					return displayAttribute.GetGroupName();
+				}
+
+				return null;
+			}
+		}
+
+		public string ShortName
+		{
+			get
+			{
+				DisplayAttribute displayAttribute = this.GetDisplayAttribute();
+				if( displayAttribute != null )
+				{
+					return displayAttribute.GetShortName();
+				}
+
+				return null;
+			}
+		}
+
 		#region Internal Methods
 
 		private DisplayAttribute GetDisplayAttribute()

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
@@ -8,7 +7,7 @@ using Hex.Wizard;
 namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 {
 	[TestClass]
-	public class WizardActionDescriptor_Order
+	public class WizardActionDescriptor_Prompt
 	{
 		[TestMethod]
 		public void ReturnsCorrectly()
@@ -17,7 +16,7 @@ namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 
 			WizardActionDescriptor wizardActionDescriptor = new WizardActionDescriptor( actionDescriptor );
 
-			Assert.AreEqual( 1, wizardActionDescriptor.Order );
+			Assert.AreEqual( "Prompt", wizardActionDescriptor.Prompt );
 		}
 
 		[TestMethod]
@@ -27,7 +26,7 @@ namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 
 			WizardActionDescriptor wizardActionDescriptor = new WizardActionDescriptor( actionDescriptor );
 
-			Assert.AreEqual( 0, wizardActionDescriptor.Order );
+			Assert.IsNull( wizardActionDescriptor.Prompt );
 		}
 
 		private ActionDescriptor GetWizardAction( Type wizardControllerType )

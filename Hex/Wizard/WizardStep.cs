@@ -9,14 +9,14 @@ namespace Hex.Wizard
 	public class WizardStep
 	{
 		public WizardStep( string actionName )
-			: this( actionName, null, null, null )
+			: this( actionName, null, null, null, null, null, null )
 		{ }
 
-		public WizardStep( string actionName, string name, string description )
-			: this( actionName, name, description, null )
+		public WizardStep( string actionName, string name, string description, string prompt, string groupName, string shortName )
+			: this( actionName, name, description, prompt, groupName, shortName, null )
 		{ }
 
-		public WizardStep( string actionName, string name, string description, WizardStepValueCollection values )
+		public WizardStep( string actionName, string name, string description, string prompt, string groupName, string shortName, WizardStepValueCollection values )
 		{
 			if( string.IsNullOrWhiteSpace( actionName ) )
 			{
@@ -26,6 +26,9 @@ namespace Hex.Wizard
 			this.ActionName = actionName;
 			this.Name = name ?? actionName;
 			this.Description = description;
+			this.Prompt = prompt;
+			this.GroupName = groupName;
+			this.ShortName = shortName;
 			this.Values = values;
 		}
 
@@ -34,6 +37,12 @@ namespace Hex.Wizard
 		public string Name { get; private set; }
 
 		public string Description { get; private set; }
+
+		public string Prompt { get; private set; }
+
+		public string GroupName { get; private set; }
+
+		public string ShortName { get; private set; }
 
 		public WizardStepValueCollection Values { get; set; }
 	}

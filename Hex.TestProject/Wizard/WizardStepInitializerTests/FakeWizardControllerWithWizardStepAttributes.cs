@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 {
-	public class FakeWizardControllerWithWizardStepAttributes
+	public class FakeWizardControllerWithDisplayAttributes
 		: WizardController<object>
 	{
 		[Display( Name = "StepOneName", Description = "StepOneDescription" )]

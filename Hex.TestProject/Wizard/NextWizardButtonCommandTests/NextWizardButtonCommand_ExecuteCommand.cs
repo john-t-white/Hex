@@ -65,9 +65,9 @@ namespace Hex.TestProject.Wizard.NextWizardButtonCommandTests
 
 			WizardStep[] wizardSteps = new WizardStep[]
 			{
-				new WizardStep( "StepOne", null, null, stepOneValues ),
-				new WizardStep( "StepTwo", null, null, stepTwoValues ),
-				new WizardStep( "StepThree", null, null, stepThreeValues )
+				new WizardStep( "StepOne", null, null, null, null, null, stepOneValues ),
+				new WizardStep( "StepTwo", null, null, null, null, null, stepTwoValues ),
+				new WizardStep( "StepThree", null, null, null, null, null, stepThreeValues )
 			};
 
 			return new WizardStepLinkedList( wizardSteps, wizardSteps[ 1 ] );

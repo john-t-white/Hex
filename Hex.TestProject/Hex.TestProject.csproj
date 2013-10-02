@@ -307,9 +307,12 @@
     <Compile Include="Wizard\NextWizardButtonCommandTests\NextWizardButtonCommand_ExecuteCommand.cs" />
     <Compile Include="Wizard\PreviousWizardButtonCommandTests\FakeWizardController.cs" />
     <Compile Include="Wizard\PreviousWizardButtonCommandTests\PreviousWizardButtonCommand_ExecuteCommand.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ShortName.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_GroupName.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Prompt.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Order.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Description.cs" />
-    <Compile Include="Wizard\WizardActionDescriptorTests\FakeWizardControllerWithWizardStepAttribute.cs" />
+    <Compile Include="Wizard\WizardActionDescriptorTests\FakeWizardControllerWithDisplayAttribute.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Name.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ctor.cs" />

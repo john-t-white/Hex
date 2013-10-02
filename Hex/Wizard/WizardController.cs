@@ -191,7 +191,7 @@ namespace Hex.Wizard
 			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardState.Steps
 										 let currentWizardAction = wizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
 										 where currentWizardAction != null
-										 select new WizardStep( currentWizardAction.ActionName, currentWizardAction.Name, currentWizardAction.Description, currentWizardStateStep.Values ) ).ToArray();
+										 select new WizardStep( currentWizardAction.ActionName, currentWizardAction.Name, currentWizardAction.Description, currentWizardAction.Prompt, currentWizardAction.GroupName, currentWizardAction.ShortName, currentWizardStateStep.Values ) ).ToArray();
 
 			WizardStep currentWizardStep = wizardSteps.FirstOrDefault( x => wizardState.CurrentStepActionName == x.ActionName );
 

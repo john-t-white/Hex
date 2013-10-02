@@ -8,10 +8,10 @@ using System.Web.Mvc;
 
 namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 {
-	public class FakeWizardControllerWithWizardStepAttribute
+	public class FakeWizardControllerWithDisplayAttribute
 		: WizardController<object>
 	{
-		[Display( Name = "Name", Description = "Description", Order = 1 )]
+		[Display( Name = "Name", Description = "Description", Prompt = "Prompt", ShortName = "ShortName", GroupName = "GroupName", Order = 1 )]
 		public ActionResult StepOne()
 		{
 			throw new NotImplementedException();

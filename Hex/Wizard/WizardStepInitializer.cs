@@ -19,7 +19,7 @@ namespace Hex.Wizard
 		{
 			return from WizardActionDescriptor currentActionDescriptor in wizardActions
 				   orderby currentActionDescriptor.Order
-				   select new WizardStep( currentActionDescriptor.ActionName, currentActionDescriptor.Name, currentActionDescriptor.Description );
+				   select new WizardStep( currentActionDescriptor.ActionName, currentActionDescriptor.Name, currentActionDescriptor.Description, currentActionDescriptor.Prompt, currentActionDescriptor.GroupName, currentActionDescriptor.ShortName );
 		}
 	}
 }
