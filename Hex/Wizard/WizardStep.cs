@@ -8,6 +8,26 @@ namespace Hex.Wizard
 {
 	public class WizardStep
 	{
+		public WizardStep( WizardActionDescriptor wizardAction )
+			: this( wizardAction, null )
+		{ }
+
+		public WizardStep( WizardActionDescriptor wizardAction, WizardStepValueCollection values )
+		{
+			if( wizardAction == null )
+			{
+				throw new ArgumentNullException( "wizardAction" );
+			}
+
+			this.ActionName = wizardAction.ActionName;
+			this.Name = wizardAction.Name ?? wizardAction.ActionName;
+			this.Description = wizardAction.Description;
+			this.Prompt = wizardAction.Prompt;
+			this.GroupName = wizardAction.GroupName;
+			this.ShortName = wizardAction.ShortName;
+			this.Values = values;
+		}
+
 		public WizardStep( string actionName )
 			: this( actionName, null, null, null, null, null, null )
 		{ }

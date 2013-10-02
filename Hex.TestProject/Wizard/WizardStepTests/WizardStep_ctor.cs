@@ -1,12 +1,56 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Wizard;
+using System.Web.Mvc;
 
 namespace Hex.TestProject.Wizard.WizardStepTests
 {
 	[TestClass]
 	public class WizardStep_ctor
 	{
+		[TestMethod]
+		public void WithWizardActionReturnsCorrectly()
+		{
+			WizardActionDescriptor wizardAction = this.GetWizardAction();
+
+			WizardStep wizardStep = new WizardStep( wizardAction );
+
+			Assert.AreEqual( "StepOne", wizardStep.ActionName );
+			Assert.AreEqual( "Name", wizardStep.Name );
+			Assert.AreEqual( "Description", wizardStep.Description );
+			Assert.AreEqual( "Prompt", wizardStep.Prompt );
+			Assert.AreEqual( "GroupName", wizardStep.GroupName );
+			Assert.AreEqual( "ShortName", wizardStep.ShortName );
+			Assert.IsNull( wizardStep.Values );
+		}
+
+		[TestMethod]
+		[ExpectedException( typeof( ArgumentNullException ) )]
+		public void WithNullWizardActionThrowsArgumentNullException()
+		{
+			WizardActionDescriptor wizardAction = null;
+
+			new WizardStep( wizardAction );
+		}
+
+		[TestMethod]
+		public void WithWizardActionAndValuesReturnsCorrectly()
+		{
+			WizardActionDescriptor wizardAction = this.GetWizardAction();
+			WizardStepValueCollection values = new WizardStepValueCollection();
+
+			WizardStep wizardStep = new WizardStep( wizardAction, values );
+
+			Assert.AreEqual( "StepOne", wizardStep.ActionName );
+			Assert.AreEqual( "Name", wizardStep.Name );
+			Assert.AreEqual( "Description", wizardStep.Description );
+			Assert.AreEqual( "Prompt", wizardStep.Prompt );
+			Assert.AreEqual( "GroupName", wizardStep.GroupName );
+			Assert.AreEqual( "ShortName", wizardStep.ShortName );
+			Assert.AreSame( values, wizardStep.Values );
+		}
+
 		[TestMethod]
 		public void WithActionNameCreatesCorrectly()
 		{
@@ -134,6 +178,14 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 			string actionName = " ";
 
 			new WizardStep( actionName, "Name", "Description", "Prompt", "GroupName", "ShortName" );
+		}
+
+
+
+		private WizardActionDescriptor GetWizardAction()
+		{
+			ReflectedControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor( typeof( FakeWizardController ) );
+			return new WizardActionDescriptor( controllerDescriptor.GetCanonicalActions().Single() );
 		}
 	}
 }
