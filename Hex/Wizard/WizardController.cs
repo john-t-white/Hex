@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -57,6 +59,11 @@ namespace Hex.Wizard
 			base.Initialize( requestContext );
 
 			WizardActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
+			if( wizardActions == null || wizardActions.Length == 0 )
+			{
+				string exceptionMessage = string.Format( ExceptionMessages.NO_WIZARD_ACTIONS_FOUND, this.GetType().FullName );
+				throw new HttpException( ( int )HttpStatusCode.NotFound, exceptionMessage );
+			}
 
 			this.WizardFormModel = Activator.CreateInstance( this.WizardFormModelType, true );
 
