@@ -16,6 +16,12 @@ namespace Hex.Html
 	/// </summary>
 	public static class FormExtensions
 	{
+		/// <summary>
+		/// Writes an opening &lt;form&gt; tag to the response. When the user submits the form, the request will be processed by an action method.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;form&gt; tag.</returns>
 		public static MvcForm BeginForm( this HtmlHelper htmlHelper, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			string rawUrl = htmlHelper.ViewContext.HttpContext.Request.RawUrl;

@@ -9,7 +9,7 @@
 
 <h2>FirstStep</h2>
 
-@using( Html.BeginWizardForm() )
+@using( Html.BeginWizardForm( x => x.AddClass( "blue" ) ) )
 {
 	@Html.ValidationSummary( true )
 

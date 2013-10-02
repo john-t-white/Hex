@@ -1,4 +1,6 @@
-﻿using Hex.Wizard;
+﻿using Hex.AttributeBuilders;
+using Hex.Extensions;
+using Hex.Wizard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +14,36 @@ namespace Hex.Html
 	{
 		public static MvcForm BeginWizardForm( this HtmlHelper htmlHelper )
 		{
-			WizardController wizardController = WizardController.FromHtmlHelper( htmlHelper );
-
 			MvcForm mvcForm = htmlHelper.BeginForm();
+
+			WizardFormExtensions.WriteHiddenWizardTokenField( htmlHelper );
+
+			return mvcForm;
+		}
+
+		public static MvcForm BeginWizardForm( this HtmlHelper htmlHelper, object htmlAttributes )
+		{
+			return htmlHelper.BeginWizardForm( HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
+		}
+
+		public static MvcForm BeginWizardForm( this HtmlHelper htmlHelper, IDictionary<string, object> htmlAttributes )
+		{
+			string rawUrl = htmlHelper.ViewContext.HttpContext.Request.RawUrl;
+			MvcForm mvcForm = FormHelper.Execute( htmlHelper, rawUrl, FormMethod.Post, htmlAttributes );
+
+			WizardFormExtensions.WriteHiddenWizardTokenField( htmlHelper );
+
+			return mvcForm;
+		}
+
+		public static MvcForm BeginWizardForm( this HtmlHelper htmlHelper, Action<HtmlAttributeBuilder> attributeExpression )
+		{
+			return htmlHelper.BeginWizardForm( attributeExpression.GetAttributes() );
+		}
+
+		private static void WriteHiddenWizardTokenField( HtmlHelper htmlHelper )
+		{
+			WizardController wizardController = WizardController.FromHtmlHelper( htmlHelper );
 
 			string wizardStateToken = wizardController.SaveWizardState( htmlHelper.ViewContext.RequestContext );
 
@@ -24,8 +53,6 @@ namespace Hex.Html
 			wizardStateTagBuilder.MergeAttribute( HtmlAttributes.Value, wizardStateToken );
 
 			htmlHelper.ViewContext.Writer.Write( wizardStateTagBuilder.ToString( TagRenderMode.SelfClosing ) );
-
-			return mvcForm;
 		}
 	}
 }
