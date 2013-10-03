@@ -51,6 +51,39 @@ namespace Hex.Wizard
 			return this.ActionDescriptor.GetParameters();
 		}
 
+		public override object[] GetCustomAttributes( bool inherit )
+		{
+			return this.ActionDescriptor.GetCustomAttributes( inherit );
+		}
+
+		public override object[] GetCustomAttributes( Type attributeType, bool inherit )
+		{
+			return this.ActionDescriptor.GetCustomAttributes( attributeType, inherit );
+		}
+
+		public override IEnumerable<FilterAttribute> GetFilterAttributes( bool useCache )
+		{
+			return this.ActionDescriptor.GetFilterAttributes( useCache );
+		}
+
+		public override ICollection<ActionSelector> GetSelectors()
+		{
+			return this.ActionDescriptor.GetSelectors();
+		}
+
+		public override bool IsDefined( Type attributeType, bool inherit )
+		{
+			return this.ActionDescriptor.IsDefined( attributeType, inherit );
+		}
+
+		public override string UniqueId
+		{
+			get
+			{
+				return this.ActionDescriptor.UniqueId;
+			}
+		}
+
 		#endregion
 
 		public ActionDescriptor ActionDescriptor { get; private set; }
