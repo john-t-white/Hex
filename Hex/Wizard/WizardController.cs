@@ -59,11 +59,6 @@ namespace Hex.Wizard
 			base.Initialize( requestContext );
 
 			WizardActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
-			if( wizardActions == null || wizardActions.Length == 0 )
-			{
-				string exceptionMessage = string.Format( ExceptionMessages.NO_WIZARD_ACTIONS_FOUND, this.GetType().FullName );
-				throw new HttpException( ( int )HttpStatusCode.NotFound, exceptionMessage );
-			}
 
 			this.WizardFormModel = Activator.CreateInstance( this.WizardFormModelType, true );
 

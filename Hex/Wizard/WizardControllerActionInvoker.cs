@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Hex.Wizard
@@ -23,8 +25,16 @@ namespace Hex.Wizard
 		{
 			ControllerDescriptor controllerDescriptor = this.GetControllerDescriptor( controllerContext );
 
-			return ( from ActionDescriptor currentActionDescriptor in controllerDescriptor.GetCanonicalActions()
-					 select new WizardActionDescriptor( currentActionDescriptor ) ).ToArray();
+			WizardActionDescriptor[] wizardActions = ( from ActionDescriptor currentActionDescriptor in controllerDescriptor.GetCanonicalActions()
+													   select new WizardActionDescriptor( currentActionDescriptor ) ).ToArray();
+
+			if( wizardActions == null || wizardActions.Length == 0 )
+			{
+				string exceptionMessage = string.Format( ExceptionMessages.NO_WIZARD_ACTIONS_FOUND, controllerContext.Controller.GetType().FullName );
+				throw new HttpException( ( int )HttpStatusCode.NotFound, exceptionMessage );
+			}
+
+			return wizardActions;
 		}
 
 		protected override ActionResult CreateActionResult( ControllerContext controllerContext, ActionDescriptor actionDescriptor, object actionReturnValue )

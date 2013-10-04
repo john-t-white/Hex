@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Hex.Wizard;
+using System.Web;
+using System.Net;
 
 namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 {
@@ -31,6 +33,28 @@ namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 
 			WizardActionDescriptor wizardStepThree = wizardActions[ 2 ];
 			Assert.AreEqual( "StepThree", wizardStepThree.ActionName );
+		}
+
+		[TestMethod]
+		public void WithNoActionsThrowsHttpException()
+		{
+			RequestContext requestContext = new RequestContext();
+			FakeWizardControllerWithNoActions controller = new FakeWizardControllerWithNoActions();
+			ControllerContext controllerContext = new ControllerContext( requestContext, controller );
+
+			WizardControllerActionInvoker wizardControllerActionInvoker = new WizardControllerActionInvoker();
+
+			try
+			{
+				wizardControllerActionInvoker.GetWizardActions( controllerContext );
+				Assert.Fail( "HttpException expected." );
+			}
+			catch( HttpException ex )
+			{
+				string expectedMessage = string.Format( "There are no wizard actions found for wizard controller '{0}'.", typeof( FakeWizardControllerWithNoActions ).FullName );
+				Assert.AreEqual( expectedMessage, ex.Message );
+				Assert.AreEqual( ( int )HttpStatusCode.NotFound, ex.GetHttpCode() );
+			}
 		}
 	}
 }

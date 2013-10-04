@@ -318,6 +318,7 @@
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ctor.cs" />
     <Compile Include="Wizard\WizardButtonCommandFactoryTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardButtonCommandFactoryTests\WizardButtonCommandFactory_GetButtonCommand.cs" />
+    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardControllerWithNoActions.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeViewModel.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardStepViewModel.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_CreateActionResult.cs" />
