@@ -56,28 +56,7 @@ namespace Hex.Wizard
 				throw new InvalidOperationException( ExceptionMessages.WIZARD_CANNOT_CONTAIN_ACTION_IN_ROUTE );
 			}
 
-			base.Initialize( requestContext );
-
-			WizardActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
-
-			this.WizardFormModel = Activator.CreateInstance( this.WizardFormModelType, true );
-
-			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
-			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
-			{
-				this.InitializeWizardSteps( requestContext, wizardActions );
-			}
-			else
-			{
-				this.LoadWizardState( requestContext, wizardStateTokenResult.AttemptedValue, wizardActions );
-
-				this.RestoreWizardFormModel();
-
-				this.UpdateWizardFormModel();
-
-				this.ProcessWizardButton();
-			}
-			
+			base.Initialize( requestContext );	
 		}
 
 		protected override IActionInvoker CreateActionInvoker()
@@ -99,6 +78,26 @@ namespace Hex.Wizard
 
 		protected override IAsyncResult BeginExecuteCore( AsyncCallback callback, object state )
 		{
+			WizardActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
+
+			this.WizardFormModel = Activator.CreateInstance( this.WizardFormModelType, true );
+
+			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
+			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
+			{
+				this.InitializeWizardSteps( wizardActions );
+			}
+			else
+			{
+				this.LoadWizardState( wizardStateTokenResult.AttemptedValue, wizardActions );
+
+				this.RestoreWizardFormModel();
+
+				this.UpdateWizardFormModel();
+
+				this.ProcessWizardButton();
+			}
+
 			this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = this.WizardSteps.CurrentStep.ActionName;
 
 			return base.BeginExecuteCore( callback, state );
@@ -180,15 +179,15 @@ namespace Hex.Wizard
 
 		#region Internal Methods
 
-		private void InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions )
+		private void InitializeWizardSteps( WizardActionDescriptor[] wizardActions )
 		{
-			IEnumerable<WizardStep> wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions );
+			IEnumerable<WizardStep> wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( this.ControllerContext.RequestContext, wizardActions );
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
 		}
 
-		private void LoadWizardState( RequestContext requestContext, string wizardStateToken, WizardActionDescriptor[] wizardActions )
+		private void LoadWizardState( string wizardStateToken, WizardActionDescriptor[] wizardActions )
 		{
-			WizardState wizardState = this.WizardStateProvider.Load( requestContext, wizardStateToken );
+			WizardState wizardState = this.WizardStateProvider.Load( this.ControllerContext.RequestContext, wizardStateToken );
 
 			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardState.Steps
 										 let currentWizardAction = wizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
