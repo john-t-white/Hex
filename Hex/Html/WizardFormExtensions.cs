@@ -45,7 +45,7 @@ namespace Hex.Html
 		{
 			WizardController wizardController = WizardController.FromHtmlHelper( htmlHelper );
 
-			string wizardStateToken = wizardController.SaveWizardState( htmlHelper.ViewContext.RequestContext );
+			string wizardStateToken = wizardController.SaveWizardState( htmlHelper.ViewContext.Controller.ControllerContext );
 
 			TagBuilder wizardStateTagBuilder = new TagBuilder( HtmlElements.Input );
 			wizardStateTagBuilder.MergeAttribute( HtmlAttributes.Type, HtmlHelper.GetInputTypeString( InputType.Hidden ) );

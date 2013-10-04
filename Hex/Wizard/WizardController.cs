@@ -89,7 +89,9 @@ namespace Hex.Wizard
 			}
 			else
 			{
-				this.LoadWizardState( wizardStateTokenResult.AttemptedValue, wizardActions );
+				WizardState wizardState = this.WizardStateProvider.Load( this.ControllerContext, wizardStateTokenResult.AttemptedValue );
+
+				this.RestoreWizardState( wizardState, wizardActions );
 
 				this.RestoreWizardFormModel();
 
@@ -185,10 +187,8 @@ namespace Hex.Wizard
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
 		}
 
-		private void LoadWizardState( string wizardStateToken, WizardActionDescriptor[] wizardActions )
+		private void RestoreWizardState( WizardState wizardState, WizardActionDescriptor[] wizardActions )
 		{
-			WizardState wizardState = this.WizardStateProvider.Load( this.ControllerContext.RequestContext, wizardStateToken );
-
 			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardState.Steps
 										 let currentWizardAction = wizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
 										 where currentWizardAction != null
@@ -239,14 +239,14 @@ namespace Hex.Wizard
 			binder.BindModel( this.ControllerContext, bindingContext );
 		}
 
-		internal string SaveWizardState( RequestContext requestContext )
+		internal string SaveWizardState( ControllerContext controllerContext )
 		{
 			var wizardStepStates = from currentWizardStep in this.WizardSteps
 								   select new WizardStepState( currentWizardStep.ActionName, currentWizardStep.Values );
 
 			WizardState wizardState = new WizardState( this.WizardSteps.CurrentStep.ActionName, wizardStepStates.ToArray() );
 
-			return this.WizardStateProvider.Save( requestContext, wizardState );
+			return this.WizardStateProvider.Save( controllerContext, wizardState );
 		}
 
 		internal static WizardController FromHtmlHelper( HtmlHelper htmlHelper )

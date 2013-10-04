@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Wizard;
 using System.Web.Routing;
+using System.Web.Mvc;
 
 namespace Hex.TestProject.Wizard.FormWizardStateProviderTests
 {
@@ -13,6 +14,8 @@ namespace Hex.TestProject.Wizard.FormWizardStateProviderTests
 		public void SavesAndLoadsCorrectly()
 		{
 			RequestContext requestContext = new RequestContext();
+			FakeWizardController wizardController = new FakeWizardController();
+			ControllerContext controllerContext = new ControllerContext( requestContext, wizardController );
 
 			WizardStepValueCollection stepOneValues = new WizardStepValueCollection();
 			stepOneValues.Add( "StepOneName1", "StepOneName1Value1" );
@@ -29,9 +32,9 @@ namespace Hex.TestProject.Wizard.FormWizardStateProviderTests
 			WizardState wizardState = new WizardState( stepOneWizardStepState.ActionName, new WizardStepState[] { stepOneWizardStepState, stepTwoWizardStepState } );
 
 			FormWizardStateProvider wizardStateProvider = new FormWizardStateProvider();
-			string wizardStateToken = wizardStateProvider.Save( requestContext, wizardState );
+			string wizardStateToken = wizardStateProvider.Save( controllerContext, wizardState );
 
-			WizardState loadedWizardState = wizardStateProvider.Load( requestContext, wizardStateToken );
+			WizardState loadedWizardState = wizardStateProvider.Load( controllerContext, wizardStateToken );
 
 			Assert.AreEqual( wizardState.CurrentStepActionName, loadedWizardState.CurrentStepActionName );
 			Assert.AreEqual( wizardState.Steps.Length, loadedWizardState.Steps.Length );

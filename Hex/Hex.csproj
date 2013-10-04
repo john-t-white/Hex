@@ -163,6 +163,7 @@
     <Compile Include="Wizard\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Wizard\NextWizardButtonCommand.cs" />
     <Compile Include="Wizard\PreviousWizardButtonCommand.cs" />
+    <Compile Include="Wizard\TempDataWizardStateProvider.cs" />
     <Compile Include="Wizard\WizardActionDescriptor.cs" />
     <Compile Include="Wizard\WizardButtonCommandFactory.cs" />
     <Compile Include="Wizard\WizardController.cs" />
