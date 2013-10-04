@@ -11,19 +11,19 @@ namespace Hex.TestWebsite.Controllers
 	public class SimpleWizardController
 		: WizardController<SimpleWizardFormModel>
 	{
-		//public ActionResult FirstStep()
-		//{
-		//	return this.View();
-		//}
+		public ActionResult FirstStep()
+		{
+			return this.View();
+		}
 
-		//public ActionResult SecondStep()
-		//{
-		//	return this.View();
-		//}
+		public ActionResult SecondStep()
+		{
+			return this.View();
+		}
 
-		//public ActionResult Finish()
-		//{
-		//	return this.View();
-		//}
+		public ActionResult Finish()
+		{
+			return this.View();
+		}
 	}
 }
