@@ -9,17 +9,17 @@ namespace Hex.Wizard
 {
 	public interface IWizardStepInitializer
 	{
-		IEnumerable<WizardStep> InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions );
+		WizardStep[] InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions );
 	}
 
 	public class WizardStepInitializer
 		: IWizardStepInitializer
 	{
-		public IEnumerable<WizardStep> InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions )
+		public WizardStep[] InitializeWizardSteps( RequestContext requestContext, WizardActionDescriptor[] wizardActions )
 		{
-			return from WizardActionDescriptor currentWizardAction in wizardActions
-				   orderby currentWizardAction.Order
-				   select new WizardStep( currentWizardAction );
+			return ( from WizardActionDescriptor currentWizardAction in wizardActions
+					 orderby currentWizardAction.Order
+					 select new WizardStep( currentWizardAction ) ).ToArray();
 		}
 	}
 }

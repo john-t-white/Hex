@@ -115,6 +115,15 @@ namespace Hex.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no wizard steps for wizard controller &apos;{0}&apos;..
+        /// </summary>
+        internal static string NO_WIZARD_STEPS {
+            get {
+                return ResourceManager.GetString("NO_WIZARD_STEPS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no previous wizard step in the collection..
         /// </summary>
         internal static string PREVIOUS_WIZARD_STEP_NOT_FOUND {

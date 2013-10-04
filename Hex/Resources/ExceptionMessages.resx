@@ -135,6 +135,9 @@
   <data name="NO_WIZARD_ACTIONS_FOUND" xml:space="preserve">
     <value>There are no wizard actions found for wizard controller '{0}'.</value>
   </data>
+  <data name="NO_WIZARD_STEPS" xml:space="preserve">
+    <value>There are no wizard steps for wizard controller '{0}'.</value>
+  </data>
   <data name="PREVIOUS_WIZARD_STEP_NOT_FOUND" xml:space="preserve">
     <value>There is no previous wizard step in the collection.</value>
   </data>

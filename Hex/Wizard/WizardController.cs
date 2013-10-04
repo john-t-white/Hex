@@ -183,7 +183,13 @@ namespace Hex.Wizard
 
 		private void InitializeWizardSteps( WizardActionDescriptor[] wizardActions )
 		{
-			IEnumerable<WizardStep> wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( this.ControllerContext.RequestContext, wizardActions );
+			WizardStep[] wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( this.ControllerContext.RequestContext, wizardActions );
+			if( wizardSteps == null || wizardSteps.Length == 0 )
+			{
+				string exceptionMessage = string.Format( ExceptionMessages.NO_WIZARD_STEPS, this.GetType().FullName );
+				throw new HttpException( ( int )HttpStatusCode.NotFound, exceptionMessage );
+			}
+
 			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
 		}
 
