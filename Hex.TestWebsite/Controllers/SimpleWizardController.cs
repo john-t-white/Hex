@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace Hex.TestWebsite.Controllers
 {
-	[Authorize]
 	public class SimpleWizardController
 		: WizardController<SimpleWizardFormModel>
 	{
@@ -26,10 +25,5 @@ namespace Hex.TestWebsite.Controllers
 		{
 			return this.View();
 		}
-
-		//public override ActionResult HandleNoAuthorizedWizardActions()
-		//{
-		//	return this.Content( "Not Authorized" );
-		//}
 	}
 }
