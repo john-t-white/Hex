@@ -41,6 +41,7 @@ namespace Hex.Wizard
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
 		private const string HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME = "HandleNoAuthorizedWizardActions";
 		private const string HANDLE_NO_WIZARD_STEPS_ACTION_NAME = "HandleNoWizardSteps";
+		private const string HANDLE_WIZARD_STATE_NOT_FOUND_ACTION_NAME = "HandleWizardStateNotFound";
 		
 		private IWizardStepInitializer _wizardStepInitializer;
 		private IWizardStateProvider _wizardStateProvider;
@@ -106,6 +107,11 @@ namespace Hex.Wizard
 			else
 			{
 				WizardState wizardState = this.WizardStateProvider.Load( this.ControllerContext, wizardStateTokenResult.AttemptedValue );
+				if( wizardState == null )
+				{
+					this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = HANDLE_WIZARD_STATE_NOT_FOUND_ACTION_NAME;
+					return base.BeginExecuteCore( callback, state );
+				}
 
 				this.RestoreWizardState( wizardState, wizardActions );
 
@@ -207,6 +213,12 @@ namespace Hex.Wizard
 		{
 			string exceptionMessage = string.Format( ExceptionMessages.NO_WIZARD_STEPS, this.GetType().FullName );
 			throw new HttpException( ( int )HttpStatusCode.NotFound, exceptionMessage );
+		}
+
+		[NotAWizardStep]
+		public virtual ActionResult HandleWizardStateNotFound()
+		{
+			return this.Redirect( this.HttpContext.Request.RawUrl );
 		}
 
 		#region Internal Methods
