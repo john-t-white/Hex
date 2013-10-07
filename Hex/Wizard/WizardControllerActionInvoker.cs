@@ -26,6 +26,8 @@ namespace Hex.Wizard
 			ControllerDescriptor controllerDescriptor = this.GetControllerDescriptor( controllerContext );
 
 			WizardActionDescriptor[] wizardActions = ( from ActionDescriptor currentActionDescriptor in controllerDescriptor.GetCanonicalActions()
+													   let notAWizardStepAttribute = currentActionDescriptor.GetCustomAttributes( typeof( NotAWizardStepAttribute ), true ).FirstOrDefault() as NotAWizardStepAttribute
+													   where notAWizardStepAttribute == null
 													   select new WizardActionDescriptor( currentActionDescriptor ) ).ToArray();
 
 			if( wizardActions == null || wizardActions.Length == 0 )

@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Mvc;
 using Hex.Wizard;
+using System.Web.Routing;
 
 namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 {
@@ -13,7 +14,7 @@ namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 		public void CreatesCorrectly()
 		{
 			ReflectedControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor( typeof( FakeWizardController ) );
-			ActionDescriptor actionDescriptor = controllerDescriptor.GetCanonicalActions().Single();
+			ActionDescriptor actionDescriptor = controllerDescriptor.GetCanonicalActions().Single( x => x.ActionName == "StepOne" );
 
 			WizardActionDescriptor wizardActionDescriptor = new WizardActionDescriptor( actionDescriptor );
 

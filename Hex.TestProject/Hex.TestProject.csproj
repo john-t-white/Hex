@@ -319,8 +319,8 @@
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ctor.cs" />
     <Compile Include="Wizard\WizardButtonCommandFactoryTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardButtonCommandFactoryTests\WizardButtonCommandFactory_GetButtonCommand.cs" />
-    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardControllerWithNoActions.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeViewModel.cs" />
+    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardControllerWithNoActions.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardStepViewModel.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_CreateActionResult.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_Initialize.cs" />
@@ -329,6 +329,8 @@
     <Compile Include="Wizard\WizardControllerTests\WizardController_WizardStateProvider.cs" />
     <Compile Include="Wizard\WizardStateTests\WizardState_Serialization.cs" />
     <Compile Include="Wizard\WizardStateTests\WizardState_ctor.cs" />
+    <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithOverridenMethodWithNotAWizardStepAttribute.cs" />
+    <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithNotAWizardStepAttribute.cs" />
     <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithDifferentOrder.cs" />
     <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithWizardStepAttributes.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardController.cs" />

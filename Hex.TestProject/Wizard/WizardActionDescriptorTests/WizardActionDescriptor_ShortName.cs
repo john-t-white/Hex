@@ -32,7 +32,7 @@ namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 		private ActionDescriptor GetWizardAction( Type wizardControllerType )
 		{
 			ReflectedControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor( wizardControllerType );
-			return controllerDescriptor.GetCanonicalActions().Single();
+			return controllerDescriptor.GetCanonicalActions().Single( x => x.ActionName == "StepOne" );
 		}
 	}
 }

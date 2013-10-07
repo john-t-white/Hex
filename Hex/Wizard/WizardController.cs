@@ -39,6 +39,7 @@ namespace Hex.Wizard
 		: Controller
 	{
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
+		private const string HANDLE_NO_WIZARD_STEPS_ACTION_NAME = "HandleNoWizardSteps";
 		
 		private IWizardStepInitializer _wizardStepInitializer;
 		private IWizardStateProvider _wizardStateProvider;
@@ -85,7 +86,14 @@ namespace Hex.Wizard
 			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
 			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
 			{
-				this.InitializeWizardSteps( wizardActions );
+				WizardStep[] wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( this.ControllerContext.RequestContext, wizardActions );
+				if( wizardSteps == null || wizardSteps.Length == 0 )
+				{
+					this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = HANDLE_NO_WIZARD_STEPS_ACTION_NAME;
+					return base.BeginExecuteCore( callback, state );
+				}
+
+				this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
 			}
 			else
 			{
@@ -179,19 +187,14 @@ namespace Hex.Wizard
 			return new WizardButtonCommandFactory();
 		}
 
-		#region Internal Methods
-
-		private void InitializeWizardSteps( WizardActionDescriptor[] wizardActions )
+		[NotAWizardStep]
+		public virtual ActionResult HandleNoWizardSteps()
 		{
-			WizardStep[] wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( this.ControllerContext.RequestContext, wizardActions );
-			if( wizardSteps == null || wizardSteps.Length == 0 )
-			{
-				string exceptionMessage = string.Format( ExceptionMessages.NO_WIZARD_STEPS, this.GetType().FullName );
-				throw new HttpException( ( int )HttpStatusCode.NotFound, exceptionMessage );
-			}
-
-			this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
+			string exceptionMessage = string.Format( ExceptionMessages.NO_WIZARD_STEPS, this.GetType().FullName );
+			throw new HttpException( ( int )HttpStatusCode.NotFound, exceptionMessage );
 		}
+
+		#region Internal Methods
 
 		private void RestoreWizardState( WizardState wizardState, WizardActionDescriptor[] wizardActions )
 		{

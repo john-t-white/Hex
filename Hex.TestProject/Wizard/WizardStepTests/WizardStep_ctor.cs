@@ -185,7 +185,7 @@ namespace Hex.TestProject.Wizard.WizardStepTests
 		private WizardActionDescriptor GetWizardAction()
 		{
 			ReflectedControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor( typeof( FakeWizardController ) );
-			return new WizardActionDescriptor( controllerDescriptor.GetCanonicalActions().Single() );
+			return new WizardActionDescriptor( controllerDescriptor.GetCanonicalActions().Single( x => x.ActionName == "StepOne" ) );
 		}
 	}
 }
