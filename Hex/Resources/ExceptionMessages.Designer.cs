@@ -88,6 +88,15 @@ namespace Hex.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HtmlHelper wizard extension methods can only be used with a WizardController..
+        /// </summary>
+        internal static string HTML_HELPER_WIZARD_METHODS_MUST_BE_USED_WITH_WIZARD_CONTROLLER {
+            get {
+                return ResourceManager.GetString("HTML_HELPER_WIZARD_METHODS_MUST_BE_USED_WITH_WIZARD_CONTROLLER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Model state names should all start with the prefix &apos;{0}&apos;..
         /// </summary>
         internal static string MISSING_MODEL_STATE_NAME_PREFIX {

@@ -126,6 +126,9 @@
   <data name="CURRENT_WIZARD_STEP_DOES_NOT_EXIST_IN_COLLECTION" xml:space="preserve">
     <value>The current wizard step must exist in the collection.</value>
   </data>
+  <data name="HTML_HELPER_WIZARD_METHODS_MUST_BE_USED_WITH_WIZARD_CONTROLLER" xml:space="preserve">
+    <value>HtmlHelper wizard extension methods can only be used with a WizardController.</value>
+  </data>
   <data name="MISSING_MODEL_STATE_NAME_PREFIX" xml:space="preserve">
     <value>Model state names should all start with the prefix '{0}'.</value>
   </data>

@@ -290,7 +290,7 @@ namespace Hex.Wizard
 			WizardController wizardController = htmlHelper.ViewContext.Controller as WizardController;
 			if( wizardController == null )
 			{
-				throw new InvalidOperationException( "Wizard forms can only be used with a wizard controller." );
+				throw new InvalidOperationException( ExceptionMessages.HTML_HELPER_WIZARD_METHODS_MUST_BE_USED_WITH_WIZARD_CONTROLLER );
 			}
 
 			return wizardController;
