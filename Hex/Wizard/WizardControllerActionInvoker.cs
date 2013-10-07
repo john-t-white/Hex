@@ -13,6 +13,7 @@ namespace Hex.Wizard
 		: IActionInvoker
 	{
 		WizardActionDescriptor[] GetWizardActions( ControllerContext controllerContext );
+		WizardActionDescriptor[] FilterUnauthorizedWizardActions( ControllerContext controllerContext, WizardActionDescriptor[] wizardActionDescriptors );
 	}
 
 	public class WizardControllerActionInvoker
@@ -37,6 +38,41 @@ namespace Hex.Wizard
 			}
 
 			return wizardActions;
+		}
+
+		public WizardActionDescriptor[] FilterUnauthorizedWizardActions( ControllerContext controllerContext, WizardActionDescriptor[] wizardActionDescriptors )
+		{
+			List<WizardActionDescriptor> authorizedWizardActionDescriptors = new List<WizardActionDescriptor>();
+			foreach( WizardActionDescriptor currentWizardActionDescriptor in wizardActionDescriptors )
+			{
+				bool isAuthorizedWizardActionDescriptor = true;
+				AuthorizationContext currentAuthorizationContext = new AuthorizationContext( controllerContext, currentWizardActionDescriptor );
+				FilterInfo currentWizardActionDescriptorFilterInfo = this.GetFilters( controllerContext, currentWizardActionDescriptor );
+				foreach( IAuthorizationFilter currentAuthorizationFilter in currentWizardActionDescriptorFilterInfo.AuthorizationFilters )
+				{
+					try
+					{
+						currentAuthorizationFilter.OnAuthorization( currentAuthorizationContext );
+						if( currentAuthorizationContext.Result != null )
+						{
+							isAuthorizedWizardActionDescriptor = false;
+							break;
+						}
+					}
+					catch
+					{
+						isAuthorizedWizardActionDescriptor = false;
+						break;
+					}
+				}
+
+				if( isAuthorizedWizardActionDescriptor )
+				{
+					authorizedWizardActionDescriptors.Add( currentWizardActionDescriptor );
+				}
+			}
+
+			return authorizedWizardActionDescriptors.ToArray();
 		}
 
 		protected override ActionResult CreateActionResult( ControllerContext controllerContext, ActionDescriptor actionDescriptor, object actionReturnValue )

@@ -39,6 +39,7 @@ namespace Hex.Wizard
 		: Controller
 	{
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
+		private const string HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME = "HandleNoAuthorizedWizardActions";
 		private const string HANDLE_NO_WIZARD_STEPS_ACTION_NAME = "HandleNoWizardSteps";
 		
 		private IWizardStepInitializer _wizardStepInitializer;
@@ -80,6 +81,13 @@ namespace Hex.Wizard
 		protected override IAsyncResult BeginExecuteCore( AsyncCallback callback, object state )
 		{
 			WizardActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
+
+			wizardActions = this.ActionInvoker.FilterUnauthorizedWizardActions( this.ControllerContext, wizardActions );
+			if( wizardActions == null || wizardActions.Length == 0 )
+			{
+				this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME;
+				return base.BeginExecuteCore( callback, state );
+			}
 
 			this.WizardFormModel = Activator.CreateInstance( this.WizardFormModelType, true );
 
@@ -185,6 +193,13 @@ namespace Hex.Wizard
 		protected virtual IWizardButtonCommandFactory CreateWizardButtonCommandFactory()
 		{
 			return new WizardButtonCommandFactory();
+		}
+
+		[NotAWizardStep]
+		[AllowAnonymous]
+		public virtual ActionResult HandleNoAuthorizedWizardActions()
+		{
+			return new HttpUnauthorizedResult();
 		}
 
 		[NotAWizardStep]

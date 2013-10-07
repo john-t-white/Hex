@@ -29,7 +29,7 @@ namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 			Assert.AreEqual( "StepOne", wizardStepOne.ActionName );
 
 			WizardActionDescriptor wizardStepTwo = wizardActions[ 1 ];
-			Assert.AreEqual( "StepTwo", wizardStepTwo.ActionName );;
+			Assert.AreEqual( "StepTwo", wizardStepTwo.ActionName );
 
 			WizardActionDescriptor wizardStepThree = wizardActions[ 2 ];
 			Assert.AreEqual( "StepThree", wizardStepThree.ActionName );
