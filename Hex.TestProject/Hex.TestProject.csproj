@@ -310,6 +310,7 @@
     <Compile Include="Wizard\PreviousWizardButtonCommandTests\PreviousWizardButtonCommand_ExecuteCommand.cs" />
     <Compile Include="Wizard\TempDataWizardStateProviderTests\FakeWizardController.cs" />
     <Compile Include="Wizard\TempDataWizardStateProviderTests\TempDataWizardStateProvider_Save.cs" />
+    <Compile Include="Wizard\TempDataWizardStateProviderTests\TempDataWizardStateProvider_Load.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ShortName.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_GroupName.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Prompt.cs" />
