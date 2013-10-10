@@ -22,6 +22,8 @@ namespace Hex.Wizard
 			string tempDataWizardStateTokenKey = string.Format( TEMP_DATA_WIZARD_STATE_TOKEN_PATTERN, wizardStateToken );
 
 			WizardState wizardState = controller.TempData[ tempDataWizardStateTokenKey ] as WizardState;
+
+			//Need to resave the temp data after getting the wizard state so it can be loaded correctly by the controller.
 			controller.TempData.Save( controllerContext, controller.TempDataProvider );
 
 			controllerContext.HttpContext.Items[ HTTP_CONTEXT_ITEMS_WIZARD_STATE_TOKEN_KEY ] = wizardStateToken;
