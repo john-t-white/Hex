@@ -25,6 +25,8 @@ namespace Hex.TestProject.Wizard.LifeCycle.LoadWizardStateLifeCycleCommandTests
 			LoadWizardStateLifeCycleCommand lifeCycleCommand = new LoadWizardStateLifeCycleCommand( wizardStateToken );
 			lifeCycleCommand.Execute( lifeCycleContext );
 
+			wizardController.WizardStateProvider.VerifyAllExpectations();
+
 			Assert.IsNull( lifeCycleContext.ResultActionName );
 			Assert.AreSame( wizardState, lifeCycleContext.WizardState );
 		}
@@ -42,6 +44,8 @@ namespace Hex.TestProject.Wizard.LifeCycle.LoadWizardStateLifeCycleCommandTests
 
 			LoadWizardStateLifeCycleCommand lifeCycleCommand = new LoadWizardStateLifeCycleCommand( wizardStateToken );
 			lifeCycleCommand.Execute( lifeCycleContext );
+
+			wizardController.WizardStateProvider.VerifyAllExpectations();
 
 			Assert.AreEqual( "HandleWizardStateNotFound", lifeCycleContext.ResultActionName );
 			Assert.IsNull( lifeCycleContext.WizardState );

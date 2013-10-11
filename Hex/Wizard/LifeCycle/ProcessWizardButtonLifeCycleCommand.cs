@@ -8,17 +8,22 @@ namespace Hex.Wizard.LifeCycle
 	public class ProcessWizardButtonLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
+		public ProcessWizardButtonLifeCycleCommand()
+		{
+			this.WizardButtonCommandFactory = new WizardButtonCommandFactory();
+		}
+
 		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
 			WizardController wizardController = wizardLifeCycleContext.WizardController;
 
-			IWizardButtonCommandFactory wizardButtonCommandFactory = new WizardButtonCommandFactory();
-
-			IWizardButtonCommand buttonCommand = wizardButtonCommandFactory.GetButtonCommand( wizardController );
+			IWizardButtonCommand buttonCommand = this.WizardButtonCommandFactory.GetButtonCommand( wizardController );
 			if( buttonCommand != null )
 			{
 				buttonCommand.ExecuteCommand( wizardController );
 			}
 		}
+
+		public IWizardButtonCommandFactory WizardButtonCommandFactory { get; set; }
 	}
 }
