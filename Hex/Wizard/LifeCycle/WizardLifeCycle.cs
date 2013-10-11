@@ -21,7 +21,7 @@ namespace Hex.Wizard.LifeCycle
 
 		public WizardController WizardController { get; private set; }
 
-		public void Initialize()
+		public virtual void Initialize()
 		{
 			this.Add( new InitializeWizardActionsLifeCycleCommand() );
 			this.Add( new CreateWizardFormModelLifeCycleCommand() );
