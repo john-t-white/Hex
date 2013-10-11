@@ -4,8 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hex.Wizard;
 using System.Web.Mvc;
 using System.Globalization;
+using Hex.Wizard.LifeCycle;
 
-namespace Hex.TestProject.Wizard.NextWizardButtonCommandTests
+namespace Hex.TestProject.Wizard.LifeCycle.NextWizardButtonCommandTests
 {
 	[TestClass]
 	public class NextWizardButtonCommand_ExecuteCommand

@@ -1,4 +1,5 @@
 ﻿using Hex.Resources;
+using Hex.Wizard.LifeCycle;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -39,13 +40,9 @@ namespace Hex.Wizard
 		: Controller
 	{
 		private const string ACTION_ROUTE_VALUE_NAME = "action";
-		private const string HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME = "HandleNoAuthorizedWizardActions";
-		private const string HANDLE_NO_WIZARD_STEPS_ACTION_NAME = "HandleNoWizardSteps";
-		private const string HANDLE_WIZARD_STATE_NOT_FOUND_ACTION_NAME = "HandleWizardStateNotFound";
 		
 		private IWizardStepInitializer _wizardStepInitializer;
 		private IWizardStateProvider _wizardStateProvider;
-		private IWizardButtonCommandFactory _wizardButtonCommandFactory;
 
 		protected WizardController()
 		{ }
@@ -59,7 +56,10 @@ namespace Hex.Wizard
 				throw new InvalidOperationException( ExceptionMessages.WIZARD_CANNOT_CONTAIN_ACTION_IN_ROUTE );
 			}
 
-			base.Initialize( requestContext );	
+			base.Initialize( requestContext );
+
+			this.WizardLifeCycle = new WizardLifeCycle();
+			this.WizardLifeCycle.Initialize( this );
 		}
 
 		protected override IActionInvoker CreateActionInvoker()
@@ -81,55 +81,24 @@ namespace Hex.Wizard
 
 		protected override IAsyncResult BeginExecuteCore( AsyncCallback callback, object state )
 		{
-			WizardActionDescriptor[] wizardActions = this.ActionInvoker.GetWizardActions( this.ControllerContext );
-
-			wizardActions = this.ActionInvoker.FilterUnauthorizedWizardActions( this.ControllerContext, wizardActions );
-			if( wizardActions == null || wizardActions.Length == 0 )
+			WizardLifeCycleContext wizardLifeCycleContext = new WizardLifeCycleContext();
+			foreach( IWizardLifeCycleCommand currentWizardLifeCycleCommand in this.WizardLifeCycle )
 			{
-				this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME;
-				return base.BeginExecuteCore( callback, state );
-			}
-
-			this.WizardActions = wizardActions;
-
-			this.WizardFormModel = Activator.CreateInstance( this.WizardFormModelType, true );
-
-			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
-			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
-			{
-				WizardStep[] wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( this.ControllerContext.RequestContext, this.WizardActions );
-				if( wizardSteps == null || wizardSteps.Length == 0 )
+				currentWizardLifeCycleCommand.Execute( wizardLifeCycleContext, this );
+				if( !string.IsNullOrWhiteSpace( wizardLifeCycleContext.ActionName ) )
 				{
-					this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = HANDLE_NO_WIZARD_STEPS_ACTION_NAME;
+					this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = wizardLifeCycleContext.ActionName;
 					return base.BeginExecuteCore( callback, state );
 				}
-
-				this.WizardSteps = new WizardStepLinkedList( wizardSteps.ToArray() );
-			}
-			else
-			{
-				WizardState wizardState = this.WizardStateProvider.Load( this.ControllerContext, wizardStateTokenResult.AttemptedValue );
-				if( wizardState == null )
-				{
-					this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = HANDLE_WIZARD_STATE_NOT_FOUND_ACTION_NAME;
-					return base.BeginExecuteCore( callback, state );
-				}
-
-				this.RestoreWizardState( wizardState );
-
-				this.RestoreWizardFormModel();
-
-				this.UpdateWizardFormModel();
-
-				this.ProcessWizardButton();
 			}
 
 			this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = this.WizardSteps.CurrentStep.ActionName;
-
 			return base.BeginExecuteCore( callback, state );
 		}
 
 		#endregion
+
+		public WizardLifeCycle WizardLifeCycle { get; set; }
 
 		public abstract Type WizardFormModelType { get; }
 
@@ -173,23 +142,6 @@ namespace Hex.Wizard
 			}
 		}
 
-		public IWizardButtonCommandFactory WizardButtonCommandFactory
-		{
-			get
-			{
-				if( this._wizardButtonCommandFactory == null )
-				{
-					_wizardButtonCommandFactory = this.CreateWizardButtonCommandFactory();
-				}
-
-				return this._wizardButtonCommandFactory;
-			}
-			set
-			{
-				this._wizardButtonCommandFactory = value;
-			}
-		}
-
 		protected virtual IWizardStepInitializer CreateWizardStepInitializer()
 		{
 			return new WizardStepInitializer();
@@ -198,11 +150,6 @@ namespace Hex.Wizard
 		protected virtual IWizardStateProvider CreateWizardStateProvider()
 		{
 			return new FormWizardStateProvider();
-		}
-
-		protected virtual IWizardButtonCommandFactory CreateWizardButtonCommandFactory()
-		{
-			return new WizardButtonCommandFactory();
 		}
 
 		[NotAWizardAction]
@@ -226,58 +173,6 @@ namespace Hex.Wizard
 		}
 
 		#region Internal Methods
-
-		private void RestoreWizardState( WizardState wizardState )
-		{
-			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardState.Steps
-										 let currentWizardAction = this.WizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
-										 where currentWizardAction != null
-										 select new WizardStep( currentWizardAction, currentWizardStateStep.Values ) ).ToArray();
-
-			WizardStep currentWizardStep = wizardSteps.FirstOrDefault( x => wizardState.CurrentStepActionName == x.ActionName );
-
-			this.WizardSteps = new WizardStepLinkedList( wizardSteps, currentWizardStep );
-		}
-
-		private void RestoreWizardFormModel()
-		{
-			foreach( WizardStep currentWizardStep in this.WizardSteps.Where( x => x.Values != null ) )
-			{
-				IValueProvider valueProvider = new WizardStepValueCollectionValueProvider( currentWizardStep.Values, CultureInfo.CurrentUICulture );
-				
-				this.BindWizardFormModel( new ModelStateDictionary(), valueProvider, null );
-			}
-		}
-
-		private void UpdateWizardFormModel()
-		{
-			this.BindWizardFormModel( this.ModelState, this.ValueProvider, Constants.WIZARD_FORM_MODEL_NAME );
-
-			this.WizardSteps.CurrentStep.Values = this.ModelState.ToWizardStepValueCollection( this.ValueProvider );
-		}
-
-		private void ProcessWizardButton()
-		{
-			IWizardButtonCommand buttonCommand = this.WizardButtonCommandFactory.GetButtonCommand( this );
-			if( buttonCommand != null )
-			{
-				buttonCommand.ExecuteCommand( this );
-			}
-		}
-
-		private void BindWizardFormModel( ModelStateDictionary modelStateDictionary, IValueProvider valueProvider, string modelName )
-		{
-			IModelBinder binder = System.Web.Mvc.ModelBinders.Binders.GetBinder( this.WizardFormModelType );
-			var bindingContext = new ModelBindingContext()
-			{
-				ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType( () => this.WizardFormModel, this.WizardFormModelType ),
-				ModelState = modelStateDictionary,
-				ModelName = modelName,
-				ValueProvider = valueProvider
-			};
-
-			binder.BindModel( this.ControllerContext, bindingContext );
-		}
 
 		internal string SaveWizardState( ControllerContext controllerContext )
 		{

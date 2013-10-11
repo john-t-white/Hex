@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hex.Wizard;
+using Hex.Wizard.LifeCycle;
 using System.Web.Mvc;
 using System.Globalization;
+using Hex.Wizard;
 
-namespace Hex.TestProject.Wizard.PreviousWizardButtonCommandTests
+namespace Hex.TestProject.Wizard.LifeCycle.PreviousWizardButtonCommandTests
 {
 	[TestClass]
 	public class PreviousWizardButtonCommand_ExecuteCommand

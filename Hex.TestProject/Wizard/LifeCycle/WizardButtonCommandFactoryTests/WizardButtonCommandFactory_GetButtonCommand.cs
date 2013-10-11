@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hex.Wizard;
+using Hex.Wizard.LifeCycle;
 using Rhino.Mocks;
 using System.Web.Mvc;
 using System.Globalization;
+using Hex.Wizard;
 
-namespace Hex.TestProject.Wizard.WizardButtonCommandFactoryTests
+namespace Hex.TestProject.Wizard.LifeCycle.WizardButtonCommandFactoryTests
 {
 	[TestClass]
 	public class WizardButtonCommandFactory_GetButtonCommand

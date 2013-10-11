@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Hex.Wizard
+namespace Hex.Wizard.LifeCycle
 {
 	public interface IWizardButtonCommandFactory
 	{
