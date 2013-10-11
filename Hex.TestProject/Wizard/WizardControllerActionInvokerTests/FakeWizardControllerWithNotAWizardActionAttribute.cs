@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Hex.TestProject.Wizard.WizardStepInitializerTests
+namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 {
-	public class FakeWizardControllerWithNotAWizardStepAttribute
+	public class FakeWizardControllerWithNotAWizardActionAttribute
 		: WizardController<object>
 	{
 		public ActionResult StepOne()
@@ -15,7 +15,7 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 			throw new NotImplementedException();
 		}
 
-		[NotAWizardStep]
+		[NotAWizardAction]
 		public ActionResult StepTwo()
 		{
 			throw new NotImplementedException();

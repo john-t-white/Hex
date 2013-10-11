@@ -6,7 +6,7 @@ using System.Text;
 namespace Hex.Wizard
 {
 	[AttributeUsage( AttributeTargets.Method, Inherited = true )]
-	public class NotAWizardStepAttribute
+	public class NotAWizardActionAttribute
 		: Attribute
 	{
 	}

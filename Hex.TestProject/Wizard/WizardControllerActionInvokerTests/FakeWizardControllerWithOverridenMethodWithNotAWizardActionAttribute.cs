@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Hex.TestProject.Wizard.WizardStepInitializerTests
+namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 {
-	public class FakeWizardControllerWithOverridenMethodWithNotAWizardStepAttribute
+	public class FakeWizardControllerWithOverridenMethodWithNotAWizardActionAttribute
 		: WizardController<object>
 	{
 		public ActionResult StepOne()

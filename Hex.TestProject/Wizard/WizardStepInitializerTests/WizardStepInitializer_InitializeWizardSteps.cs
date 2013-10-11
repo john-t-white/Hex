@@ -90,57 +90,6 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 			Assert.AreEqual( "StepOne", wizardStepOne.ActionName );
 		}
 
-		[TestMethod]
-		public void WithNotAWizardStepAttributeReturnsCorrectly()
-		{
-			RequestContext requestContext = new RequestContext();
-
-			WizardActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardControllerWithNotAWizardStepAttribute ) );
-
-			WizardStepInitializer wizardStepInitializer = new WizardStepInitializer();
-			WizardStep[] wizardSteps = wizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions ).ToArray();
-
-			Assert.AreEqual( 2, wizardSteps.Length );
-
-			WizardStep wizardStepOne = wizardSteps[ 0 ];
-			Assert.AreEqual( "StepOne", wizardStepOne.ActionName );
-			Assert.AreEqual( "StepOne", wizardStepOne.Name );
-			Assert.IsNull( wizardStepOne.Description );
-
-			WizardStep wizardStepThree = wizardSteps[ 1 ];
-			Assert.AreEqual( "StepThree", wizardStepThree.ActionName );
-			Assert.AreEqual( "StepThree", wizardStepThree.Name );
-			Assert.IsNull( wizardStepThree.Description );
-		}
-
-		[TestMethod]
-		public void WithOverriddenMethodWithNotAWizardStepAttributeReturnsCorrectly()
-		{
-			RequestContext requestContext = new RequestContext();
-
-			WizardActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardControllerWithOverridenMethodWithNotAWizardStepAttribute ) );
-
-			WizardStepInitializer wizardStepInitializer = new WizardStepInitializer();
-			WizardStep[] wizardSteps = wizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions ).ToArray();
-
-			Assert.AreEqual( 3, wizardSteps.Length );
-
-			WizardStep wizardStepOne = wizardSteps[ 0 ];
-			Assert.AreEqual( "StepOne", wizardStepOne.ActionName );
-			Assert.AreEqual( "StepOne", wizardStepOne.Name );
-			Assert.IsNull( wizardStepOne.Description );
-
-			WizardStep wizardStepTwo = wizardSteps[ 1 ];
-			Assert.AreEqual( "StepTwo", wizardStepTwo.ActionName );
-			Assert.AreEqual( "StepTwo", wizardStepTwo.Name );
-			Assert.IsNull( wizardStepTwo.Description );
-
-			WizardStep wizardStepThree = wizardSteps[ 2 ];
-			Assert.AreEqual( "StepThree", wizardStepThree.ActionName );
-			Assert.AreEqual( "StepThree", wizardStepThree.Name );
-			Assert.IsNull( wizardStepThree.Description );
-		}
-
 
 
 		private WizardActionDescriptor[] GetWizardActions( Type wizardControllerType )

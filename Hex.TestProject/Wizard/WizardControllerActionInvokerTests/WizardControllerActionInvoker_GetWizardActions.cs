@@ -56,5 +56,46 @@ namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 				Assert.AreEqual( ( int )HttpStatusCode.NotFound, ex.GetHttpCode() );
 			}
 		}
+
+		[TestMethod]
+		public void WithNotAWizardActionAttributeReturnsCorrectly()
+		{
+			RequestContext requestContext = new RequestContext();
+			FakeWizardControllerWithNotAWizardActionAttribute controller = new FakeWizardControllerWithNotAWizardActionAttribute();
+			ControllerContext controllerContext = new ControllerContext( requestContext, controller );
+
+			WizardControllerActionInvoker wizardControllerActionInvoker = new WizardControllerActionInvoker();
+			WizardActionDescriptor[] wizardActions = wizardControllerActionInvoker.GetWizardActions( controllerContext );
+
+			Assert.AreEqual( 2, wizardActions.Length );
+
+			WizardActionDescriptor wizardActionStepOne = wizardActions[ 0 ];
+			Assert.AreEqual( "StepOne", wizardActionStepOne.ActionName );
+
+			WizardActionDescriptor wizardActionStepThree = wizardActions[ 1 ];
+			Assert.AreEqual( "StepThree", wizardActionStepThree.ActionName );
+		}
+
+		[TestMethod]
+		public void WithOverriddenMethodWithNotAWizardActionAttributeReturnsCorrectly()
+		{
+			RequestContext requestContext = new RequestContext();
+			FakeWizardControllerWithOverridenMethodWithNotAWizardActionAttribute controller = new FakeWizardControllerWithOverridenMethodWithNotAWizardActionAttribute();
+			ControllerContext controllerContext = new ControllerContext( requestContext, controller );
+
+			WizardControllerActionInvoker wizardControllerActionInvoker = new WizardControllerActionInvoker();
+			WizardActionDescriptor[] wizardActions = wizardControllerActionInvoker.GetWizardActions( controllerContext );
+
+			Assert.AreEqual( 3, wizardActions.Length );
+
+			WizardActionDescriptor wizardActionStepOne = wizardActions[ 0 ];
+			Assert.AreEqual( "StepOne", wizardActionStepOne.ActionName );
+
+			WizardActionDescriptor wizardActionStepTwo = wizardActions[ 1 ];
+			Assert.AreEqual( "StepTwo", wizardActionStepTwo.ActionName );
+
+			WizardActionDescriptor wizardActionStepThree = wizardActions[ 2 ];
+			Assert.AreEqual( "StepThree", wizardActionStepThree.ActionName );
+		}
 	}
 }

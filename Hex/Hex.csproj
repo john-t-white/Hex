@@ -162,7 +162,7 @@
     <Compile Include="Wizard\IWizardStepViewModel.cs" />
     <Compile Include="Wizard\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Wizard\NextWizardButtonCommand.cs" />
-    <Compile Include="Wizard\NotAWizardStepAttribute.cs" />
+    <Compile Include="Wizard\NotAWizardActionAttribute.cs" />
     <Compile Include="Wizard\PreviousWizardButtonCommand.cs" />
     <Compile Include="Wizard\TempDataWizardStateProvider.cs" />
     <Compile Include="Wizard\WizardActionDescriptor.cs" />

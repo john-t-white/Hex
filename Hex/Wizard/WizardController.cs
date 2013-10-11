@@ -90,12 +90,14 @@ namespace Hex.Wizard
 				return base.BeginExecuteCore( callback, state );
 			}
 
+			this.WizardActions = wizardActions;
+
 			this.WizardFormModel = Activator.CreateInstance( this.WizardFormModelType, true );
 
 			ValueProviderResult wizardStateTokenResult = this.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
 			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
 			{
-				WizardStep[] wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( this.ControllerContext.RequestContext, wizardActions );
+				WizardStep[] wizardSteps = this.WizardStepInitializer.InitializeWizardSteps( this.ControllerContext.RequestContext, this.WizardActions );
 				if( wizardSteps == null || wizardSteps.Length == 0 )
 				{
 					this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = HANDLE_NO_WIZARD_STEPS_ACTION_NAME;
@@ -113,7 +115,7 @@ namespace Hex.Wizard
 					return base.BeginExecuteCore( callback, state );
 				}
 
-				this.RestoreWizardState( wizardState, wizardActions );
+				this.RestoreWizardState( wizardState );
 
 				this.RestoreWizardFormModel();
 
@@ -132,6 +134,8 @@ namespace Hex.Wizard
 		public abstract Type WizardFormModelType { get; }
 
 		public object WizardFormModel { get; set; }
+
+		public WizardActionDescriptor[] WizardActions { get; set; }
 
 		public WizardStepLinkedList WizardSteps { get; set; }
 
@@ -201,21 +205,21 @@ namespace Hex.Wizard
 			return new WizardButtonCommandFactory();
 		}
 
-		[NotAWizardStep]
+		[NotAWizardAction]
 		[AllowAnonymous]
 		public virtual ActionResult HandleNoAuthorizedWizardActions()
 		{
 			return new HttpUnauthorizedResult();
 		}
 
-		[NotAWizardStep]
+		[NotAWizardAction]
 		public virtual ActionResult HandleNoWizardSteps()
 		{
 			string exceptionMessage = string.Format( ExceptionMessages.NO_WIZARD_STEPS, this.GetType().FullName );
 			throw new HttpException( ( int )HttpStatusCode.NotFound, exceptionMessage );
 		}
 
-		[NotAWizardStep]
+		[NotAWizardAction]
 		public virtual ActionResult HandleWizardStateNotFound()
 		{
 			return this.Redirect( this.HttpContext.Request.RawUrl );
@@ -223,10 +227,10 @@ namespace Hex.Wizard
 
 		#region Internal Methods
 
-		private void RestoreWizardState( WizardState wizardState, WizardActionDescriptor[] wizardActions )
+		private void RestoreWizardState( WizardState wizardState )
 		{
 			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardState.Steps
-										 let currentWizardAction = wizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
+										 let currentWizardAction = this.WizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
 										 where currentWizardAction != null
 										 select new WizardStep( currentWizardAction, currentWizardStateStep.Values ) ).ToArray();
 
