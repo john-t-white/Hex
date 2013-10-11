@@ -9,12 +9,24 @@ namespace Hex.Wizard.LifeCycle
 	public class WizardLifeCycle
 		: List<IWizardLifeCycleCommand>
 	{
-		public void Initialize( WizardController wizardController )
+		public WizardLifeCycle( WizardController wizardController )
+		{
+			if( wizardController == null )
+			{
+				throw new ArgumentNullException( "wizardController" );
+			}
+
+			this.WizardController = wizardController;
+		}
+
+		public WizardController WizardController { get; private set; }
+
+		public void Initialize()
 		{
 			this.Add( new InitializeWizardActionsLifeCycleCommand() );
 			this.Add( new CreateWizardFormModelLifeCycleCommand() );
 
-			ValueProviderResult wizardStateTokenResult = wizardController.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
+			ValueProviderResult wizardStateTokenResult = this.WizardController.ValueProvider.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME );
 			if( wizardStateTokenResult == null || string.IsNullOrWhiteSpace( wizardStateTokenResult.AttemptedValue ) )
 			{
 				this.Add( new InitializeWizardStepsLifeCycleCommand() );

@@ -193,6 +193,9 @@
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionaryExtensions_TryGetValue.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_GetModelStateValue.cs" />
     <Compile Include="Wizard\FormWizardStateProviderTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_ctor.cs" />
+    <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_Initialize.cs" />
     <Compile Include="Wizard\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_Update.cs" />
     <Compile Include="Wizard\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_ToWizardStepValueCollection.cs" />
     <Compile Include="Html\BeginButtonExtensionsTests\BeginButtonExtensions_BeginButton.cs" />

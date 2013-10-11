@@ -58,8 +58,8 @@ namespace Hex.Wizard
 
 			base.Initialize( requestContext );
 
-			this.WizardLifeCycle = new WizardLifeCycle();
-			this.WizardLifeCycle.Initialize( this );
+			this.WizardLifeCycle = new WizardLifeCycle( this );
+			this.WizardLifeCycle.Initialize();
 		}
 
 		protected override IActionInvoker CreateActionInvoker()
