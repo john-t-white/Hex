@@ -7,6 +7,6 @@ namespace Hex.Wizard.LifeCycle
 {
 	public interface IWizardLifeCycleCommand
 	{
-		void Execute( WizardLifeCycleContext wizardLifeCycleContext, WizardController wizardController );
+		void Execute( WizardLifeCycleContext wizardLifeCycleContext );
 	}
 }

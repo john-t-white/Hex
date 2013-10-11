@@ -11,12 +11,14 @@ namespace Hex.Wizard.LifeCycle
 	{
 		private const string HANDLE_NO_WIZARD_STEPS_ACTION_NAME = "HandleNoWizardSteps";
 
-		public void Execute( WizardLifeCycleContext wizardLifeCycleContext, WizardController wizardController )
+		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
+			WizardController wizardController = wizardLifeCycleContext.WizardController;
+
 			WizardStep[] wizardSteps = wizardController.WizardStepInitializer.InitializeWizardSteps( wizardController.ControllerContext.RequestContext, wizardController.WizardActions );
 			if( wizardSteps == null || wizardSteps.Length == 0 )
 			{
-				wizardLifeCycleContext.ActionName = HANDLE_NO_WIZARD_STEPS_ACTION_NAME;
+				wizardLifeCycleContext.ResultActionName = HANDLE_NO_WIZARD_STEPS_ACTION_NAME;
 			}
 			else
 			{

@@ -10,8 +10,10 @@ namespace Hex.Wizard.LifeCycle
 	public class UpdateWizardFormLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
-		public void Execute( WizardLifeCycleContext wizardLifeCycleContext, WizardController wizardController )
+		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
+			WizardController wizardController = wizardLifeCycleContext.WizardController;
+
 			IModelBinder binder = System.Web.Mvc.ModelBinders.Binders.GetBinder( wizardController.WizardFormModelType );
 			var bindingContext = new ModelBindingContext()
 			{

@@ -10,8 +10,10 @@ namespace Hex.Wizard.LifeCycle
 	public class RestoreWizardFormLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
-		public void Execute( WizardLifeCycleContext wizardLifeCycleContext, WizardController wizardController )
+		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
+			WizardController wizardController = wizardLifeCycleContext.WizardController;
+
 			ModelStateDictionary modelStateDictionary = new ModelStateDictionary();
 			foreach( WizardStep currentWizardStep in wizardController.WizardSteps.Where( x => x.Values != null ) )
 			{

@@ -23,12 +23,14 @@ namespace Hex.Wizard.LifeCycle
 
 		public string WizardStateToken { get; private set; }
 
-		public void Execute( WizardLifeCycleContext wizardLifeCycleContext, WizardController wizardController )
+		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
+			WizardController wizardController = wizardLifeCycleContext.WizardController;
+
 			WizardState wizardState = wizardController.WizardStateProvider.Load( wizardController.ControllerContext, this.WizardStateToken );
 			if( wizardState == null )
 			{
-				wizardLifeCycleContext.ActionName = HANDLE_WIZARD_STATE_NOT_FOUND_ACTION_NAME;
+				wizardLifeCycleContext.ResultActionName = HANDLE_WIZARD_STATE_NOT_FOUND_ACTION_NAME;
 			}
 			else
 			{

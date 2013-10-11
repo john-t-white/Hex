@@ -8,8 +8,10 @@ namespace Hex.Wizard.LifeCycle
 	public class ProcessWizardButtonLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
-		public void Execute( WizardLifeCycleContext wizardLifeCycleContext, WizardController wizardController )
+		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
+			WizardController wizardController = wizardLifeCycleContext.WizardController;
+
 			IWizardButtonCommandFactory wizardButtonCommandFactory = new WizardButtonCommandFactory();
 
 			IWizardButtonCommand buttonCommand = wizardButtonCommandFactory.GetButtonCommand( wizardController );

@@ -7,7 +7,19 @@ namespace Hex.Wizard.LifeCycle
 {
 	public class WizardLifeCycleContext
 	{
-		public string ActionName { get; set; }
+		public WizardLifeCycleContext( WizardController wizardController )
+		{
+			if( wizardController == null )
+			{
+				throw new ArgumentNullException( "wizardController" );
+			}
+
+			this.WizardController = wizardController;
+		}
+
+		public WizardController WizardController { get; private set; }
+
+		public string ResultActionName { get; set; }
 
 		public WizardState WizardState { get; set; }
 	}

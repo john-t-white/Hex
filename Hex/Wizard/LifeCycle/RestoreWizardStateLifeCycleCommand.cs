@@ -8,8 +8,10 @@ namespace Hex.Wizard.LifeCycle
 	public class RestoreWizardStateLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
-		public void Execute( WizardLifeCycleContext wizardLifeCycleContext, WizardController wizardController )
+		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
+			WizardController wizardController = wizardLifeCycleContext.WizardController;
+
 			WizardStep[] wizardSteps = ( from currentWizardStateStep in wizardLifeCycleContext.WizardState.Steps
 										 let currentWizardAction = wizardController.WizardActions.FirstOrDefault( x => x.ActionName == currentWizardStateStep.ActionName )
 										 where currentWizardAction != null

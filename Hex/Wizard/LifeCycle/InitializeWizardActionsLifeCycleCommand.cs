@@ -11,15 +11,16 @@ namespace Hex.Wizard.LifeCycle
 	{
 		private const string HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME = "HandleNoAuthorizedWizardActions";
 
-		public void Execute( WizardLifeCycleContext wizardLifeCycleContext, WizardController wizardController )
+		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
+			WizardController wizardController = wizardLifeCycleContext.WizardController;
 			ControllerContext controllerContext = wizardController.ControllerContext;
 
 			WizardActionDescriptor[] wizardActions = wizardController.ActionInvoker.GetWizardActions( controllerContext );
 			wizardActions = wizardController.ActionInvoker.FilterUnauthorizedWizardActions( controllerContext, wizardActions );
 			if( wizardActions == null || wizardActions.Length == 0 )
 			{
-				wizardLifeCycleContext.ActionName = HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME;
+				wizardLifeCycleContext.ResultActionName = HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME;
 			}
 			else
 			{

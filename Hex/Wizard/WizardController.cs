@@ -81,13 +81,13 @@ namespace Hex.Wizard
 
 		protected override IAsyncResult BeginExecuteCore( AsyncCallback callback, object state )
 		{
-			WizardLifeCycleContext wizardLifeCycleContext = new WizardLifeCycleContext();
+			WizardLifeCycleContext wizardLifeCycleContext = new WizardLifeCycleContext( this );
 			foreach( IWizardLifeCycleCommand currentWizardLifeCycleCommand in this.WizardLifeCycle )
 			{
-				currentWizardLifeCycleCommand.Execute( wizardLifeCycleContext, this );
-				if( !string.IsNullOrWhiteSpace( wizardLifeCycleContext.ActionName ) )
+				currentWizardLifeCycleCommand.Execute( wizardLifeCycleContext );
+				if( !string.IsNullOrWhiteSpace( wizardLifeCycleContext.ResultActionName ) )
 				{
-					this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = wizardLifeCycleContext.ActionName;
+					this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = wizardLifeCycleContext.ResultActionName;
 					return base.BeginExecuteCore( callback, state );
 				}
 			}
