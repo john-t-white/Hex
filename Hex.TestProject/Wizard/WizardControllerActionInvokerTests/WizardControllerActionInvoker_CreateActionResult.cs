@@ -133,7 +133,7 @@ namespace Hex.TestProject.Wizard.WizardControllerActionInvokerTests
 		private ControllerContext GenerateControllerContext( object wizardFormModel )
 		{
 			RequestContext requestContext = new RequestContext();
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithThreeSteps wizardController = new FakeWizardControllerWithThreeSteps();
 			ControllerContext controllerContext = new ControllerContext( requestContext, wizardController );
 			wizardController.ControllerContext = controllerContext;
 			wizardController.WizardFormModel = wizardFormModel;

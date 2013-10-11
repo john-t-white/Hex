@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hex.TestProject.Wizard.LifeCycle.WizardButtonCommandFactoryTests
+namespace Hex.TestProject.Wizard
 {
-	public class FakeWizardController
+	public class FakeWizardControllerWithNoActions
 		: WizardController<object>
 	{
 	}

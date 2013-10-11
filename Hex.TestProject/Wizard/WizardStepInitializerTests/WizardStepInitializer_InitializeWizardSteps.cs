@@ -17,7 +17,7 @@ namespace Hex.TestProject.Wizard.WizardStepInitializerTests
 		{
 			RequestContext requestContext = new RequestContext();
 
-			WizardActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardController ) );
+			WizardActionDescriptor[] wizardActions = this.GetWizardActions( typeof( FakeWizardControllerWithThreeSteps ) );
 
 			WizardStepInitializer wizardStepInitializer = new WizardStepInitializer();
 			WizardStep[] wizardSteps = wizardStepInitializer.InitializeWizardSteps( requestContext, wizardActions ).ToArray();

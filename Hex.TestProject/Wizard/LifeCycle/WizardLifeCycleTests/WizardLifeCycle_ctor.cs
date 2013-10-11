@@ -10,7 +10,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardLifeCycleTests
 		[TestMethod]
 		public void CreatesCorrectly()
 		{
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 
 			WizardLifeCycle wizardLifeCycle = new WizardLifeCycle( wizardController );
 			Assert.AreSame( wizardController, wizardLifeCycle.WizardController );
@@ -20,7 +20,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardLifeCycleTests
 		[ExpectedException( typeof( ArgumentNullException ) )]
 		public void WithNullWizardControllerThrowsArgumentNullException()
 		{
-			FakeWizardController wizardController = null;
+			FakeWizardControllerWithNoActions wizardController = null;
 
 			new WizardLifeCycle( wizardController );
 		}

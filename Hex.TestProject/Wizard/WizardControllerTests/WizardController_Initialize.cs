@@ -20,7 +20,7 @@ namespace Hex.TestProject.Wizard.WizardControllerTests
 
 			RequestContext requestContext = new RequestContext( httpContext, routeData );
 
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 
 			try
 			{

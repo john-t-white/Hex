@@ -10,7 +10,7 @@ namespace Hex.TestProject.Wizard.WizardControllerTests
 		[TestMethod]
 		public void ReturnsCorrectly()
 		{
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 
 			IWizardActionInvoker actionInvoker = wizardController.ActionInvoker;
 

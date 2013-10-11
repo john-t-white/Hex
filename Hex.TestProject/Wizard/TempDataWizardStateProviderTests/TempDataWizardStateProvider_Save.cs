@@ -80,7 +80,7 @@ namespace Hex.TestProject.Wizard.TempDataWizardStateProviderTests
 				.Return( httpContextItems );
 
 			RequestContext requestContext = new RequestContext( httpContext, new RouteData() );
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 			ControllerContext controllerContext = new ControllerContext( requestContext, wizardController );
 			wizardController.ControllerContext = controllerContext;
 

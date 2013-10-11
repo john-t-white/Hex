@@ -19,7 +19,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.NextWizardButtonCommandTests
 			WizardStep currentStep = wizardStepLinkedList.CurrentStep;
 			WizardStep nextStep = wizardStepLinkedList.NextStep;
 
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 			wizardController.ModelState.SetModelValue( "ExistingModelState", new ValueProviderResult( "ExistingValue", "ExistingValue", CultureInfo.CurrentUICulture ) );
 			wizardController.WizardSteps = wizardStepLinkedList;
 
@@ -37,7 +37,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.NextWizardButtonCommandTests
 
 			WizardStep currentStep = wizardStepLinkedList.CurrentStep;
 
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 			wizardController.ModelState.AddModelError( "ModelStateError", "ErrorMessage" );
 			wizardController.WizardSteps = wizardStepLinkedList;
 

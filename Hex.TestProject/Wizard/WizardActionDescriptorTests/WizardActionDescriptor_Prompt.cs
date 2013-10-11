@@ -12,7 +12,7 @@ namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 		[TestMethod]
 		public void ReturnsCorrectly()
 		{
-			ActionDescriptor actionDescriptor = this.GetWizardAction( typeof( FakeWizardControllerWithDisplayAttribute ) );
+			ActionDescriptor actionDescriptor = this.GetWizardAction( typeof( FakeWizardControllerWithOneStepWithDisplayAttribute ) );
 
 			WizardActionDescriptor wizardActionDescriptor = new WizardActionDescriptor( actionDescriptor );
 
@@ -22,7 +22,7 @@ namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 		[TestMethod]
 		public void WithoutDisplayAttributeReturnsCorrectly()
 		{
-			ActionDescriptor actionDescriptor = this.GetWizardAction( typeof( FakeWizardController ) );
+			ActionDescriptor actionDescriptor = this.GetWizardAction( typeof( FakeWizardControllerWithOneStep ) );
 
 			WizardActionDescriptor wizardActionDescriptor = new WizardActionDescriptor( actionDescriptor );
 

@@ -71,7 +71,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardLifeCycleTests
 			valueProvider.Stub( x => x.GetValue( Constants.WIZARD_STATE_TOKEN_HIDDEN_FIELD_NAME ) )
 				.Return( valueProviderResult );
 
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 			wizardController.ValueProvider = valueProvider;
 
 			return wizardController;

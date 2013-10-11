@@ -192,8 +192,8 @@
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionayExtensions_ToHtmlAttributeString.cs" />
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionaryExtensions_TryGetValue.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_GetModelStateValue.cs" />
-    <Compile Include="Wizard\FormWizardStateProviderTests\FakeWizardController.cs" />
-    <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\FakeWizardControllerWithNoActions.cs" />
+    <Compile Include="Wizard\FakeWizardControllerWithOneStep.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_ctor.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_Initialize.cs" />
     <Compile Include="Wizard\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_Update.cs" />
@@ -307,11 +307,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
     <Compile Include="Wizard\FormWizardStateProviderTests\FormWizardStateProvider_SaveAndLoad.cs" />
-    <Compile Include="Wizard\LifeCycle\NextWizardButtonCommandTests\FakeWizardController.cs" />
     <Compile Include="Wizard\LifeCycle\NextWizardButtonCommandTests\NextWizardButtonCommand_ExecuteCommand.cs" />
-    <Compile Include="Wizard\LifeCycle\PreviousWizardButtonCommandTests\FakeWizardController.cs" />
     <Compile Include="Wizard\LifeCycle\PreviousWizardButtonCommandTests\PreviousWizardButtonCommand_ExecuteCommand.cs" />
-    <Compile Include="Wizard\TempDataWizardStateProviderTests\FakeWizardController.cs" />
     <Compile Include="Wizard\TempDataWizardStateProviderTests\TempDataWizardStateProvider_Save.cs" />
     <Compile Include="Wizard\TempDataWizardStateProviderTests\TempDataWizardStateProvider_Load.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ShortName.cs" />
@@ -319,16 +316,13 @@
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Prompt.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Order.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Description.cs" />
-    <Compile Include="Wizard\WizardActionDescriptorTests\FakeWizardControllerWithDisplayAttribute.cs" />
-    <Compile Include="Wizard\WizardActionDescriptorTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\FakeWizardControllerWithOneStepWithDisplayAttribute.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_Name.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ctor.cs" />
-    <Compile Include="Wizard\LifeCycle\WizardButtonCommandFactoryTests\FakeWizardController.cs" />
     <Compile Include="Wizard\LifeCycle\WizardButtonCommandFactoryTests\WizardButtonCommandFactory_GetButtonCommand.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardControllerWithAuthorizeAttributeOnController.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardControllerWithAuthorizeAttributeOnAction.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeViewModel.cs" />
-    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardControllerWithNoActions.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardStepViewModel.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_FilterUnauthorizedWizardActions.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_CreateActionResult.cs" />
@@ -340,12 +334,10 @@
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardControllerWithOverridenMethodWithNotAWizardActionAttribute.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardControllerWithNotAWizardActionAttribute.cs" />
     <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithDifferentOrder.cs" />
-    <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithWizardStepAttributes.cs" />
-    <Compile Include="Wizard\WizardControllerActionInvokerTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardControllerWithDisplayAttributes.cs" />
+    <Compile Include="Wizard\FakeWizardControllerWithThreeSteps.cs" />
     <Compile Include="Wizard\WizardControllerActionInvokerTests\WizardControllerActionInvoker_GetWizardActions.cs" />
-    <Compile Include="Wizard\WizardControllerTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardControllerTests\WizardController_ActionInvoker.cs" />
-    <Compile Include="Wizard\WizardStepInitializerTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardStepInitializerTests\WizardStepInitializer_InitializeWizardSteps.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_MoveToPreviousStep.cs" />
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_MoveToNextStep.cs" />
@@ -359,7 +351,6 @@
     <Compile Include="Wizard\WizardStepLinkedListTests\WizardStepLinkedList_ctor.cs" />
     <Compile Include="Wizard\WizardStepStateTests\WizardStepState_Serialization.cs" />
     <Compile Include="Wizard\WizardStepStateTests\WizardStepState_ctor.cs" />
-    <Compile Include="Wizard\WizardStepTests\FakeWizardController.cs" />
     <Compile Include="Wizard\WizardStepValueCollectionTests\WizardStepStateValueCollection_Serialization.cs" />
     <Compile Include="Wizard\WizardStepTests\WizardStep_ctor.cs" />
   </ItemGroup>

@@ -14,7 +14,7 @@ namespace Hex.TestProject.Wizard.FormWizardStateProviderTests
 		public void SavesAndLoadsCorrectly()
 		{
 			RequestContext requestContext = new RequestContext();
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 			ControllerContext controllerContext = new ControllerContext( requestContext, wizardController );
 
 			WizardStepValueCollection stepOneValues = new WizardStepValueCollection();

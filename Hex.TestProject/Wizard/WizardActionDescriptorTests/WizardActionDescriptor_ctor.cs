@@ -13,7 +13,7 @@ namespace Hex.TestProject.Wizard.WizardActionDescriptorTests
 		[TestMethod]
 		public void CreatesCorrectly()
 		{
-			ReflectedControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor( typeof( FakeWizardController ) );
+			ReflectedControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor( typeof( FakeWizardControllerWithOneStep ) );
 			ActionDescriptor actionDescriptor = controllerDescriptor.GetCanonicalActions().Single( x => x.ActionName == "StepOne" );
 
 			WizardActionDescriptor wizardActionDescriptor = new WizardActionDescriptor( actionDescriptor );

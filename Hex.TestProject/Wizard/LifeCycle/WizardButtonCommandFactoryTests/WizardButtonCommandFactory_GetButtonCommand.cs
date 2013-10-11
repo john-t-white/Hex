@@ -16,7 +16,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardButtonCommandFactoryTests
 		{
 			IValueProvider valueProvider = MockRepository.GenerateMock<IValueProvider>();
 
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 			wizardController.ValueProvider = valueProvider;
 
 			valueProvider.Expect( x => x.GetValue( Constants.WIZARD_NEXT_BUTTON_NAME ) )
@@ -36,7 +36,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardButtonCommandFactoryTests
 		{
 			IValueProvider valueProvider = MockRepository.GenerateMock<IValueProvider>();
 
-			FakeWizardController wizardController = new FakeWizardController();
+			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
 			wizardController.ValueProvider = valueProvider;
 
 			valueProvider.Expect( x => x.GetValue( Constants.WIZARD_PREVIOUS_BUTTON_NAME ) )
