@@ -197,6 +197,8 @@
     <Compile Include="Wizard\LifeCycle\CreateWizardFormModelLifeCycleCommandTests\CreateWizardFormModelLifeCycleCommand_Execute.cs" />
     <Compile Include="Wizard\LifeCycle\InitializeWizardActionsLifeCycleCommandTests\InitializeWizardActionsLifeCycleCommand_Execute.cs" />
     <Compile Include="Wizard\LifeCycle\InitializeWizardStepsLifeCycleCommandTests\InitializeWizardStepsLifeCycleCommand_Execute.cs" />
+    <Compile Include="Wizard\LifeCycle\LoadWizardStateLifeCycleCommandTests\LoadWizardStateLifeCycleCommand_ctor.cs" />
+    <Compile Include="Wizard\LifeCycle\LoadWizardStateLifeCycleCommandTests\LoadWizardStateLifeCycleCommand_Execute.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_ctor.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_Initialize.cs" />
     <Compile Include="Wizard\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_Update.cs" />
