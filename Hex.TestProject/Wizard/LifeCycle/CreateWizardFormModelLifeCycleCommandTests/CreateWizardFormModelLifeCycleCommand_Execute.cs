@@ -11,13 +11,15 @@ namespace Hex.TestProject.Wizard.LifeCycle.CreateWizardFormModelLifeCycleCommand
 		public void CreatesAndSetsWizardFormModelCorrectly()
 		{
 			FakeWizardControllerWithNoActions wizardController = new FakeWizardControllerWithNoActions();
-			WizardLifeCycleContext lifeCycleContext = new WizardLifeCycleContext( wizardController );
+			WizardLifeCycleContext wizardLifeCycleContext = new WizardLifeCycleContext( wizardController );
 
 			CreateWizardFormModelLifeCycleCommand lifeCycleCommand = new CreateWizardFormModelLifeCycleCommand();
-			lifeCycleCommand.Execute( lifeCycleContext );
+			lifeCycleCommand.Execute( wizardLifeCycleContext );
 
 			Assert.IsNotNull( wizardController.WizardFormModel );
 			Assert.IsInstanceOfType( wizardController.WizardFormModel, wizardController.WizardFormModelType );
+
+			Assert.IsNull( wizardLifeCycleContext.ResultActionName );
 		}
 	}
 }
