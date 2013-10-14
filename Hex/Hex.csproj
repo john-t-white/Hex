@@ -167,7 +167,7 @@
     <Compile Include="Wizard\LifeCycle\ProcessWizardButtonLifeCycleCommand.cs" />
     <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommand.cs" />
     <Compile Include="Wizard\LifeCycle\RestoreWizardStateLifeCycleCommand.cs" />
-    <Compile Include="Wizard\LifeCycle\UpdateWizardFormLifeCycleCommand.cs" />
+    <Compile Include="Wizard\LifeCycle\UpdateWizardFormModelLifeCycleCommand.cs" />
     <Compile Include="Wizard\LifeCycle\InitializeWizardStepsLifeCycleCommand.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleContext.cs" />
     <Compile Include="Wizard\ModelStateDictionaryExtensions.cs" />

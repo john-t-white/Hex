@@ -36,7 +36,7 @@ namespace Hex.Wizard.LifeCycle
 				this.Add( new LoadWizardStateLifeCycleCommand( wizardStateTokenResult.AttemptedValue ) );
 				this.Add( new RestoreWizardStateLifeCycleCommand() );
 				this.Add( new RestoreWizardFormModelLifeCycleCommand() );
-				this.Add( new UpdateWizardFormLifeCycleCommand() );
+				this.Add( new UpdateWizardFormModelLifeCycleCommand() );
 				this.Add( new ProcessWizardButtonLifeCycleCommand() );
 			}
 		}

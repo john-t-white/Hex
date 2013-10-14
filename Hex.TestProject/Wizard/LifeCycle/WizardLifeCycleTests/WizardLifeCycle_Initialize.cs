@@ -53,7 +53,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardLifeCycleTests
 			Assert.IsInstanceOfType( wizardLifeCycle[ 2 ], typeof( LoadWizardStateLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 3 ], typeof( RestoreWizardStateLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 4 ], typeof( RestoreWizardFormModelLifeCycleCommand ) );
-			Assert.IsInstanceOfType( wizardLifeCycle[ 5 ], typeof( UpdateWizardFormLifeCycleCommand ) );
+			Assert.IsInstanceOfType( wizardLifeCycle[ 5 ], typeof( UpdateWizardFormModelLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 6 ], typeof( ProcessWizardButtonLifeCycleCommand ) );
 		}
 
