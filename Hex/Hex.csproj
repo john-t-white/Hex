@@ -157,6 +157,7 @@
     </Compile>
     <Compile Include="Wizard\Constants.cs" />
     <Compile Include="Wizard\FormWizardStateProvider.cs" />
+    <Compile Include="Wizard\LifeCycle\CurrentStepLifeCycleCommand.cs" />
     <Compile Include="Wizard\LifeCycle\IWizardButtonCommand.cs" />
     <Compile Include="Wizard\LifeCycle\CreateWizardFormModelLifeCycleCommand.cs" />
     <Compile Include="Wizard\LifeCycle\InitializeWizardActionsLifeCycleCommand.cs" />

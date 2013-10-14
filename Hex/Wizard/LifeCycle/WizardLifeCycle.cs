@@ -39,6 +39,8 @@ namespace Hex.Wizard.LifeCycle
 				this.Add( new UpdateWizardFormModelLifeCycleCommand() );
 				this.Add( new ProcessWizardButtonLifeCycleCommand() );
 			}
+
+			this.Add( new CurrentStepLifeCycleCommand() );
 		}
 	}
 }

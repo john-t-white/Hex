@@ -19,10 +19,11 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardLifeCycleTests
 			WizardLifeCycle wizardLifeCycle = new WizardLifeCycle( wizardController );
 			wizardLifeCycle.Initialize();
 
-			Assert.AreEqual( 3, wizardLifeCycle.Count );
+			Assert.AreEqual( 4, wizardLifeCycle.Count );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 0 ], typeof( InitializeWizardActionsLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 1 ], typeof( CreateWizardFormModelLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 2 ], typeof( InitializeWizardStepsLifeCycleCommand ) );
+			Assert.IsInstanceOfType( wizardLifeCycle[ 3 ], typeof( CurrentStepLifeCycleCommand ) );
 		}
 
 		[TestMethod]
@@ -33,10 +34,11 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardLifeCycleTests
 			WizardLifeCycle wizardLifeCycle = new WizardLifeCycle( wizardController );
 			wizardLifeCycle.Initialize();
 
-			Assert.AreEqual( 3, wizardLifeCycle.Count );
+			Assert.AreEqual( 4, wizardLifeCycle.Count );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 0 ], typeof( InitializeWizardActionsLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 1 ], typeof( CreateWizardFormModelLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 2 ], typeof( InitializeWizardStepsLifeCycleCommand ) );
+			Assert.IsInstanceOfType( wizardLifeCycle[ 3 ], typeof( CurrentStepLifeCycleCommand ) );
 		}
 
 		[TestMethod]
@@ -47,7 +49,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardLifeCycleTests
 			WizardLifeCycle wizardLifeCycle = new WizardLifeCycle( wizardController );
 			wizardLifeCycle.Initialize();
 
-			Assert.AreEqual( 7, wizardLifeCycle.Count );
+			Assert.AreEqual( 8, wizardLifeCycle.Count );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 0 ], typeof( InitializeWizardActionsLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 1 ], typeof( CreateWizardFormModelLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 2 ], typeof( LoadWizardStateLifeCycleCommand ) );
@@ -55,6 +57,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.WizardLifeCycleTests
 			Assert.IsInstanceOfType( wizardLifeCycle[ 4 ], typeof( RestoreWizardFormModelLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 5 ], typeof( UpdateWizardFormModelLifeCycleCommand ) );
 			Assert.IsInstanceOfType( wizardLifeCycle[ 6 ], typeof( ProcessWizardButtonLifeCycleCommand ) );
+			Assert.IsInstanceOfType( wizardLifeCycle[ 7 ], typeof( CurrentStepLifeCycleCommand ) );
 		}
 
 

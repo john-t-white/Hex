@@ -92,8 +92,7 @@ namespace Hex.Wizard
 				}
 			}
 
-			this.RouteData.Values[ ACTION_ROUTE_VALUE_NAME ] = this.WizardSteps.CurrentStep.ActionName;
-			return base.BeginExecuteCore( callback, state );
+			throw new InvalidOperationException( "LifeCycle did not return an action name to execute." );
 		}
 
 		#endregion
