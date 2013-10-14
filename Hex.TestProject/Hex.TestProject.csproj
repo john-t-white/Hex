@@ -202,6 +202,10 @@
     <Compile Include="Wizard\LifeCycle\ProcessWizardButtonLifeCycleCommandTests\ProcessWizardButtonLifeCycleCommand_Execute.cs" />
     <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\FakeWizardController.cs" />
     <Compile Include="Wizard\LifeCycle\RestoreWizardStateLifeCycleCommandTests\RestoreWizardStateLifeCycleCommand_Execute.cs" />
+    <Compile Include="Wizard\LifeCycle\UpdateWizardFormModelLifeCycleCommandTests\FakeWizardController.cs" />
+    <Compile Include="Wizard\LifeCycle\UpdateWizardFormModelLifeCycleCommandTests\FakeWizardFormModel.cs" />
+    <Compile Include="Wizard\LifeCycle\UpdateWizardFormModelLifeCycleCommandTests\FakeWizardStepOneFormModel.cs" />
+    <Compile Include="Wizard\LifeCycle\UpdateWizardFormModelLifeCycleCommandTests\UpdateWizardFormModelLifeCycleCommand_Execute.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleContextTests\WizardLifeCycleContext_ctor.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_ctor.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_Initialize.cs" />
