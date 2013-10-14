@@ -200,6 +200,7 @@
     <Compile Include="Wizard\LifeCycle\LoadWizardStateLifeCycleCommandTests\LoadWizardStateLifeCycleCommand_ctor.cs" />
     <Compile Include="Wizard\LifeCycle\LoadWizardStateLifeCycleCommandTests\LoadWizardStateLifeCycleCommand_Execute.cs" />
     <Compile Include="Wizard\LifeCycle\ProcessWizardButtonLifeCycleCommandTests\ProcessWizardButtonLifeCycleCommand_Execute.cs" />
+    <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\FakeWizardController.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleContextTests\WizardLifeCycleContext_ctor.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_ctor.cs" />
     <Compile Include="Wizard\LifeCycle\WizardLifeCycleTests\WizardLifeCycle_Initialize.cs" />
@@ -316,6 +317,10 @@
     <Compile Include="Wizard\FormWizardStateProviderTests\FormWizardStateProvider_SaveAndLoad.cs" />
     <Compile Include="Wizard\LifeCycle\NextWizardButtonCommandTests\NextWizardButtonCommand_ExecuteCommand.cs" />
     <Compile Include="Wizard\LifeCycle\PreviousWizardButtonCommandTests\PreviousWizardButtonCommand_ExecuteCommand.cs" />
+    <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\FakeWizardFormModel.cs" />
+    <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\FakeWizardStepOneFormModel.cs" />
+    <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\FakeWizardStepTwoFormModel.cs" />
+    <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\RestoreWizardFormModelLifeCycleCommand_Execute.cs" />
     <Compile Include="Wizard\TempDataWizardStateProviderTests\TempDataWizardStateProvider_Save.cs" />
     <Compile Include="Wizard\TempDataWizardStateProviderTests\TempDataWizardStateProvider_Load.cs" />
     <Compile Include="Wizard\WizardActionDescriptorTests\WizardActionDescriptor_ShortName.cs" />

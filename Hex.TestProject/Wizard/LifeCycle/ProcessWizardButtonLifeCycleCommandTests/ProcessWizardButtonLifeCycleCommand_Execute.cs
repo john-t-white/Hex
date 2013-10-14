@@ -32,6 +32,8 @@ namespace Hex.TestProject.Wizard.LifeCycle.ProcessWizardButtonLifeCycleCommandTe
 
 			wizardButtonCommandFactory.VerifyAllExpectations();
 			buttonCommand.VerifyAllExpectations();
+
+			Assert.IsNull( lifeCycleContext.ResultActionName );
 		}
 
 		private WizardController GenerateWizardController()
