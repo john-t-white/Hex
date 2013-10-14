@@ -43,8 +43,11 @@ namespace Hex.TestProject.Wizard.LifeCycle.UpdateWizardFormModelLifeCycleCommand
 			ValueProviderResult valueProviderResult = new ValueProviderResult( "NewStepOneStringValue", "NewStepOneStringValue", CultureInfo.CurrentUICulture );
 
 			IValueProvider valueProvider = MockRepository.GenerateMock<IValueProvider>();
-			valueProvider.Expect( x => x.ContainsPrefix( null ) )
-				.IgnoreArguments()
+			valueProvider.Expect( x => x.ContainsPrefix( "WizardFormModel" ) )
+				.Return( true );
+			valueProvider.Expect( x => x.ContainsPrefix( "WizardFormModel.StepOne" ) )
+				.Return( true );
+			valueProvider.Expect( x => x.ContainsPrefix( "WizardFormModel.StepOne.StepOneStringValue" ) )
 				.Return( true );
 			valueProvider.Expect( x => x.GetValue( "WizardFormModel.StepOne.StepOneStringValue" ) )
 				.Return( valueProviderResult );
