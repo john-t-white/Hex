@@ -15,9 +15,10 @@ namespace Hex.Wizard.LifeCycle
 		{
 			WizardController wizardController = wizardLifeCycleContext.WizardController;
 			ControllerContext controllerContext = wizardController.ControllerContext;
+			IWizardActionInvoker wizardActionInvoker = wizardController.ActionInvoker;
 
-			WizardActionDescriptor[] wizardActions = wizardController.ActionInvoker.GetWizardActions( controllerContext );
-			wizardActions = wizardController.ActionInvoker.FilterUnauthorizedWizardActions( controllerContext, wizardActions );
+			WizardActionDescriptor[] wizardActions = wizardActionInvoker.GetWizardActions( controllerContext );
+			wizardActions = wizardActionInvoker.FilterUnauthorizedWizardActions( controllerContext, wizardActions );
 			if( wizardActions == null || wizardActions.Length == 0 )
 			{
 				wizardLifeCycleContext.ResultActionName = HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME;
