@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Hex.Wizard.LifeCycle
 {
-	public class RestoreWizardFormLifeCycleCommand
+	public class RestoreWizardFormModelLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
 		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
