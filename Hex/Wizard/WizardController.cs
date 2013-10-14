@@ -92,7 +92,7 @@ namespace Hex.Wizard
 				}
 			}
 
-			throw new InvalidOperationException( "LifeCycle did not return an action name to execute." );
+			throw new InvalidOperationException( "Wizard lifecycle did not return an action name to execute." );
 		}
 
 		#endregion
