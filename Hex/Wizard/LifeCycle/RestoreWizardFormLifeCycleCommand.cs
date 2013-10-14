@@ -15,14 +15,16 @@ namespace Hex.Wizard.LifeCycle
 			WizardController wizardController = wizardLifeCycleContext.WizardController;
 
 			ModelStateDictionary modelStateDictionary = new ModelStateDictionary();
+			IModelBinder binder = System.Web.Mvc.ModelBinders.Binders.GetBinder( wizardController.WizardFormModelType );
+			ModelMetadata wizardFormModelMetadata = ModelMetadataProviders.Current.GetMetadataForType( () => wizardController.WizardFormModel, wizardController.WizardFormModelType );
+
 			foreach( WizardStep currentWizardStep in wizardController.WizardSteps.Where( x => x.Values != null ) )
 			{
 				IValueProvider valueProvider = new WizardStepValueCollectionValueProvider( currentWizardStep.Values, CultureInfo.CurrentUICulture );
 
-				IModelBinder binder = System.Web.Mvc.ModelBinders.Binders.GetBinder( wizardController.WizardFormModelType );
 				var bindingContext = new ModelBindingContext()
 				{
-					ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType( () => wizardController.WizardFormModel, wizardController.WizardFormModelType ),
+					ModelMetadata = wizardFormModelMetadata,
 					ModelState = modelStateDictionary,
 					ModelName = null,
 					ValueProvider = valueProvider
