@@ -101,7 +101,7 @@ namespace Hex.Wizard
 					wizardStepViewModel = ( IWizardStepViewModel )viewResultBase.Model;
 				}
 
-				wizardStepViewModel.SetWizardFormModel( wizardController.WizardFormModel );
+				wizardStepViewModel.WizardFormModel = wizardController.WizardFormModel;
 				wizardStepViewModel.WizardSteps = wizardController.WizardSteps;
 			}
 

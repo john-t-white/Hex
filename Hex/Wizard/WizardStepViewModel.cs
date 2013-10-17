@@ -10,21 +10,43 @@ namespace Hex.Wizard
 	{
 		public TWizardFormModel WizardFormModel { get; set; }
 
-		public void SetWizardFormModel( object wizardFormModel )
+		object IWizardStepViewModel.WizardFormModel
 		{
-			if( wizardFormModel == null )
+			get
 			{
-				throw new ArgumentNullException( "wizardFormModel" );
+				return this.WizardFormModel;
 			}
-
-			if( !( wizardFormModel is TWizardFormModel ) )
+			set
 			{
-				string exceptionMessage = string.Format( "WizardFormModel must be of type '{0}'.", typeof( TWizardFormModel ).FullName );
-				throw new ArgumentException( exceptionMessage, "wizardFormModel" );
-			}
+				if( value == null )
+				{
+					throw new ArgumentNullException();
+				}
 
-			this.WizardFormModel = ( TWizardFormModel )wizardFormModel;
+				if( !( value is TWizardFormModel ) )
+				{
+					string exceptionMessage = string.Format( "WizardFormModel must be of type '{0}'.", typeof( TWizardFormModel ).FullName );
+					throw new ArgumentException( exceptionMessage, "wizardFormModel" );
+				}
+
+				this.WizardFormModel = ( TWizardFormModel )value;
+			}
 		}
+
+		//public void SetWizardFormModel( object wizardFormModel )
+		//{
+		//	if( wizardFormModel == null )
+		//	{
+		//		throw new ArgumentNullException( "wizardFormModel" );
+		//	}
+
+		//	if( !( wizardFormModel is TWizardFormModel ) )
+		//	{
+				
+		//	}
+
+		//	this.WizardFormModel = ( TWizardFormModel )wizardFormModel;
+		//}
 
 		public WizardStepLinkedList WizardSteps { get; set; }
 	}

@@ -8,12 +8,12 @@ namespace Hex.Wizard
 	public interface IWizardStepViewModel<TWizardFormModel>
 		: IWizardStepViewModel
 	{
-		TWizardFormModel WizardFormModel { get; set; }
+		new TWizardFormModel WizardFormModel { get; set; }
 	}
 
 	public interface IWizardStepViewModel
 	{
-		void SetWizardFormModel( object wizardFormModel );
+		object WizardFormModel { get; set; }
 
 		WizardStepLinkedList WizardSteps { get; set; }
 	}

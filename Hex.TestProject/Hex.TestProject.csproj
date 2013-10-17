@@ -192,6 +192,8 @@
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionayExtensions_ToHtmlAttributeString.cs" />
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionaryExtensions_TryGetValue.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_GetModelStateValue.cs" />
+    <Compile Include="Html\WizardFormExtensionsTests\FakeWizardFormModel.cs" />
+    <Compile Include="Html\WizardFormExtensionsTests\WizardFormExtensions_BeginWizardForm.cs" />
     <Compile Include="Wizard\FakeWizardControllerWithNoActions.cs" />
     <Compile Include="Wizard\FakeWizardControllerWithOneStep.cs" />
     <Compile Include="Wizard\LifeCycle\CreateWizardFormModelLifeCycleCommandTests\CreateWizardFormModelLifeCycleCommand_Execute.cs" />
