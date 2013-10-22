@@ -21,8 +21,8 @@
 	@Html.LabelFor( x => x.WizardFormModel.FirstStep.LastName )
 	@Html.TextBoxFor( x => x.WizardFormModel.FirstStep.LastName )<br />
 	
-	@Html.PreviousWizardStepSubmitInputButton( x => x.AddClass( "cancel" ) )
-	@Html.NextWizardStepSubmitInputButton()
+	@Html.PreviousWizardStepSubmitButton( x => x.AddClass( "cancel" ) )
+	@Html.NextWizardStepSubmitButton()
 }
 
 @section Scripts {
