@@ -10,8 +10,16 @@ using System.Web.Mvc.Html;
 
 namespace Hex.Html
 {
+	/// <summary>
+	/// Represents support for HTML forms used with the WizardController in an application with an expression for specifying HTML attributes.
+	/// </summary>
 	public static class WizardFormExtensions
 	{
+		/// <summary>
+		/// Writes an opening &lt;form&gt; tag to the response used with the WizardController.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <returns>An opening &lt;form&gt; tag with the hidden wizard state field.</returns>
 		public static MvcForm BeginWizardForm( this HtmlHelper htmlHelper )
 		{
 			MvcForm mvcForm = htmlHelper.BeginForm();
@@ -21,11 +29,23 @@ namespace Hex.Html
 			return mvcForm;
 		}
 
+		/// <summary>
+		/// Writes an opening &lt;form&gt; tag to the response used with the WizardController with the html attributes specified.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;form&gt; tag with the hidden wizard state field.</returns>
 		public static MvcForm BeginWizardForm( this HtmlHelper htmlHelper, object htmlAttributes )
 		{
 			return htmlHelper.BeginWizardForm( HtmlHelper.AnonymousObjectToHtmlAttributes( htmlAttributes ) );
 		}
 
+		/// <summary>
+		/// Writes an opening &lt;form&gt; tag to the response used with the WizardController with the html attributes specified.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;form&gt; tag with the hidden wizard state field.</returns>
 		public static MvcForm BeginWizardForm( this HtmlHelper htmlHelper, IDictionary<string, object> htmlAttributes )
 		{
 			string rawUrl = htmlHelper.ViewContext.HttpContext.Request.RawUrl;
@@ -36,6 +56,12 @@ namespace Hex.Html
 			return mvcForm;
 		}
 
+		/// <summary>
+		/// Writes an opening &lt;form&gt; tag to the response used with the WizardController with the html attributes specified.
+		/// </summary>
+		/// <param name="htmlHelper">The HTML helper instance that this method extends.</param>
+		/// <param name="attributeExpression">An expression that contains the HTML attributes to set for the element.</param>
+		/// <returns>An opening &lt;form&gt; tag with the hidden wizard state field.</returns>
 		public static MvcForm BeginWizardForm( this HtmlHelper htmlHelper, Action<HtmlAttributeBuilder> attributeExpression )
 		{
 			return htmlHelper.BeginWizardForm( attributeExpression.GetAttributes() );
