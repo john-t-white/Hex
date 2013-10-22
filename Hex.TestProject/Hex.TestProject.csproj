@@ -192,6 +192,9 @@
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionayExtensions_ToHtmlAttributeString.cs" />
     <Compile Include="Extensions\IDictionaryExtensionsTests\IDictionaryExtensions_TryGetValue.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensionsTests\ModelStateDictionaryExtensions_GetModelStateValue.cs" />
+    <Compile Include="Html\BeginWizardButtonExtensionsTests\BeginWizardButtonExtensions_BeginNextWizardStepSubmitButton.cs" />
+    <Compile Include="Html\BeginWizardButtonExtensionsTests\FakeWizardFormModel.cs" />
+    <Compile Include="Html\BeginWizardButtonExtensionsTests\BeginWizardButtonExtensions_BeginPreviousWizardStepSubmitButton.cs" />
     <Compile Include="Html\WizardButtonExtensionsTests\WizardButtonExtensions_NextWizardStepSubmitButton.cs" />
     <Compile Include="Html\WizardButtonExtensionsTests\WizardButtonExtensions_PreviousWizardStepSubmitButton.cs" />
     <Compile Include="Html\WizardButtonExtensionsTests\WizardButtonExtensions_NextWizardStepSubmitInputButton.cs" />

@@ -99,6 +99,7 @@
     <Compile Include="CheckBoxValues.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Html\BeginButtonExtensions.cs" />
+    <Compile Include="Html\BeginWizardButtonExtensions.cs" />
     <Compile Include="Html\ButtonExtensions.cs" />
     <Compile Include="Html\CheckBoxListItemExtensions.cs" />
     <Compile Include="Html\CheckBoxExtensions_WithValue.cs" />

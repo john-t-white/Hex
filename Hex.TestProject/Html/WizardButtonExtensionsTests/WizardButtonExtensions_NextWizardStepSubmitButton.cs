@@ -29,7 +29,7 @@ namespace Hex.TestProject.Html.WizardButtonExtensionsTests
 		}
 
 		[TestMethod]
-		public void WithNoPreviousStepReturnsCorrectly()
+		public void WithNoNextStepReturnsCorrectly()
 		{
 			WizardStepViewModel<FakeWizardFormModel> viewModel = new WizardStepViewModel<FakeWizardFormModel>();
 			viewModel.WizardFormModel = new FakeWizardFormModel();
