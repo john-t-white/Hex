@@ -33,21 +33,6 @@ namespace Hex.Wizard
 			}
 		}
 
-		//public void SetWizardFormModel( object wizardFormModel )
-		//{
-		//	if( wizardFormModel == null )
-		//	{
-		//		throw new ArgumentNullException( "wizardFormModel" );
-		//	}
-
-		//	if( !( wizardFormModel is TWizardFormModel ) )
-		//	{
-				
-		//	}
-
-		//	this.WizardFormModel = ( TWizardFormModel )wizardFormModel;
-		//}
-
 		public WizardStepLinkedList WizardSteps { get; set; }
 	}
 }
