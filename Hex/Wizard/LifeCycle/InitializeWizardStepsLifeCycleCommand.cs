@@ -6,11 +6,18 @@ using System.Text;
 
 namespace Hex.Wizard.LifeCycle
 {
+	/// <summary>
+	/// The wizard life cycle command that initializes the wizard steps.
+	/// </summary>
 	public class InitializeWizardStepsLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
 		private const string HANDLE_NO_WIZARD_STEPS_ACTION_NAME = "HandleNoWizardSteps";
 
+		/// <summary>
+		/// Executes the command.
+		/// </summary>
+		/// <param name="wizardLifeCycleContext">The wizard life cycle context.</param>
 		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
 			WizardController wizardController = wizardLifeCycleContext.WizardController;

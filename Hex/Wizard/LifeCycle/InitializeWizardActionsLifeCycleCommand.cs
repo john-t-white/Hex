@@ -6,11 +6,18 @@ using System.Web.Mvc;
 
 namespace Hex.Wizard.LifeCycle
 {
+	/// <summary>
+	/// The wizard life cycle command that intializes the possible wizard actions.
+	/// </summary>
 	public class InitializeWizardActionsLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
 		private const string HANDLE_NO_AUTHORIZED_WIZARD_ACTIONS_ACTION_NAME = "HandleNoAuthorizedWizardActions";
 
+		/// <summary>
+		/// Executes the command.
+		/// </summary>
+		/// <param name="wizardLifeCycleContext">The wizard life cycle context.</param>
 		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
 			WizardController wizardController = wizardLifeCycleContext.WizardController;

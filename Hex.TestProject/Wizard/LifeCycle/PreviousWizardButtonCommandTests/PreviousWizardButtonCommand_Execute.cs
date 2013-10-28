@@ -9,7 +9,7 @@ using Hex.Wizard;
 namespace Hex.TestProject.Wizard.LifeCycle.PreviousWizardButtonCommandTests
 {
 	[TestClass]
-	public class PreviousWizardButtonCommand_ExecuteCommand
+	public class PreviousWizardButtonCommand_Execute
 	{
 		[TestMethod]
 		public void ExecutesCorrectly()
@@ -24,7 +24,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.PreviousWizardButtonCommandTests
 			wizardController.WizardSteps = wizardStepLinkedList;
 
 			PreviousWizardButtonCommand buttonCommand = new PreviousWizardButtonCommand();
-			buttonCommand.ExecuteCommand( wizardController );
+			buttonCommand.Execute( wizardController );
 
 			Assert.AreEqual( previousStep.Values.Count, wizardController.ModelState.Count );
 			Assert.AreSame( previousStep, wizardStepLinkedList.CurrentStep );

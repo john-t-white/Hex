@@ -7,9 +7,16 @@ using System.Web.Mvc;
 
 namespace Hex.Wizard.LifeCycle
 {
+	/// <summary>
+	/// The wizard life cycle command that updates the wizard form model and sets the values for the current step.
+	/// </summary>
 	public class UpdateWizardFormModelLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
+		/// <summary>
+		/// Executes the command.
+		/// </summary>
+		/// <param name="wizardLifeCycleContext">The wizard life cycle context.</param>
 		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
 			WizardController wizardController = wizardLifeCycleContext.WizardController;

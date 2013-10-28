@@ -5,14 +5,24 @@ using System.Text;
 
 namespace Hex.Wizard.LifeCycle
 {
+	/// <summary>
+	/// The wizard life cycle command that handles the wizard buttons.
+	/// </summary>
 	public class ProcessWizardButtonLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
+		/// <summary>
+		/// Instantiates an instance of <see cref="ProcessWizardButtonLifeCycleCommand"/>.
+		/// </summary>
 		public ProcessWizardButtonLifeCycleCommand()
 		{
 			this.WizardButtonCommandFactory = new WizardButtonCommandFactory();
 		}
 
+		/// <summary>
+		/// Executes the command.
+		/// </summary>
+		/// <param name="wizardLifeCycleContext">The wizard life cycle context.</param>
 		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
 			WizardController wizardController = wizardLifeCycleContext.WizardController;
@@ -20,7 +30,7 @@ namespace Hex.Wizard.LifeCycle
 			IWizardButtonCommand buttonCommand = this.WizardButtonCommandFactory.GetButtonCommand( wizardController );
 			if( buttonCommand != null )
 			{
-				buttonCommand.ExecuteCommand( wizardController );
+				buttonCommand.Execute( wizardController );
 			}
 		}
 

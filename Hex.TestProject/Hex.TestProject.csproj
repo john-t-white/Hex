@@ -330,8 +330,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HtmlHelperGenerator.cs" />
     <Compile Include="Wizard\FormWizardStateProviderTests\FormWizardStateProvider_SaveAndLoad.cs" />
-    <Compile Include="Wizard\LifeCycle\NextWizardButtonCommandTests\NextWizardButtonCommand_ExecuteCommand.cs" />
-    <Compile Include="Wizard\LifeCycle\PreviousWizardButtonCommandTests\PreviousWizardButtonCommand_ExecuteCommand.cs" />
+    <Compile Include="Wizard\LifeCycle\NextWizardButtonCommandTests\NextWizardButtonCommand_Execute.cs" />
+    <Compile Include="Wizard\LifeCycle\PreviousWizardButtonCommandTests\PreviousWizardButtonCommand_Execute.cs" />
     <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\FakeWizardFormModel.cs" />
     <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\FakeWizardStepOneFormModel.cs" />
     <Compile Include="Wizard\LifeCycle\RestoreWizardFormModelLifeCycleCommandTests\FakeWizardStepTwoFormModel.cs" />

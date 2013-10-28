@@ -5,9 +5,16 @@ using System.Text;
 
 namespace Hex.Wizard.LifeCycle
 {
+	/// <summary>
+	/// The wizard life cycle command that restores the wizard state.
+	/// </summary>
 	public class RestoreWizardStateLifeCycleCommand
 		: IWizardLifeCycleCommand
 	{
+		/// <summary>
+		/// Executes the command.
+		/// </summary>
+		/// <param name="wizardLifeCycleContext">The wizard life cycle context.</param>
 		public void Execute( WizardLifeCycleContext wizardLifeCycleContext )
 		{
 			WizardController wizardController = wizardLifeCycleContext.WizardController;

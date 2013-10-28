@@ -6,9 +6,16 @@ using System.Web.Mvc;
 
 namespace Hex.Wizard.LifeCycle
 {
+	/// <summary>
+	/// Represents the collection of life cycle commands the wizard controller goes through.
+	/// </summary>
 	public class WizardLifeCycle
 		: List<IWizardLifeCycleCommand>
 	{
+		/// <summary>
+		/// Instantiates and instance of <see cref="WizardLifeCycle"/>.
+		/// </summary>
+		/// <param name="wizardController">The wizard controller.</param>
 		public WizardLifeCycle( WizardController wizardController )
 		{
 			if( wizardController == null )
@@ -19,8 +26,14 @@ namespace Hex.Wizard.LifeCycle
 			this.WizardController = wizardController;
 		}
 
+		/// <summary>
+		/// Gets the wizard controller.
+		/// </summary>
 		public WizardController WizardController { get; private set; }
 
+		/// <summary>
+		/// Intializes the list of life cycle commands the wizard controller executes.
+		/// </summary>
 		public virtual void Initialize()
 		{
 			this.Add( new InitializeWizardActionsLifeCycleCommand() );

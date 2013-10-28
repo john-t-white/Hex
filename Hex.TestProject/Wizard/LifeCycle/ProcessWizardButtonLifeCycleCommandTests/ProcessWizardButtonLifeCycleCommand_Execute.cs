@@ -17,7 +17,7 @@ namespace Hex.TestProject.Wizard.LifeCycle.ProcessWizardButtonLifeCycleCommandTe
 			WizardController wizardController = this.GenerateWizardController();
 
 			IWizardButtonCommand buttonCommand = MockRepository.GenerateMock<IWizardButtonCommand>();
-			buttonCommand.Expect( x => x.ExecuteCommand( wizardController ) );
+			buttonCommand.Expect( x => x.Execute( wizardController ) );
 
 			IWizardButtonCommandFactory wizardButtonCommandFactory = MockRepository.GenerateMock<IWizardButtonCommandFactory>();
 			wizardButtonCommandFactory.Expect( x => x.GetButtonCommand( wizardController ) )
